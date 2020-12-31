@@ -1,0 +1,26 @@
+{
+    "extends": "../tsconfig-base",
+    "compilerOptions": {
+        "target": "es5",
+        "rootDir": "./",
+        "outDir": "../build/cjs"
+    },
+    "files": [
+        "api/basic.ts",
+        "api/index.ts",
+        "api/types.ts",
+        "helpers/moduleError/expceptionGenerator.ts",
+        "helpers/moduleError/type.ts",
+        "helpers/utils/baseUtils.ts",
+        "helpers/utils/cryptoUtil.ts",
+        "helpers/utils/index.ts",
+        "index.ts",
+        "network/wsManager.ts",
+        "sdk.ts",
+        "typings/block.ts",
+        "typings/enumTypes.ts",
+        "typings/index.ts",
+        "typings/transaction.constants.ts",
+        "typings/types.ts"
+    ]
+}
