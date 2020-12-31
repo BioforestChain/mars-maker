@@ -81,7 +81,7 @@ export class WsManager {
      * @param hostname 目标hostname
      * @return ReturnParamsType
      */
-    async socketEmit(path: string, data: SDK.ApiRequest): Promise<SDK.SDKReturn> {
+    async socketEmit(path: string, data?: SDK.ApiRequest): Promise<SDK.SDKReturn> {
         const socket = await this.__getSocket();
         return new Promise((resolve, reject) => {
             const url = `http://${this.__ip}:${this.__port}`;

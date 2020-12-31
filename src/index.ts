@@ -1,2 +1,2 @@
 import "./typings/types";
-export * from "./api";
+export * from "./sdk";

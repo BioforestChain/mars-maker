@@ -11,6 +11,7 @@
         "dev": "bdk-tsc --build -w",
         "build": "bdk-tsc --build",
         "rebuild": "npm run clear && npm run build",
+        "compile": "node ./scripts/compileDependence.js",
         "test": "node ./build/test/sdkTest.js"
     },
     "repository": {

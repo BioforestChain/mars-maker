@@ -1,15 +1,18 @@
 //节点api接口
 export enum CHAIN_API_PATH {
-    /**获取指定账户 */
-    GET_ACCOUNT_INFO_AND_ASSETS = "post/api/basic/getAccountInfoAndAssets",
-    /**创建账户 */
-    CREATE_ACCOUNT = "post/api/basic/createAccount",
-    /**查询区块 */
-    GET_BLOCK = "post/api/basic/getBlock",
+    /**获取本地节点当前最新区块 */
+    getLastBlock = "get/api/basic/getLastBlock",
+    /**获取指定区块 */
+    getBlock = "post/api/basic/getBlock",
     /**查询交易 */
-    GET_TRANSACTIONS = "post/api/basic/getTransactions",
+    getTransactions = "post/api/basic/getTransactions",
+    /**获取指定账户 */
+    getAccountInfoAndAssets = "post/api/basic/getAccountInfoAndAssets",
+    /**创建账户 */
+    createAccount = "post/api/basic/createAccount",
+
     /**存证交易 */
-    TR_MARK = "post/api/transaction/trMark",
+    trMark = "post/api/transaction/trMark",
 }
 
 //节点事件类型

@@ -1,0 +1,66 @@
+import { Injectable } from "@bfchain/util";
+import { PcSDKExceptionGenerator } from "../helpers/moduleError/expceptionGenerator";
+const { BusinessCheckException } = PcSDKExceptionGenerator("pc-sdk:network", __filename);
+import { WsManager } from "../network/wsManager";
+import { CHAIN_API_PATH } from "../typings/enumTypes";
+import { ApiType } from "../api/apiConst";
+
+/**网络层 */
+@Injectable()
+export class NetworkHelper {
+    private __wsManager?: WsManager;
+    private __apiType?: ApiType;
+
+    constructor() {}
+
+    /**
+     * 初始化sdk，配置节点的网络信息
+     * @param apiType
+     * @param data
+     */
+    init(apiType: ApiType, data: { ip: string; port: number; timeout?: number }) {
+        this.__apiType = apiType;
+        switch (apiType) {
+            case ApiType.WS:
+                this.__wsManager = new WsManager(data.ip, data.port, data.timeout ?? 10000);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 向节点发送api请求
+     * @param path
+     * @param request
+     */
+    async sendRequest(path: string, request?: SDK.ApiRequest) {
+        switch (this.__apiType) {
+            case ApiType.WS:
+                return await this.__sendWsRequest(path, request);
+            default:
+                break;
+        }
+        throw new BusinessCheckException(`sendRequest api: ${path} fail. apiType:${this.__apiType} is invalid`);
+    }
+
+    /**
+     * 用websocket向节点发送api请求
+     * @param path
+     * @param request
+     */
+    private async __sendWsRequest(path: string, request?: SDK.ApiRequest): Promise<any> {
+        try {
+            if (!this.__wsManager) {
+                throw new BusinessCheckException(`__wsManager is undefined`);
+            }
+            const { success, message, result } = await this.__wsManager.socketEmit(path, request);
+            if (!success) {
+                throw new BusinessCheckException(message);
+            }
+            return result;
+        } catch (e) {
+            throw new BusinessCheckException(`sendChainRequest api: ${path} fail. error: ${e.message}`);
+        }
+    }
+}

@@ -1,15 +1,16 @@
 import { Resolve } from "@bfchain/util";
-const { MedicalSDK } = require("../cjs");
+const { BFChainPC_SDK } = require("../cjs");
 
 export class SDKTest {
     constructor() {}
 
     async process() {
-        const sdk: any = Resolve(MedicalSDK);
-        sdk.init({ ip: "192.168.110.51", port: 19003, timeout: 10000 });
-        const d1 = Date.now();
-        await sdk.searchCaseOnChain({});
-        console.log(`cost:${Date.now() - d1}`);
+        const sdk: any = Resolve(BFChainPC_SDK);
+        sdk.init("WS", { ip: "192.168.110.51", port: 19003, timeout: 10000 });
+        const lastBlock = await sdk.getLastBlock();
+        console.log(`lastBlock:${JSON.stringify(lastBlock, null, 4)}`);
+        const block = await sdk.getBlock({ height: 1 });
+        console.log(`block:${JSON.stringify(block, null, 4)}`);
     }
 }
 

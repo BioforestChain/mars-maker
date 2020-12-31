@@ -6,7 +6,9 @@
         "outDir": "../build/cjs"
     },
     "files": [
-        "api/basic.ts",
+        "api/apiBase.ts",
+        "api/apiConst.ts",
+        "api/basicApi.ts",
         "api/index.ts",
         "api/types.ts",
         "helpers/moduleError/expceptionGenerator.ts",
@@ -15,6 +17,7 @@
         "helpers/utils/cryptoUtil.ts",
         "helpers/utils/index.ts",
         "index.ts",
+        "network/networkHelper.ts",
         "network/wsManager.ts",
         "sdk.ts",
         "typings/block.ts",

@@ -19,6 +19,13 @@ declare namespace SDK {
         code?: string; //失败的CODE
     };
 
+    type ApiInfo = {
+        //名称
+        name: string;
+        //请求方式
+        method?: import("./apiConst").RequestMethod;
+    };
+
     namespace ApiRequest {
         namespace BASIC {
             /**获取指定区块 */
