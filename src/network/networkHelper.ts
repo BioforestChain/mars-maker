@@ -1,13 +1,12 @@
-import { Injectable } from "@bfchain/util";
 import { PcSDKExceptionGenerator } from "../helpers/moduleError/expceptionGenerator";
 const { BusinessCheckException } = PcSDKExceptionGenerator("pc-sdk:network", __filename);
 import { WsManager } from "../network/wsManager";
 import { CHAIN_API_PATH } from "../typings/enumTypes";
 import { ApiType } from "../api/apiConst";
+import { ApiBase } from "../api/apiBase";
 
 /**网络层 */
-@Injectable()
-export class NetworkHelper {
+class NetworkHelper {
     private __wsManager?: WsManager;
     private __apiType?: ApiType;
 
@@ -31,17 +30,17 @@ export class NetworkHelper {
 
     /**
      * 向节点发送api请求
-     * @param path
+     * @param api
      * @param request
      */
-    async sendRequest(path: string, request?: SDK.ApiRequest) {
+    async sendRequest(api: ApiBase, request?: SDK.ApiRequest) {
         switch (this.__apiType) {
             case ApiType.WS:
-                return await this.__sendWsRequest(path, request);
+                return await this.__sendWsRequest(api.getWsPath(), request);
             default:
                 break;
         }
-        throw new BusinessCheckException(`sendRequest api: ${path} fail. apiType:${this.__apiType} is invalid`);
+        throw new BusinessCheckException(`sendRequest api: ${api.getName()} fail. apiType:${this.__apiType} is invalid`);
     }
 
     /**
@@ -64,3 +63,5 @@ export class NetworkHelper {
         }
     }
 }
+
+export const networkHelper = new NetworkHelper();

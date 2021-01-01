@@ -1,12 +1,7 @@
-import { Injectable, Inject } from "@bfchain/util";
-import { NetworkHelper } from "../network/networkHelper";
+import { networkHelper } from "../network/networkHelper";
 
 /**接口基类 */
-@Injectable()
 export abstract class ApiBase {
-    @Inject(NetworkHelper)
-    private __networkHelper!: NetworkHelper;
-
     constructor(protected __apiInfo: SDK.ApiInfo) {}
 
     getApiInfo() {
@@ -50,7 +45,7 @@ export abstract class ApiBase {
      * 向节点发送api请求
      * @param request
      */
-    async sendRequest<RequestType, RespType>(request: RequestType): Promise<RespType> {
-        return await this.__networkHelper.sendRequest(this.getWsPath(), request);
+    async sendRequest<RequestType, RespType>(request?: RequestType): Promise<RespType> {
+        return await networkHelper.sendRequest(this, request);
     }
 }

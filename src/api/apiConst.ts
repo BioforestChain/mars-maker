@@ -6,10 +6,13 @@ export enum RequestMethod {
     DELETE = "delete",
 }
 
+// 接口调用类型
 export enum ApiType {
-    CMD = "CMD",
+    /**grpc */
     GRPC = "GRPC",
+    /**websocket */
     WS = "WS",
+    /**http */
     HTTP = "HTTP",
 }
 

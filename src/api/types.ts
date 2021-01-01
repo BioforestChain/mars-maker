@@ -91,7 +91,7 @@ declare namespace SDK {
                 /**事件的主观参数 */
                 subEnvParams?: string[];
                 /**事件的发起高度， 0-9 组成并且不包含小点， 可选， 默认使用当前区块链的最新高度 */
-                applyBlockHeight: number;
+                applyBlockHeight?: number;
                 /**事件备注信息， 默认为空 */
                 remark?: string[];
                 /**事件所属的 dappid， 大写字母或数字，17-32 个字符， 默认为空 */
@@ -120,6 +120,8 @@ declare namespace SDK {
                 sourceChainName?: string;
                 /**转移的资产所属链网络标识符， 大写字母或数字组成， 9-16 个字符 */
                 sourceChainMagic?: string;
+                /**收款账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送设置二次密码事件 */
