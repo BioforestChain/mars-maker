@@ -108,34 +108,34 @@ export class SDKTest {
         // pushPromise("trSetLnsManager", this.trSetLnsManager());
         // pushPromise("trSetLnsRecordValue", this.trSetLnsRecordValue());
         // systemApi
-        // pushPromise("safetyClose", this.safetyClose());
-        // pushPromise("setSystemKey", this.setSystemKey());
-        // pushPromise("verifySystemKey", this.verifySystemKey());
-        // pushPromise("addSystemAdmin", this.addSystemAdmin());
-        // pushPromise("getSystemAdmin", this.getSystemAdmin());
-        // pushPromise("verifySystemAdmin", this.verifySystemAdmin());
-        // pushPromise("delSystemAdmin", this.delSystemAdmin());
-        // pushPromise("bindingAccount", this.bindingAccount());
-        // pushPromise("getSystemDelegate", this.getSystemDelegate());
-        // pushPromise("miningMachineInfo", this.miningMachineInfo());
-        // pushPromise("setSystemConfig", this.setSystemConfig());
-        // pushPromise("getSystemConfigInfoDetail", this.getSystemConfigInfoDetail());
-        // pushPromise("getRuntimeState", this.getRuntimeState());
-        // pushPromise("getSystemMonitor", this.getSystemMonitor());
-        // pushPromise("getSystemLoggerType", this.getSystemLoggerType());
-        // pushPromise("getSystemLoggerList", this.getSystemLoggerList());
+        pushPromise("safetyClose", this.safetyClose());
+        pushPromise("setSystemKey", this.setSystemKey());
+        pushPromise("verifySystemKey", this.verifySystemKey());
+        pushPromise("addSystemAdmin", this.addSystemAdmin());
+        pushPromise("getSystemAdmin", this.getSystemAdmin());
+        pushPromise("verifySystemAdmin", this.verifySystemAdmin());
+        pushPromise("delSystemAdmin", this.delSystemAdmin());
+        pushPromise("bindingAccount", this.bindingAccount());
+        pushPromise("getSystemDelegate", this.getSystemDelegate());
+        pushPromise("miningMachineInfo", this.miningMachineInfo());
+        pushPromise("setSystemConfig", this.setSystemConfig());
+        pushPromise("getSystemConfigInfoDetail", this.getSystemConfigInfoDetail());
+        pushPromise("getRuntimeState", this.getRuntimeState());
+        pushPromise("getSystemMonitor", this.getSystemMonitor());
+        pushPromise("getSystemLoggerType", this.getSystemLoggerType());
+        pushPromise("getSystemLoggerList", this.getSystemLoggerList());
         // pushPromise("getSystemLoggerDetail", this.getSystemLoggerDetail()); //如果日志数据过大，会报错
-        // pushPromise("getEmailAddress", this.getEmailAddress());
-        // pushPromise("setEmailAddress", this.setEmailAddress());
-        // pushPromise("verifySystemSecret", this.verifySystemSecret());
-        // pushPromise("setSystemWhiteList", this.setSystemWhiteList());
-        // pushPromise("getSystemWhiteList", this.getSystemWhiteList());
-        // pushPromise("delSystemWhiteList", this.delSystemWhiteList());
-        // pushPromise("getProcessNetwork", this.getProcessNetwork());
-        // pushPromise("getProcessCPU", this.getProcessCPU());
-        // pushPromise("getProcessMemory", this.getProcessMemory());
-        // pushPromise("systemStatus", this.systemStatus());
-        // pushPromise("systemProcess", this.systemProcess());
+        pushPromise("getEmailAddress", this.getEmailAddress());
+        pushPromise("setEmailAddress", this.setEmailAddress());
+        pushPromise("verifySystemSecret", this.verifySystemSecret());
+        pushPromise("setSystemWhiteList", this.setSystemWhiteList());
+        pushPromise("getSystemWhiteList", this.getSystemWhiteList());
+        pushPromise("delSystemWhiteList", this.delSystemWhiteList());
+        pushPromise("getProcessNetwork", this.getProcessNetwork());
+        pushPromise("getProcessCPU", this.getProcessCPU());
+        pushPromise("getProcessMemory", this.getProcessMemory());
+        pushPromise("systemStatus", this.systemStatus());
+        pushPromise("systemProcess", this.systemProcess());
 
         const resp = await Promise.all(promises);
         for (let idx = 0; idx < resp.length; idx++) {
@@ -151,12 +151,18 @@ export class SDKTest {
     cryptoSystemkey(verifyType: string, verifyKey: string) {
         if (verifyType === SYSTEMVERIFYTYPE.SYSTEM_OWNER) {
             // 得到密码的签名
-            const cryptoKey = crypto.createHash("sha256").update(verifyKey, "utf8").digest("hex");
+            const cryptoKey = crypto
+                .createHash("sha256")
+                .update(verifyKey, "utf8")
+                .digest("hex");
 
             // 返回加密后的矿机密码
             return cryptoKey;
         } else if (verifyType === SYSTEMVERIFYTYPE.SYSTEM_ADMIN) {
-            const cryptoAdminAddress = crypto.createHash("sha256").update(verifyKey, "utf8").digest("hex");
+            const cryptoAdminAddress = crypto
+                .createHash("sha256")
+                .update(verifyKey, "utf8")
+                .digest("hex");
             // 返回加密后的矿机地址
             return cryptoAdminAddress;
         }
@@ -169,7 +175,10 @@ export class SDKTest {
      */
     encryptSecret(delegateSecret: string, systemSecret: string, version: number) {
         // 加密后的矿机密码
-        const encryptSystemSecret = crypto.createHash("sha256").update(systemSecret, "utf8").digest("hex");
+        const encryptSystemSecret = crypto
+            .createHash("sha256")
+            .update(systemSecret, "utf8")
+            .digest("hex");
         return {
             encryptSystemSecret,
             encryptDelegateSecret: this.aes256Encrypt(delegateSecret, systemSecret, version),
@@ -182,7 +191,12 @@ export class SDKTest {
         switch (version) {
             case 1:
                 const iv = crypto.randomBytes(16);
-                const pwd_uint8 = new Uint8Array(crypto.createHash("sha256").update(key).digest().buffer);
+                const pwd_uint8 = new Uint8Array(
+                    crypto
+                        .createHash("sha256")
+                        .update(key)
+                        .digest().buffer
+                );
                 const encipher = crypto.createCipheriv("AES-256-CTR", pwd_uint8, iv);
                 return Buffer.concat([new Uint8Array([1]), iv, encipher.update(dataBuffer)]).toString("base64");
             default:
@@ -594,6 +608,7 @@ export class SDKTest {
         return this.__sdk.getSystemMonitor({
             verifyType: SYSTEMVERIFYTYPE.SYSTEM_OWNER,
             verifyKey: this.verifyKey,
+            limit: 10,
         });
     }
 
@@ -709,4 +724,7 @@ export class SDKTest {
     const test = Resolve(SDKTest);
     await test.execute();
     process.exit(0);
-})();
+})().catch(err => {
+    console.error(err);
+    process.exit(0);
+});

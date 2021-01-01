@@ -92,11 +92,11 @@ export class WsManager {
             socket.emit(path, data, (result: BFChainPcSdk.PcApiReturn) => {
                 if (!result.success) {
                     clearTimeout(timeout);
-                    return resolve({ success: false, message: result.error?.message, code: result.error?.code });
+                    return resolve({ success: false, message: result.error?.message, code: result.error?.code, minFee: result.minFee });
                 }
                 delete result.success;
                 clearTimeout(timeout);
-                return resolve({ success: true, result });
+                return resolve({ success: true, result: Object.keys(result).length > 0 ? result : undefined });
             });
             socket.on("error", (data: any) => {
                 clearTimeout(timeout);

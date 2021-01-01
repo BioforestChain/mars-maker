@@ -45,7 +45,7 @@ export abstract class ApiBase {
      * 向节点发送api请求
      * @param request
      */
-    async sendRequest<RequestType, RespType>(request?: RequestType): Promise<RespType> {
+    async sendRequest(request?: BFChainPcSdk.PcApiRequest): Promise<BFChainPcSdk.SDKReturn> {
         return await networkHelper.sendRequest(this, request);
     }
 }

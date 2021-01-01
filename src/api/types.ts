@@ -61,15 +61,17 @@ declare namespace BFChainPcSdk {
             message: string; //失败的message
             code?: string; //失败的CODE
         };
+        minFee?: number; //交易类接口最小手续费
     };
 
     //SDK调用接口的通用返回类型
-    type SDKReturn = {
+    interface SDKReturn {
         success: boolean;
         result?: any; //成功时的返回结果
         message?: string; //失败的message
         code?: string; //失败的CODE
-    };
+        minFee?: number; //交易类接口最小手续费
+    }
 
     type ApiInfo = {
         //名称
@@ -847,14 +849,10 @@ declare namespace BFChainPcSdk {
             }
 
             /**设置节点密码 */
-            interface SetSystemKey extends RespCommonParam {
-                result: boolean;
-            }
+            interface SetSystemKey extends RespCommonParam {}
 
             /**验证节点密码 */
-            interface VerifySystemKey extends RespCommonParam {
-                result: boolean;
-            }
+            interface VerifySystemKey extends RespCommonParam {}
 
             /**增加节点管理员 */
             interface AddSystemAdmin extends RespCommonParam {
@@ -867,14 +865,10 @@ declare namespace BFChainPcSdk {
             }
 
             /**验证节点管理员 */
-            interface VerifySystemAdmin extends RespCommonParam {
-                result: boolean;
-            }
+            interface VerifySystemAdmin extends RespCommonParam {}
 
             /**删除节点管理员 */
-            interface DelSystemAdmin extends RespCommonParam {
-                result: boolean;
-            }
+            interface DelSystemAdmin extends RespCommonParam {}
 
             /**重置节点管理员 */
             interface ResetSystemAdmin extends RespCommonParam {
@@ -925,9 +919,7 @@ declare namespace BFChainPcSdk {
             }
 
             /**设置节点配置信息 */
-            interface SetSystemConfig extends RespCommonParam {
-                result: boolean;
-            }
+            interface SetSystemConfig extends RespCommonParam {}
 
             /**获得节点配置信息 */
             interface GetSystemConfigInfoDetail extends RespCommonParam {
@@ -963,9 +955,7 @@ declare namespace BFChainPcSdk {
             }
 
             /**删除矿机运行日志 */
-            interface DelSystemLogger extends RespCommonParam {
-                result: boolean;
-            }
+            interface DelSystemLogger extends RespCommonParam {}
 
             /**获得节点邮箱地址 */
             interface GetEmailAddress extends RespCommonParam {
@@ -977,19 +967,13 @@ declare namespace BFChainPcSdk {
             }
 
             /**设置节点邮箱地址 */
-            interface SetEmailAddress extends RespCommonParam {
-                result: boolean;
-            }
+            interface SetEmailAddress extends RespCommonParam {}
 
             /**通过节点私钥验证节点受托人 */
-            interface VerifySystemSecret extends RespCommonParam {
-                result: boolean;
-            }
+            interface VerifySystemSecret extends RespCommonParam {}
 
             /**设置节点访问白名单 */
-            interface SetSystemWhiteList extends RespCommonParam {
-                result: boolean;
-            }
+            interface SetSystemWhiteList extends RespCommonParam {}
 
             /**获得节点访问白名单 */
             interface GetSystemWhiteList extends RespCommonParam {
@@ -997,9 +981,7 @@ declare namespace BFChainPcSdk {
             }
 
             /**删除节点访问白名单 */
-            interface DelSystemWhiteList extends RespCommonParam {
-                result: boolean;
-            }
+            interface DelSystemWhiteList extends RespCommonParam {}
 
             /**获得节点进程的网络相关信息 */
             interface GetProcessNetwork extends RespCommonParam {

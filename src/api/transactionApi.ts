@@ -7,8 +7,8 @@
 // export namespace TRS_API {
 //     /**交易接口基类 */
 //     @Injectable()
-//     export abstract class TrsApiBase extends ApiBase {
-//         constructor(apiInfo: SDK.ApiInfo) {
+//     abstract class TrsApi extends ApiBase {
+//         constructor(apiInfo: BFChainPcSdk.ApiInfo) {
 //             super(apiInfo);
 //         }
 
@@ -19,50 +19,23 @@
 
 //     /**发送转账事件 */
 //     @Injectable()
-//     export abstract class TrTransferAsset extends TrsApiBase<BFChainCore.TransferAssetAssetJSON> {
+//     export class TrTransferAsset extends TrsApi {
 //         constructor() {
 //             super(API.TRANSACTION.TR_TRANSFER_ASSET);
-//         }
-
-//         async generateTransaction(request: BFChainPC.ApiRequest.TRANSACTION.TrTransferAsset, accountPowInfo: BFChainPC.AccountPowInfoModel) {
-//             const tr = await myTransferAsset.generateTransferAsset(
-//                 this.getTransactionBody(request),
-//                 {
-//                     sourceChainName: request.sourceChainName || this.bfchainCore.config.chainName,
-//                     sourceChainMagic: request.sourceChainMagic || this.bfchainCore.config.magic,
-//                     assetType: request.assetType || this.bfchainCore.config.assetType,
-//                     amount: request.amount,
-//                 },
-//                 accountPowInfo,
-//                 this.bfchainCore
-//             );
-//             return tr;
 //         }
 //     }
 
 //     /**发送设置二次密码事件 */
 //     @Injectable()
-//     export abstract class TrSignature extends TrsApiBase<BFChainCore.SignatureAssetJSON> {
+//     export class TrSignature extends TrsApi {
 //         constructor() {
 //             super(API.TRANSACTION.TR_SIGNATURE);
-//         }
-
-//         async generateTransaction(request: BFChainPC.ApiRequest.TRANSACTION.TrSignature, accountPowInfo: BFChainPC.AccountPowInfoModel) {
-//             const tr = await mySignature.generateSignature(
-//                 this.getTransactionBody(request),
-//                 {
-//                     publicKey: await this.bfchainCore.accountBaseHelper.getPublicKeyStringFromSecondSecret(request.secret, request.newSecondSecret),
-//                 },
-//                 accountPowInfo,
-//                 this.bfchainCore
-//             );
-//             return tr;
 //         }
 //     }
 
 //     /**发送设置用户名事件 */
 //     @Injectable()
-//     export abstract class TrUsername extends TrsApiBase<BFChainCore.UsernameAssetJSON> {
+//     export class TrUsername extends TrsApi<BFChainCore.UsernameAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_USER_NAME);
 //         }
@@ -82,7 +55,7 @@
 
 //     /**发送注册受托人事件 */
 //     @Injectable()
-//     export abstract class TrDelegate extends TrsApiBase<BFChainCore.DelegateAssetJSON> {
+//     export class TrDelegate extends TrsApi<BFChainCore.DelegateAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_DELEGATE);
 //         }
@@ -95,7 +68,7 @@
 
 //     /**发送接收投票事件 */
 //     @Injectable()
-//     export abstract class TrAcceptVote extends TrsApiBase<BFChainCore.AcceptVoteAssetJSON> {
+//     export class TrAcceptVote extends TrsApi<BFChainCore.AcceptVoteAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_ACCEPT_VOTE);
 //         }
@@ -108,7 +81,7 @@
 
 //     /**发送拒绝投票事件 */
 //     @Injectable()
-//     export abstract class TrRejectVote extends TrsApiBase<BFChainCore.RejectVoteAssetJSON> {
+//     export class TrRejectVote extends TrsApi<BFChainCore.RejectVoteAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_REJECT_VOTE);
 //         }
@@ -121,7 +94,7 @@
 
 //     /**发送投票事件 */
 //     @Injectable()
-//     export abstract class TrVote extends TrsApiBase<BFChainCore.VoteAssetJSON> {
+//     export class TrVote extends TrsApi<BFChainCore.VoteAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_VOTE);
 //         }
@@ -141,7 +114,7 @@
 
 //     /**发送dapp事件 */
 //     @Injectable()
-//     export abstract class TrDapp extends TrsApiBase<BFChainCore.DAppAssetJSON> {
+//     export class TrDapp extends TrsApi<BFChainCore.DAppAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_DAPP);
 //         }
@@ -171,7 +144,7 @@
 
 //     /**发送dapp购买事件 */
 //     @Injectable()
-//     export abstract class TrDappPurchasing extends TrsApiBase<BFChainCore.DAppPurchasingAssetJSON> {
+//     export class TrDappPurchasing extends TrsApi<BFChainCore.DAppPurchasingAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_DAPP_PURCHASING);
 //         }
@@ -219,7 +192,7 @@
 
 //     /**发送存证事件 */
 //     @Injectable()
-//     export abstract class TrMark extends TrsApiBase<BFChainCore.MarkAssetJSON> {
+//     export class TrMark extends TrsApi<BFChainCore.MarkAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_MARK);
 //         }
@@ -264,7 +237,7 @@
 
 //     /**发送资产发行事件 */
 //     @Injectable()
-//     export abstract class TrIssueAsset extends TrsApiBase<BFChainCore.IssueAssetAssetJSON> {
+//     export class TrIssueAsset extends TrsApi<BFChainCore.IssueAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_ISSUE_ASSET);
 //         }
@@ -283,7 +256,7 @@
 
 //     /**发送销毁资产事件 */
 //     @Injectable()
-//     export abstract class TrDestroyAsset extends TrsApiBase<BFChainCore.DestoryAssetAssetJSON> {
+//     export class TrDestroyAsset extends TrsApi<BFChainCore.DestoryAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_DESTROYASSET);
 //         }
@@ -302,7 +275,7 @@
 
 //     /**发送数字资产交换事件 */
 //     @Injectable()
-//     export abstract class TrToExchangeAsset extends TrsApiBase<BFChainCore.ToExchangeAssetAssetJSON> {
+//     export class TrToExchangeAsset extends TrsApi<BFChainCore.ToExchangeAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_TO_EXCHANGE_ASSET);
 //         }
@@ -334,7 +307,7 @@
 
 //     /**发送接收数字资产交换事件 */
 //     @Injectable()
-//     export abstract class TrBeExchangeAsset extends TrsApiBase<BFChainCore.BeExchangeAssetAssetJSON> {
+//     export class TrBeExchangeAsset extends TrsApi<BFChainCore.BeExchangeAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_BE_EXCHANGE_ASSET);
 //         }
@@ -396,7 +369,7 @@
 
 //     /**发送特殊资产交换事件 */
 //     @Injectable()
-//     export abstract class TrToExchangeSpecAsset extends TrsApiBase<BFChainCore.ToExchangeSpecialAssetAssetJSON> {
+//     export class TrToExchangeSpecAsset extends TrsApi<BFChainCore.ToExchangeSpecialAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_TO_EXCHANGE_SPEC_ASSET);
 //         }
@@ -426,7 +399,7 @@
 
 //     /**发送接收特殊资产交换事件 */
 //     @Injectable()
-//     export abstract class TrBeExchangeSpecAsset extends TrsApiBase<BFChainCore.BeExchangeSpecialAssetAssetJSON> {
+//     export class TrBeExchangeSpecAsset extends TrsApi<BFChainCore.BeExchangeSpecialAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_BE_EXCHANGE_SPEC_ASSET);
 //         }
@@ -486,7 +459,7 @@
 
 //     /**发送资产赠与事件（红包事件） */
 //     @Injectable()
-//     export abstract class TrGiftAsset extends TrsApiBase<BFChainCore.GiftAssetAssetJSON> {
+//     export class TrGiftAsset extends TrsApi<BFChainCore.GiftAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_GIFT_ASSET);
 //         }
@@ -523,7 +496,7 @@
 
 //     /**发送接收资产赠与事件（抢红包事件） */
 //     @Injectable()
-//     export abstract class TrGrabAsset extends TrsApiBase<BFChainCore.GrabAssetAssetJSON> {
+//     export class TrGrabAsset extends TrsApi<BFChainCore.GrabAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_GRAB_ASSET);
 //         }
@@ -595,7 +568,7 @@
 
 //     /**发送委托数字资产事件 */
 //     @Injectable()
-//     export abstract class TrTrustAsset extends TrsApiBase<BFChainCore.TrustAssetAssetJSON> {
+//     export class TrTrustAsset extends TrsApi<BFChainCore.TrustAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_TRUST_ASSET);
 //         }
@@ -620,7 +593,7 @@
 
 //     /**发送签收委托数字资产事件 */
 //     @Injectable()
-//     export abstract class TrSignForAsset extends TrsApiBase<BFChainCore.SignForAssetAssetJSON> {
+//     export class TrSignForAsset extends TrsApi<BFChainCore.SignForAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_SIGN_FOR_ASSET);
 //         }
@@ -673,7 +646,7 @@
 
 //     /**发送资产迁出交易 */
 //     @Injectable()
-//     export abstract class TrEmigrateAsset extends TrsApiBase<BFChainCore.EmigrateAssetAssetJSON> {
+//     export class TrEmigrateAsset extends TrsApi<BFChainCore.EmigrateAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_EMIGRATE_ASSET);
 //         }
@@ -703,7 +676,7 @@
 
 //     /**发送资产迁入交易 */
 //     @Injectable()
-//     export abstract class TrImmigrateAsset extends TrsApiBase<BFChainCore.ImmigrateAssetAssetJSON> {
+//     export class TrImmigrateAsset extends TrsApi<BFChainCore.ImmigrateAssetAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_IMMIGRATE_ASSET);
 //         }
@@ -789,7 +762,7 @@
 
 //     /**发送注册、注销位名系统事件 */
 //     @Injectable()
-//     export abstract class TrLocationName extends TrsApiBase<BFChainCore.LocationNameAssetJSON> {
+//     export class TrLocationName extends TrsApi<BFChainCore.LocationNameAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_LOCATION_NAME);
 //         }
@@ -812,7 +785,7 @@
 
 //     /**发送设置位名系统管理员事件 */
 //     @Injectable()
-//     export abstract class TrSetLnsManager extends TrsApiBase<BFChainCore.SetLnsManagerAssetJSON> {
+//     export class TrSetLnsManager extends TrsApi<BFChainCore.SetLnsManagerAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_SET_LNS_MANAGER);
 //         }
@@ -834,7 +807,7 @@
 
 //     /**发送设置位名系统解析值事件 */
 //     @Injectable()
-//     export abstract class TrSetLnsRecordValue extends TrsApiBase<BFChainCore.SetLnsRecordValueAssetJSON> {
+//     export class TrSetLnsRecordValue extends TrsApi<BFChainCore.SetLnsRecordValueAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_SET_LNS_RECORD_VALUE);
 //         }
@@ -918,7 +891,7 @@
 
 //     /**发送注册链事件 */
 //     @Injectable()
-//     export abstract class TrRegisterChain extends TrsApiBase<BFChainCore.RegisterChainAssetJSON> {
+//     export class TrRegisterChain extends TrsApi<BFChainCore.RegisterChainAssetJSON> {
 //         constructor() {
 //             super(API.TRANSACTION.TR_REGISTER_CHAIN);
 //         }

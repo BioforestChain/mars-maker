@@ -48,15 +48,12 @@ class NetworkHelper {
      * @param path
      * @param request
      */
-    private async __sendWsRequest(path: string, request?: BFChainPcSdk.PcApiRequest): Promise<any> {
+    private async __sendWsRequest(path: string, request?: BFChainPcSdk.PcApiRequest): Promise<BFChainPcSdk.SDKReturn> {
         try {
             if (!this.__wsManager) {
                 throw new BusinessCheckException(`__wsManager is undefined`);
             }
-            const { success, message, result } = await this.__wsManager.socketEmit(path, request);
-            if (!success) {
-                throw new BusinessCheckException(message);
-            }
+            const result = await this.__wsManager.socketEmit(path, request);
             return result;
         } catch (e) {
             throw new BusinessCheckException(`sendChainRequest api: ${path} fail. error: ${e.message}`);

@@ -6,6 +6,7 @@ import { BASIC_API } from "./api";
 import { API } from "./api/apiConst";
 import { ApiBase } from "./api/apiBase";
 import { ApiType } from "./constants";
+import { SYSTEM_API } from "./api/systemApi";
 
 /**BFChainPC_SDK */
 @Injectable()
@@ -26,6 +27,16 @@ export class BFChainPC_SDK {
             const apiName = api.getName();
             this.__apiMap.set(apiName, api);
         }
+        // for (const key in BASIC_API) {
+        //     const api: ApiBase = new BASIC_API[key]();
+        //     const apiName = api.getName();
+        //     this.__apiMap.set(apiName, api);
+        // }
+        for (const key in SYSTEM_API) {
+            const api: ApiBase = new SYSTEM_API[key]();
+            const apiName = api.getName();
+            this.__apiMap.set(apiName, api);
+        }
     }
 
     /**
@@ -33,19 +44,19 @@ export class BFChainPC_SDK {
      * @param apiName
      * @param request
      */
-    async processApi<RequestType, RespType>(apiName: string, request: RequestType) {
+    async processApi(apiName: string, request?: BFChainPcSdk.PcApiRequest): Promise<any> {
         const api = this.__apiMap.get(apiName);
         if (!api) {
             throw new BusinessCheckException(`api: ${apiName} is not exist`);
         }
-        return await api.sendRequest<RequestType, RespType>(request);
+        return await api.sendRequest(request);
     }
 
     //#region 基础接口
 
     /**获取本地节点当前最新区块 */
     async getLastBlock(): Promise<BFChainPcSdk.ApiResp.BASIC.GetLastBlock> {
-        return await this.processApi(API.BASIC.GET_LAST_BLOCK.name, undefined);
+        return await this.processApi(API.BASIC.GET_LAST_BLOCK.name);
     }
 
     /**获取指定区块 */
@@ -70,7 +81,7 @@ export class BFChainPC_SDK {
 
     /**获取节点状态 */
     async getBlockChainStatus(): Promise<BFChainPcSdk.ApiResp.BASIC.GetBlockChainStatus> {
-        return await this.processApi(API.BASIC.GET_BLOCKCHAIN_STATUS.name, undefined);
+        return await this.processApi(API.BASIC.GET_BLOCKCHAIN_STATUS.name);
     }
     //#endregion
 
@@ -147,12 +158,16 @@ export class BFChainPC_SDK {
     }
 
     /**发送特殊资产交换事件 */
-    async trToExchangeSpecAsset(request: BFChainPcSdk.ApiRequest.TRANSACTION.TrToExchangeSpecAsset): Promise<BFChainPcSdk.ApiResp.TRANSACTION.TrToExchangeSpecAsset> {
+    async trToExchangeSpecAsset(
+        request: BFChainPcSdk.ApiRequest.TRANSACTION.TrToExchangeSpecAsset
+    ): Promise<BFChainPcSdk.ApiResp.TRANSACTION.TrToExchangeSpecAsset> {
         return await this.processApi(API.TRANSACTION.TR_TO_EXCHANGE_SPEC_ASSET.name, request);
     }
 
     /**发送接收特殊资产交换事件 */
-    async trBeExchangeSpecAsset(request: BFChainPcSdk.ApiRequest.TRANSACTION.TrBeExchangeSpecAsset): Promise<BFChainPcSdk.ApiResp.TRANSACTION.TrBeExchangeSpecAsset> {
+    async trBeExchangeSpecAsset(
+        request: BFChainPcSdk.ApiRequest.TRANSACTION.TrBeExchangeSpecAsset
+    ): Promise<BFChainPcSdk.ApiResp.TRANSACTION.TrBeExchangeSpecAsset> {
         return await this.processApi(API.TRANSACTION.TR_BE_EXCHANGE_SPEC_ASSET.name, request);
     }
 
@@ -266,7 +281,9 @@ export class BFChainPC_SDK {
     }
 
     /**获得节点配置信息 */
-    async getSystemConfigInfoDetail(request: BFChainPcSdk.ApiRequest.SYSTEM.GetSystemConfigInfoDetail): Promise<BFChainPcSdk.ApiResp.SYSTEM.GetSystemConfigInfoDetail> {
+    async getSystemConfigInfoDetail(
+        request: BFChainPcSdk.ApiRequest.SYSTEM.GetSystemConfigInfoDetail
+    ): Promise<BFChainPcSdk.ApiResp.SYSTEM.GetSystemConfigInfoDetail> {
         return await this.processApi(API.SYSTEM.GET_SYSTEM_CONFIG_INFO_DETAIL.name, request);
     }
     /**获得节点状态（实时信息） */
