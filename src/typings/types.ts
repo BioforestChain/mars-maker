@@ -1265,5 +1265,162 @@ declare namespace BFChainPcSdk {
             forgingRewards: bigint;
             height: number;
         };
+
+        //#region RoundLastBlock
+        interface NextRoundDelegateJSON {
+            address: string;
+            equity: string;
+        }
+        interface RoundDelegateJSON {
+            nextRoundDelegates: NextRoundDelegateJSON[];
+            newDelegates: string[];
+        }
+        interface RoundLastAssetJSON extends RoundDelegateJSON {
+            roundTotalTransactionsCount: number;
+            hash: string;
+        }
+        interface RoundLastBlockAssetJSON {
+            roundLastAsset: RoundLastAssetJSON;
+        }
+        type RoundLastBlockJSON = BlockJSON<RoundLastBlockAssetJSON>;
+        //#endregion
+
+        //#region GenesisBlock
+        interface PortsJSON {
+            port: number;
+            scan_peer_port: number;
+        }
+
+        interface TransactionPowOfWorkConfigJSON {
+            growthFactor: FractionJSON<string>;
+            participationRatio: FractionJSON;
+        }
+
+        interface TransactionPowOfWorkJSON {
+            // tpowDiffFormula: string;
+            averageComputingPower: number;
+            tpowOfWorkExemptionBlocks: number;
+            transactionPowOfWorkConfig: TransactionPowOfWorkConfigJSON;
+        }
+
+        interface DelegateJSON {
+            /**创世受托人数 */
+            numberOfGenesisDelegates: number;
+            /**是否允许连任 */
+            reelectionDelegate: boolean;
+            /**受托人通过率 取值范围 0-1，主网中配置为 0，当为 0 时为自由申请受托人 。判断这个值时有包含这个值本身，如 0.75，则比例大于等于 75% */
+            passRate: FractionJSON<number>;
+        }
+
+        interface RoundParticipationPercentJSON {
+            /**轮次参与率计算 参与区块比例 */
+            participationBlockPercent: number;
+            /**轮次参与率计算 参与事件比例 */
+            participationTrPercent: number;
+        }
+
+        interface AccountParticipationPercentJSON {
+            /**账户参与率计算 账户在一个块中最佳的交易比数 */
+            bestTxCountPerBlock: number;
+            /**账户参与率计算 账户在一个块中最佳的交易类型数 */
+            bestTxTypeCountPerBlock: number;
+            /**账户参与率计算 账户在一个块中最佳的交易比数占比 */
+            bestTxCountPerBlockPercent: number;
+            /**账户参与率计算 账户在一个块中最佳的交易类型数占比 */
+            bestTxTypeCountPerBlockPercent: number;
+            /**账户参与率计算 轮次参与率在参与度计算中的占比 */
+            roundParticipationPercent: number;
+        }
+
+        /**奖励曲线 */
+        interface RewardCurveJSON {
+            /**普通奖励 */
+            normalReward: string;
+            /**普通奖励率 */
+            normalRate: FractionJSON<number>;
+            /**普通所需的参与度 */
+            normalRewardParticipation: string;
+            /**最大奖励 */
+            maxReward: string;
+            /**最大奖励率 */
+            maxRate: FractionJSON<number>;
+            /**最大奖励所需的参与度 */
+            maxRewardParticipation: string;
+        }
+
+        interface MaxRewardTpbRatioJSON {
+            /**tpb曲线 上升至最大的值 默认值 0.8 */
+            tpbRate: FractionJSON<number>;
+            /**tpb曲线 上升速率 默认值 0.05  */
+            loseRewardRate: FractionJSON<number>;
+        }
+
+        interface OverloadTpbRatioJSON {
+            /**tpb曲线 降低至负载满至的值 默认值 1 */
+            tpbRate: FractionJSON<number>;
+            /**tpb曲线 降低速率 默认值 1 */
+            loseRewardRate: FractionJSON<number>;
+        }
+
+        interface TpbCurveJSON {
+            maxRewardTpb: MaxRewardTpbRatioJSON;
+            overloadTpb: OverloadTpbRatioJSON;
+        }
+
+        interface RewardPercentJSON {
+            /**投票奖励占比 */
+            votePercent: number;
+            /**锻造奖励占比 */
+            forgePercent: number;
+        }
+
+        interface RewardJSON {
+            /**账户轮次参与率计算公式 */
+            roundParticipationPercent: RoundParticipationPercentJSON;
+            /**账户参与度计算公式 */
+            accountParticipationPercent: AccountParticipationPercentJSON;
+            rewardCurve: RewardCurveJSON;
+            tpbCurve: TpbCurveJSON;
+            rewardPercent: RewardPercentJSON;
+        }
+
+        export const enum BNID_TYPE {
+            /**测试网络 */
+            TESTNET = "c",
+            /**正式网络 */
+            MAINNET = "b",
+        }
+
+        interface GenesisAssetJSON extends RoundDelegateJSON {
+            chainName: string;
+            assetType: string;
+            magic: string;
+            bnid: BNID_TYPE;
+            beginEpochTime: number;
+            genesisLocationName: string;
+            genesisAmount: string;
+            minTransactionFeePerByte: FractionJSON;
+            maxTransactionSize: number;
+            maxBlockSize: number;
+            maxTPSPerBlock: number;
+            consessusBeforeSyncBlockDiff: number;
+            maxDelegateTxsPerRound: number;
+            maxGrabTimesOfGiftAsset: number;
+            issueAssetMinChainAsset: string;
+            registerChainMinChainAsset: string;
+            maxApplyAndConfirmedBlockHeightDiff: number;
+            blockPerRound: number;
+            forgeInterval: number;
+            ports: PortsJSON;
+
+            delegate: DelegateJSON;
+            reward: RewardJSON;
+            transactionPowOfWork: TransactionPowOfWorkJSON;
+        }
+        interface GenesisBlockAssetJSON {
+            genesisAsset: GenesisAssetJSON;
+        }
+        type GenesisBlockJSON = BlockJSON<GenesisBlockAssetJSON>;
+        //#endregion
     }
 }

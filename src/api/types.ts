@@ -663,6 +663,10 @@ declare namespace BFChainPcSdk {
         interface RespCommonParam {
             /**是否成功 */
             success: boolean;
+            /**失败的message */
+            message?: string;
+            /**失败的CODE */
+            code?: string;
         }
 
         namespace BASIC {
