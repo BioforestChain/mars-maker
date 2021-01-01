@@ -3,7 +3,7 @@
     "compilerOptions": {
         "target": "es5",
         "rootDir": "./",
-        "outDir": "../build/cjs"
+        "outDir": "../build/src"
     },
     "files": [
         "api/apiBase.ts",
@@ -13,6 +13,8 @@
         "api/systemApi.ts",
         "api/transactionApi.ts",
         "api/types.ts",
+        "constants/api.constants.ts",
+        "constants/index.ts",
         "helpers/moduleError/expceptionGenerator.ts",
         "helpers/moduleError/type.ts",
         "helpers/utils/baseUtils.ts",

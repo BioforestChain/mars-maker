@@ -6,16 +6,6 @@ export enum RequestMethod {
     DELETE = "delete",
 }
 
-// 接口调用类型
-export enum ApiType {
-    /**grpc */
-    GRPC = "GRPC",
-    /**websocket */
-    WS = "WS",
-    /**http */
-    HTTP = "HTTP",
-}
-
 export namespace API {
     export namespace BASIC {
         /**获取本地节点当前最新区块 */
