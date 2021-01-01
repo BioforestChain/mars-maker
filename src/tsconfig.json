@@ -3,7 +3,7 @@
     "compilerOptions": {
         "target": "es5",
         "rootDir": "./",
-        "outDir": "../build/src"
+        "outDir": "../build/cjs"
     },
     "files": [
         "api/apiBase.ts",

@@ -2,10 +2,11 @@ import { Injectable } from "@bfchain/util";
 import { PcSDKExceptionGenerator } from "./helpers/moduleError/expceptionGenerator";
 const { BusinessCheckException } = PcSDKExceptionGenerator("pc-sdk", __filename);
 import { networkHelper } from "./network/networkHelper";
-import { BASIC_API } from "./api";
 import { API } from "./api/apiConst";
 import { ApiBase } from "./api/apiBase";
 import { ApiType } from "./constants";
+import { BASIC_API } from "./api";
+import { TRS_API } from "./api/transactionApi";
 import { SYSTEM_API } from "./api/systemApi";
 
 /**BFChainPC_SDK */
@@ -27,11 +28,11 @@ export class BFChainPC_SDK {
             const apiName = api.getName();
             this.__apiMap.set(apiName, api);
         }
-        // for (const key in BASIC_API) {
-        //     const api: ApiBase = new BASIC_API[key]();
-        //     const apiName = api.getName();
-        //     this.__apiMap.set(apiName, api);
-        // }
+        for (const key in TRS_API) {
+            const api: ApiBase = new TRS_API[key]();
+            const apiName = api.getName();
+            this.__apiMap.set(apiName, api);
+        }
         for (const key in SYSTEM_API) {
             const api: ApiBase = new SYSTEM_API[key]();
             const apiName = api.getName();

@@ -82,31 +82,31 @@ export class SDKTest {
         pushPromise("createAccount", this.createAccount());
         pushPromise("getBlockChainStatus", this.getBlockChainStatus());
         // trsApi
-        // pushPromise("trTransferAsset", this.trTransferAsset());
-        // pushPromise("trSignature", this.trSignature());
-        // pushPromise("trUsername", this.trUsername());
-        // pushPromise("trDelegate", this.trDelegate());
-        // pushPromise("trAcceptVote", this.trAcceptVote());
-        // pushPromise("trRejectVote", this.trRejectVote());
-        // pushPromise("trVote", this.trVote());
-        // pushPromise("trDapp", this.trDapp());
-        // pushPromise("trDappPurchasing", this.trDappPurchasing());
-        // pushPromise("trMark", this.trMark());
-        // pushPromise("trIssueAsset", this.trIssueAsset());
-        // pushPromise("trDestroyAsset", this.trDestroyAsset());
-        // pushPromise("trToExchangeAsset", this.trToExchangeAsset());
-        // pushPromise("trBeExchangeAsset", this.trBeExchangeAsset());
-        // pushPromise("trToExchangeSpecAsset", this.trToExchangeSpecAsset());
-        // pushPromise("trBeExchangeSpecAsset", this.trBeExchangeSpecAsset());
-        // pushPromise("trGiftAsset", this.trGiftAsset());
-        // pushPromise("trGrabAsset", this.trGrabAsset());
-        // pushPromise("trTrustAsset", this.trTrustAsset());
-        // pushPromise("trSignForAsset", this.trSignForAsset());
-        // pushPromise("trEmigrateAsset", this.trEmigrateAsset()); //待测试
-        // pushPromise("trImmigrateAsset", this.trImmigrateAsset()); //待测试
-        // pushPromise("trLocationName", this.trLocationName());
-        // pushPromise("trSetLnsManager", this.trSetLnsManager());
-        // pushPromise("trSetLnsRecordValue", this.trSetLnsRecordValue());
+        pushPromise("trTransferAsset", this.trTransferAsset());
+        pushPromise("trSignature", this.trSignature());
+        pushPromise("trUsername", this.trUsername());
+        pushPromise("trDelegate", this.trDelegate());
+        pushPromise("trAcceptVote", this.trAcceptVote());
+        pushPromise("trRejectVote", this.trRejectVote());
+        pushPromise("trVote", this.trVote());
+        pushPromise("trDapp", this.trDapp());
+        pushPromise("trDappPurchasing", this.trDappPurchasing());
+        pushPromise("trMark", this.trMark());
+        pushPromise("trIssueAsset", this.trIssueAsset());
+        pushPromise("trDestroyAsset", this.trDestroyAsset());
+        pushPromise("trToExchangeAsset", this.trToExchangeAsset());
+        pushPromise("trBeExchangeAsset", this.trBeExchangeAsset());
+        pushPromise("trToExchangeSpecAsset", this.trToExchangeSpecAsset());
+        pushPromise("trBeExchangeSpecAsset", this.trBeExchangeSpecAsset());
+        pushPromise("trGiftAsset", this.trGiftAsset());
+        pushPromise("trGrabAsset", this.trGrabAsset());
+        pushPromise("trTrustAsset", this.trTrustAsset());
+        pushPromise("trSignForAsset", this.trSignForAsset());
+        pushPromise("trEmigrateAsset", this.trEmigrateAsset()); //待测试
+        pushPromise("trImmigrateAsset", this.trImmigrateAsset()); //待测试
+        pushPromise("trLocationName", this.trLocationName());
+        pushPromise("trSetLnsManager", this.trSetLnsManager());
+        pushPromise("trSetLnsRecordValue", this.trSetLnsRecordValue());
         // systemApi
         pushPromise("safetyClose", this.safetyClose());
         pushPromise("setSystemKey", this.setSystemKey());
