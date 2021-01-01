@@ -5,7 +5,10 @@
         "rootDir": "./",
         "outDir": "../build/test"
     },
-    "files": ["sdkTest.ts", "utils.ts"],
+    "files": [
+        "sdkTest.ts",
+        "utils.ts"
+    ],
     "references": [
         {
             "path": "../src"

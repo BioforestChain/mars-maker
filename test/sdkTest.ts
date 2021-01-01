@@ -2,7 +2,6 @@ import { Resolve, Injectable } from "@bfchain/util";
 import { BFChainPC_SDK } from "../src";
 import { ApiType } from "../src/constants";
 import * as crypto from "crypto";
-import type {} from "../src";
 
 const secrets = [
     "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",

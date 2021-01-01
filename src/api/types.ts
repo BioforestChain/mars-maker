@@ -56,7 +56,7 @@ declare namespace BFChainPcSdk {
 
     //节点的ws和http返回类型
     type PcApiReturn = {
-        success: boolean;
+        success?: boolean;
         error?: {
             message: string; //失败的message
             code?: string; //失败的CODE
