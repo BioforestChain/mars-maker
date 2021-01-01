@@ -1,9 +1,61 @@
 declare namespace SDK {
+    /**交易通用参数 */
+    interface TrCommonParam {
+        /**发起账户的密钥 */
+        secret: string;
+        /**发起账户的二次密钥 */
+        secondSecret?: string;
+        /**收款账户地址， base58 编码的 16 进制字符串 */
+        recipientId?: string;
+        /**事件的接收范围类型， 只能是 0， 1， 2， 4 中的某一个， 0 表示不限定操作范围， 1 表示只有指定的账户地址才能对这笔事件进行操作， 2 表示只有指定的 dappid 才能对这笔事件进行操作， 4 表示只有指定的位名系统才能对这笔事件进行操作， 默认为 0 */
+        rangeType?: number;
+        /**事件的接收范围， 当 rangeType 为 0 时， 不能填写任何数据， 当 rangeType 为 1 时， 只能填写账户地址， 当 rangeType 为 2 时， 只能填写 dappid， 当 rangeType 为 4 时， 只能填写位名系统， 默认为空 */
+        range?: string[];
+        /**事件的手续费 */
+        fee: string;
+        /**事件的最大手续费 */
+        maxFee?: string;
+        /**事件的主观参数 */
+        subEnvParams?: string[];
+        /**事件的发起高度， 0-9 组成并且不包含小点， 可选， 默认使用当前区块链的最新高度 */
+        applyBlockHeight?: number;
+        /**事件备注信息， 默认为空 */
+        remark?: string[];
+        /**事件所属的 dappid， 大写字母或数字，17-32 个字符， 默认为空 */
+        dappid?: string;
+        /**事件所属的位名系统， 2-1024 个字符， 每级域名最大长度为 128 个字符， 一级域名只能时小写字母组成， 二级及以上开头及结尾只能由小写字母或数字组成， 中间可以包含下划线， 根域名必须时本链链名， 可选， 默认为空 */
+        lns?: string;
+        /**发送方IP */
+        sourceIP?: string;
+        /**事件的来源链网络标识符， 大写字母或数字组成， 9-16 个字符， 默认使用创世块的 magic */
+        fromMagic?: string;
+        /**事件的去往链网络标识符， 大写字母或数字组成， 9-16 个字符， 默认使用创世块的 magic */
+        toMagic?: string;
+        /**事件的过期区块间隔， 默认使用创世块最大过期时间参数， 0-9 组成并且不包含小数点 */
+        numberOfEffectiveBlocks?: number;
+        /**TPOW难度 */
+        tpowDifficulty?: number;
+    }
+
+    /**发送转账事件 */
+    interface TrTransferAsset extends TrCommonParam {
+        /**转移的资产数量， 0-9 组成并且不包含小数点， 必须大于 0 */
+        amount: string;
+        /**转移的资产类型， 大写字母组成， 3-5 个字符 */
+        assetType?: string;
+        /**转移的资产所属链名， 小写字母组成， 3-8 位 */
+        sourceChainName?: string;
+        /**转移的资产所属链网络标识符， 大写字母或数字组成， 9-16 个字符 */
+        sourceChainMagic?: string;
+        /**收款账户地址， base58 编码的 16 进制字符串 */
+        recipientId: string;
+    }
+
     //节点Api的通用请求类型
-    type ApiRequest = { [key: string]: any };
+    type PcApiRequest = { [key: string]: any };
 
     //节点的ws和http返回类型
-    type ApiReturn = {
+    type PcApiReturn = {
         success: boolean;
         error?: {
             message: string; //失败的message

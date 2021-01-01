@@ -24,7 +24,6 @@
         "network/networkHelper.ts",
         "network/wsManager.ts",
         "sdk.ts",
-        "sdkTest.ts",
         "typings/block.ts",
         "typings/enumTypes.ts",
         "typings/index.ts",

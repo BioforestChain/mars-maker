@@ -33,7 +33,7 @@ class NetworkHelper {
      * @param api
      * @param request
      */
-    async sendRequest(api: ApiBase, request?: SDK.ApiRequest) {
+    async sendRequest(api: ApiBase, request?: SDK.PcApiRequest) {
         switch (this.__apiType) {
             case ApiType.WS:
                 return await this.__sendWsRequest(api.getWsPath(), request);
@@ -48,7 +48,7 @@ class NetworkHelper {
      * @param path
      * @param request
      */
-    private async __sendWsRequest(path: string, request?: SDK.ApiRequest): Promise<any> {
+    private async __sendWsRequest(path: string, request?: SDK.PcApiRequest): Promise<any> {
         try {
             if (!this.__wsManager) {
                 throw new BusinessCheckException(`__wsManager is undefined`);

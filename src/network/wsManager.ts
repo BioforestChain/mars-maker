@@ -81,7 +81,7 @@ export class WsManager {
      * @param hostname 目标hostname
      * @return ReturnParamsType
      */
-    async socketEmit(path: string, data?: SDK.ApiRequest): Promise<SDK.SDKReturn> {
+    async socketEmit(path: string, data?: SDK.PcApiRequest): Promise<SDK.SDKReturn> {
         const socket = await this.__getSocket();
         return new Promise((resolve, reject) => {
             const url = `http://${this.__ip}:${this.__port}`;
@@ -89,7 +89,7 @@ export class WsManager {
                 this.__disconnect();
                 reject(new Error(`${url} timeout`));
             }, this.__timeout);
-            socket.emit(path, data, (result: SDK.ApiReturn) => {
+            socket.emit(path, data, (result: SDK.PcApiReturn) => {
                 if (!result.success) {
                     clearTimeout(timeout);
                     return resolve({ success: false, message: result.error?.message, code: result.error?.code });
