@@ -4,7 +4,7 @@ import { ApiBase } from "./apiBase";
 export namespace BASIC_API {
     /**基础接口基类 */
     abstract class BasicApi extends ApiBase {
-        constructor(apiInfo: SDK.ApiInfo) {
+        constructor(apiInfo: BFChainPcSdk.ApiInfo) {
             super(apiInfo);
         }
 

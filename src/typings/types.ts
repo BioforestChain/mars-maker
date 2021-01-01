@@ -1,4 +1,4 @@
-declare namespace SDK {
+declare namespace BFChainPcSdk {
     type AllPartial<T> = {
         [P in keyof T]?: AllPartial<T[P]>;
     };

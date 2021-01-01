@@ -2,7 +2,7 @@ import { networkHelper } from "../network/networkHelper";
 
 /**接口基类 */
 export abstract class ApiBase {
-    constructor(protected __apiInfo: SDK.ApiInfo) {}
+    constructor(protected __apiInfo: BFChainPcSdk.ApiInfo) {}
 
     getApiInfo() {
         return this.__apiInfo;

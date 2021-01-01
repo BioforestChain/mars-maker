@@ -2,7 +2,7 @@ import { Resolve, Injectable } from "@bfchain/util";
 import { BFChainPC_SDK } from "../src";
 import { ApiType } from "../src/constants";
 import * as crypto from "crypto";
-import type{} from "../src";
+import type {} from "../src";
 
 const secrets = [
     "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",
@@ -152,18 +152,12 @@ export class SDKTest {
     cryptoSystemkey(verifyType: string, verifyKey: string) {
         if (verifyType === SYSTEMVERIFYTYPE.SYSTEM_OWNER) {
             // 得到密码的签名
-            const cryptoKey = crypto
-                .createHash("sha256")
-                .update(verifyKey, "utf8")
-                .digest("hex");
+            const cryptoKey = crypto.createHash("sha256").update(verifyKey, "utf8").digest("hex");
 
             // 返回加密后的矿机密码
             return cryptoKey;
         } else if (verifyType === SYSTEMVERIFYTYPE.SYSTEM_ADMIN) {
-            const cryptoAdminAddress = crypto
-                .createHash("sha256")
-                .update(verifyKey, "utf8")
-                .digest("hex");
+            const cryptoAdminAddress = crypto.createHash("sha256").update(verifyKey, "utf8").digest("hex");
             // 返回加密后的矿机地址
             return cryptoAdminAddress;
         }
@@ -176,10 +170,7 @@ export class SDKTest {
      */
     encryptSecret(delegateSecret: string, systemSecret: string, version: number) {
         // 加密后的矿机密码
-        const encryptSystemSecret = crypto
-            .createHash("sha256")
-            .update(systemSecret, "utf8")
-            .digest("hex");
+        const encryptSystemSecret = crypto.createHash("sha256").update(systemSecret, "utf8").digest("hex");
         return {
             encryptSystemSecret,
             encryptDelegateSecret: this.aes256Encrypt(delegateSecret, systemSecret, version),
@@ -192,12 +183,7 @@ export class SDKTest {
         switch (version) {
             case 1:
                 const iv = crypto.randomBytes(16);
-                const pwd_uint8 = new Uint8Array(
-                    crypto
-                        .createHash("sha256")
-                        .update(key)
-                        .digest().buffer
-                );
+                const pwd_uint8 = new Uint8Array(crypto.createHash("sha256").update(key).digest().buffer);
                 const encipher = crypto.createCipheriv("AES-256-CTR", pwd_uint8, iv);
                 return Buffer.concat([new Uint8Array([1]), iv, encipher.update(dataBuffer)]).toString("base64");
             default:
@@ -237,7 +223,7 @@ export class SDKTest {
         return this.__sdk.getBlockChainStatus();
     }
 
-    async trTransferAsset(request?: SDK.ApiRequest.TRANSACTION.TrTransferAsset) {
+    async trTransferAsset(request?: BFChainPcSdk.ApiRequest.TRANSACTION.TrTransferAsset) {
         return this.__sdk.trTransferAsset(
             request ?? {
                 secret: secret2,

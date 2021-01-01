@@ -1,4 +1,6 @@
-import "./typings/types";
+import type {} from "./api";
+
+import type {} from "./typings";
 
 export * from "./constants";
 

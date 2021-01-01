@@ -10,7 +10,7 @@ export function PcSDKExceptionGenerator(MODULE: string, FILE: string) {
         browserException,
         cacheObjectGetter({
             get LackException() {
-                return getException<BFChainUtil.ExceptionConstructor<SDK.Exception.LackException>>(
+                return getException<BFChainUtil.ExceptionConstructor<BFChainPcSdk.Exception.LackException>>(
                     class LackException extends Exception {
                         static TYPE = "LackException";
                     }
@@ -18,7 +18,7 @@ export function PcSDKExceptionGenerator(MODULE: string, FILE: string) {
             },
             //业务检查错误，日志显示等级为Info
             get BusinessCheckException() {
-                return getException<BFChainUtil.ExceptionConstructor<SDK.Exception.BusinessCheckException>>(
+                return getException<BFChainUtil.ExceptionConstructor<BFChainPcSdk.Exception.BusinessCheckException>>(
                     class BusinessCheckException extends Exception {
                         static TYPE = "BusinessCheckException";
                     }

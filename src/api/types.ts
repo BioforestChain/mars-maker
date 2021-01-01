@@ -1,4 +1,4 @@
-declare namespace SDK {
+declare namespace BFChainPcSdk {
     /**交易通用参数 */
     interface TrCommonParam {
         /**发起账户的密钥 */
