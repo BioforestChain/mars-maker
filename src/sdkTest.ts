@@ -1,6 +1,6 @@
 import { Resolve, Injectable } from "@bfchain/util";
 import { BFChainPC_SDK } from "./sdk";
-import { ApiType } from "./api/apiConst";
+import { ApiType } from "./constants";
 import * as crypto from "crypto";
 
 const secrets = [

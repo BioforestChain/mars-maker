@@ -3,8 +3,9 @@ import { PcSDKExceptionGenerator } from "./helpers/moduleError/expceptionGenerat
 const { BusinessCheckException } = PcSDKExceptionGenerator("pc-sdk", __filename);
 import { networkHelper } from "./network/networkHelper";
 import { BASIC_API } from "./api";
-import { ApiType, API } from "./api/apiConst";
+import { API } from "./api/apiConst";
 import { ApiBase } from "./api/apiBase";
+import { ApiType } from "./constants";
 
 /**BFChainPC_SDK */
 @Injectable()

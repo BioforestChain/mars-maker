@@ -2,8 +2,8 @@ import { PcSDKExceptionGenerator } from "../helpers/moduleError/expceptionGenera
 const { BusinessCheckException } = PcSDKExceptionGenerator("pc-sdk:network", __filename);
 import { WsManager } from "../network/wsManager";
 import { CHAIN_API_PATH } from "../typings/enumTypes";
-import { ApiType } from "../api/apiConst";
 import { ApiBase } from "../api/apiBase";
+import { ApiType } from "../constants";
 
 /**网络层 */
 class NetworkHelper {
