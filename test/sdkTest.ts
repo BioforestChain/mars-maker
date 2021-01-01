@@ -237,7 +237,7 @@ export class SDKTest {
         return this.__sdk.getBlockChainStatus();
     }
 
-    async trTransferAsset(request?: any, aaa?: SDK.SDKReturn) {
+    async trTransferAsset(request?: SDK.ApiRequest.TRANSACTION.TrTransferAsset) {
         return this.__sdk.trTransferAsset(
             request ?? {
                 secret: secret2,
