@@ -140,10 +140,6 @@ declare namespace BFChainPcSdk {
                 range?: string[];
                 /**事件的手续费 */
                 fee: string;
-                /**事件的最大手续费 */
-                maxFee?: string;
-                /**事件的主观参数 */
-                subEnvParams?: string[];
                 /**事件的发起高度， 0-9 组成并且不包含小点， 可选， 默认使用当前区块链的最新高度 */
                 applyBlockHeight?: number;
                 /**事件备注信息， 默认为空 */
@@ -226,14 +222,14 @@ declare namespace BFChainPcSdk {
 
             /**发送dapp购买事件 */
             interface TrDappPurchasing extends TrCommonParam {
-                /**购买的 dappid 的发行事件 subId， 64 个字节的 16 进制字符串 */
-                transactionSubId: string;
+                /**购买的 dappid 的发行事件签名， 128 个字节的 16 进制字符串 */
+                transactionSignature: string;
             }
 
             /**发送存证事件 */
             interface TrMark extends TrCommonParam {
-                /**购买的 dappid 的发行事件 subId， 64 个字节的 16 进制字符串 */
-                transactionSubId?: string;
+                /**购买的 dappid 的发行事件签名， 128 个字节的 16 进制字符串 */
+                transactionSignature?: string;
                 /**存证的拥有者地址， base58 编码的 16 进制字符串 */
                 markPossessor: string;
                 /**存证内容，为任意字符串 */
@@ -286,8 +282,8 @@ declare namespace BFChainPcSdk {
 
             /**发送接收数字资产交换事件 */
             interface TrBeExchangeAsset extends TrCommonParam {
-                /**to 事件的 subId， 64 个字节的 16 进制字符串 */
-                transactionSubId: string;
+                /**to 事件的签名， 128 个字节的 16 进制字符串 */
+                transactionSignature: string;
                 /**用于交换的资产数量， 0-9 组成并且不包含小数点 */
                 beExchangeNumber: string;
                 /**交换得到的资产数量， 0-9 组成并且不包含小数点 */
@@ -322,8 +318,8 @@ declare namespace BFChainPcSdk {
 
             /**发送接收特殊资产交换事件 */
             interface TrBeExchangeSpecAsset extends TrCommonParam {
-                /**to 事件的 subId， 64 个字节的 16 进制字符串 */
-                transactionSubId: string;
+                /**to 事件的签名， 128 个字节的 16 进制字符串 */
+                transactionSignature: string;
                 /**加密密钥， 如果资产交换事件填写了加密密钥， 则必须携带某个资产交换事件指定密钥以生成密钥签名对 */
                 ciphertext?: string;
             }
@@ -352,10 +348,10 @@ declare namespace BFChainPcSdk {
             interface TrGrabAsset extends TrCommonParam {
                 /**接收的赠送资产数量， 0-9 组成并且不包含小数点 */
                 amount: string;
-                /**赠送事件所在的区块 id， 128 个字节的 16 进制字符串 */
-                blockId: string;
-                /**赠送事件的 subId， 64 个字节的 16 进制字符串 */
-                transactionSubId: string;
+                /**赠送事件所在的区块签名， 128 个字节的 16 进制字符串 */
+                blockSignature: string;
+                /**赠送事件的签名， 128 个字节的 16 进制字符串 */
+                transactionSignature: string;
                 /**加密密钥， 如果资产交换事件填写了加密密钥， 则必须携带某个资产交换事件指定密钥以生成密钥签名对 */
                 ciphertext?: string;
             }
@@ -378,8 +374,8 @@ declare namespace BFChainPcSdk {
 
             /**发送签收委托数字资产事件 */
             interface TrSignForAsset extends TrCommonParam {
-                /**委托事件的 subId， 64 个字节的 16 进制字符串 */
-                transactionSubId: string;
+                /**委托事件的签名， 128 个字节的 16 进制字符串 */
+                transactionSignature: string;
             }
 
             /**发送资产迁出交易 */
@@ -392,8 +388,8 @@ declare namespace BFChainPcSdk {
 
             /**发送资产迁入交易 */
             interface TrImmigrateAsset extends TrCommonParam {
-                /**资产迁出交易的 subId，64 个字节的 16 进制字符串 */
-                transactionSubId: string;
+                /**资产迁出交易的签名, 128 个字节的 16 进制字符串 */
+                transactionSignature: string;
                 /**创世受托人的公钥和签名，[公钥，签名] */
                 genesisDelegateSignature: string[];
             }

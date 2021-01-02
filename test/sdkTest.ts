@@ -21,7 +21,7 @@ const address1 = "cCET2Sxt2LPDhx44wxJ9uhkpviKNrSacvE";
 const secret1 = secrets[0];
 const address2 = "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1";
 const secret2 = secrets[1];
-const transactionSubId = "b20db866b4994848f58ca1a170c8b2d9474c085d8812c886ba014de6a3f14b62c99e3e2a7f17520aab53d1db23dce6a30f522b333efe3fb4768b22a842420d03";
+const transactionSignature = "b20db866b4994848f58ca1a170c8b2d9474c085d8812c886ba014de6a3f14b62c99e3e2a7f17520aab53d1db23dce6a30f522b333efe3fb4768b22a842420d03";
 const address3 = "c9cLhcThVzbcWJMeBBpSG2LGsVtE3RghUM";
 const secret3 = "666";
 const address4 = "cKySkYVB4MhWhKczSUmY7WhF638hPx6U8N";
@@ -311,7 +311,7 @@ export class SDKTest {
         return this.__sdk.trDappPurchasing({
             secret: secret2,
             fee: "500",
-            transactionSubId,
+            transactionSignature,
             recipientId: address1,
         });
     }
@@ -320,7 +320,7 @@ export class SDKTest {
         return this.__sdk.trMark({
             secret: secret1,
             fee: "500",
-            transactionSubId,
+            transactionSignature,
             markPossessor: address2,
             content: "mycontent",
             type: "case",
@@ -367,7 +367,7 @@ export class SDKTest {
             secret: secret2,
             fee: "120",
             recipientId: address1,
-            transactionSubId:
+            transactionSignature:
                 "e92482bfdec42330f3c44eed25c9931a85f995f74ce60e3a7a3510c9f39c100c4f501a57e2edc84f35046e51613f45315b9ca66b4bd8b6e139b91ee4df148e03",
             toExchangeNumber: "1000",
             beExchangeNumber: "1500",
@@ -395,7 +395,7 @@ export class SDKTest {
             secret: secret2,
             fee: "120",
             recipientId: address1,
-            transactionSubId:
+            transactionSignature:
                 "d16cde23780ab153dd9f0ecc73159da0aa626598a3354afa652944bc95e730a2a3de1fa946e998f3cd7514fc804970def5227d64573a581d456991b36c09180a",
         });
     }
@@ -419,8 +419,8 @@ export class SDKTest {
         return this.__sdk.trGrabAsset({
             secret: secret4,
             fee: "120",
-            blockId: "185f507def0fa458a3b205234a01a19407caf4778e073f91cc371c16bda4caae8f3e1802c14d7e1262cd1e01c8928c59ed4b8f38a3bf96b1f87e8ffd070eb206",
-            transactionSubId:
+            blockSignature: "185f507def0fa458a3b205234a01a19407caf4778e073f91cc371c16bda4caae8f3e1802c14d7e1262cd1e01c8928c59ed4b8f38a3bf96b1f87e8ffd070eb206",
+            transactionSignature:
                 "1d4f2944e554405a94c21cf030f0b0f11a9e889abdbb7011086e0e82a56cf138bb542a2e8e9e281ea679b808b8f44873fbf0cf4c49695ce6cc1356d6d257b006",
             amount: "18464",
         });
@@ -448,7 +448,7 @@ export class SDKTest {
         return this.__sdk.trSignForAsset({
             secret: secret1,
             fee: "150",
-            transactionSubId:
+            transactionSignature:
                 "7a95c203cfeabbc3b2bcc34e8b2d4dadf0403ca3c1c414ccc76bd6f78902c95bd7c2ae623272d11cecc33921c7d8d965cdffb1ad7a53a369d6c4fedb50a17804",
             recipientId: address2,
         });
@@ -470,7 +470,7 @@ export class SDKTest {
         return this.__sdk.trImmigrateAsset({
             secret: secret1,
             fee: "150",
-            transactionSubId:
+            transactionSignature:
                 "7a95c203cfeabbc3b2bcc34e8b2d4dadf0403ca3c1c414ccc76bd6f78902c95bd7c2ae623272d11cecc33921c7d8d965cdffb1ad7a53a369d6c4fedb50a17804",
             genesisDelegateSignature: [
                 "6e8330144a8c123c017a8f5c363531868d3ce21c45b4a668cc1767c2b4695c84",
