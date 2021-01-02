@@ -723,20 +723,23 @@ declare namespace BFChainPcSdk {
     namespace BFChainCore {
         type LastBlockInfo<T extends Block> = {
             height: number;
-            blockId: string;
             timestamp: number;
             blockSize: number;
             generatorPublicKey: string;
             generatorSecondPublicKey?: string;
             generatorEquity: string;
-            previousBlockId: string;
+            numberOfTransactions: number;
+            payloadHash: string;
+            payloadLength: number;
+            previousBlockSignature: string;
+            totalAmount: string;
+            totalFee: string;
             reward: string;
             magic: string;
             blockParticipation: string;
             signature: string;
             signSignature?: string;
             remark: { [key: string]: string };
-            transactionInfo: BFChainCore.BlockTransactionInfoJSON;
             asset: GetBlockAssetJSON<T>;
         };
 
@@ -749,34 +752,28 @@ declare namespace BFChainPcSdk {
             height: number;
             blockSize: number;
             timestamp: number;
-            blockId: string;
             signature: string;
             signSignature?: string;
             generatorPublicKey: string;
             generatorSecondPublicKey?: string;
             generatorEquity: string;
-            previousBlockId: string;
+            numberOfTransactions: number;
+            payloadHash: string;
+            payloadLength: number;
+            previousBlockSignature: string;
+            totalAmount: string;
+            totalFee: string;
             reward: string;
             magic: string;
             blockParticipation: string;
             remark: { [key: string]: string };
             asset: AssetJSON;
+            statisticInfo: StatisticInfoJSON;
             roundOfflineGeneratersHashMap: RoundOfflineGeneratersHashMap;
         }
 
-        type BlockTransactionInfoJSON = {
-            startTindex: number;
-            numberOfTransactions: number;
-            payloadHash: string;
-            payloadLength: number;
-            totalAmount: string;
-            totalFee: string;
-            transactionInBlocks: TransactionInBlockJSON[];
-            statisticInfo: StatisticInfoJSON;
-        };
-
         interface BlockJSON<AssetJSON extends object = object> extends BlockWithoutTransactionJSON<AssetJSON> {
-            transactionInfo: BlockTransactionInfoJSON;
+            transactions: TransactionInBlockJSON[];
         }
 
         type TransactionMixJSON<AssetJSON extends object = object, Opts extends TransactionOptions = {}> = Opts["hasRecipientId"] extends true
@@ -792,50 +789,33 @@ declare namespace BFChainPcSdk {
             key: string;
             value: string;
         }
-        interface EnvironmentParametersJSON {
-            timestamp: number;
-            applyBlockHeight: number;
-            effectiveBlockHeight: number;
-            sourceIP?: string;
-            nonce: number;
-        }
-        type SubEnvironmentParametersJSON = {
-            timestamp?: number;
-            applyBlockHeight?: number;
-            effectiveBlockHeight?: number;
-            sourceIP?: string;
-        };
 
-        interface SubjectiveParametersJSON<AssetJSON extends object = object> {
-            subId: string;
-            subEnvParams: SubEnvironmentParametersJSON;
-            // 降级兼容
-            // "subIdDownLevel": ["xxxxxxxxxxxxxxx"],
-
+        interface TransactionJSON<AssetJSON extends object = object> {
+            version: number;
             type: string;
             senderId: string;
             senderPublicKey: string;
             senderSecondPublicKey?: string;
             recipientId?: string;
-            maxFee: string;
             rangeType: BFChainCore.RANGE_TYPE;
             range: string[];
+            fee: string;
+            timestamp: number;
             dappid?: string;
             lns?: string;
+            sourceIP?: string;
             fromMagic: string;
             toMagic: string;
+            applyBlockHeight: number;
+            effectiveBlockHeight: number;
+            signature: string;
+            signSignature?: string;
             remark: { [key: string]: string };
             asset: AssetJSON;
             storage?: TransactionStorageJSON;
             storageKey?: TransactionStorageJSON["key"];
             storageValue?: TransactionStorageJSON["value"];
-        }
-        interface TransactionJSON<AssetJSON extends object = object> extends EnvironmentParametersJSON, SubjectiveParametersJSON<AssetJSON> {
-            version: number;
-            fee: string;
-            trsId: string;
-            signature: string;
-            signSignature?: string;
+            nonce: number;
         }
 
         interface SomeTransactionJSON<T extends TransactionJSON> {
@@ -848,8 +828,9 @@ declare namespace BFChainPcSdk {
         };
 
         interface TransactionInBlockJSON<T extends TransactionJSON = TransactionJSON> extends SomeTransactionJSON<T> {
-            tIndex: number;
+            index: number;
             height: number;
+            numberOfSenderTransactions: number;
             transactionAssetChanges: TransactionAssetChangeJSON[];
             assetPrealnum?: AssetPrealnumJSON;
             signature: string;
@@ -857,9 +838,8 @@ declare namespace BFChainPcSdk {
         }
         interface TransactionAssetChangeJSON {
             accountType: number;
-            sourceChainMagic: string;
-            assetType: string;
-            assetPrealnum: string;
+            assetTypes: number;
+            assetBalance: string;
         }
 
         interface RoundOfflineGeneratersHashMap {
@@ -880,13 +860,15 @@ declare namespace BFChainPcSdk {
             transactionCount: number;
         }
 
-        interface AssetStatisticJSON {
-            typeStatisticHashMap: { [baseType: string]: CountAndAmountStatisticJSON };
-            total: CountAndAmountStatisticJSON;
-        }
+        type AssetInfoJSON = {
+            magic: string;
+            assetType: string;
+        };
 
-        interface AssetTypeAssetStatisticJSON {
-            assetTypeTypeStatisticHashMap: { [assetType: string]: AssetStatisticJSON };
+        interface AssetStatisticJSON extends AssetInfoJSON {
+            index: number;
+            typeStatisticHashMap: { [baseType: number]: CountAndAmountStatisticJSON };
+            total: CountAndAmountStatisticJSON;
         }
 
         interface StatisticInfoJSON {
@@ -894,7 +876,7 @@ declare namespace BFChainPcSdk {
             totalAsset: string;
             totalChainAsset: string;
             totalAccount: number;
-            magicAssetTypeTypeStatisticHashMap: { [magic: string]: AssetTypeAssetStatisticJSON };
+            assetStatisticHashMap: { [index: number]: AssetStatisticJSON };
         }
 
         type EXCHANGE_DIRECTION = import("./").EXCHANGE_DIRECTION;
@@ -1044,15 +1026,15 @@ declare namespace BFChainPcSdk {
         }
 
         interface GrabAssetJSON {
-            blockId: string;
-            transactionSubId: string;
+            blockSignature: string;
+            transactionSignature: string;
             /**根据共识规则计算出来的：抢到的金额 */
             amount: string;
             /**用于校验身份的密文签名，如果需要的话 */
             ciphertextSignature?: AccountSignatureJSON;
             //#region 冗余的字段
             /**以下是冗余的字段
-             * 都是能从`transactionSubId`中查询出来的，但这个仍然做了存储，是为了确保能够在独立的情况下仍然能够将之渲染出来
+             * 都是能从`transactionSignature`中查询出来的，但这个仍然做了存储，是为了确保能够在独立的情况下仍然能够将之渲染出来
              */
 
             /**礼物配置 */
@@ -1080,7 +1062,7 @@ declare namespace BFChainPcSdk {
             signSignature?: string;
         }
         interface SignForAssetJSON {
-            transactionSubId: string;
+            transactionSignature: string;
             trustSenderId: string;
             trustRecipientId: string;
             /**委托信息 */
@@ -1093,10 +1075,6 @@ declare namespace BFChainPcSdk {
             senderPaidFeeRate: BFChainCore.FractionJSON;
             recipientPaidFeeRate: BFChainCore.FractionJSON;
         }
-        interface ExchangeRatioJSON {
-            toExchangeAsset: string;
-            beExchangeAsset: string;
-        }
         interface ToExchangeAssetJSON {
             cipherPublicKeys: string[];
             toExchangeSource: string;
@@ -1106,14 +1084,14 @@ declare namespace BFChainPcSdk {
             toExchangeAsset: string;
             beExchangeAsset: string;
             toExchangeNumber: string;
-            exchangeRatio: ExchangeRatioJSON;
+            exchangeRate: BFChainCore.RateJSON<string>;
         }
         interface ToExchangeAssetAssetJSON {
             toExchangeAsset: ToExchangeAssetJSON;
         }
 
         interface BeExchangeAssetJSON {
-            transactionSubId: string;
+            transactionSignature: string;
             ciphertextSignature?: AccountSignatureJSON;
             toExchangeNumber: string;
             beExchangeNumber: string;
@@ -1139,7 +1117,7 @@ declare namespace BFChainPcSdk {
             toExchangeSpecialAsset: ToExchangeSpecialAssetJSON;
         }
         interface BeExchangeSpecialAssetJSON {
-            transactionSubId: string;
+            transactionSignature: string;
             ciphertextSignature?: AccountSignatureJSON;
             exchangeSpecialAsset: ToExchangeSpecialAssetJSON;
         }
@@ -1180,6 +1158,7 @@ declare namespace BFChainPcSdk {
             lnsRecordValue: SetLnsRecordValueJSON;
         }
         //#endregion
+
         /**区块链节点状态 */
         export const enum BLOCKCHAIN_STATUS {
             /**离线：不可用 */
@@ -1212,58 +1191,35 @@ declare namespace BFChainPcSdk {
             accountStatus: number;
             isDelegate: boolean;
             isAcceptVote: boolean;
-            voteInfo: VoteInfoModel;
-            equityInfo: EquityInfoModel;
-            lastRoundInfo: RoundInfoModelWithParticipation;
-            producedblocks: number;
-            missedblocks: number;
-            height: number;
-            productivity?: number;
-        };
-        type VoteInfoModel = {
-            round: number;
-            /**受托人的得票数 */
-            vote: bigint;
-        };
-        type EquityInfoModel = {
-            round: number;
-            /**剩余可投票数 */
-            restVoteValue: bigint;
-            /**上轮得出的总的可投票数 */
-            voteValue: bigint;
-        };
-        interface RoundInfoModelWithParticipation extends RoundInfoModel {
-            /**上轮参与率 */
-            roundParticipationRate: number;
-        }
-        type RoundInfoModel = {
-            round: number;
-            /**上轮的余额 */
-            assetNumber: bigint;
-            /**上轮的交易量 */
-            txCount: number;
+            voteInfo: {
+                round: number;
+                vote: bigint;
+            };
+            equityInfo: {
+                round: number;
+                equity: bigint;
+                fixedEquity: bigint;
+            };
+            lastRoundInfo: {
+                round: number;
+                assetNumber: bigint;
+                txCount: number;
+            };
         };
         type AssetInfo = {
             sourceChainMagic: string;
             assetType: string;
             sourceChainName?: string;
             assetNumber: bigint;
-            penultimateRoundInfo?: RoundInfoModel;
-            lastRoundInfo?: RoundInfoModel;
         };
-        type AccountAssetsDetails = {
+        type AccountAssets = {
             [sourceChainMagic: string]: {
                 [assetType: string]: AssetInfo;
             };
         };
-        type AccountAssets = {
-            address: string;
-            publicKey?: string;
-            assets: AccountAssetsDetails;
-            paidFee: bigint;
-            votingRewards: bigint;
-            forgingRewards: bigint;
-            height: number;
+        type AccountInfoAndAssets = {
+            accountInfo: AccountInfo;
+            accountAssets: AccountAssets;
         };
 
         //#region RoundLastBlock
@@ -1274,9 +1230,11 @@ declare namespace BFChainPcSdk {
         interface RoundDelegateJSON {
             nextRoundDelegates: NextRoundDelegateJSON[];
             newDelegates: string[];
+            maxBeginBalance: string;
+            maxTxCount: number;
+            rate: string;
         }
         interface RoundLastAssetJSON extends RoundDelegateJSON {
-            roundTotalTransactionsCount: number;
             hash: string;
         }
         interface RoundLastBlockAssetJSON {
@@ -1286,102 +1244,31 @@ declare namespace BFChainPcSdk {
         //#endregion
 
         //#region GenesisBlock
+        interface RewardPercentJSON {
+            votePercent: FractionJSON;
+            forgePercent: FractionJSON;
+        }
         interface PortsJSON {
             port: number;
             scan_peer_port: number;
         }
-
+        interface RewardPerBlockJSON {
+            readonly heights: number[];
+            readonly rewards: string[];
+        }
         interface TransactionPowOfWorkConfigJSON {
             growthFactor: FractionJSON<string>;
             participationRatio: FractionJSON;
         }
 
-        interface TransactionPowOfWorkJSON {
-            // tpowDiffFormula: string;
-            averageComputingPower: number;
-            tpowOfWorkExemptionBlocks: number;
-            transactionPowOfWorkConfig: TransactionPowOfWorkConfigJSON;
+        interface AccountParticipationWeightRatioJSON {
+            balanceWeight: number;
+            numberOfTransactionsWeight: number;
         }
 
-        interface DelegateJSON {
-            /**创世受托人数 */
-            numberOfGenesisDelegates: number;
-            /**是否允许连任 */
-            reelectionDelegate: boolean;
-            /**受托人通过率 取值范围 0-1，主网中配置为 0，当为 0 时为自由申请受托人 。判断这个值时有包含这个值本身，如 0.75，则比例大于等于 75% */
-            passRate: FractionJSON<number>;
-        }
-
-        interface RoundParticipationPercentJSON {
-            /**轮次参与率计算 参与区块比例 */
-            participationBlockPercent: number;
-            /**轮次参与率计算 参与事件比例 */
-            participationTrPercent: number;
-        }
-
-        interface AccountParticipationPercentJSON {
-            /**账户参与率计算 账户在一个块中最佳的交易比数 */
-            bestTxCountPerBlock: number;
-            /**账户参与率计算 账户在一个块中最佳的交易类型数 */
-            bestTxTypeCountPerBlock: number;
-            /**账户参与率计算 账户在一个块中最佳的交易比数占比 */
-            bestTxCountPerBlockPercent: number;
-            /**账户参与率计算 账户在一个块中最佳的交易类型数占比 */
-            bestTxTypeCountPerBlockPercent: number;
-            /**账户参与率计算 轮次参与率在参与度计算中的占比 */
-            roundParticipationPercent: number;
-        }
-
-        /**奖励曲线 */
-        interface RewardCurveJSON {
-            /**普通奖励 */
-            normalReward: string;
-            /**普通奖励率 */
-            normalRate: FractionJSON<number>;
-            /**普通所需的参与度 */
-            normalRewardParticipation: string;
-            /**最大奖励 */
-            maxReward: string;
-            /**最大奖励率 */
-            maxRate: FractionJSON<number>;
-            /**最大奖励所需的参与度 */
-            maxRewardParticipation: string;
-        }
-
-        interface MaxRewardTpbRatioJSON {
-            /**tpb曲线 上升至最大的值 默认值 0.8 */
-            tpbRate: FractionJSON<number>;
-            /**tpb曲线 上升速率 默认值 0.05  */
-            loseRewardRate: FractionJSON<number>;
-        }
-
-        interface OverloadTpbRatioJSON {
-            /**tpb曲线 降低至负载满至的值 默认值 1 */
-            tpbRate: FractionJSON<number>;
-            /**tpb曲线 降低速率 默认值 1 */
-            loseRewardRate: FractionJSON<number>;
-        }
-
-        interface TpbCurveJSON {
-            maxRewardTpb: MaxRewardTpbRatioJSON;
-            overloadTpb: OverloadTpbRatioJSON;
-        }
-
-        interface RewardPercentJSON {
-            /**投票奖励占比 */
-            votePercent: number;
-            /**锻造奖励占比 */
-            forgePercent: number;
-        }
-
-        interface RewardJSON {
-            /**账户轮次参与率计算公式 */
-            roundParticipationPercent: RoundParticipationPercentJSON;
-            /**账户参与度计算公式 */
-            accountParticipationPercent: AccountParticipationPercentJSON;
-            rewardCurve: RewardCurveJSON;
-            tpbCurve: TpbCurveJSON;
-            rewardPercent: RewardPercentJSON;
+        interface BlockParticipationWeightRatioJSON {
+            balanceWeight: number;
+            numberOfTransactionsWeight: number;
         }
 
         export const enum BNID_TYPE {
@@ -1410,12 +1297,18 @@ declare namespace BFChainPcSdk {
             registerChainMinChainAsset: string;
             maxApplyAndConfirmedBlockHeightDiff: number;
             blockPerRound: number;
+            delegates: number;
+            whetherToAllowDelegateContinusElections: boolean;
             forgeInterval: number;
+            rewardPercent: RewardPercentJSON;
             ports: PortsJSON;
-
-            delegate: DelegateJSON;
-            reward: RewardJSON;
-            transactionPowOfWork: TransactionPowOfWorkJSON;
+            rewardPerBlock: RewardPerBlockJSON;
+            accountParticipationWeightRatio: AccountParticipationWeightRatioJSON;
+            blockParticipationWeightRatio: BlockParticipationWeightRatioJSON;
+            // tpowDiffFormula: string;
+            averageComputingPower: number;
+            tpowOfWorkExemptionBlocks: number;
+            transactionPowOfWorkConfig: TransactionPowOfWorkConfigJSON;
         }
         interface GenesisBlockAssetJSON {
             genesisAsset: GenesisAssetJSON;
