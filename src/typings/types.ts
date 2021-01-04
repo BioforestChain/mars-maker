@@ -1,4 +1,13 @@
 declare namespace BFChainPcSdk {
+    /**Sdk网络选项 */
+    type SdkNetOptions = {
+        ip: string;
+        port: number;
+        timeout?: number;
+        apiType?: import("../constants/api.constants").ApiType;
+        protocol?: import("../constants/api.constants").ProtocolType;
+    };
+
     type AllPartial<T> = {
         [P in keyof T]?: AllPartial<T[P]>;
     };

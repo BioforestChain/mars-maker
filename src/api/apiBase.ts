@@ -1,4 +1,5 @@
 import { networkHelper } from "../network/networkHelper";
+import { RequestMethod } from "./apiConst";
 
 /**接口基类 */
 export abstract class ApiBase {
@@ -19,7 +20,7 @@ export abstract class ApiBase {
      * http的Method，[GET,POST,PUT...]
      */
     getMethod() {
-        return this.__apiInfo.method ?? "";
+        return this.__apiInfo.method ?? RequestMethod.GET;
     }
 
     /**

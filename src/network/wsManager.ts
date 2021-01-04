@@ -1,8 +1,7 @@
 import * as io from "socket.io-client";
-import { Injectable } from "@bfchain/util";
 
 /**Websocket管理器 */
-@Injectable()
+
 export class WsManager {
     private __socket?: SocketIOClient.Socket;
     /**网络配置 */

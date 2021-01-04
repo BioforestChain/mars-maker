@@ -1,12 +1,8 @@
-import { Injectable } from "@bfchain/util";
-import { PcSDKExceptionGenerator } from "../helpers/moduleError/expceptionGenerator";
 import { ApiBase } from "./apiBase";
 import { API } from "./apiConst";
-const { BusinessCheckException } = PcSDKExceptionGenerator("pc-sdk:api", __filename);
 
 export namespace SYSTEM_API {
     /**节点管理接口基类 */
-    @Injectable()
     abstract class SystemApi extends ApiBase {
         constructor(apiInfo: BFChainPcSdk.ApiInfo) {
             super(apiInfo);
@@ -18,7 +14,6 @@ export namespace SYSTEM_API {
     }
 
     /**安全关闭节点 */
-    @Injectable()
     export class SafetyClose extends SystemApi {
         constructor() {
             super(API.SYSTEM.SAFETY_CLOSE);
@@ -26,7 +21,6 @@ export namespace SYSTEM_API {
     }
 
     /**设置节点密码 */
-    @Injectable()
     export class SetSystemKey extends SystemApi {
         constructor() {
             super(API.SYSTEM.SET_SYSTEM_KEY);
@@ -34,7 +28,6 @@ export namespace SYSTEM_API {
     }
 
     /**验证节点密码 */
-    @Injectable()
     export class VerifySystemKey extends SystemApi {
         constructor() {
             super(API.SYSTEM.VERIFY_SYSTEM_KEY);
@@ -42,7 +35,6 @@ export namespace SYSTEM_API {
     }
 
     /**增加节点管理员 */
-    @Injectable()
     export class AddSystemAdmin extends SystemApi {
         constructor() {
             super(API.SYSTEM.ADD_SYSTEM_ADMIN);
@@ -50,7 +42,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点管理员 */
-    @Injectable()
     export class GetSystemAdmin extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_SYSTEM_ADMIN);
@@ -58,7 +49,6 @@ export namespace SYSTEM_API {
     }
 
     /**验证节点管理员 */
-    @Injectable()
     export class VerifySystemAdmin extends SystemApi {
         constructor() {
             super(API.SYSTEM.VERIFY_SYSTEM_ADMIN);
@@ -66,7 +56,6 @@ export namespace SYSTEM_API {
     }
 
     /**删除节点管理员 */
-    @Injectable()
     export class DelSystemAdmin extends SystemApi {
         constructor() {
             super(API.SYSTEM.DEL_SYSTEM_ADMIN);
@@ -74,7 +63,6 @@ export namespace SYSTEM_API {
     }
 
     /**重置节点管理员 */
-    @Injectable()
     export class ResetSystemAdmin extends SystemApi {
         constructor() {
             super(API.SYSTEM.RESET_SYSTEM_ADMIN);
@@ -82,7 +70,6 @@ export namespace SYSTEM_API {
     }
 
     /**绑定节点账户 */
-    @Injectable()
     export class BindingAccount extends SystemApi {
         constructor() {
             super(API.SYSTEM.BINDING_ACCOUNT);
@@ -90,7 +77,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点受托人 */
-    @Injectable()
     export class GetSystemDelegate extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_SYSTEM_DELEGATE);
@@ -98,7 +84,6 @@ export namespace SYSTEM_API {
     }
 
     /**节点信息查询 */
-    @Injectable()
     export class MiningMachineInfo extends SystemApi {
         constructor() {
             super(API.SYSTEM.MINING_MACHINE_INFO);
@@ -106,7 +91,6 @@ export namespace SYSTEM_API {
     }
 
     /**设置节点配置信息 */
-    @Injectable()
     export class SetSystemConfig extends SystemApi {
         constructor() {
             super(API.SYSTEM.SET_SYSTEM_CONFIG);
@@ -114,7 +98,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点配置信息 */
-    @Injectable()
     export class GetSystemConfigInfoDetail extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_SYSTEM_CONFIG_INFO_DETAIL);
@@ -122,7 +105,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点状态（实时信息） */
-    @Injectable()
     export class GetRuntimeState extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_RUNTIME_STATE);
@@ -130,7 +112,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点访问统计信息 */
-    @Injectable()
     export class GetSystemMonitor extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_SYSTEM_MONITOR);
@@ -138,7 +119,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点运行日志类型 */
-    @Injectable()
     export class GetSystemLoggerType extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_SYSTEM_LOGGER_TYPE);
@@ -146,7 +126,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点运行日志列表 */
-    @Injectable()
     export class GetSystemLoggerList extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_SYSTEM_LOGGER_LIST);
@@ -154,7 +133,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点运行日志内容 */
-    @Injectable()
     export class GetSystemLoggerDetail extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_SYSTEM_LOGGER_DETAIL);
@@ -162,7 +140,6 @@ export namespace SYSTEM_API {
     }
 
     /**删除矿机运行日志 */
-    @Injectable()
     export class DelSystemLogger extends SystemApi {
         constructor() {
             super(API.SYSTEM.DEL_SYSTEM_LOGGER);
@@ -170,7 +147,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点邮箱地址 */
-    @Injectable()
     export class GetEmailAddress extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_EMAIL_ADDRESS);
@@ -178,7 +154,6 @@ export namespace SYSTEM_API {
     }
 
     /**设置节点邮箱地址 */
-    @Injectable()
     export class SetEmailAddress extends SystemApi {
         constructor() {
             super(API.SYSTEM.SET_EMAIL_ADDRESS);
@@ -186,7 +161,6 @@ export namespace SYSTEM_API {
     }
 
     /**通过节点私钥验证节点受托人 */
-    @Injectable()
     export class VerifySystemSecret extends SystemApi {
         constructor() {
             super(API.SYSTEM.VERIFY_SYSTEM_SECRET);
@@ -194,7 +168,6 @@ export namespace SYSTEM_API {
     }
 
     /**设置节点访问白名单 */
-    @Injectable()
     export class SetSystemWhiteList extends SystemApi {
         constructor() {
             super(API.SYSTEM.SET_SYSTEM_WHITELIST);
@@ -202,7 +175,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点访问白名单 */
-    @Injectable()
     export class GetSystemWhiteList extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_SYSTEM_WHITELIST);
@@ -210,7 +182,6 @@ export namespace SYSTEM_API {
     }
 
     /**删除节点访问白名单 */
-    @Injectable()
     export class DelSystemWhiteList extends SystemApi {
         constructor() {
             super(API.SYSTEM.DEL_SYSTEM_WHITELIST);
@@ -218,7 +189,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点进程的网络相关信息 */
-    @Injectable()
     export class GetProcessNetwork extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_PROCESS_NETWORK);
@@ -226,7 +196,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点进程CPU信息 */
-    @Injectable()
     export class GetProcessCPU extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_PROCESS_CPU);
@@ -234,7 +203,6 @@ export namespace SYSTEM_API {
     }
 
     /**获得节点进程内存信息 */
-    @Injectable()
     export class GetProcessMemory extends SystemApi {
         constructor() {
             super(API.SYSTEM.GET_PROCESS_MEMORY);
@@ -242,7 +210,6 @@ export namespace SYSTEM_API {
     }
 
     /**定时发送节点状态 */
-    @Injectable()
     export class SystemStatus extends SystemApi {
         constructor() {
             super(API.SYSTEM.SYSTEM_STATUS);
@@ -250,7 +217,6 @@ export namespace SYSTEM_API {
     }
 
     /**定时发送节点CPU，内存，网络信息 */
-    @Injectable()
     export class SystemProcess extends SystemApi {
         constructor() {
             super(API.SYSTEM.SYSTEM_PROCESS);

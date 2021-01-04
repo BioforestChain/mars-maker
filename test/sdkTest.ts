@@ -1,6 +1,4 @@
-import { Resolve, Injectable } from "@bfchain/util";
 import { BFChainPC_SDK } from "../src";
-import { ApiType } from "../src/constants";
 import * as crypto from "crypto";
 
 const secrets = [
@@ -46,14 +44,16 @@ export const SYSTEMVERIFYTYPE = {
     SYSTEM_OTHER: "999",
 };
 
-@Injectable()
 export class SDKTest {
+    private __sdk: BFChainPC_SDK;
     public verifyKey = this.cryptoSystemkey(SYSTEMVERIFYTYPE.SYSTEM_OWNER, systemSecret);
 
-    constructor(private __sdk: BFChainPC_SDK) {}
+    constructor() {
+        this.__sdk = new BFChainPC_SDK();
+    }
 
     async execute() {
-        this.__sdk.init(ApiType.WS, { ip: "192.168.110.51", port: 19003, timeout: 10000 });
+        this.__sdk.init({ ip: "192.168.110.51", port: 19003, timeout: 10000 });
         let promises: Promise<any>[] = [];
         let funcNames: string[] = [];
 
@@ -721,7 +721,7 @@ export class SDKTest {
 }
 
 (async () => {
-    const test = Resolve(SDKTest);
+    const test = new SDKTest();
     await test.execute();
     process.exit(0);
 })().catch(err => {

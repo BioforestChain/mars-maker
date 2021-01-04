@@ -1,16 +1,11 @@
-import { Injectable } from "@bfchain/util";
-import { PcSDKExceptionGenerator } from "./helpers/moduleError/expceptionGenerator";
-const { BusinessCheckException } = PcSDKExceptionGenerator("pc-sdk", __filename);
 import { networkHelper } from "./network/networkHelper";
 import { API } from "./api/apiConst";
 import { ApiBase } from "./api/apiBase";
-import { ApiType } from "./constants";
 import { BASIC_API } from "./api";
 import { TRS_API } from "./api/transactionApi";
 import { SYSTEM_API } from "./api/systemApi";
 
 /**BFChainPC_SDK */
-@Injectable()
 export class BFChainPC_SDK {
     private __apiMap = new Map<string, ApiBase>();
 
@@ -18,11 +13,10 @@ export class BFChainPC_SDK {
 
     /**
      * 初始化sdk，配置节点的网络信息
-     * @param apiType
-     * @param data
+     * @param options
      */
-    init(apiType: ApiType, data: { ip: string; port: number; timeout?: number }) {
-        networkHelper.init(apiType, data);
+    init(options: BFChainPcSdk.SdkNetOptions) {
+        networkHelper.init(options);
         for (const key in BASIC_API) {
             const api: ApiBase = new BASIC_API[key]();
             const apiName = api.getName();
@@ -48,7 +42,7 @@ export class BFChainPC_SDK {
     async processApi(apiName: string, request?: BFChainPcSdk.PcApiRequest): Promise<any> {
         const api = this.__apiMap.get(apiName);
         if (!api) {
-            throw new BusinessCheckException(`api: ${apiName} is not exist`);
+            throw new Error(`api: ${apiName} is not exist`);
         }
         return await api.sendRequest(request);
     }
