@@ -84,7 +84,13 @@ class NetworkHelper {
                             return reject(error);
                         }
                         if (!result.success) {
-                            return resolve({ success: false, message: result.error?.message, code: result.error?.code, minFee: result.minFee });
+                            return resolve({
+                                success: false,
+                                result: undefined,
+                                message: result.error?.message,
+                                code: result.error?.code,
+                                minFee: result.minFee,
+                            });
                         }
                         delete result.success;
                         return resolve({ success: true, result: Object.keys(result).length > 0 ? result : undefined });

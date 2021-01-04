@@ -1,56 +1,4 @@
 declare namespace BFChainPcSdk {
-    /**交易通用参数 */
-    interface TrCommonParam {
-        /**发起账户的密钥 */
-        secret: string;
-        /**发起账户的二次密钥 */
-        secondSecret?: string;
-        /**收款账户地址， base58 编码的 16 进制字符串 */
-        recipientId?: string;
-        /**事件的接收范围类型， 只能是 0， 1， 2， 4 中的某一个， 0 表示不限定操作范围， 1 表示只有指定的账户地址才能对这笔事件进行操作， 2 表示只有指定的 dappid 才能对这笔事件进行操作， 4 表示只有指定的位名系统才能对这笔事件进行操作， 默认为 0 */
-        rangeType?: number;
-        /**事件的接收范围， 当 rangeType 为 0 时， 不能填写任何数据， 当 rangeType 为 1 时， 只能填写账户地址， 当 rangeType 为 2 时， 只能填写 dappid， 当 rangeType 为 4 时， 只能填写位名系统， 默认为空 */
-        range?: string[];
-        /**事件的手续费 */
-        fee: string;
-        /**事件的最大手续费 */
-        maxFee?: string;
-        /**事件的主观参数 */
-        subEnvParams?: string[];
-        /**事件的发起高度， 0-9 组成并且不包含小点， 可选， 默认使用当前区块链的最新高度 */
-        applyBlockHeight?: number;
-        /**事件备注信息， 默认为空 */
-        remark?: string[];
-        /**事件所属的 dappid， 大写字母或数字，17-32 个字符， 默认为空 */
-        dappid?: string;
-        /**事件所属的位名系统， 2-1024 个字符， 每级域名最大长度为 128 个字符， 一级域名只能时小写字母组成， 二级及以上开头及结尾只能由小写字母或数字组成， 中间可以包含下划线， 根域名必须时本链链名， 可选， 默认为空 */
-        lns?: string;
-        /**发送方IP */
-        sourceIP?: string;
-        /**事件的来源链网络标识符， 大写字母或数字组成， 9-16 个字符， 默认使用创世块的 magic */
-        fromMagic?: string;
-        /**事件的去往链网络标识符， 大写字母或数字组成， 9-16 个字符， 默认使用创世块的 magic */
-        toMagic?: string;
-        /**事件的过期区块间隔， 默认使用创世块最大过期时间参数， 0-9 组成并且不包含小数点 */
-        numberOfEffectiveBlocks?: number;
-        /**TPOW难度 */
-        tpowDifficulty?: number;
-    }
-
-    /**发送转账事件 */
-    interface TrTransferAsset extends TrCommonParam {
-        /**转移的资产数量， 0-9 组成并且不包含小数点， 必须大于 0 */
-        amount: string;
-        /**转移的资产类型， 大写字母组成， 3-5 个字符 */
-        assetType?: string;
-        /**转移的资产所属链名， 小写字母组成， 3-8 位 */
-        sourceChainName?: string;
-        /**转移的资产所属链网络标识符， 大写字母或数字组成， 9-16 个字符 */
-        sourceChainMagic?: string;
-        /**收款账户地址， base58 编码的 16 进制字符串 */
-        recipientId: string;
-    }
-
     //节点Api的通用请求类型
     type PcApiRequest = { [key: string]: any };
 
@@ -132,7 +80,7 @@ declare namespace BFChainPcSdk {
                 secret: string;
                 /**发起账户的二次密钥 */
                 secondSecret?: string;
-                /**收款账户地址， base58 编码的 16 进制字符串 */
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
                 recipientId?: string;
                 /**事件的接收范围类型， 只能是 0， 1， 2， 4 中的某一个， 0 表示不限定操作范围， 1 表示只有指定的账户地址才能对这笔事件进行操作， 2 表示只有指定的 dappid 才能对这笔事件进行操作， 4 表示只有指定的位名系统才能对这笔事件进行操作， 默认为 0 */
                 rangeType?: number;
@@ -143,16 +91,16 @@ declare namespace BFChainPcSdk {
                 /**事件的发起高度， 0-9 组成并且不包含小点， 可选， 默认使用当前区块链的最新高度 */
                 applyBlockHeight?: number;
                 /**事件备注信息， 默认为空 */
-                remark?: string[];
+                remark?: string;
                 /**事件所属的 dappid， 大写字母或数字，17-32 个字符， 默认为空 */
                 dappid?: string;
                 /**事件所属的位名系统， 2-1024 个字符， 每级域名最大长度为 128 个字符， 一级域名只能时小写字母组成， 二级及以上开头及结尾只能由小写字母或数字组成， 中间可以包含下划线， 根域名必须时本链链名， 可选， 默认为空 */
                 lns?: string;
                 /**发送方IP */
                 sourceIP?: string;
-                /**事件的来源链网络标识符， 大写字母或数字组成， 9-16 个字符， 默认使用创世块的 magic */
+                /**事件的来源链网络标识符， 大写字母或数字组成， 5 个字符， 默认使用创世块的 magic */
                 fromMagic?: string;
-                /**事件的去往链网络标识符， 大写字母或数字组成， 9-16 个字符， 默认使用创世块的 magic */
+                /**事件的去往链网络标识符， 大写字母或数字组成， 5 个字符， 默认使用创世块的 magic */
                 toMagic?: string;
                 /**事件的过期区块间隔， 默认使用创世块最大过期时间参数， 0-9 组成并且不包含小数点 */
                 numberOfEffectiveBlocks?: number;
@@ -168,9 +116,9 @@ declare namespace BFChainPcSdk {
                 assetType?: string;
                 /**转移的资产所属链名， 小写字母组成， 3-8 位 */
                 sourceChainName?: string;
-                /**转移的资产所属链网络标识符， 大写字母或数字组成， 9-16 个字符 */
+                /**转移的资产所属链网络标识符， 大写字母或数字组成， 5 个字符 */
                 sourceChainMagic?: string;
-                /**收款账户地址， base58 编码的 16 进制字符串 */
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
                 recipientId: string;
             }
 
@@ -202,28 +150,34 @@ declare namespace BFChainPcSdk {
             interface TrVote extends TrCommonParam {
                 /**投出的权益数， 0-9 组成并且不包含小数点， 允许为 0 */
                 equity: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送dapp事件 */
             interface TrDapp extends TrCommonParam {
-                /**dappid， 大写字母或数字组成， 17-32 个字符 */
+                /**dappid， 大写字母或数字组成， 8 个字符 */
                 newDappid: string;
                 /**dappid 的类型， 只能为 0 或 1， 0 表示这个 dappid 是付费使用的， 1 表示这个 dappid 是免费使用的 */
                 type: number;
                 /**购买 dappid 使用权需要的资产数量(如果 dappid 是付费应用则必须携带，如果是免费应用则无需携带)， 0-9 组成并且不包含小数点， 必须大于 0 */
                 amount: string;
-                /**购买 dappid 使用权的资产所属链网络标识符， 大写字母或数字组成， 9-16 个字符， 可选， 与 amount 配合使用， 默认为创世块网络标识符 */
+                /**购买 dappid 使用权的资产所属链网络标识符， 大写字母或数字组成， 5 个字符， 可选， 与 amount 配合使用， 默认为创世块网络标识符 */
                 sourceChainName?: string;
-                /**事件的来源链网络标识符， 大写字母或数字组成， 9-16 个字符， 可选， 默认使用创世块的 magic */
+                /**事件的来源链网络标识符， 大写字母或数字组成， 5 个字符， 可选， 默认使用创世块的 magic */
                 sourceChainMagic?: string;
                 /**购买 dappid 使用权的资产名， 大写字母组成， 3-5 个字符， 可选， 与 amount 配合使用， 默认为传世块资产名 */
                 assetType?: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送dapp购买事件 */
             interface TrDappPurchasing extends TrCommonParam {
                 /**购买的 dappid 的发行事件签名， 128 个字节的 16 进制字符串 */
                 transactionSignature: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送存证事件 */
@@ -246,6 +200,8 @@ declare namespace BFChainPcSdk {
                 assetType: string;
                 /**发行的新资产总数， 0-9 组成并且不包含小数点 */
                 expectedIssuedAssets: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送销毁资产事件 */
@@ -254,13 +210,15 @@ declare namespace BFChainPcSdk {
                 amount: string;
                 /**销毁的资产名， 大写字母组成， 3-5 个字符 */
                 assetType: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送数字资产交换事件 */
             interface TrToExchangeAsset extends TrCommonParam {
-                /**用于交换的资产来源链网络标识符， 大写字母或数字组成， 9-16 个字符 */
+                /**用于交换的资产来源链网络标识符， 大写字母或数字组成， 5 个字符 */
                 toExchangeSource: string;
-                /**被交换的资产来源链网络标识符， 大写字母或数字组成， 9-16 个字符 */
+                /**被交换的资产来源链网络标识符， 大写字母或数字组成， 5 个字符 */
                 beExchangeSource: string;
                 /**用于交换的资产来源链名， 小写字母组成， 3-8 位 */
                 toExchangeChainName: string;
@@ -290,13 +248,15 @@ declare namespace BFChainPcSdk {
                 toExchangeNumber: string;
                 /**加密密钥， 如果资产交换事件填写了加密密钥， 则必须携带某个资产交换事件指定密钥以生成密钥签名对 */
                 ciphertext?: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送特殊资产交换事件 */
             interface TrToExchangeSpecAsset extends TrCommonParam {
-                /**用于交换的资产来源链网络标识符， 大写字母或数字组成， 9-16 个字符 */
+                /**用于交换的资产来源链网络标识符， 大写字母或数字组成， 5 个字符 */
                 toExchangeSource: string;
-                /**被交换的资产来源链网络标识符， 大写字母或数字组成， 9-16 个字符 */
+                /**被交换的资产来源链网络标识符， 大写字母或数字组成， 5 个字符 */
                 beExchangeSource: string;
                 /**用于交换的资产来源链名， 小写字母组成， 3-8 位 */
                 toExchangeChainName: string;
@@ -322,6 +282,8 @@ declare namespace BFChainPcSdk {
                 transactionSignature: string;
                 /**加密密钥， 如果资产交换事件填写了加密密钥， 则必须携带某个资产交换事件指定密钥以生成密钥签名对 */
                 ciphertext?: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送资产赠与事件（红包事件） */
@@ -354,6 +316,8 @@ declare namespace BFChainPcSdk {
                 transactionSignature: string;
                 /**加密密钥， 如果资产交换事件填写了加密密钥， 则必须携带某个资产交换事件指定密钥以生成密钥签名对 */
                 ciphertext?: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送委托数字资产事件 */
@@ -370,12 +334,16 @@ declare namespace BFChainPcSdk {
                 assetType?: string;
                 /**委托的资产数量， 0-9 组成并且不包含小数点， 必须大于 0 */
                 amount: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送签收委托数字资产事件 */
             interface TrSignForAsset extends TrCommonParam {
                 /**委托事件的签名， 128 个字节的 16 进制字符串 */
                 transactionSignature: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送资产迁出交易 */
@@ -400,12 +368,16 @@ declare namespace BFChainPcSdk {
                 name: string;
                 /**操作类型， 只能是 0 或 1， 0 表示注册位名系统， 1 表示注销位名系统 */
                 operationType: number;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送设置位名系统管理员事件 */
             interface TrSetLnsManager extends TrCommonParam {
                 /**位名系统， 2-1024 个字符， 每级域名最大长度为 128 个字符， 一级域名只能是小写字母组成， 二级及以上开头及结尾只能由小写字母或数字组成， 中间可以包含下划线， 根域名必须时本链链名 */
                 name: string;
+                /**事件的接收账户地址， base58 编码的 16 进制字符串 */
+                recipientId: string;
             }
 
             /**发送设置位名系统解析值事件 */
@@ -418,6 +390,12 @@ declare namespace BFChainPcSdk {
                 addRecord?: string[];
                 /**删除的解析值， 解析值的类型只能为 A 或 AAAA 或 LNG_LAT 或 BLOCK_CHAIN_ACCOUNT_ADDRESS， A 表示 ipV4， AAAA 表示 ipV6， LNG_LAT 表示经纬度， BLOCK_CHAIN_ACCOUNT_ADDRESS 表示链上账户地址，[解析值类型，解析值]， 可选， 操作类型为 1 或 2 时必填 */
                 deleteRecord?: string[];
+            }
+
+            /**发送注册链事件 */
+            interface TrRegisterChain extends TrCommonParam {
+                /**创世块路径 */
+                genesisBlockPath: string;
             }
         }
 

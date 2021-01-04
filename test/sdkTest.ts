@@ -46,8 +46,8 @@ export const SYSTEMVERIFYTYPE = {
 
 export class SDKTest {
     private __sdk: BFChainPC_SDK;
-    public verifyKey = this.cryptoSystemkey(SYSTEMVERIFYTYPE.SYSTEM_OWNER, systemSecret);
 
+    public verifyKey = this.cryptoSystemkey(SYSTEMVERIFYTYPE.SYSTEM_OWNER, systemSecret);
     constructor() {
         this.__sdk = new BFChainPC_SDK();
     }
@@ -107,7 +107,7 @@ export class SDKTest {
         pushPromise("trLocationName", this.trLocationName());
         pushPromise("trSetLnsManager", this.trSetLnsManager());
         pushPromise("trSetLnsRecordValue", this.trSetLnsRecordValue());
-        // systemApi
+        // // systemApi
         pushPromise("safetyClose", this.safetyClose());
         pushPromise("setSystemKey", this.setSystemKey());
         pushPromise("verifySystemKey", this.verifySystemKey());
@@ -323,7 +323,6 @@ export class SDKTest {
             transactionSignature,
             markPossessor: address2,
             content: "mycontent",
-            type: "case",
         });
     }
 
@@ -343,6 +342,7 @@ export class SDKTest {
             fee: "500",
             assetType: myAssetType,
             amount: "100000",
+            recipientId: address2,
         });
     }
 
@@ -423,6 +423,7 @@ export class SDKTest {
             transactionSignature:
                 "1d4f2944e554405a94c21cf030f0b0f11a9e889abdbb7011086e0e82a56cf138bb542a2e8e9e281ea679b808b8f44873fbf0cf4c49695ce6cc1356d6d257b006",
             amount: "18464",
+            recipientId: address1,
         });
     }
 

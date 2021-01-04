@@ -39,12 +39,15 @@ export class BFChainPC_SDK {
      * @param apiName
      * @param request
      */
-    async processApi(apiName: string, request?: BFChainPcSdk.PcApiRequest): Promise<any> {
+    async processApi<RequestType extends BFChainPcSdk.PcApiRequest, RespType extends BFChainPcSdk.SDKReturn>(
+        apiName: string,
+        request?: RequestType
+    ): Promise<RespType> {
         const api = this.__apiMap.get(apiName);
         if (!api) {
             throw new Error(`api: ${apiName} is not exist`);
         }
-        return await api.sendRequest(request);
+        return (await api.sendRequest(request)) as any;
     }
 
     //#region 基础接口
@@ -272,7 +275,7 @@ export class BFChainPC_SDK {
 
     /**设置节点配置信息 */
     async setSystemConfig(request: BFChainPcSdk.ApiRequest.SYSTEM.SetSystemConfig): Promise<BFChainPcSdk.ApiResp.SYSTEM.SetSystemConfig> {
-        return await this.processApi(API.SYSTEM.SET_SYSTEM_KEY.name, request);
+        return await this.processApi(API.SYSTEM.SET_SYSTEM_CONFIG.name, request);
     }
 
     /**获得节点配置信息 */

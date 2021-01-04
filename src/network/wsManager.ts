@@ -91,7 +91,7 @@ export class WsManager {
             socket.emit(path, data, (result: BFChainPcSdk.PcApiReturn) => {
                 if (!result.success) {
                     clearTimeout(timeout);
-                    return resolve({ success: false, message: result.error?.message, code: result.error?.code, minFee: result.minFee });
+                    return resolve({ success: false, result: undefined, message: result.error?.message, code: result.error?.code, minFee: result.minFee });
                 }
                 delete result.success;
                 clearTimeout(timeout);
