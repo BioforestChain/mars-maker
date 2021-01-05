@@ -323,6 +323,7 @@ export class SDKTest {
             transactionSignature,
             markPossessor: address2,
             content: "mycontent",
+            action: "case",
         });
     }
 
@@ -423,7 +424,6 @@ export class SDKTest {
             transactionSignature:
                 "1d4f2944e554405a94c21cf030f0b0f11a9e889abdbb7011086e0e82a56cf138bb542a2e8e9e281ea679b808b8f44873fbf0cf4c49695ce6cc1356d6d257b006",
             amount: "18464",
-            recipientId: address1,
         });
     }
 
@@ -451,7 +451,6 @@ export class SDKTest {
             fee: "150",
             transactionSignature:
                 "7a95c203cfeabbc3b2bcc34e8b2d4dadf0403ca3c1c414ccc76bd6f78902c95bd7c2ae623272d11cecc33921c7d8d965cdffb1ad7a53a369d6c4fedb50a17804",
-            recipientId: address2,
         });
     }
 
