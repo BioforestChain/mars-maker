@@ -333,10 +333,9 @@ export class SDKTest {
         return this.__sdk.trMark({
             secret: secret1,
             fee: "500",
-            transactionSignature,
             markPossessor: address2,
             content: "mycontent",
-            action: "case",
+            type: "case",
         });
     }
 

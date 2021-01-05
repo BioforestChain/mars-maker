@@ -178,14 +178,16 @@ declare namespace BFChainPcSdk {
 
             /**发送存证事件 */
             interface TrMark extends TrCommonParam {
-                /**购买的 dappid 的发行事件签名， 128 个字节的 16 进制字符串 */
-                transactionSignature: string;
+                /**购买的 dappid 的发行事件 subId， 64 个字节的 16 进制字符串 */
+                transactionSubId?: string;
                 /**存证的拥有者地址， base58 编码的 16 进制字符串 */
                 markPossessor: string;
                 /**存证内容，为任意字符串 */
                 content: string;
                 /**存证类型，为任意字符串，用于区别存证 */
-                action: string;
+                type?: string;
+                /**验证码，预留 */
+                verifyCode?: string;
             }
 
             /**发送资产发行事件 */
