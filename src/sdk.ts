@@ -39,15 +39,13 @@ export class BFChainPC_SDK {
      * @param apiName
      * @param request
      */
-    async processApi<RequestType extends BFChainPcSdk.PcApiRequest, RespType extends BFChainPcSdk.SDKReturn>(
-        apiName: string,
-        request?: RequestType
-    ): Promise<RespType> {
+    async processApi<RespType extends BFChainPcSdk.SDKReturn>(apiName: string, request?: BFChainPcSdk.PcApiRequest): Promise<RespType> {
         const api = this.__apiMap.get(apiName);
         if (!api) {
             throw new Error(`api: ${apiName} is not exist`);
         }
-        return (await api.sendRequest(request)) as any;
+        const result: any = await api.sendRequest(request);
+        return result;
     }
 
     //#region 基础接口
