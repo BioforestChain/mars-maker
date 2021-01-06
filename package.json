@@ -1,6 +1,6 @@
 {
     "name": "@bfchain/pc-sdk",
-    "version": "0.2.7",
+    "version": "1.0.0",
     "description": "pc-sdk for the third party",
     "main": "build/cjs/index.js",
     "types": "build/cjs/index.d.ts",
