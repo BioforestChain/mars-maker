@@ -50,6 +50,11 @@ export class BFChainPC_SDK {
 
     //#region 基础接口
 
+    /**获得Bfchain版本号 */
+    async getBfchainVersion(): Promise<BFChainPcSdk.ApiResp.BASIC.GetBfchainVersion> {
+        return await this.processApi(API.BASIC.GET_BFCHAIN_VERSION.name);
+    }
+
     /**获取本地节点当前最新区块 */
     async getLastBlock(): Promise<BFChainPcSdk.ApiResp.BASIC.GetLastBlock> {
         return await this.processApi(API.BASIC.GET_LAST_BLOCK.name);
@@ -187,16 +192,6 @@ export class BFChainPC_SDK {
         return await this.processApi(API.TRANSACTION.TR_SIGN_FOR_ASSET.name, request);
     }
 
-    /**发送资产迁出交易 */
-    async trEmigrateAsset(request: BFChainPcSdk.ApiRequest.TRANSACTION.TrEmigrateAsset): Promise<BFChainPcSdk.ApiResp.TRANSACTION.TrEmigrateAsset> {
-        return await this.processApi(API.TRANSACTION.TR_EMIGRATE_ASSET.name, request);
-    }
-
-    /**发送资产迁入交易 */
-    async trImmigrateAsset(request: BFChainPcSdk.ApiRequest.TRANSACTION.TrImmigrateAsset): Promise<BFChainPcSdk.ApiResp.TRANSACTION.TrImmigrateAsset> {
-        return await this.processApi(API.TRANSACTION.TR_IMMIGRATE_ASSET.name, request);
-    }
-
     /**发送注册、注销位名系统事件 */
     async trLocationName(request: BFChainPcSdk.ApiRequest.TRANSACTION.TrLocationName): Promise<BFChainPcSdk.ApiResp.TRANSACTION.TrLocationName> {
         return await this.processApi(API.TRANSACTION.TR_LOCATION_NAME.name, request);
@@ -282,6 +277,7 @@ export class BFChainPC_SDK {
     ): Promise<BFChainPcSdk.ApiResp.SYSTEM.GetSystemConfigInfoDetail> {
         return await this.processApi(API.SYSTEM.GET_SYSTEM_CONFIG_INFO_DETAIL.name, request);
     }
+
     /**获得节点状态（实时信息） */
     async getRuntimeState(request: BFChainPcSdk.ApiRequest.SYSTEM.GetRuntimeState): Promise<BFChainPcSdk.ApiResp.SYSTEM.GetRuntimeState> {
         return await this.processApi(API.SYSTEM.GET_RUNTIME_STATE.name, request);

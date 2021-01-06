@@ -75,6 +75,7 @@ export class SDKTest {
         // await this.trTransferAsset({ secret: secret2, fee: "250", amount: "200000000", recipientId: address1, assetType: myAssetType });
 
         // basicApi
+        pushPromise("getBfchainVersion", this.getBfchainVersion());
         pushPromise("getLastBlock", this.getLastBlock());
         pushPromise("getBlock", this.getBlock());
         pushPromise("getTransactions", this.getTransactions());
@@ -102,8 +103,6 @@ export class SDKTest {
         pushPromise("trGrabAsset", this.trGrabAsset());
         pushPromise("trTrustAsset", this.trTrustAsset());
         pushPromise("trSignForAsset", this.trSignForAsset());
-        pushPromise("trEmigrateAsset", this.trEmigrateAsset()); //待测试
-        pushPromise("trImmigrateAsset", this.trImmigrateAsset()); //待测试
         pushPromise("trLocationName", this.trLocationName());
         pushPromise("trSetLnsManager", this.trSetLnsManager());
         pushPromise("trSetLnsRecordValue", this.trSetLnsRecordValue());
@@ -202,6 +201,10 @@ export class SDKTest {
             default:
                 return "";
         }
+    }
+
+    async getBfchainVersion() {
+        return this.__sdk.getBfchainVersion();
     }
 
     async getLastBlock() {
@@ -451,31 +454,6 @@ export class SDKTest {
             fee: "150",
             transactionSignature:
                 "7a95c203cfeabbc3b2bcc34e8b2d4dadf0403ca3c1c414ccc76bd6f78902c95bd7c2ae623272d11cecc33921c7d8d965cdffb1ad7a53a369d6c4fedb50a17804",
-        });
-    }
-
-    async trEmigrateAsset() {
-        return this.__sdk.trEmigrateAsset({
-            secret: secret1,
-            fee: "150",
-            genesisDelegateSignature: [
-                "6e8330144a8c123c017a8f5c363531868d3ce21c45b4a668cc1767c2b4695c84",
-                "1d6877a30270099687b784d048224970b47d96ea2848a91a2c4d5f216f407e1628704f638146a9e0b224996021b0b144f0df26aeb169f68363e83c110c9a620b",
-            ],
-            amount: "499999999999850‬",
-        });
-    }
-
-    async trImmigrateAsset() {
-        return this.__sdk.trImmigrateAsset({
-            secret: secret1,
-            fee: "150",
-            transactionSignature:
-                "7a95c203cfeabbc3b2bcc34e8b2d4dadf0403ca3c1c414ccc76bd6f78902c95bd7c2ae623272d11cecc33921c7d8d965cdffb1ad7a53a369d6c4fedb50a17804",
-            genesisDelegateSignature: [
-                "6e8330144a8c123c017a8f5c363531868d3ce21c45b4a668cc1767c2b4695c84",
-                "5b1352f95f7f7aa0a4719b8e1e6afc40d9c77ca3de0aaa39c324943ef0032946f80df17c2770692764b248ae68d91b761c43dfe78a7d1b287c12208d631deb05",
-            ],
         });
     }
 

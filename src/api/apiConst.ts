@@ -7,6 +7,12 @@ export enum RequestMethod {
 
 export namespace API {
     export namespace BASIC {
+        /**获得Bfchain版本号 */
+        export const GET_BFCHAIN_VERSION: BFChainPcSdk.ApiInfo = {
+            name: "getBfchainVersion",
+            method: RequestMethod.GET,
+        };
+
         /**获取本地节点当前最新区块 */
         export const GET_LAST_BLOCK: BFChainPcSdk.ApiInfo = {
             name: "getLastBlock",
@@ -162,18 +168,6 @@ export namespace API {
         /**发送签收委托数字资产事件 */
         export const TR_SIGN_FOR_ASSET: BFChainPcSdk.ApiInfo = {
             name: "trSignForAsset",
-            method: RequestMethod.POST,
-        };
-
-        /**发送资产迁出交易 */
-        export const TR_EMIGRATE_ASSET: BFChainPcSdk.ApiInfo = {
-            name: "trEmigrateAsset",
-            method: RequestMethod.POST,
-        };
-
-        /**发送资产迁入交易 */
-        export const TR_IMMIGRATE_ASSET: BFChainPcSdk.ApiInfo = {
-            name: "trImmigrateAsset",
             method: RequestMethod.POST,
         };
 

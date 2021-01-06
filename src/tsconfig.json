@@ -16,7 +16,6 @@
         "constants/api.constants.ts",
         "constants/index.ts",
         "helpers/utils/baseUtils.ts",
-        "helpers/utils/cryptoUtil.ts",
         "helpers/utils/index.ts",
         "index.ts",
         "network/networkHelper.ts",

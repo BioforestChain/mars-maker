@@ -13,6 +13,13 @@ export namespace BASIC_API {
         }
     }
 
+    /**获得Bfchain版本号 */
+    export class GetBfchainVersion extends BasicApi {
+        constructor() {
+            super(API.BASIC.GET_BFCHAIN_VERSION);
+        }
+    }
+
     /**获取本地节点当前最新区块 */
     export class GetLastBlock extends BasicApi {
         constructor() {

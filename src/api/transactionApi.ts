@@ -153,20 +153,6 @@ export namespace TRS_API {
         }
     }
 
-    /**发送资产迁出交易 */
-    export class TrEmigrateAsset extends TrsApi {
-        constructor() {
-            super(API.TRANSACTION.TR_EMIGRATE_ASSET);
-        }
-    }
-
-    /**发送资产迁入交易 */
-    export class TrImmigrateAsset extends TrsApi {
-        constructor() {
-            super(API.TRANSACTION.TR_IMMIGRATE_ASSET);
-        }
-    }
-
     /**发送注册、注销位名系统事件 */
     export class TrLocationName extends TrsApi {
         constructor() {

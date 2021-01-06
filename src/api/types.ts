@@ -634,6 +634,11 @@ declare namespace BFChainPcSdk {
         }
 
         namespace BASIC {
+            /**获得Bfchain版本号 */
+            interface GetBfchainVersion extends RespCommonParam {
+                result: { version: string };
+            }
+
             /**获取本地节点当前最新区块 */
             interface GetLastBlock extends RespCommonParam {
                 result: BFChainCore.LastBlockInfo<any>;
