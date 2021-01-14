@@ -1,15 +1,16 @@
 import * as io from "socket.io-client";
+import { BFChainPC_SDK } from "../sdk";
+import { WsEventType } from "../typings/enumTypes";
 
 /**Websocket管理器 */
 
 export class WsManager {
     private __socket?: SocketIOClient.Socket;
     /**网络配置 */
-    constructor(private __ip: string, private __port: number, private __timeout: number) {}
+    constructor(private __sdk: BFChainPC_SDK, private __ip: string, private __port: number, private __timeout: number) {}
 
     /**
      * 初始化 socket 连接
-     *
      * @param url 完整地址
      * @return 连接成功的socket
      */
@@ -54,12 +55,18 @@ export class WsManager {
                 this.__disconnect();
                 return reject(new Error(`url ${url} disconnected `));
             });
+
+            socket.on(WsEventType.onNewBlock, (newHeight: number) => {
+                this.__sdk.emit(WsEventType.onNewBlock, newHeight);
+            });
+            socket.on(WsEventType.onDeleteBlock, (deleteHeight: number) => {
+                this.__sdk.emit(WsEventType.onDeleteBlock, deleteHeight);
+            });
         });
     }
 
     /**
      * 获取 socket 连接
-     *
      * @param hostname 目标hostname
      * @return 连接成功的socket
      */
@@ -73,7 +80,6 @@ export class WsManager {
 
     /**
      * 发出事件
-     *
      * @param socket
      * @param path 事件path
      * @param data 事件参数
@@ -91,7 +97,13 @@ export class WsManager {
             socket.emit(path, data, (result: BFChainPcSdk.PcApiReturn) => {
                 if (!result.success) {
                     clearTimeout(timeout);
-                    return resolve({ success: false, result: undefined, message: result.error?.message, code: result.error?.code, minFee: result.minFee });
+                    return resolve({
+                        success: false,
+                        result: undefined,
+                        message: result.error?.message,
+                        code: result.error?.code,
+                        minFee: result.minFee,
+                    });
                 }
                 delete result.success;
                 clearTimeout(timeout);
@@ -115,7 +127,6 @@ export class WsManager {
 
     /**
      * socket被动断开
-     *
      */
     private __disconnect() {
         if (this.__socket) {

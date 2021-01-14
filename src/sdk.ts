@@ -4,19 +4,22 @@ import { ApiBase } from "./api/apiBase";
 import { BASIC_API } from "./api";
 import { TRS_API } from "./api/transactionApi";
 import { SYSTEM_API } from "./api/systemApi";
+import { EventEmitter } from "events";
 
 /**BFChainPC_SDK */
-export class BFChainPC_SDK {
+export class BFChainPC_SDK extends EventEmitter {
     private __apiMap = new Map<string, ApiBase>();
 
-    constructor() {}
+    constructor() {
+        super();
+    }
 
     /**
      * 初始化sdk，配置节点的网络信息
      * @param options
      */
     init(options: BFChainPcSdk.SdkNetOptions) {
-        networkHelper.init(options);
+        networkHelper.init(this, options);
         for (const key in BASIC_API) {
             const api: ApiBase = new BASIC_API[key]();
             const apiName = api.getName();

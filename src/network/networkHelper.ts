@@ -3,6 +3,7 @@ import { ApiBase } from "../api/apiBase";
 import { ApiType, ProtocolType } from "../constants";
 import * as requestApi from "request";
 import { RequestMethod } from "../api/apiConst";
+import { BFChainPC_SDK } from "../sdk";
 
 /**网络层 */
 class NetworkHelper {
@@ -14,15 +15,16 @@ class NetworkHelper {
 
     /**
      * 初始化sdk，配置节点的网络信息
+     * @param sdk
      * @param options
      */
-    init(options: BFChainPcSdk.SdkNetOptions) {
+    init(sdk: BFChainPC_SDK, options: BFChainPcSdk.SdkNetOptions) {
         //默认用WS方式调用
         this.__apiType = options.apiType ?? ApiType.WS;
         this.__httpHost = `${options.protocol ?? ProtocolType.HTTP}${options.ip}:${options.port}`;
         switch (this.__apiType) {
             case ApiType.WS:
-                this.__wsManager = new WsManager(options.ip, options.port, options.timeout ?? 10000);
+                this.__wsManager = new WsManager(sdk, options.ip, options.port, options.timeout ?? 10000);
                 break;
             default:
                 break;
