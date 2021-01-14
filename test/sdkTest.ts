@@ -53,7 +53,7 @@ export class SDKTest {
     }
 
     async execute() {
-        this.__sdk.init({ ip: "192.168.110.51", port: 19003, timeout: 10000 });
+        await this.__sdk.init({ ip: "192.168.110.51", port: 19003, timeout: 10000 });
         let promises: Promise<any>[] = [];
         let funcNames: string[] = [];
 
