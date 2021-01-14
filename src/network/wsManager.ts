@@ -70,7 +70,7 @@ export class WsManager {
      * @param hostname 目标hostname
      * @return 连接成功的socket
      */
-    private async __getSocket(): Promise<SocketIOClient.Socket> {
+    async getSocket(): Promise<SocketIOClient.Socket> {
         const url = `http://${this.__ip}:${this.__port}`;
         if (!this.__socket) {
             this.__socket = await this._init(url);
@@ -87,7 +87,7 @@ export class WsManager {
      * @return ReturnParamsType
      */
     async socketEmit(path: string, data?: BFChainPcSdk.PcApiRequest): Promise<BFChainPcSdk.SDKReturn> {
-        const socket = await this.__getSocket();
+        const socket = await this.getSocket();
         return new Promise((resolve, reject) => {
             const url = `http://${this.__ip}:${this.__port}`;
             const timeout = setTimeout(() => {

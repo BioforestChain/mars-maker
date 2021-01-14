@@ -18,8 +18,8 @@ export class BFChainPC_SDK extends EventEmitter {
      * 初始化sdk，配置节点的网络信息
      * @param options
      */
-    init(options: BFChainPcSdk.SdkNetOptions) {
-        networkHelper.init(this, options);
+    async init(options: BFChainPcSdk.SdkNetOptions) {
+        await networkHelper.init(this, options);
         for (const key in BASIC_API) {
             const api: ApiBase = new BASIC_API[key]();
             const apiName = api.getName();

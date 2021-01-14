@@ -18,13 +18,15 @@ class NetworkHelper {
      * @param sdk
      * @param options
      */
-    init(sdk: BFChainPC_SDK, options: BFChainPcSdk.SdkNetOptions) {
+    async init(sdk: BFChainPC_SDK, options: BFChainPcSdk.SdkNetOptions) {
         //默认用WS方式调用
         this.__apiType = options.apiType ?? ApiType.WS;
         this.__httpHost = `${options.protocol ?? ProtocolType.HTTP}${options.ip}:${options.port}`;
         switch (this.__apiType) {
             case ApiType.WS:
                 this.__wsManager = new WsManager(sdk, options.ip, options.port, options.timeout ?? 10000);
+                //初始化时就连接ws，以便接收事件推送
+                await this.__wsManager.getSocket();
                 break;
             default:
                 break;
