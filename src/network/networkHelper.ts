@@ -29,7 +29,7 @@ class NetworkHelper {
                 try {
                     await this.__wsManager.getSocket();
                 } catch (e) {
-                    throw new Error(`init ws fail. error: ${e.message}`);
+                    console.error(`init ws fail. error: ${e.message}`);
                 }
                 break;
             default:
