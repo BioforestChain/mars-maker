@@ -7,7 +7,7 @@ import { WsEventType } from "../typings/enumTypes";
 export class WsManager {
     private __socket?: SocketIOClient.Socket;
     /**网络配置 */
-    constructor(private __sdk: BFChainPC_SDK, private __ip: string, private __port: number, private __timeout: number) {}
+    constructor(private __sdk: BFChainPC_SDK, private __ip: string, private __port: number, private __timeout?: number) {}
 
     /**
      * 初始化 socket 连接
@@ -18,10 +18,7 @@ export class WsManager {
         return new Promise<SocketIOClient.Socket>((resolve, reject) => {
             const uri = `${url}/systemChannel`;
             const socket = io.connect(uri, {
-                transports: ["websocket"],
-                reconnection: true,
                 timeout: this.__timeout,
-                forceNew: true,
             });
             this.__socket = socket;
             socket.on("connect", () => {
@@ -29,30 +26,24 @@ export class WsManager {
                 return resolve(socket);
             });
             socket.on("connect_error", (data: any) => {
-                this.__disconnect();
                 return reject(new Error(`${url} connect_error`));
             });
             socket.on("connect_timeout", (data: any) => {
-                this.__disconnect();
                 return reject(new Error(`${url} connect_timeout`));
             });
             socket.on("reconnect_attempt", (data: any) => {
                 return reject(new Error(`${url} reconnect_attempt`));
             });
             socket.on("reconnect_error", (data: any) => {
-                this.__disconnect();
                 return reject(new Error(`${url} reconnect_error`));
             });
             socket.on("error", (data: any) => {
-                this.__disconnect();
                 return reject(new Error(`${url} error with`));
             });
             socket.on("close", (data: any) => {
-                this.__disconnect();
                 return reject(new Error(`${url} close with`));
             });
             socket.on("disconnect", () => {
-                this.__disconnect();
                 return reject(new Error(`url ${url} disconnected `));
             });
 
@@ -91,7 +82,6 @@ export class WsManager {
         return new Promise((resolve, reject) => {
             const url = `http://${this.__ip}:${this.__port}`;
             const timeout = setTimeout(() => {
-                this.__disconnect();
                 reject(new Error(`${url} timeout`));
             }, this.__timeout);
             socket.emit(path, data, (result: BFChainPcSdk.PcApiReturn) => {
@@ -118,20 +108,9 @@ export class WsManager {
                 return reject(new Error(`${url} close`));
             });
             socket.on("disconnect", () => {
-                this.__disconnect();
                 clearTimeout(timeout);
                 return reject(new Error(`url ${url} disconnected `));
             });
         });
-    }
-
-    /**
-     * socket被动断开
-     */
-    private __disconnect() {
-        if (this.__socket) {
-            this.__socket.disconnect();
-            this.__socket = undefined;
-        }
     }
 }

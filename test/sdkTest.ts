@@ -1,4 +1,4 @@
-import { BFChainPC_SDK } from "../src";
+import { BFChainPC_SDK, WsEventType } from "../src";
 import * as crypto from "crypto";
 
 const secrets = [
@@ -50,6 +50,16 @@ export class SDKTest {
     public verifyKey = this.cryptoSystemkey(SYSTEMVERIFYTYPE.SYSTEM_OWNER, systemSecret);
     constructor() {
         this.__sdk = new BFChainPC_SDK();
+    }
+
+    async test() {
+        await this.__sdk.init({ ip: "192.168.110.51", port: 19003, timeout: 10000 });
+        this.__sdk.on(WsEventType.onNewBlock, (newHeight: number) => {
+            console.debug(`onNewBlock newHeight:${newHeight}`);
+        });
+        this.__sdk.on(WsEventType.onDeleteBlock, (deleteHeight: number) => {
+            console.debug(`onDeleteBlock deleteHeight:${deleteHeight}`);
+        });
     }
 
     async execute() {
@@ -700,8 +710,9 @@ export class SDKTest {
 
 (async () => {
     const test = new SDKTest();
-    await test.execute();
-    process.exit(0);
+    // await test.execute();
+    await test.test();
+    // process.exit(0);
 })().catch(err => {
     console.error(err);
     process.exit(0);
