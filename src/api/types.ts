@@ -46,6 +46,10 @@ declare namespace BFChainPcSdk {
                 signature?: string;
                 /**事件所属区块高度 */
                 height?: number;
+                /**查询的区块的最小高度 */
+                minHeight?: number;
+                /**查询的区块的最大高度 */
+                maxHeight?: number;
                 /**事件发起方 */
                 senderId?: string;
                 /**事件接收方 */
