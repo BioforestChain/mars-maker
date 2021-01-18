@@ -54,11 +54,11 @@ export class SDKTest {
 
     async test() {
         await this.__sdk.init({ ip: "192.168.110.51", port: 19003, timeout: 10000 });
-        this.__sdk.on(WsEventType.onNewBlock, (newHeight: number) => {
-            console.debug(`onNewBlock newHeight:${newHeight}`);
+        this.__sdk.on(WsEventType.onNewBlock, (data: any) => {
+            console.debug(`onNewBlock newHeight:${data[0]}`);
         });
-        this.__sdk.on(WsEventType.onDeleteBlock, (deleteHeight: number) => {
-            console.debug(`onDeleteBlock deleteHeight:${deleteHeight}`);
+        this.__sdk.on(WsEventType.onDeleteBlock, (data: any) => {
+            console.debug(`onDeleteBlock deleteHeight:${data[0]}`);
         });
     }
 

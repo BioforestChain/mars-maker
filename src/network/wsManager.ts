@@ -47,11 +47,11 @@ export class WsManager {
                 return reject(new Error(`url ${url} disconnected `));
             });
 
-            socket.on(WsEventType.onNewBlock, (newHeight: number) => {
-                this.__sdk.emit(WsEventType.onNewBlock, newHeight);
+            socket.on(WsEventType.onNewBlock, (data: any) => {
+                this.__sdk.emit(WsEventType.onNewBlock, data);
             });
-            socket.on(WsEventType.onDeleteBlock, (deleteHeight: number) => {
-                this.__sdk.emit(WsEventType.onDeleteBlock, deleteHeight);
+            socket.on(WsEventType.onDeleteBlock, (data: any) => {
+                this.__sdk.emit(WsEventType.onDeleteBlock, data);
             });
         });
     }
