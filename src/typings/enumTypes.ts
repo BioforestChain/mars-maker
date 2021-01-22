@@ -8,6 +8,8 @@ export enum CHAIN_TR_TYPE {
 
 /**ws事件推送类型 */
 export enum WsEventType {
+    /**ws连接成功 */
+    onConnect = "onConnect",
     /**收到新区块 */
     onNewBlock = "onNewBlock",
     /**删除区块 */

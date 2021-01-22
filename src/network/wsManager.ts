@@ -23,6 +23,7 @@ export class WsManager {
             this.__socket = socket;
             socket.on("connect", () => {
                 console.info(`connected to ${url} `);
+                this.__sdk.emit(WsEventType.onConnect);
                 return resolve(socket);
             });
             socket.on("connect_error", (data: any) => {
