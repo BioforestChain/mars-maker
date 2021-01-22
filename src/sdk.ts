@@ -19,7 +19,6 @@ export class BFChainPC_SDK extends EventEmitter {
      * @param options
      */
     async init(options: BFChainPcSdk.SdkNetOptions) {
-        await networkHelper.init(this, options);
         for (const key in BASIC_API) {
             const api: ApiBase = new BASIC_API[key]();
             const apiName = api.getName();
@@ -35,6 +34,7 @@ export class BFChainPC_SDK extends EventEmitter {
             const apiName = api.getName();
             this.__apiMap.set(apiName, api);
         }
+        await networkHelper.init(this, options);
     }
 
     /**
