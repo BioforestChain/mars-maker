@@ -7,7 +7,7 @@ import { WsEventType } from "../typings/enumTypes";
 export class WsManager {
     private __socket?: SocketIOClient.Socket;
     /**网络配置 */
-    constructor(private __sdk: BFChainPC_SDK, private __ip: string, private __port: number, private __timeout?: number) {}
+    constructor(private __sdk: BFChainPC_SDK, private __ip: string, private __port: number, private __timeout: number = 10000) {}
 
     /**
      * 初始化 socket 连接

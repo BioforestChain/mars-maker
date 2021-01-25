@@ -24,7 +24,7 @@ class NetworkHelper {
         this.__httpHost = `${options.protocol ?? ProtocolType.HTTP}${options.ip}:${options.port}`;
         switch (this.__apiType) {
             case ApiType.WS:
-                this.__wsManager = new WsManager(sdk, options.ip, options.port, options.timeout ?? 10000);
+                this.__wsManager = new WsManager(sdk, options.ip, options.port, options.timeout);
                 //初始化时就连接ws，以便接收事件推送
                 try {
                     await this.__wsManager.getSocket();
