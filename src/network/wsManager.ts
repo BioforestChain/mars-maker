@@ -88,17 +88,28 @@ export class WsManager {
             socket.emit(path, data, (result: BFChainPcSdk.PcApiReturn) => {
                 if (!result.success) {
                     clearTimeout(timeout);
-                    return resolve({
-                        success: false,
-                        result: undefined,
-                        message: result.error?.message,
-                        code: result.error?.code,
-                        minFee: result.minFee,
-                    });
+                    const resp: BFChainPcSdk.SDKReturn = { success: false };
+                    if (result.error?.message) {
+                        resp.message = result.error?.message;
+                    }
+                    if (result.error?.code) {
+                        resp.code = result.error?.code;
+                    }
+                    if (result.minFee) {
+                        resp.minFee = result.minFee;
+                    }
+                    return resolve(resp);
                 }
-                delete result.success;
                 clearTimeout(timeout);
-                return resolve({ success: true, result: Object.keys(result).length > 0 ? result : undefined });
+                const resp: BFChainPcSdk.SDKReturn = { success: true };
+                if (Object.keys(result).length > 0) {
+                    delete result.success;
+                    resp.result = result;
+                }
+                if (result.minFee) {
+                    resp.minFee = result.minFee;
+                }
+                return resolve(resp);
             });
             socket.on("error", (data: any) => {
                 clearTimeout(timeout);
