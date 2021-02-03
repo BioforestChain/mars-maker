@@ -100,10 +100,10 @@ export class WsManager {
                     }
                     return resolve(resp);
                 }
+                delete result.success;
                 clearTimeout(timeout);
                 const resp: BFChainPcSdk.SDKReturn = { success: true };
                 if (Object.keys(result).length > 0) {
-                    delete result.success;
                     resp.result = result;
                 }
                 if (result.minFee) {
