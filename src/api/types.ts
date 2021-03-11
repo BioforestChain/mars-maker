@@ -60,8 +60,8 @@ declare namespace BFChainPcSdk {
                 page?: number;
             }
 
-            /**获取指定账户 */
-            interface GetAccountInfoAndAssets {
+            /**获取账户公钥 */
+            interface GetAccountPublicKey {
                 /**账户地址 */
                 address: string;
             }
@@ -668,9 +668,12 @@ declare namespace BFChainPcSdk {
                 };
             }
 
-            /**获取指定账户 */
-            interface GetAccountInfoAndAssets extends RespCommonParam {
-                result: MemInfoModel.AccountInfoAndAsset;
+            /**获取账户公钥 */
+            interface GetAccountPublicKey extends RespCommonParam {
+                result: {
+                    /**账户公钥 */
+                    publicKey?: string;
+                };
             }
 
             /**创建账户 */

@@ -31,9 +31,9 @@ export namespace API {
             method: RequestMethod.POST,
         };
 
-        /**获取指定账户 */
-        export const GET_ACCOUNT_INFO_AND_ASSETS: BFChainPcSdk.ApiInfo = {
-            name: "getAccountInfoAndAssets",
+        /**获取账户公钥 */
+        export const GET_ACCOUNT_PUBLIC_KEY: BFChainPcSdk.ApiInfo = {
+            name: "getAccountPublicKey",
             method: RequestMethod.POST,
         };
 

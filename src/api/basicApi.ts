@@ -41,10 +41,10 @@ export namespace BASIC_API {
         }
     }
 
-    /**获取指定账户 */
-    export class GetAccountInfoAndAssets extends BasicApi {
+    /**获取账户公钥 */
+    export class GetAccountPublicKey extends BasicApi {
         constructor() {
-            super(API.BASIC.GET_ACCOUNT_INFO_AND_ASSETS);
+            super(API.BASIC.GET_ACCOUNT_PUBLIC_KEY);
         }
     }
 

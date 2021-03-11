@@ -89,7 +89,7 @@ export class SDKTest {
         pushPromise("getLastBlock", this.getLastBlock());
         pushPromise("getBlock", this.getBlock());
         pushPromise("getTransactions", this.getTransactions());
-        pushPromise("getAccountInfoAndAssets", this.getAccountInfoAndAssets());
+        pushPromise("getAccountPublicKey", this.getAccountPublicKey());
         pushPromise("createAccount", this.createAccount());
         pushPromise("getBlockChainStatus", this.getBlockChainStatus());
         // trsApi
@@ -233,8 +233,8 @@ export class SDKTest {
         });
     }
 
-    async getAccountInfoAndAssets() {
-        return this.__sdk.getAccountInfoAndAssets({
+    async getAccountPublicKey() {
+        return this.__sdk.getAccountPublicKey({
             address: address1,
         });
     }
