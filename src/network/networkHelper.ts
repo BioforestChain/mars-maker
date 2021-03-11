@@ -91,6 +91,10 @@ class NetworkHelper {
                         if (error) {
                             return reject(error);
                         }
+                        //get的返回结果是string，要特殊处理
+                        if (method === RequestMethod.GET) {
+                            result = JSON.parse(result as string);
+                        }
                         if (!result.success) {
                             return resolve({
                                 success: false,
