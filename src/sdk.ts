@@ -47,7 +47,7 @@ export class BFChainPC_SDK extends EventEmitter {
         if (!api) {
             throw new Error(`api: ${apiName} is not exist`);
         }
-        const result: any = await api.sendRequest(request);
+        const result: any = await api.execute(request);
         return result;
     }
 
@@ -56,6 +56,11 @@ export class BFChainPC_SDK extends EventEmitter {
     /**获得Bfchain版本号 */
     async getBfchainVersion(): Promise<BFChainPcSdk.ApiResp.BASIC.GetBfchainVersion> {
         return await this.processApi(API.BASIC.GET_BFCHAIN_VERSION.name);
+    }
+
+    /**获取交易类型 */
+    async getTransactionType(request: BFChainPcSdk.ApiRequest.BASIC.GetTransactionType): Promise<BFChainPcSdk.ApiResp.BASIC.GetTransactionType> {
+        return await this.processApi(API.BASIC.GET_TRANSACTION_TYPE.name, request);
     }
 
     /**获取本地节点当前最新区块 */

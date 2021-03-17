@@ -53,15 +53,17 @@ export class SDKTest {
     }
 
     async test() {
-        await this.__sdk.init({ ip: "192.168.110.144", port: 19003, timeout: 10000, apiType: ApiType.HTTP });
+        await this.__sdk.init({ ip: "192.168.110.51", port: 19003, timeout: 10000, apiType: ApiType.HTTP });
         this.__sdk.on(WsEventType.onNewBlock, (data: any) => {
             console.debug(`onNewBlock newHeight:${data[0]}`);
         });
         this.__sdk.on(WsEventType.onDeleteBlock, (data: any) => {
             console.debug(`onDeleteBlock deleteHeight:${data[0]}`);
         });
-        const result = await this.__sdk.getBlockChainStatus();
-        console.debug(JSON.stringify(result));
+        for (let i = 0; i < 10; i++) {
+            const result = await this.getTransactionType();
+            console.debug(JSON.stringify(result));
+        }
     }
 
     async execute() {
@@ -88,6 +90,7 @@ export class SDKTest {
 
         // basicApi
         pushPromise("getBfchainVersion", this.getBfchainVersion());
+        pushPromise("getTransactionType", this.getTransactionType());
         pushPromise("getLastBlock", this.getLastBlock());
         pushPromise("getBlock", this.getBlock());
         pushPromise("getTransactions", this.getTransactions());
@@ -217,6 +220,12 @@ export class SDKTest {
 
     async getBfchainVersion() {
         return this.__sdk.getBfchainVersion();
+    }
+
+    async getTransactionType() {
+        return this.__sdk.getTransactionType({
+            baseType: BFChainPcSdk.TRANSACTION_TYPES_BASE.ISSUE_ASSET,
+        });
     }
 
     async getLastBlock() {

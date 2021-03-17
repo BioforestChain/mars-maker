@@ -13,6 +13,12 @@ export namespace API {
             method: RequestMethod.GET,
         };
 
+        /**获取交易类型 */
+        export const GET_TRANSACTION_TYPE: BFChainPcSdk.ApiInfo = {
+            name: "getTransactionType",
+            method: RequestMethod.POST,
+        };
+
         /**获取本地节点当前最新区块 */
         export const GET_LAST_BLOCK: BFChainPcSdk.ApiInfo = {
             name: "getLastBlock",
