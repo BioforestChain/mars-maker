@@ -37,6 +37,12 @@ export namespace API {
             method: RequestMethod.POST,
         };
 
+        /**生成账户私钥 */
+        export const GENERATE_SECRET: BFChainPcSdk.ApiInfo = {
+            name: "generateSecret",
+            method: RequestMethod.POST,
+        };
+
         /**获取账户公钥 */
         export const GET_ACCOUNT_PUBLIC_KEY: BFChainPcSdk.ApiInfo = {
             name: "getAccountPublicKey",

@@ -124,6 +124,12 @@ declare namespace BFChainPcSdk {
                 page?: number;
             }
 
+            /**生成账户私钥 */
+            interface GenerateSecret {
+                /**语言 */
+                lang: string;
+            }
+
             /**获取账户公钥 */
             interface GetAccountPublicKey {
                 /**账户地址 */
@@ -748,6 +754,14 @@ declare namespace BFChainPcSdk {
                 result: {
                     /**账户公钥 */
                     publicKey?: string;
+                };
+            }
+
+            /**生成账户私钥 */
+            interface GenerateSecret extends RespCommonParam {
+                result: {
+                    /**账户私钥 */
+                    secret: string;
                 };
             }
 

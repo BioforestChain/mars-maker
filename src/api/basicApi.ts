@@ -62,6 +62,13 @@ export namespace BASIC_API {
         }
     }
 
+    /**生成账户私钥 */
+    export class GenerateSecret extends BasicApi {
+        constructor() {
+            super(API.BASIC.GENERATE_SECRET);
+        }
+    }
+
     /**获取账户公钥 */
     export class GetAccountPublicKey extends BasicApi {
         constructor() {
