@@ -76,6 +76,13 @@ export namespace BASIC_API {
         }
     }
 
+    /**获取账户资产 */
+    export class GetAccountAsset extends BasicApi {
+        constructor() {
+            super(API.BASIC.GET_ACCOUNT_ASSET);
+        }
+    }
+
     /**创建账户 */
     export class CreateAccount extends BasicApi {
         constructor() {

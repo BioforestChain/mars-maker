@@ -49,6 +49,12 @@ export namespace API {
             method: RequestMethod.POST,
         };
 
+        /**获取账户资产 */
+        export const GET_ACCOUNT_ASSET: BFChainPcSdk.ApiInfo = {
+            name: "getAccountAsset",
+            method: RequestMethod.POST,
+        };
+
         /**创建账户 */
         export const CREATE_ACCOUNT: BFChainPcSdk.ApiInfo = {
             name: "createAccount",

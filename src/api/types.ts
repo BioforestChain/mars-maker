@@ -136,6 +136,14 @@ declare namespace BFChainPcSdk {
                 address: string;
             }
 
+            /**获取账户资产 */
+            interface GetAccountAsset {
+                /**账户地址 */
+                address: string;
+                /**权益类型 */
+                assetType: string;
+            }
+
             /**创建账户 */
             interface CreateAccount {
                 /**账户密钥 */
@@ -749,6 +757,14 @@ declare namespace BFChainPcSdk {
                 };
             }
 
+            /**生成账户私钥 */
+            interface GenerateSecret extends RespCommonParam {
+                result: {
+                    /**账户私钥 */
+                    secret: string;
+                };
+            }
+
             /**获取账户公钥 */
             interface GetAccountPublicKey extends RespCommonParam {
                 result: {
@@ -757,11 +773,11 @@ declare namespace BFChainPcSdk {
                 };
             }
 
-            /**生成账户私钥 */
-            interface GenerateSecret extends RespCommonParam {
+            /**获取账户资产 */
+            interface GetAccountAsset extends RespCommonParam {
                 result: {
-                    /**账户私钥 */
-                    secret: string;
+                    /**余额 */
+                    assetNumber: string;
                 };
             }
 

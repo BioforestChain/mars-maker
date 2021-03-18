@@ -88,6 +88,11 @@ export class BFChainPC_SDK extends EventEmitter {
         return await this.processApi(API.BASIC.GET_ACCOUNT_PUBLIC_KEY.name, request);
     }
 
+    /**获取账户资产 */
+    async getAccountAsset(request: BFChainPcSdk.ApiRequest.BASIC.GetAccountAsset): Promise<BFChainPcSdk.ApiResp.BASIC.GetAccountAsset> {
+        return await this.processApi(API.BASIC.GET_ACCOUNT_ASSET.name, request);
+    }
+
     /**创建账户 */
     async createAccount(request: BFChainPcSdk.ApiRequest.BASIC.CreateAccount): Promise<BFChainPcSdk.ApiResp.BASIC.CreateAccount> {
         return await this.processApi(API.BASIC.CREATE_ACCOUNT.name, request);
