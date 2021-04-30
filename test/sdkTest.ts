@@ -167,18 +167,12 @@ export class SDKTest {
     cryptoSystemkey(verifyType: string, verifyKey: string) {
         if (verifyType === SYSTEMVERIFYTYPE.SYSTEM_OWNER) {
             // 得到密码的签名
-            const cryptoKey = crypto
-                .createHash("sha256")
-                .update(verifyKey, "utf8")
-                .digest("hex");
+            const cryptoKey = crypto.createHash("sha256").update(verifyKey, "utf8").digest("hex");
 
             // 返回加密后的矿机密码
             return cryptoKey;
         } else if (verifyType === SYSTEMVERIFYTYPE.SYSTEM_ADMIN) {
-            const cryptoAdminAddress = crypto
-                .createHash("sha256")
-                .update(verifyKey, "utf8")
-                .digest("hex");
+            const cryptoAdminAddress = crypto.createHash("sha256").update(verifyKey, "utf8").digest("hex");
             // 返回加密后的矿机地址
             return cryptoAdminAddress;
         }
@@ -191,10 +185,7 @@ export class SDKTest {
      */
     encryptSecret(delegateSecret: string, systemSecret: string, version: number) {
         // 加密后的矿机密码
-        const encryptSystemSecret = crypto
-            .createHash("sha256")
-            .update(systemSecret, "utf8")
-            .digest("hex");
+        const encryptSystemSecret = crypto.createHash("sha256").update(systemSecret, "utf8").digest("hex");
         return {
             encryptSystemSecret,
             encryptDelegateSecret: this.aes256Encrypt(delegateSecret, systemSecret, version),
@@ -207,12 +198,7 @@ export class SDKTest {
         switch (version) {
             case 1:
                 const iv = crypto.randomBytes(16);
-                const pwd_uint8 = new Uint8Array(
-                    crypto
-                        .createHash("sha256")
-                        .update(key)
-                        .digest().buffer
-                );
+                const pwd_uint8 = new Uint8Array(crypto.createHash("sha256").update(key).digest().buffer);
                 const encipher = crypto.createCipheriv("AES-256-CTR", pwd_uint8, iv);
                 return Buffer.concat([new Uint8Array([1]), iv, encipher.update(dataBuffer)]).toString("base64");
             default:
@@ -738,7 +724,7 @@ export class SDKTest {
     // await test.execute();
     await test.test();
     // process.exit(0);
-})().catch(err => {
+})().catch((err) => {
     console.error(err);
     process.exit(0);
 });

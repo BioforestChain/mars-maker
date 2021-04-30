@@ -5,10 +5,7 @@ class Utils {
     buildFileLines(filePathArr: string[]) {
         let results: string[] = [];
         for (const filePath of filePathArr) {
-            const lines = fs
-                .readFileSync(path.join(process.cwd(), filePath))
-                .toString()
-                .split("\n");
+            const lines = fs.readFileSync(path.join(process.cwd(), filePath)).toString().split("\n");
             results = results.concat(lines);
         }
         return results;

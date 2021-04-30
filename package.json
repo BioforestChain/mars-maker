@@ -1,17 +1,33 @@
 {
     "name": "@bfchain/pc-sdk",
-    "version": "1.1.13",
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "version": "0.0.0",
     "description": "pc-sdk for the third party",
-    "main": "build/cjs/index.js",
-    "types": "build/cjs/index.d.ts",
+    "bdkMono": {
+        "generateConfigFiles": [
+            {
+                "packages": "*",
+                "type": "mergejson",
+                "from": "$ROOT_PROJECT/tsconfig.cjs.json",
+                "to": "$PACKAGE/tsconfig.json"
+            }
+        ]
+    },
     "scripts": {
-        "lsts": "node scripts/listAllFile.js",
-        "dev": "tsc -b ./tsconfig.json --watch",
-        "clear": "node ./scripts/clear.js",
-        "build": "tsc -b ./tsconfig.json",
+        "package": "node ./scripts/package.js",
+        "format": "bdk-format -m all",
+        "prepare": "yarn mono",
+        "mono": "bdk-mono",
+        "lsts": "bdk-lsts -p=./tsconfig.json",
+        "clear": "node ./scripts/rmBuild.js",
+        "dev": "bdk-tsc --build -w",
+        "build": "bdk-tsc --build tsconfig.json",
         "rebuild": "npm run clear && npm run build",
-        "compile": "node ./scripts/compileDependence.js",
-        "test": "node ./build/test/sdkTest.js"
+        "publ": "lerna publish",
+        "publ:force": "lerna publish --force-publish"
     },
     "repository": {
         "type": "git",
@@ -19,13 +35,10 @@
     },
     "author": "BFChain Team",
     "license": "ISC",
-    "dependencies": {
-        "request": "^2.88.2",
-        "socket.io-client": "^3.1.0"
-    },
+    "dependencies": {},
     "devDependencies": {
-        "@types/node": "^14.14.41",
-        "@types/request": "^2.48.5",
-        "@types/socket.io-client": "^1.4.35"
+        "@bfchain/devkit": "^0.9.35",
+        "@types/node": "~12.12.70",
+        "lerna": "^3.20.2"
     }
 }

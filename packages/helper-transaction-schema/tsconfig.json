@@ -1,0 +1,24 @@
+{
+    "extends": "../../tsconfig.base.cjs",
+    "compilerOptions": {
+        "outDir": "./build/cjs",
+        "rootDir": "./src"
+    },
+    "files": [
+        "src/atom_schema/basicSchema.ts",
+        "src/atom_schema/commonSchema.ts",
+        "src/atom_schema/serviceSchema.ts",
+        "src/atom_schema/systemSchema.ts",
+        "src/atom_schema/transactionSchema.ts",
+        "src/index.ts",
+        "src/schema.ts"
+    ],
+    "references": [
+        {
+            "path": "../api-constants/tsconfig.json"
+        },
+        {
+            "path": "../typings/tsconfig.json"
+        }
+    ]
+}

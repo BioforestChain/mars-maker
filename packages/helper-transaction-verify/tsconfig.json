@@ -1,0 +1,22 @@
+{
+    "extends": "../../tsconfig.base.cjs",
+    "compilerOptions": {
+        "outDir": "./build/cjs",
+        "rootDir": "./src"
+    },
+    "files": [
+        "src/index.ts",
+        "src/transactionVerifyHelper.ts"
+    ],
+    "references": [
+        {
+            "path": "../helper-transaction-schema-validation/tsconfig.json"
+        },
+        {
+            "path": "../helper-type/tsconfig.json"
+        },
+        {
+            "path": "../typings/tsconfig.json"
+        }
+    ]
+}

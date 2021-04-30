@@ -1,0 +1,22 @@
+{
+  "name": "@bfchain/pc-sdk-helper-api-config",
+  "version": "0.0.1-dev.20",
+  "description": "",
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "type": "commonjs",
+  "keywords": [
+    "core"
+  ],
+  "author": "BFChain Team",
+  "license": "MIT",
+  "dependencies": {
+    "@bfchain/pc-sdk-api-constants": "0.0.1-dev.20",
+    "@bfchain/pc-sdk-typings": "0.0.1-dev.20"
+  },
+  "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
+  "files": [
+    "build"
+  ],
+  "types": "build/cjs/index.d.ts"
+}

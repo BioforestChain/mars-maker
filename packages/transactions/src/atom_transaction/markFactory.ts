@@ -1,0 +1,31 @@
+import type { MarkTransaction } from "@bfchain/core";
+import { Injectable } from "@bfchain/util";
+import { TransactionFactory } from "./_transactionFactory";
+import { myMark } from "@bfchain/coretools-transaction";
+import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
+
+@Injectable()
+export class MarkFactory extends TransactionFactory<MarkTransaction> {
+    readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_MARK;
+
+    async generateTransaction(request: BFChainPcSdk.Transaction.MarkTransactionParams) {
+        this.verify(request);
+        const tr = await myMark.generateMark(
+            this.getTransactionBody(request),
+            {
+                action: request.action,
+                content: request.content,
+                dapp: {
+                    sourceChainName: this.bfchainCore.config.chainName,
+                    sourceChainMagic: this.bfchainCore.config.magic,
+                    dappid: request.dappid,
+                    type: request.type,
+                    purchaseAsset: request.purchanseAsset,
+                },
+            },
+            this.getAccountPowInfo(request),
+            this.bfchainCore
+        );
+        return tr.toJSON();
+    }
+}

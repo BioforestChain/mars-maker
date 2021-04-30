@@ -1,0 +1,23 @@
+{
+    "extends": "../../tsconfig.base.cjs",
+    "compilerOptions": {
+        "outDir": "./build/cjs",
+        "rootDir": "./src"
+    },
+    "files": [
+        "src/basics/getBlock.ts",
+        "src/basics/getLastBlock.ts",
+        "src/index.ts",
+        "src/server/server.ts",
+        "src/transactions/acceptVote.ts",
+        "src/transactions/transactionAsset.ts"
+    ],
+    "references": [
+        {
+            "path": "../core/tsconfig.json"
+        },
+        {
+            "path": "../typings/tsconfig.json"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.base.cjs",
+    "compilerOptions": {
+        "outDir": "./build/cjs",
+        "rootDir": "./src"
+    },
+    "files": [
+        "src/index.ts",
+        "src/requestParameterParser.ts"
+    ],
+    "references": [
+        {
+            "path": "../typings/tsconfig.json"
+        }
+    ]
+}

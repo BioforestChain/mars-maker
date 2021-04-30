@@ -1,0 +1,18 @@
+{
+    "extends": "../../tsconfig.base.cjs",
+    "compilerOptions": {
+        "outDir": "./build/cjs",
+        "rootDir": "./src"
+    },
+    "files": [
+        "src/@types.ts",
+        "src/apiPathConstant.ts",
+        "src/commonConstants.ts",
+        "src/index.ts"
+    ],
+    "references": [
+        {
+            "path": "../typings/tsconfig.json"
+        }
+    ]
+}

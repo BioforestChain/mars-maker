@@ -1,0 +1,174 @@
+export const enum API_NAMESPACE {
+    /**basic api 命名空间 */
+    BASIC = "api/basic",
+    /**system api 命名空间 */
+    SYSTEM = "api/system",
+    /**transaction api 命名空间 */
+    TRANSACTION = "api/transaction",
+}
+
+export const enum BASIC_API_PATH {
+    /**设置矿机密码 */
+    BASIC_SET_PASSWORD = "/setPassword",
+    /**创建创世块 */
+    BASIC_GENERATE_GENESIS_BLOCK = "/generateGenesisBlock",
+    /**获取区块 */
+    BASIC_GET_BLOCK = "/getBlock",
+    /**获取最新区块 */
+    BASIC_GET_LAST_BLOCK = "/getLastBlock",
+    /**获取交易类型 */
+    BASIC_GET_TRANSACTION_TYPE = "/getTransactionType",
+    /**获取交易 */
+    BASIC_GET_TRANSACTIONS = "/getTransactions",
+    /**获取区块链版本号 */
+    BASIC_GET_BFCHAIN_VERSION = "/getBfchainVersion",
+    /**获取区块链版本号 */
+    BASIC_GET_BLOCK_CHAIN_STATUS = "/getBlockChainStatus",
+
+    /**获取随机主密码 */
+    BASIC_GENERATE_SECRET = "/generateSecret",
+    /**创建账户 */
+    BASIC_CREATE_ACCOUNT = "/createAccount",
+    /**获取账户公钥 */
+    BASIC_GET_ACCOUNT_PUBLICKEY = "/getAccountPublicKey",
+    /**获取账户最后一笔交易 */
+    BASIC_GET_ACCOUNT_LAST_TRANSACTION = "/getAccountLastTransaction",
+
+    /**生成权益迁出的创世受托人签名 */
+    BASIC_EMIGRATE_ASSET_GENESIS_SIGNATURE = "/emigrateAssetGenesisSignature",
+    /**生成权益迁入的创世受托人签名 */
+    BASIC_IMMIGRATE_ASSET_GENESIS_SIGNATURE = "/immigrateAssetGenesisSignature",
+}
+
+export const enum SERVICE_API_PATH {
+    SERVICE_USER_GET_PACKAGE_SOURCE = "/user/getPackageSource",
+    SERVICE_USER_GET_UPLOAD_PACKAGE_TOKEN = "/user/getUploadPackageToken",
+    SERVICE_USER_TEST = "/user/test",
+
+    SERVICE_ADMIN_GET_PACKAGE_INFO = "/admin/getPackageInfo",
+    SERVICE_ADMIN_GET_ADMIN_PACKAGE = "/admin/getAdminPackage",
+    SERVICE_ADMIN_GET_MINER_MACHINE_DAPP_TYPE = "/admin/getMinerMachineDappType",
+    SERVICE_ADMIN_GET_DOWNLOADED_PACKAGE_INFO = "/admin/getDownloadedPackageInfo",
+    SERVICE_ADMIN_GET_ADMIN_UPLOAD_PACKAGE_TOKEN = "/admin/getAdminUploadPackageToken",
+    SERVICE_ADMIN_SET_MINER_MACHINE_DAPP_TYPE = "/admin/setMinerMachineDappType",
+    SERVICE_ADMIN_DOWNLOAD_PACKAGE = "/admin/downloadPackage",
+    SERVICE_ADMIN_INSTALL_PACKAGE = "/admin/installPackage",
+    SERVICE_ADMIN_CLEAR_DOWNLOAD_STATE = "/admin/clearDownloadState",
+    SERVICE_ADMIN_UNINSTALL_AND_DELETE_PACKAGE = "/admin/uninstallAndDeletePackage",
+    SERVICE_ADMIN_INSTALL_PACKAGE_HISTORY = "/admin/installPackageHistory",
+    SERVICE_ADMIN_TEST = "/admin/test",
+
+    SERVICE_AUTH_CODE = "/authCode",
+    SERVICE_ADD_USER = "/addUser",
+    SERVICE_ADD_SYSTEM_ADMINUSER = "/addSystemAdminuser",
+    SERVICE_GET_PACKAGE_FILE = "/getPackageFile",
+    SERVICE_GET_USER_PACKAGE = "/getUserPackage",
+}
+
+export const enum SYSTEM_API_PATH {
+    SYSTEM_SAFETY_CLOSE = "/safetyClose",
+
+    SYSTEM_SET_SYSTEM_KEY = "/setSystemKey",
+    SYSTEM_VERIFY_SYSTEM_KEY = "/verifySystemKey",
+    SYSTEM_ADD_SYSTEM_ADMIN = "/addSystemAdmin",
+    SYSTEM_GET_SYSTEM_ADMIN = "/getSystemAdmin",
+    SYSTEM_VERIFY_SYSTEM_ADMIN = "/verifySystemAdmin",
+    SYSTEM_DELETE_SYSTEM_ADMIN = "/deleteSystemAdmin",
+    SYSTEM_RESET_SYSTEM_ADMIN = "/resetSystemAdmin",
+
+    SYSTEM_BINDING_ACCOUNT = "/bindingAccount",
+    SYSTEM_GET_SYSTEM_DELEGATE = "/getSystemDelegate",
+
+    SYSTEM_SET_SYSTEM_CONFIG = "/setSystemConfig",
+    SYSTEM_GET_SYSTEM_CONFIG_INFO_DETAIL = "/getSystemConfigInfoDetail",
+
+    SYSTEM_GET_RUNTIME_STATE = "/getRuntimeState",
+    SYSTEM_MINING_MACHINE_INFO = "/miningMachineInfo",
+
+    SYSTEM_GET_SYSTEM_MONITOR = "/getSystemMonitor",
+    SYSTEM_GET_SYSTEM_LOGGER_TYPE = "/getSystemLoggerType",
+    SYSTEM_GET_SYSTEM_LOGGER_LIST = "/getSystemLoggerList",
+    SYSTEM_GET_SYSTEM_LOGGER_DETAIL = "/getSystemLoggerDetail",
+    SYSTEM_DELETE_SYSTEM_LOGGER = "/delSystemLogger",
+
+    SYSTEM_GET_EMAIL_ADDRESS = "/getEmailAddress",
+    SYSTEM_SET_EMAIL_ADDRESS = "/setEmailAddress",
+
+    SYSTEM_VERIFY_SYSTEM_SECRET = "/verifySystemSecret",
+    SYSTEM_SET_SYSTEM_WHITELIST = "/setSystemWhitelist",
+    SYSTEM_GET_SYSTEM_WHITELIST = "/getSystemWhitelist",
+    SYSTEM_DELETE_SYSTEM_WHITELIST = "/delSystemWhitelist",
+
+    SYSTEM_GET_PROCESS_CPU = "/getProcessCpu",
+    SYSTEM_GET_PROCESS_MEMORY = "/getProcessMemory",
+    SYSTEM_GET_PROCESS_NETWORK = "/getProcessNetwork",
+
+    SYSTEM_STATUS = "/systemStatus",
+    SYSTEM_PROCESS = "/systemProcess",
+
+    SYSTEM_GET_SERVICE_INFO = "systemGetServiceInfo",
+    SYSTEM_GET_SYSTEM_NODEINFO = "systemGetSystemNodeinfo",
+    SYSTEM_GET_SERVICE_PEERINFO = "systemGetServicePeerinfo",
+    SYSTEM_SET_SOCKET_EMIT_ENABLE = "systemSetSocketEmitEnable",
+    SYSTEM_GET_INJECT_GENERATORS = "systemGetInjectGenerators",
+    SYSTEM_SET_SYSTEM_DELEGATE_MULTI = "systemSetSystemDelegateMulti",
+    SYSTEM_GET_SYSTEM_DELEGATE_DETAIL = "systemGetSystemDelegateDetail",
+}
+
+export const enum GENERATE_TRANSACTION_API_PATH {
+    /**创建设置用户名交易 */
+    TR_USERNAME = "/generate/username",
+    /**创建设置安全密码交易 */
+    TR_SIGNATURE = "/generate/signature",
+    /**创建注册受托人交易 */
+    TR_DELEGATE = "/generate/delegate",
+    /**创建开启收票交易 */
+    TR_ACCEPT_VOTE = "/generate/acceptVote",
+    /**创建关闭收票交易 */
+    TR_REJECT_VOTE = "/generate/rejectVote",
+    /**创建治理投票交易 */
+    TR_VOTE = "/generate/vote",
+
+    /**创建权益发行交易 */
+    TR_ISSUE_ASSET = "/generate/issueAsset",
+    /**创建权益转移交易 */
+    TR_TRANSFER_ASSET = "/generate/transferAsset",
+    /**创建权益销毁交易 */
+    TR_DESTORY_ASSET = "/generate/destoryAsset",
+    /**创建权益赠送交易 */
+    TR_GIFT_ASSET = "/generate/giftAsset",
+    /**创建接受权益赠送交易 */
+    TR_GRAB_ASSET = "/generate/grabAsset",
+    /**创建权益委托交易 */
+    TR_TRUST_ASSET = "/generate/trustAsset",
+    /**创建接受权益委托交易 */
+    TR_SIGN_FOR_ASSET = "/generate/signForAsset",
+    /**创建权益交换交易 */
+    TR_TO_EXCHANGE_ASSET = "/generate/toExchangeAsset",
+    /**创建接受权益交换交易 */
+    TR_BE_EXCHANGE_ASSET = "/generate/beExchangeAsset",
+
+    /**创建注册 dappid 交易 */
+    TR_DAPP = "/generate/dapp",
+    /**创建 dappid 购买 交易 */
+    TR_DAPP_PURCHASING = "/generate/dappPurchasing",
+    /**创建数据存证交易 */
+    TR_MARK = "/generate/mark",
+    /**创建注册/注销链域名交易 */
+    TR_LOCATION_NAME = "/generate/locationName",
+    /**创建设置链域名管理员交易 */
+    TR_SET_LNS_MANAGER = "/generate/setLnsManager",
+    /**创建设置链域名解析值交易 */
+    TR_SET_LNS_RECORD_VALUE = "/generate/setLnsRecordValue",
+    /**创建资产交换交易 */
+    TR_TO_EXCHANGE_SPECIAL_ASSET = "/generate/toExchangeSpecAsset",
+    /**创建接受资产交换交易 */
+    TR_BE_EXCHANGE_SPECIAL_ASSET = "/generate/beExchangeSpecAsset",
+
+    /**创建注册链交易 */
+    TR_REGISTER_CHAIN = "/generate/registerChain",
+    /**创建权益迁出交易 */
+    TR_EMIGRATE_ASSET = "/generate/emigrateAsset",
+    /**创建权益迁入交易 */
+    TR_IMMIGRATE_ASSET = "/generate/immigrateAsset",
+}
