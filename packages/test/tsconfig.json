@@ -10,6 +10,7 @@
         "src/index.ts",
         "src/server/server.ts",
         "src/transactions/acceptVote.ts",
+        "src/transactions/rejectVote.ts",
         "src/transactions/transactionAsset.ts"
     ],
     "references": [

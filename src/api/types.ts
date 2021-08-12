@@ -169,7 +169,7 @@ declare namespace BFChainPcSdk {
                 /**事件的发起高度， 0-9 组成并且不包含小点， 可选， 默认使用当前区块链的最新高度 */
                 applyBlockHeight?: number;
                 /**事件备注信息， 默认为空 */
-                remark?: string;
+                remark?: { [key: string]: string };
                 /**事件所属的 dappid， 大写字母或数字，17-32 个字符， 默认为空 */
                 dappid?: string;
                 /**事件所属的位名系统， 2-1024 个字符， 每级域名最大长度为 128 个字符， 一级域名只能时小写字母组成， 二级及以上开头及结尾只能由小写字母或数字组成， 中间可以包含下划线， 根域名必须时本链链名， 可选， 默认为空 */

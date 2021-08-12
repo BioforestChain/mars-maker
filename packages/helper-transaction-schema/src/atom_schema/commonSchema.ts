@@ -56,7 +56,7 @@ export const TR_COMMON_PARAM: BFChainPcSdk.SchemaType = {
             type: "integer",
         },
         remark: {
-            type: "string",
+            type: "object",
         },
         dappid: {
             type: "string",
