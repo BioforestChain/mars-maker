@@ -1,6 +1,6 @@
 {
   "name": "@bfchain/pc-sdk-helper-type",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
@@ -11,7 +11,7 @@
   "author": "BFChain Team",
   "license": "MIT",
   "dependencies": {
-    "@bfchain/pc-sdk-typings": "1.2.0"
+    "@bfchain/pc-sdk-typings": "1.2.1"
   },
   "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
   "files": [
