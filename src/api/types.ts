@@ -182,8 +182,6 @@ declare namespace BFChainPcSdk {
                 toMagic?: string;
                 /**事件的过期区块间隔， 默认使用创世块最大过期时间参数， 0-9 组成并且不包含小数点 */
                 numberOfEffectiveBlocks?: number;
-                /**TPOW难度 */
-                tpowDifficulty?: number;
             }
 
             /**发送转账事件 */

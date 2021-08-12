@@ -1,13 +1,14 @@
+import { BASE_ARGS_TYPE } from "./constants";
 import { ADMIN_COMMON_PARAM } from "./commonSchema";
 
 /**安全关闭节点 */
 export const SYSTEM_SAFETY_CLOSE: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             isShutdown: {
-                type: "boolean",
+                type: BASE_ARGS_TYPE.BOOLEAN,
             },
         },
         required: [],
@@ -16,16 +17,16 @@ export const SYSTEM_SAFETY_CLOSE: BFChainPcSdk.SchemaType[] = [
 
 /**设置节点密码 */
 export const SYSTEM_SET_SYSTEM_KEY: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         systemKeyOld: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         systemKeyNew: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         newKeyDecryptEnable: {
-            type: "boolean",
+            type: BASE_ARGS_TYPE.BOOLEAN,
         },
     },
     required: ["systemKeyOld", "systemKeyNew"],
@@ -33,10 +34,10 @@ export const SYSTEM_SET_SYSTEM_KEY: BFChainPcSdk.SchemaType = {
 
 /**验证节点密码 */
 export const SYSTEM_VERIFY_SYSTEM_KEY: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         systemKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["systemKey"],
@@ -44,13 +45,13 @@ export const SYSTEM_VERIFY_SYSTEM_KEY: BFChainPcSdk.SchemaType = {
 
 /**增加节点管理员 */
 export const SYSTEM_ADD_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         systemKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         systemAdminAddress: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["systemKey", "systemAdminAddress"],
@@ -58,13 +59,13 @@ export const SYSTEM_ADD_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
 
 /**获得节点管理员 */
 export const SYSTEM_GET_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         systemKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         systemAdminAddress: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["systemKey"],
@@ -72,10 +73,10 @@ export const SYSTEM_GET_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
 
 /**验证节点管理员 */
 export const SYSTEM_VERIFY_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         cryptoAdminAddress: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["cryptoAdminAddress"],
@@ -83,13 +84,13 @@ export const SYSTEM_VERIFY_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
 
 /**删除节点管理员 */
 export const SYSTEM_DELETE_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         systemKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         systemAdminAddress: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["systemKey", "systemAdminAddress"],
@@ -97,15 +98,15 @@ export const SYSTEM_DELETE_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
 
 /**重置节点管理员 */
 export const SYSTEM_RESET_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         systemKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         systemAdminAddresses: {
             type: "array",
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
     },
@@ -114,16 +115,16 @@ export const SYSTEM_RESET_SYSTEM_ADMIN: BFChainPcSdk.SchemaType = {
 
 /**绑定节点账户 */
 export const SYSTEM_BINDING_ACCOUNT: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         cryptoSecret: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         systemKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         secondSecret: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["cryptoSecret", "systemKey"],
@@ -142,10 +143,10 @@ export const SYSTEM_GET_INJECT_GENERATORS: BFChainPcSdk.SchemaType = ADMIN_COMMO
 export const SYSTEM_GET_SYSTEM_DELEGATE_DETAIL: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             address: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["address"],
@@ -162,143 +163,244 @@ export const SYSTEM_MINING_MACHINE_INFO: BFChainPcSdk.SchemaType = ADMIN_COMMON_
 export const SYSTEM_SET_SYSTEM_CONFIG: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             config: {
-                type: "object",
+                type: BASE_ARGS_TYPE.OBJECT,
                 properties: {
                     transactionConfig: {
-                        type: "object",
+                        type: BASE_ARGS_TYPE.OBJECT,
                         properties: {
-                            receiveVoteEnable: { type: "boolean" },
-                            maxTransactionLimitForVote: { type: "integer", minimum: 0 },
-                            transactionsLimitPerBlock: { type: "integer", minimum: 0 },
+                            receiveVoteEnable: {
+                                type: BASE_ARGS_TYPE.BOOLEAN,
+                            },
+                            maxTransactionLimitForVote: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
+                            transactionsLimitPerBlock: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
                             minFeePerByte: {
-                                type: "object",
+                                type: BASE_ARGS_TYPE.OBJECT,
                                 properties: {
-                                    numerator: { type: "integer", minimum: 0 },
-                                    denominator: { type: "integer", minimum: 0 },
+                                    numerator: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    denominator: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
                                 },
                             },
                             autoVote: {
-                                type: "object",
+                                type: BASE_ARGS_TYPE.OBJECT,
                                 properties: {
-                                    enable: { type: "boolean" },
-                                    useConfigFee: { type: "boolean" },
-                                    fee: { type: "string" },
-                                    priorRecommendedNumber: { type: "boolean" },
-                                    maxNumberOfRecommended: { type: "integer", minimum: 0 },
-                                    numberOfRounds: { type: "integer", minimum: 0 },
-                                    productivityPercent: { type: "integer", minimum: 0 },
-                                    forgedBlocksPercent: { type: "integer", minimum: 0 },
-                                    applyTxPercent: { type: "integer", minimum: 0 },
-                                    votePercent: { type: "integer", minimum: 0 },
-                                    newDelegatePercent: { type: "integer", minimum: 0 },
-                                    minBeSelectProductivity: { type: "integer", minimum: 0 },
+                                    enable: {
+                                        type: BASE_ARGS_TYPE.BOOLEAN,
+                                    },
+                                    useConfigFee: {
+                                        type: BASE_ARGS_TYPE.BOOLEAN,
+                                    },
+                                    fee: {
+                                        type: BASE_ARGS_TYPE.STRING,
+                                    },
+                                    priorRecommendedNumber: {
+                                        type: BASE_ARGS_TYPE.BOOLEAN,
+                                    },
+                                    maxNumberOfRecommended: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    numberOfRounds: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    productivityPercent: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    forgedBlocksPercent: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    applyTxPercent: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    votePercent: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    newDelegatePercent: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    minBeSelectProductivity: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
                                 },
                             },
                         },
                     },
                     coreForProcess: {
-                        type: "object",
+                        type: BASE_ARGS_TYPE.OBJECT,
                         properties: {
-                            forceUseConfig: { type: "boolean" },
-                            coreNumForDealTransaction: { type: "integer", minimum: 1 },
-                            coreNumForMemInfo: { type: "integer", minimum: 1 },
-                            coreNumForUntreatedTrs: { type: "integer", minimum: 1 },
+                            forceUseConfig: {
+                                type: BASE_ARGS_TYPE.BOOLEAN,
+                            },
+                            coreNumForDealTransaction: {
+                                type: BASE_ARGS_TYPE.POSITIVEINTEGER,
+                            },
+                            coreNumForMemInfo: {
+                                type: BASE_ARGS_TYPE.POSITIVEINTEGER,
+                            },
+                            coreNumForUntreatedTrs: {
+                                type: BASE_ARGS_TYPE.POSITIVEINTEGER,
+                            },
                         },
                     },
                     logConfig: {
-                        type: "object",
+                        type: BASE_ARGS_TYPE.OBJECT,
                         properties: {
-                            consoleLogLevel: { type: "string" },
-                            fileLogLevel: { type: "string" },
-                            fileLogLimit: { type: "integer", minimum: 0 },
-                            fileLogBackup: { type: "integer" },
-                            fileLogDateExpire: { type: "boolean" },
-                            fileLogDaysToKeep: { type: "integer" },
+                            consoleLogLevel: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            fileLogLevel: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            fileLogLimit: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
+                            fileLogBackup: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
+                            fileLogDateExpire: {
+                                type: BASE_ARGS_TYPE.BOOLEAN,
+                            },
+                            fileLogDaysToKeep: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
                         },
                     },
-                    networkConfig: { type: "object", properties: { grpcEnable: { type: "boolean" } } },
-                    startConfig: {
-                        type: "object",
+                    networkConfig: {
+                        type: BASE_ARGS_TYPE.OBJECT,
                         properties: {
-                            useCheckPoint: { type: "boolean" },
-                            numberOfReservedCheckPoint: { type: "integer", minimum: 0 },
+                            grpcEnable: {
+                                type: BASE_ARGS_TYPE.BOOLEAN,
+                            },
+                        },
+                    },
+                    startConfig: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            useCheckPoint: {
+                                type: BASE_ARGS_TYPE.BOOLEAN,
+                            },
+                            numberOfReservedCheckPoint: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
                             peers: {
-                                type: "array",
+                                type: BASE_ARGS_TYPE.ARRAY,
                                 items: {
-                                    type: "string",
+                                    type: BASE_ARGS_TYPE.STRING,
                                     format: "ip",
                                 },
                             },
-                            maxChannelNumber: { type: "integer", minimum: 0 },
-                            generateBlockEnable: { type: "boolean" },
-                            remark: { type: "string" },
+                            maxChannelNumber: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
+                            generateBlockEnable: {
+                                type: BASE_ARGS_TYPE.BOOLEAN,
+                            },
+                            remark: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
                         },
                     },
                     flowControlConfig: {
-                        type: "object",
+                        type: BASE_ARGS_TYPE.OBJECT,
                         properties: {
                             requestLimit: {
-                                type: "object",
+                                type: BASE_ARGS_TYPE.OBJECT,
                                 properties: {
-                                    enable: { type: "boolean" },
-                                    count: { type: "integer", minimum: 0 },
-                                    apiRequestInterface: { type: "object" },
-                                    time: { type: "integer", minimum: 0 },
+                                    enable: {
+                                        type: BASE_ARGS_TYPE.BOOLEAN,
+                                    },
+                                    count: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    apiRequestInterface: {
+                                        type: BASE_ARGS_TYPE.OBJECT,
+                                    },
+                                    time: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
                                 },
                             },
                             flowRequestLimit: {
-                                type: "object",
+                                type: BASE_ARGS_TYPE.OBJECT,
                                 properties: {
-                                    enable: { type: "boolean" },
-                                    count: { type: "integer", minimum: 0 },
-                                    time: { type: "integer", minimum: 0 },
+                                    enable: {
+                                        type: BASE_ARGS_TYPE.BOOLEAN,
+                                    },
+                                    count: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    time: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
                                 },
                             },
                         },
                     },
                     noticeConfig: {
-                        type: "object",
+                        type: BASE_ARGS_TYPE.OBJECT,
                         properties: {
                             sendCondition: {
-                                type: "object",
+                                type: BASE_ARGS_TYPE.OBJECT,
                                 properties: {
-                                    usageCPU: { type: "number", minimum: 0 },
-                                    usageDisk: { type: "number", minimum: 0 },
-                                    usageMemory: { type: "number", minimum: 0 },
-                                    missedBlocks: { type: "integer", minimum: 0 },
+                                    usageCPU: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    usageDisk: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    usageMemory: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
+                                    missedBlocks: {
+                                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                                    },
                                 },
                             },
-                            sendIntervalTime: { type: "integer", minimum: 0 },
+                            sendIntervalTime: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
                         },
                     },
                     diskMonitorConfig: {
-                        type: "object",
+                        type: BASE_ARGS_TYPE.OBJECT,
                         properties: {
-                            enable: { type: "boolean" },
+                            enable: { type: BASE_ARGS_TYPE.BOOLEAN },
                             clearPath: {
-                                type: "array",
+                                type: BASE_ARGS_TYPE.ARRAY,
                                 items: {
-                                    type: "string",
+                                    type: BASE_ARGS_TYPE.STRING,
                                 },
                             },
-                            clearWhenFreeSpaceLowerThan: { type: "integer", minimum: 0 },
+                            clearWhenFreeSpaceLowerThan: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
                             clearWithSuffix: {
-                                type: "array",
+                                type: BASE_ARGS_TYPE.ARRAY,
                                 items: {
-                                    type: "string",
+                                    type: BASE_ARGS_TYPE.STRING,
                                 },
                             },
                             noClearWithSuffix: {
-                                type: "array",
+                                type: BASE_ARGS_TYPE.ARRAY,
                                 items: {
-                                    type: "string",
+                                    type: BASE_ARGS_TYPE.STRING,
                                 },
                             },
-                            noClearWithLastModifyTimeGreaterThen: { type: "integer", minimum: 0 },
-                            checkInterval: { type: "integer", minimum: 0 },
+                            noClearWithLastModifyTimeGreaterThen: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
+                            checkInterval: {
+                                type: BASE_ARGS_TYPE.NATURALNUMBER,
+                            },
                         },
                     },
                 },
@@ -318,16 +420,16 @@ export const SYSTEM_GET_RUNTIME_STATE: BFChainPcSdk.SchemaType = ADMIN_COMMON_PA
 export const SYSTEM_GET_SYSTEM_MONITOR: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             monitorType: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             limit: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
             offset: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         required: [],
@@ -341,10 +443,10 @@ export const SYSTEM_GET_SYSTEM_LOGGER_TYPE: BFChainPcSdk.SchemaType = ADMIN_COMM
 export const SYSTEM_GET_SYSTEM_LOGGER_LIST: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             loggerType: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["loggerType"],
@@ -355,22 +457,22 @@ export const SYSTEM_GET_SYSTEM_LOGGER_LIST: BFChainPcSdk.SchemaType[] = [
 export const SYSTEM_GET_SYSTEM_LOGGER_DETAIL: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             loggerName: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             limit: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
             offset: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
             searchString: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             readFileType: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         required: ["loggerName"],
@@ -381,10 +483,10 @@ export const SYSTEM_GET_SYSTEM_LOGGER_DETAIL: BFChainPcSdk.SchemaType[] = [
 export const SYSTEM_DELETE_SYSTEM_LOGGER: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             loggerName: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["loggerName"],
@@ -395,10 +497,10 @@ export const SYSTEM_DELETE_SYSTEM_LOGGER: BFChainPcSdk.SchemaType[] = [
 export const SYSTEM_GET_EMAIL_ADDRESS: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             emailAddress: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: [],
@@ -409,43 +511,43 @@ export const SYSTEM_GET_EMAIL_ADDRESS: BFChainPcSdk.SchemaType[] = [
 export const SYSTEM_SET_EMAIL_ADDRESS: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             emailToAddress: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             emailFromAddress: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             emailConfig: {
-                type: "object",
+                type: BASE_ARGS_TYPE.OBJECT,
                 properties: {
                     type: {
-                        type: "string",
+                        type: BASE_ARGS_TYPE.STRING,
                     },
                     host: {
-                        type: "string",
+                        type: BASE_ARGS_TYPE.STRING,
                     },
                     port: {
-                        type: "integer",
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
                     },
                     secureConnection: {
-                        type: "boolean",
+                        type: BASE_ARGS_TYPE.BOOLEAN,
                     },
                     ssl: {
-                        type: "boolean",
+                        type: BASE_ARGS_TYPE.BOOLEAN,
                     },
                     tls: {
-                        type: "boolean",
+                        type: BASE_ARGS_TYPE.BOOLEAN,
                     },
                     auth: {
-                        type: "object",
+                        type: BASE_ARGS_TYPE.OBJECT,
                         properties: {
                             user: {
-                                type: "string",
+                                type: BASE_ARGS_TYPE.STRING,
                             },
                             pass: {
-                                type: "string",
+                                type: BASE_ARGS_TYPE.STRING,
                             },
                         },
                         required: ["user", "pass"],
@@ -460,10 +562,10 @@ export const SYSTEM_SET_EMAIL_ADDRESS: BFChainPcSdk.SchemaType[] = [
 
 /**通过节点私钥验证节点受托人 */
 export const SYSTEM_VERIFY_SYSTEM_SECRET: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         cryptoSecret: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["cryptoSecret"],
@@ -473,12 +575,12 @@ export const SYSTEM_VERIFY_SYSTEM_SECRET: BFChainPcSdk.SchemaType = {
 export const SYSTEM_SET_SYSTEM_WHITELIST: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             whiteList: {
-                type: "array",
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },
@@ -493,12 +595,12 @@ export const SYSTEM_GET_SYSTEM_WHITELIST: BFChainPcSdk.SchemaType = ADMIN_COMMON
 export const SYSTEM_DELETE_SYSTEM_WHITELIST: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             whiteList: {
-                type: "array",
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },
@@ -507,16 +609,16 @@ export const SYSTEM_DELETE_SYSTEM_WHITELIST: BFChainPcSdk.SchemaType[] = [
 ];
 
 const GET_PROCESS_BASE: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         limit: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.NATURALNUMBER,
         },
         offset: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.NATURALNUMBER,
         },
         processType: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: [],
@@ -541,10 +643,10 @@ export const SYSTEM_PROCESS: BFChainPcSdk.SchemaType = ADMIN_COMMON_PARAM;
 export const SYSTEM_GET_SERVICE_INFO: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             dappid: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: [],
@@ -558,13 +660,13 @@ export const SYSTEM_GET_SERVICE_PEERINFO: BFChainPcSdk.SchemaType[] = SYSTEM_GET
 export const SYSTEM_SET_SOCKET_EMIT_ENABLE: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             systemStatusEnable: {
-                type: "boolean",
+                type: BASE_ARGS_TYPE.BOOLEAN,
             },
             systemProcessEnable: {
-                type: "boolean",
+                type: BASE_ARGS_TYPE.BOOLEAN,
             },
         },
         required: ["systemStatusEnable", "systemProcessEnable"],

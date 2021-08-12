@@ -10,14 +10,16 @@ export class TrustAssetFactory extends TransactionFactory<TrustAssetTransaction>
 
     async generateTransaction(request: BFChainPcSdk.Transaction.TrustAssetTransactionParams) {
         this.verify(request);
+        const assetInfo = request.assetInfo;
+        const { magic, chainName, assetType } = this.bfchainCore.config;
         const tr = await myTrustAsset.generateTrustAsset(
             this.getTransactionBody(request),
             {
                 trustees: request.trustees,
-                sourceChainMagic: request.sourceChainMagic || this.bfchainCore.config.magic,
-                sourceChainName: request.sourceChainName || this.bfchainCore.config.chainName,
-                assetType: request.assetType,
-                amount: request.amount,
+                sourceChainMagic: assetInfo.sourceChainMagic || magic,
+                sourceChainName: assetInfo.sourceChainName || chainName,
+                assetType: assetInfo.assetType || assetType,
+                amount: assetInfo.amount,
                 numberOfSignFor: request.numberOfSignFor,
             },
             this.getAccountPowInfo(request),

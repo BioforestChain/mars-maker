@@ -62,36 +62,44 @@ declare namespace BFChainPcSdk {
         }
 
         interface IssueAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
-            /**发行的权益名，大写字母组成，3-5 个字符 */
-            assetType: string;
-            /**发行的新权益总数，权益数量由0-9共十个数字组成，权益数量不包含小数点且必须大于0 */
-            expectedIssuedAssets: string;
+            assetInfo: {
+                /**发行的权益名，大写字母组成，3-5 个字符 */
+                assetType: string;
+                /**发行的新权益总数，权益数量由0-9共十个数字组成，权益数量不包含小数点且必须大于0 */
+                expectedIssuedAssets: string;
+            };
         }
         interface TransferAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
-            /**转移的权益所属链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
-            sourceChainMagic?: string;
-            /**转移的权益所属链名，小写字母组成，3-8 位 */
-            sourceChainName?: string;
-            /**转移的权益类型，大写字母组成，3-5 个字符 */
-            assetType: string;
-            /**转移的权益数量，0-9 组成并且不包含小数点，必须大于 0 */
-            amount: string;
+            assetInfo: {
+                /**转移的权益所属链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                sourceChainMagic?: string;
+                /**转移的权益所属链名，小写字母组成，3-8 位 */
+                sourceChainName?: string;
+                /**转移的权益类型，大写字母组成，3-5 个字符 */
+                assetType?: string;
+                /**转移的权益数量，0-9 组成并且不包含小数点，必须大于 0 */
+                amount: string;
+            };
         }
         interface DestoryAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
-            /**销毁的权益名，大写字母组成，3-5 个字符 */
-            assetType: string;
-            /**销毁的权益数，0-9 组成并且不包含小数点，必须大于 0 */
-            amount: string;
+            assetInfo: {
+                /**销毁的权益名，大写字母组成，3-5 个字符 */
+                assetType: string;
+                /**销毁的权益数，0-9 组成并且不包含小数点，必须大于 0 */
+                amount: string;
+            };
         }
         interface GiftAssetTransactionParams extends TransactionCommonParams {
-            /**赠送的权益所属链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
-            sourceChainMagic?: string;
-            /**赠送的权益所属链名，小写字母组成，3-8 位 */
-            sourceChainName?: string;
-            /**赠送的权益类型，大写字母组成，3-5 个字符 */
-            assetType: string;
-            /**赠送的权益数量，0-9 组成并且不包含小数点，必须大于 0 */
-            amount: string;
+            assetInfo: {
+                /**赠送的权益所属链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                sourceChainMagic?: string;
+                /**赠送的权益所属链名，小写字母组成，3-8 位 */
+                sourceChainName?: string;
+                /**赠送的权益类型，大写字母组成，3-5 个字符 */
+                assetType?: string;
+                /**赠送的权益数量，0-9 组成并且不包含小数点，必须大于 0 */
+                amount: string;
+            };
             /**可被接收的次数，0-9 组成并且不包含小数点，必须大于 0 */
             totalGrabableTimes: number;
             /**接收规则, 只能为 0，1 或 2，0 表示平均分配，1 表示根据任意账户的地址的随机分配，2 表示根据接收者列表中账户地址的随机分配 */
@@ -112,14 +120,16 @@ declare namespace BFChainPcSdk {
             ciphertext?: string;
         }
         interface TrustAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
-            /**委托权益所属链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
-            sourceChainMagic?: string;
-            /**委托权益所属链名，小写字母组成，3-8 位 */
-            sourceChainName?: string;
-            /**委托权益类型，大写字母组成，3-5 个字符 */
-            assetType: string;
-            /**委托的权益数量，0-9 组成并且不包含小数点，必须大于 0 */
-            amount: string;
+            assetInfo: {
+                /**委托权益所属链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                sourceChainMagic?: string;
+                /**委托权益所属链名，小写字母组成，3-8 位 */
+                sourceChainName?: string;
+                /**委托权益类型，大写字母组成，3-5 个字符 */
+                assetType?: string;
+                /**委托的权益数量，0-9 组成并且不包含小数点，必须大于 0 */
+                amount: string;
+            };
             /**签收时需要的委托人签名数量，0-9 组成，必须大于 0，最大值为指定的受托人数量 +2 */
             numberOfSignFor: number;
             /**指定的委托人地址数组，base58 编码的 16 进制字符串 */
@@ -134,20 +144,24 @@ declare namespace BFChainPcSdk {
             trustAsset: BFChainCore.TrustAssetJSON;
         }
         interface ToExchangeAssetTransactionParams extends TransactionCommonParamsWithoutRecipientId {
-            /**用于交换的资产/权益来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
-            toExchangeSource?: string;
-            /**被交换的资产/权益来源链网络标识符，大写字母或数字组成，5个字符，最后一位是校验位 */
-            beExchangeSource?: string;
-            /**用于交换的资产/权益来源链名，小写字母组成，3-8 位 */
-            toExchangeChainName?: string;
-            /**被交换的资产/权益来源链名，小写字母组成，3-8 位 */
-            beExchangeChainName?: string;
-            /**用于交换的权益名，可能为 dappid，位名或者权益名 */
-            toExchangeAsset: string;
-            /**被交换的资产/权益名，可能为 dappid，位名或者权益名 */
-            beExchangeAsset: string;
-            /**用于交换或交换得到的权益数量，0-9 组成并且不包含小数点 */
-            toExchangeNumber: string;
+            toExchangeInfo: {
+                /**用于交换的资产/权益来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                toExchangeSource?: string;
+                /**用于交换的资产/权益来源链名，小写字母组成，3-8 位 */
+                toExchangeChainName?: string;
+                /**用于交换的权益名，可能为 dappid，位名或者权益名 */
+                toExchangeAsset: string;
+                /**用于交换或交换得到的权益数量，0-9 组成并且不包含小数点 */
+                toExchangeNumber: string;
+            };
+            beExchangeInfo: {
+                /**被交换的资产/权益来源链网络标识符，大写字母或数字组成，5个字符，最后一位是校验位 */
+                beExchangeSource?: string;
+                /**被交换的资产/权益来源链名，小写字母组成，3-8 位 */
+                beExchangeChainName?: string;
+                /**被交换的资产/权益名，可能为 dappid，位名或者权益名 */
+                beExchangeAsset: string;
+            };
             /**权益交换比例 */
             exchangeRate: {
                 /**权益的交换比例的分母，为正整数。被交换权益数=用于交换权益数*交换比例=toExchangeNumber * nextWeight / prevWeight */
@@ -169,28 +183,34 @@ declare namespace BFChainPcSdk {
             ciphertext?: string;
         }
         interface DAppTransactionParams extends TransactionCommonParamsWithRecipientId {
-            /**不包含校验位的 dappid，大写字母或数字组成，7 个字符 */
-            newDappid: string;
-            /**dappid 的类型，只能为 0 或 1，0 表示这个 dappid 是付费使用的，1 表示这个 dappid 是免费使用的 */
-            type: BFChainCore.DAPP_TYPE;
-            /**购买 dappid 使用权需要的权益数量(如果 dappid 是付费应用则必须携带，如果是免费应用则无需携带)，0-9 组成并且不包含小数点，必须大于 0 */
-            purchanseAsset?: string;
+            dappInfo: {
+                /**不包含校验位的 dappid，大写字母或数字组成，7 个字符 */
+                newDappid: string;
+                /**dappid 的类型，只能为 0 或 1，0 表示这个 dappid 是付费使用的，1 表示这个 dappid 是免费使用的 */
+                type: BFChainCore.DAPP_TYPE;
+                /**购买 dappid 使用权需要的权益数量(如果 dappid 是付费应用则必须携带，如果是免费应用则无需携带)，0-9 组成并且不包含小数点，必须大于 0 */
+                purchanseAsset?: string;
+            };
         }
         interface DAppPurchasingTransactionParams extends TransactionCommonParamsWithRecipientId {
-            /**含校验位的 dappid，大写字母或数字组成，8 个字符，最后一位是校验位 */
-            dappid: string;
-            /**dappid 的类型，只能为 0 或 1，0 表示这个 dappid 是付费使用的，1 表示这个 dappid 是免费使用的 */
-            type: BFChainCore.DAPP_TYPE;
-            /**购买 dappid 使用权需要的权益数量(如果 dappid 是付费应用则必须携带，如果是免费应用则无需携带)，0-9 组成并且不包含小数点，必须大于 0 */
-            purchanseAsset: string;
+            dappInfo: {
+                /**含校验位的 dappid，大写字母或数字组成，8 个字符，最后一位是校验位 */
+                dappid: string;
+                /**dappid 的类型，只能为 0 或 1，0 表示这个 dappid 是付费使用的，1 表示这个 dappid 是免费使用的 */
+                type: BFChainCore.DAPP_TYPE;
+                /**购买 dappid 使用权需要的权益数量(如果 dappid 是付费应用则必须携带，如果是免费应用则无需携带)，0-9 组成并且不包含小数点，必须大于 0 */
+                purchanseAsset?: string;
+            };
         }
         interface MarkTransactionParams extends TransactionCommonParamsWithRecipientId {
-            /**含校验位的 dappid，大写字母或数字组成，8 个字符，最后一位是校验位 */
-            dappid: string;
-            /**dappid 的类型，只能为 0 或 1，0 表示这个 dappid 是付费使用的，1 表示这个 dappid 是免费使用的 */
-            type: BFChainCore.DAPP_TYPE;
-            /**购买 dappid 使用权需要的权益数量(如果 dappid 是付费应用则必须携带，如果是免费应用则无需携带)，0-9 组成并且不包含小数点，必须大于 0 */
-            purchanseAsset: string;
+            dappInfo: {
+                /**含校验位的 dappid，大写字母或数字组成，8 个字符，最后一位是校验位 */
+                dappid: string;
+                /**dappid 的类型，只能为 0 或 1，0 表示这个 dappid 是付费使用的，1 表示这个 dappid 是免费使用的 */
+                type: BFChainCore.DAPP_TYPE;
+                /**购买 dappid 使用权需要的权益数量(如果 dappid 是付费应用则必须携带，如果是免费应用则无需携带)，0-9 组成并且不包含小数点，必须大于 0 */
+                purchanseAsset?: string;
+            };
             /**存证内容，为任意字符串 */
             content: string;
             /**存证类型，为任意字符串，用于区别存证 */
@@ -217,18 +237,22 @@ declare namespace BFChainPcSdk {
             deleteRecord?: BFChainCore.LocationNameRecordJSON;
         }
         interface ToExchangeSpecialAssetTransactionParams extends TransactionCommonParamsWithoutRecipientId {
-            /**用于交换的资产/权益来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
-            toExchangeSource: string;
-            /**被交换的资产/权益来源链网络标识符，大写字母或数字组成，5个字符，最后一位是校验位 */
-            beExchangeSource: string;
-            /**用于交换的资产/权益来源链名，小写字母组成，3-8 位 */
-            toExchangeChainName: string;
-            /**被交换的资产/权益来源链名，小写字母组成，3-8 位 */
-            beExchangeChainName: string;
-            /**用于交换的权益名，可能为 dappid，位名或者权益名 */
-            toExchangeAsset: string;
-            /**被交换的资产/权益名，可能为 dappid，位名或者权益名 */
-            beExchangeAsset: string;
+            toExchangeInfo: {
+                /**用于交换的资产/权益来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                toExchangeSource?: string;
+                /**用于交换的资产/权益来源链名，小写字母组成，3-8 位 */
+                toExchangeChainName?: string;
+                /**用于交换的权益名，可能为 dappid，位名或者权益名 */
+                toExchangeAsset: string;
+            };
+            beExchangeInfo: {
+                /**被交换的资产/权益来源链网络标识符，大写字母或数字组成，5个字符，最后一位是校验位 */
+                beExchangeSource?: string;
+                /**被交换的资产/权益来源链名，小写字母组成，3-8 位 */
+                beExchangeChainName?: string;
+                /**被交换的资产/权益名，可能为 dappid，位名或者权益名 */
+                beExchangeAsset: string;
+            };
             /**用于交换或交换得到的权益数量，0-9 组成并且不包含小数点 */
             exchangeNumber: string;
             /**资产的类型，只能为 0 或 1，0 为 dappid，1 为位名 */

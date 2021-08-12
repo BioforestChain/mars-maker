@@ -1,12 +1,14 @@
+import { BASE_ARGS_TYPE } from "./constants";
+
 /**admin通用参数 */
 export const ADMIN_COMMON_PARAM: BFChainPcSdk.SchemaType = {
     type: "object",
     properties: {
         verifyType: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         verifyKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["verifyType", "verifyKey"],
@@ -17,10 +19,10 @@ export const USER_COMMON_PARAM: BFChainPcSdk.SchemaType = {
     type: "object",
     properties: {
         userKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         publicKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
             format: "publicKey",
         },
     },
@@ -32,52 +34,49 @@ export const TR_COMMON_PARAM: BFChainPcSdk.SchemaType = {
     type: "object",
     properties: {
         secret: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         secondSecret: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         recipientId: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         rangeType: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.NATURALNUMBER,
         },
         range: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         fee: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         applyBlockHeight: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         remark: {
-            type: "object",
+            type: BASE_ARGS_TYPE.OBJECT,
         },
         dappid: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         lns: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         sourceIP: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         fromMagic: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         toMagic: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         numberOfEffectiveBlocks: {
-            type: "integer",
-        },
-        tpowDifficulty: {
-            type: "number",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
     },
     required: ["secret", "fee"],

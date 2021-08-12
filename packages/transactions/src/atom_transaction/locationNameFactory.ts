@@ -10,12 +10,14 @@ export class LocationNameFactory extends TransactionFactory<LocationNameTransact
 
     async generateTransaction(request: BFChainPcSdk.Transaction.LocationNameTransactionParams) {
         this.verify(request);
+        const config = this.bfchainCore.config;
+        const { name } = request;
         const tr = await myLocationName.generateLocationName(
             this.getTransactionBody(request),
             {
-                sourceChainName: this.bfchainCore.config.chainName,
-                sourceChainMagic: this.bfchainCore.config.magic,
-                name: request.name,
+                sourceChainName: config.chainName,
+                sourceChainMagic: config.magic,
+                name: name.endsWith(config.chainName) ? name : `${name}.${config.chainName}`,
                 operationType: request.operationType,
             },
             this.getAccountPowInfo(request),

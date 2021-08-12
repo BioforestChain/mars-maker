@@ -10,13 +10,15 @@ export class TransferAssetFactory extends TransactionFactory<TransferAssetTransa
 
     async generateTransaction(request: BFChainPcSdk.Transaction.TransferAssetTransactionParams) {
         this.verify(request);
+        const assetInfo = request.assetInfo;
+        const { magic, chainName, assetType } = this.bfchainCore.config;
         const tr = await myTransferAsset.generateTransferAsset(
             this.getTransactionBody(request),
             {
-                sourceChainMagic: request.sourceChainMagic || this.bfchainCore.config.magic,
-                sourceChainName: request.sourceChainName || this.bfchainCore.config.chainName,
-                assetType: request.assetType,
-                amount: request.amount,
+                sourceChainMagic: assetInfo.sourceChainMagic || magic,
+                sourceChainName: assetInfo.sourceChainName || chainName,
+                assetType: assetInfo.assetType || assetType,
+                amount: assetInfo.amount,
             },
             this.getAccountPowInfo(request),
             this.bfchainCore

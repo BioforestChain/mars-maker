@@ -412,6 +412,25 @@ export class TransactionApi {
         return result;
     }
 
+    /**创建存证事件 */
+    async generateMark(argv: BFChainPcSdk.Transaction.MarkTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.MarkApi>(GENERATE_TRANSACTION_API_PATH.TR_MARK);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送存证事件 */
+    async broadcastMark(transaction: BFChainCore.MarkTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.MarkApi>(GENERATE_TRANSACTION_API_PATH.TR_MARK);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送存证事件 */
+    async sendMark(argv: BFChainPcSdk.Transaction.MarkTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.MarkApi>(GENERATE_TRANSACTION_API_PATH.TR_MARK);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
     /**创建注册/注销链域名事件 */
     async generateLocationName(argv: BFChainPcSdk.Transaction.LocationNameTransactionParams) {
         const api = this.__getTransactionApi<BFChainPcSdk.Transaction.LocationNameApi>(GENERATE_TRANSACTION_API_PATH.TR_LOCATION_NAME);

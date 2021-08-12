@@ -2,29 +2,21 @@ import { Sdk } from "@bfchain/pc-sdk-core";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.TransferAssetTransactionParams = {
+        const argv: BFChainPcSdk.Transaction.UsernameTransactionParams = {
             secret: "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon",
-            // secondSecretInfo: {
-            //     useOld: false,
-            //     secondSecret: "i am the future",
-            // },
             fee: "1000",
             applyBlockHeight: 1,
-            remark: { message: "create transferAsset" },
+            remark: { message: "create username" },
             accountLastRoundInfo: {
                 txCount: 0,
                 equity: "8888888888888",
             },
-            assetInfo: {
-                assetType: "BFT",
-                amount: "10000",
-            },
-            recipientId: "cCET2Sxt2LPDhx44wxJ9uhkpviKNrSacvE",
+            alias: "a_long_lose_father",
         };
 
         const sdk = new Sdk();
 
-        const result = await sdk.api.transaction.sendTransferAsset(argv);
+        const result = await sdk.api.transaction.sendUsername(argv);
 
         console.log(result);
     } catch (e) {

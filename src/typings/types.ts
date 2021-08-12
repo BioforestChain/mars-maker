@@ -1314,7 +1314,6 @@ declare namespace BFChainPcSdk {
             rewardPerBlock: RewardPerBlockJSON;
             accountParticipationWeightRatio: AccountParticipationWeightRatioJSON;
             blockParticipationWeightRatio: BlockParticipationWeightRatioJSON;
-            // tpowDiffFormula: string;
             averageComputingPower: number;
             tpowOfWorkExemptionBlocks: number;
             transactionPowOfWorkConfig: TransactionPowOfWorkConfigJSON;

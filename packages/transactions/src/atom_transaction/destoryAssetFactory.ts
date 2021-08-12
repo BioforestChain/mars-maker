@@ -10,13 +10,15 @@ export class DestoryAssetFactory extends TransactionFactory<DestoryAssetTransact
 
     async generateTransaction(request: BFChainPcSdk.Transaction.DestoryAssetTransactionParams) {
         this.verify(request);
+        const assetInfo = request.assetInfo;
+        const { magic, chainName } = this.bfchainCore.config;
         const tr = await myDestoryAsset.generateDestoryAsset(
             this.getTransactionBody(request),
             {
-                sourceChainMagic: this.bfchainCore.config.magic,
-                sourceChainName: this.bfchainCore.config.chainName,
-                assetType: request.assetType,
-                amount: request.amount,
+                sourceChainMagic: magic,
+                sourceChainName: chainName,
+                assetType: assetInfo.assetType,
+                amount: assetInfo.amount,
             },
             this.getAccountPowInfo(request),
             this.bfchainCore

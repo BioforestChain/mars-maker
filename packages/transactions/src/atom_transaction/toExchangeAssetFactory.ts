@@ -10,20 +10,22 @@ export class ToExchangeAssetFactory extends TransactionFactory<ToExchangeAssetTr
 
     async generateTransaction(request: BFChainPcSdk.Transaction.ToExchangeAssetTransactionParams) {
         this.verify(request);
+        const { toExchangeInfo, beExchangeInfo, exchangeRate, ciphertexts } = request;
+        const { magic, chainName } = this.bfchainCore.config;
         const tr = await myToExchangeAsset.generateToExchangeAsset(
             this.getTransactionBody(request),
             {
                 cipherPublicKeys: [],
-                toExchangeSource: request.toExchangeSource || this.bfchainCore.config.magic,
-                beExchangeSource: request.beExchangeSource || this.bfchainCore.config.magic,
-                toExchangeChainName: request.toExchangeChainName || this.bfchainCore.config.chainName,
-                beExchangeChainName: request.beExchangeChainName || this.bfchainCore.config.chainName,
-                toExchangeAsset: request.toExchangeAsset,
-                beExchangeAsset: request.beExchangeAsset,
-                toExchangeNumber: request.toExchangeNumber,
-                exchangeRate: request.exchangeRate,
+                toExchangeSource: toExchangeInfo.toExchangeSource || magic,
+                beExchangeSource: beExchangeInfo.beExchangeSource || magic,
+                toExchangeChainName: toExchangeInfo.toExchangeChainName || chainName,
+                beExchangeChainName: beExchangeInfo.beExchangeChainName || chainName,
+                toExchangeAsset: toExchangeInfo.toExchangeAsset,
+                beExchangeAsset: beExchangeInfo.beExchangeAsset,
+                toExchangeNumber: toExchangeInfo.toExchangeNumber,
+                exchangeRate,
             },
-            request.ciphertexts,
+            ciphertexts,
             this.getAccountPowInfo(request),
             this.bfchainCore
         );

@@ -1,0 +1,31 @@
+import { GIFT_DISTRIBUTION_RULE } from "@bfchain/core";
+import { Sdk } from "@bfchain/pc-sdk-core";
+
+(async () => {
+    try {
+        const argv: BFChainPcSdk.Transaction.GiftAssetTransactionParams = {
+            secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
+            fee: "440000",
+            applyBlockHeight: 30,
+            remark: { message: "create giftAsset" },
+            accountLastRoundInfo: {
+                txCount: 0,
+                equity: "8888888888888",
+            },
+            assetInfo: {
+                assetType: "HYLQ",
+                amount: "9",
+            },
+            totalGrabableTimes: 10,
+            giftDistributionRule: GIFT_DISTRIBUTION_RULE.AVERAGE,
+        };
+
+        const sdk = new Sdk();
+
+        const result = await sdk.api.transaction.sendGiftAsset(argv);
+
+        console.log(result);
+    } catch (e) {
+        console.log(e);
+    }
+})();

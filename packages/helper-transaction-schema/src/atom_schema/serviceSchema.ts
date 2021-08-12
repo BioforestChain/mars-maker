@@ -1,3 +1,4 @@
+import { BASE_ARGS_TYPE } from "./constants";
 import { ADMIN_COMMON_PARAM, USER_COMMON_PARAM } from "./commonSchema";
 
 /**获取服务包状态（下载状态，运行状态） */
@@ -5,10 +6,10 @@ export const SERVICE_ADMIN_GET_PACKAGE_INFO: BFChainPcSdk.SchemaType = ADMIN_COM
 
 /**获取随机码 */
 export const SERVICE_AUTH_CODE: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         address: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["address"],
@@ -16,14 +17,14 @@ export const SERVICE_AUTH_CODE: BFChainPcSdk.SchemaType = {
 
 /**将用户加入白名单，获取用户密码 */
 export const SERVICE_ADD_USER: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         publicKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
             format: "publicKey",
         },
         signature: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["publicKey", "signature"],
@@ -31,10 +32,10 @@ export const SERVICE_ADD_USER: BFChainPcSdk.SchemaType = {
 
 /**将系统管理员用户加入白名单，获取用户密码 */
 export const SERVICE_ADD_SYSTEM_ADMINUSER: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         publicKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
             format: "publicKey",
         },
     },
@@ -45,25 +46,25 @@ export const SERVICE_ADD_SYSTEM_ADMINUSER: BFChainPcSdk.SchemaType = {
 export const SERVICE_ADMIN_DOWNLOAD_PACKAGE: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             packageId: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageName: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageVersion: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageMd5: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageSize: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             downloadPath: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["packageId", "packageName", "packageVersion", "packageMd5", "packageSize", "downloadPath"],
@@ -74,22 +75,22 @@ export const SERVICE_ADMIN_DOWNLOAD_PACKAGE: BFChainPcSdk.SchemaType[] = [
 export const SERVICE_ADMIN_INSTALL_PACKAGE: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             packageId: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageName: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageVersion: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageMd5: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageSize: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             needVote: {
                 type: "boolean",
@@ -103,10 +104,10 @@ export const SERVICE_ADMIN_INSTALL_PACKAGE: BFChainPcSdk.SchemaType[] = [
 export const SERVICE_ADMIN_GET_MINER_MACHINE_DAPP_TYPE: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             packageId: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["packageId"],
@@ -117,31 +118,31 @@ export const SERVICE_ADMIN_GET_MINER_MACHINE_DAPP_TYPE: BFChainPcSdk.SchemaType[
 export const SERVICE_ADMIN_SET_MINER_MACHINE_DAPP_TYPE: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             packageId: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             dappIDModType: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             modifyDappID: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             paidType: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             paidSourceChainMagic: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             paidsourceChainName: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             paidAssetType: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             paidAmount: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["packageId", "dappIDModType", "modifyDappID", "paidType", "paidSourceChainMagic", "paidsourceChainName", "paidAssetType", "paidAmount"],
@@ -150,16 +151,16 @@ export const SERVICE_ADMIN_SET_MINER_MACHINE_DAPP_TYPE: BFChainPcSdk.SchemaType[
 
 /**下载服务包简介的静态资源 */
 export const SERVICE_GET_PACKAGE_FILE: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         packageId: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         packageVersion: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         fileName: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["packageId", "verpackageVersionifyKey", "fileName"],
@@ -169,19 +170,19 @@ export const SERVICE_GET_PACKAGE_FILE: BFChainPcSdk.SchemaType = {
 export const SERVICE_USER_GET_PACKAGE_SOURCE: BFChainPcSdk.SchemaType[] = [USER_COMMON_PARAM, SERVICE_GET_PACKAGE_FILE];
 
 const GET_UPLOAD_PACKAGE_TOKEN_COMMON: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         publicKey: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         uploadFileInfo: {
-            type: "object",
+            type: BASE_ARGS_TYPE.OBJECT,
             properties: {
                 uploadMd5: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
                 uploadSize: {
-                    type: "integer",
+                    type: BASE_ARGS_TYPE.POSITIVEINTEGER,
                 },
             },
         },
@@ -201,28 +202,28 @@ export const SERVICE_ADMIN_CLEAR_DOWNLOAD_STATE: BFChainPcSdk.SchemaType = ADMIN
 export const SERVICE_ADMIN_UNINSTALL_AND_DELETE_PACKAGE: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             packageId: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageVersion: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageName: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             deleteData: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             deletePackage: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             deleteStaticResource: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             deleteDatabase: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["packageId", "packageVersion"],
@@ -233,31 +234,31 @@ export const SERVICE_ADMIN_UNINSTALL_AND_DELETE_PACKAGE: BFChainPcSdk.SchemaType
 export const SERVICE_ADMIN_GET_DOWNLOADED_PACKAGE_INFO: BFChainPcSdk.SchemaType[] = [
     ADMIN_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             ip: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageId: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageName: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             packageVersion: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             run: {
-                type: "boolean",
+                type: BASE_ARGS_TYPE.BOOLEAN,
             },
             orderBy: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             offset: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
             limit: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         required: [],
@@ -266,13 +267,13 @@ export const SERVICE_ADMIN_GET_DOWNLOADED_PACKAGE_INFO: BFChainPcSdk.SchemaType[
 
 /**获取服务包的用户前端模块 */
 export const SERVICE_GET_USER_PACKAGE: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         packageId: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         packageVersion: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["packageId", "packageVersion"],

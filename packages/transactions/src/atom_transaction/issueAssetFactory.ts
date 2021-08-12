@@ -10,13 +10,15 @@ export class IssueAssetFactory extends TransactionFactory<IssueAssetTransaction>
 
     async generateTransaction(request: BFChainPcSdk.Transaction.IssueAssetTransactionParams) {
         this.verify(request);
+        const assetInfo = request.assetInfo;
+        const { magic, chainName } = this.bfchainCore.config;
         const tr = await myIssueAsset.generateAsset(
             this.getTransactionBody(request),
             {
-                sourceChainMagic: this.bfchainCore.config.magic,
-                sourceChainName: this.bfchainCore.config.chainName,
-                assetType: request.assetType,
-                expectedIssuedAssets: request.expectedIssuedAssets,
+                sourceChainMagic: magic,
+                sourceChainName: chainName,
+                assetType: assetInfo.assetType,
+                expectedIssuedAssets: assetInfo.expectedIssuedAssets,
             },
             this.getAccountPowInfo(request),
             this.bfchainCore

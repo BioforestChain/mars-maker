@@ -1,5 +1,6 @@
 import { Injectable } from "@bfchain/util";
 import { BaseHelper } from "@bfchain/pc-sdk-helper-type";
+import { BASE_ARGS_TYPE } from "@bfchain/pc-sdk-helper-transaction-schema";
 import { Scheme } from "@bfchain/pc-sdk-helper-transaction-schema-validation";
 import { SdkExceptionGenerator, PROP_IS_INVALID, PROP_IS_REQUIRE } from "@bfchain/pc-sdk-exception";
 const { ArgumentFormatException } = SdkExceptionGenerator("Sdk", "Transactions-Verify");
@@ -62,7 +63,7 @@ export class TransactionVerifyHelper {
         };
         const baseHelper = this.__baseHelper;
         switch (schema.type) {
-            case "object":
+            case BASE_ARGS_TYPE.OBJECT:
                 if (value) {
                     if (schema.required && schema.required.length > 0) {
                         for (const key of schema.required) {
@@ -82,7 +83,7 @@ export class TransactionVerifyHelper {
                     }
                 }
                 break;
-            case "string":
+            case BASE_ARGS_TYPE.STRING:
                 // 非空判断在object那边已经做了，如果允许为空，则不再做检查。若不为空，才做检查
                 if (value !== undefined) {
                     if (!baseHelper.isString(value)) {
@@ -97,7 +98,7 @@ export class TransactionVerifyHelper {
                     }
                 }
                 break;
-            case "number":
+            case BASE_ARGS_TYPE.NUMBER:
                 if (value !== undefined) {
                     if (typeof value !== "number") {
                         throw new ArgumentFormatException(PROP_IS_INVALID, {
@@ -109,19 +110,32 @@ export class TransactionVerifyHelper {
                     this.__checkRange(value, { maximum: schema.maximum, minimum: schema.minimum }, keyName);
                 }
                 break;
-            case "integer":
+            case BASE_ARGS_TYPE.NATURALNUMBER:
                 if (value !== undefined) {
-                    if (!baseHelper.isPositiveInteger(value)) {
+                    if (!baseHelper.isNaturalNumber(value)) {
                         throw new ArgumentFormatException(PROP_IS_INVALID, {
                             prop: `keyName ${keyName}`,
-                            description: `${value} is not integer`,
+                            description: `${value} is not natural number`,
                             ...exception,
                         });
                     }
                     this.__checkRange(value, { maximum: schema.maximum, minimum: schema.minimum }, keyName);
                 }
                 break;
-            case "boolean":
+            case BASE_ARGS_TYPE.POSITIVEINTEGER: {
+                if (value !== undefined) {
+                    if (!baseHelper.isPositiveInteger(value)) {
+                        throw new ArgumentFormatException(PROP_IS_INVALID, {
+                            prop: `keyName ${keyName}`,
+                            description: `${value} is not positive integer`,
+                            ...exception,
+                        });
+                    }
+                    this.__checkRange(value, { maximum: schema.maximum, minimum: schema.minimum }, keyName);
+                }
+                break;
+            }
+            case BASE_ARGS_TYPE.BOOLEAN:
                 if (value !== undefined) {
                     if (!baseHelper.isBoolean(value)) {
                         throw new ArgumentFormatException(PROP_IS_INVALID, {
@@ -132,7 +146,7 @@ export class TransactionVerifyHelper {
                     }
                 }
                 break;
-            case "array":
+            case BASE_ARGS_TYPE.ARRAY:
                 if (value !== undefined) {
                     if (!baseHelper.isArray(value)) {
                         throw new ArgumentFormatException(PROP_IS_INVALID, {

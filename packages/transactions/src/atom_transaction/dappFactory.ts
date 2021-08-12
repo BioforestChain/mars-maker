@@ -10,18 +10,20 @@ export class DAppFactory extends TransactionFactory<DAppTransaction> {
 
     async generateTransaction(request: BFChainPcSdk.Transaction.DAppTransactionParams) {
         this.verify(request);
+        const dappInfo = request.dappInfo;
+        const { magic, chainName } = this.bfchainCore.config;
         const tr = await myDApp.generateDApp(
             this.getTransactionBody(request),
             {
-                sourceChainName: this.bfchainCore.config.chainName,
-                sourceChainMagic: this.bfchainCore.config.magic,
+                sourceChainName: chainName,
+                sourceChainMagic: magic,
                 dappid: "",
-                type: request.type,
-                purchaseAsset: request.purchanseAsset,
+                type: dappInfo.type,
+                purchaseAsset: dappInfo.purchanseAsset,
             },
             this.getAccountPowInfo(request),
             this.bfchainCore,
-            request.newDappid
+            dappInfo.newDappid
         );
         return tr.toJSON();
     }

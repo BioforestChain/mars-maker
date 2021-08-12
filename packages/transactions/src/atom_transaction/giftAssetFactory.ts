@@ -10,14 +10,16 @@ export class GiftAssetFactory extends TransactionFactory<GiftAssetTransaction> {
 
     async generateTransaction(request: BFChainPcSdk.Transaction.GiftAssetTransactionParams) {
         this.verify(request);
+        const assetInfo = request.assetInfo;
+        const { magic, chainName, assetType } = this.bfchainCore.config;
         const tr = await myGiftAsset.generateGiftAsset(
             this.getTransactionBody(request),
             {
                 cipherPublicKeys: [],
-                sourceChainMagic: request.sourceChainMagic || this.bfchainCore.config.magic,
-                sourceChainName: request.sourceChainName || this.bfchainCore.config.chainName,
-                assetType: request.assetType,
-                amount: request.amount,
+                sourceChainMagic: assetInfo.sourceChainMagic || magic,
+                sourceChainName: assetInfo.sourceChainName || chainName,
+                assetType: assetInfo.assetType || assetType,
+                amount: assetInfo.amount,
                 totalGrabableTimes: request.totalGrabableTimes,
                 giftDistributionRule: request.giftDistributionRule,
             },

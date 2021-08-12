@@ -1,13 +1,14 @@
+import { BASE_ARGS_TYPE } from "./constants";
 import { TR_COMMON_PARAM } from "./commonSchema";
 
 /**发送设置用户名事件 */
 export const TR_USERNAME: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             alias: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["alias"],
@@ -17,13 +18,22 @@ export const TR_USERNAME: BFChainPcSdk.SchemaType[] = [
 export const TR_SIGNATURE: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            newSecondSecret: {
-                type: "string",
+            newSecondSecretInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    useOld: {
+                        type: BASE_ARGS_TYPE.BOOLEAN,
+                    },
+                    secondSecret: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["useOld", "secondSecret"],
             },
         },
-        required: ["newSecondSecret"],
+        required: ["newSecondSecretInfo"],
     },
 ];
 /**发送注册受托人事件 */
@@ -36,10 +46,10 @@ export const TR_REJECT_VOTE: BFChainPcSdk.SchemaType = TR_COMMON_PARAM;
 export const TR_VOTE: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             equity: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["equity", "recipientId"],
@@ -50,154 +60,208 @@ export const TR_VOTE: BFChainPcSdk.SchemaType[] = [
 export const TR_ISSUE_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            assetType: {
-                type: "string",
-            },
-            expectedIssuedAssets: {
-                type: "string",
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    expectedIssuedAssets: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["assetType", "expectedIssuedAssets"],
             },
         },
-        required: ["assetType", "expectedIssuedAssets", "recipientId"],
+        required: ["assetInfo", "recipientId"],
     },
 ];
 /**发送转账事件 */
 export const TR_TRANSFER_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            amount: {
-                type: "string",
-            },
-            assetType: {
-                type: "string",
-            },
-            sourceChainName: {
-                type: "string",
-            },
-            sourceChainMagic: {
-                type: "string",
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    amount: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["amount"],
             },
         },
-        required: ["amount", "recipientId"],
+        required: ["assetInfo", "recipientId"],
     },
 ];
 /**发送权益销毁事件 */
 export const TR_DESTORY_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            amount: {
-                type: "string",
-            },
-            assetType: {
-                type: "string",
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    amount: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["amount", "assetType"],
             },
         },
-        required: ["amount", "assetType", "recipientId"],
+        required: ["assetInfo"],
     },
 ];
 /**发送权益赠与事件（红包事件） */
 export const TR_GIFT_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            sourceChainMagic: {
-                type: "string",
-            },
-            sourceChainName: {
-                type: "string",
-            },
-            assetType: {
-                type: "string",
-            },
-            amount: {
-                type: "string",
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    amount: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["amount"],
             },
             totalGrabableTimes: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.POSITIVEINTEGER,
             },
             numberOfBeginUnfrozenBlocks: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.POSITIVEINTEGER,
             },
             giftDistributionRule: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
             ciphertexts: {
-                type: "array",
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },
-        required: ["amount", "totalGrabableTimes", "giftDistributionRule"],
+        required: ["assetInfo", "totalGrabableTimes", "giftDistributionRule"],
     },
 ];
 /**发送接受权益赠与事件（抢红包事件） */
 export const TR_GRAB_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            amount: {
-                type: "string",
-            },
             blockSignature: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             transactionSignature: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
-            ciphertext: {
-                type: "string",
+            giftAsset: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    cipherPublicKeys: {
+                        type: BASE_ARGS_TYPE.ARRAY,
+                        items: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    amount: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    totalGrabableTimes: {
+                        type: BASE_ARGS_TYPE.POSITIVEINTEGER,
+                    },
+                    giftDistributionRule: {
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                    },
+                },
+                required: ["cipherPublicKeys", "sourceChainMagic", "sourceChainName", "assetType", "amount", "totalGrabableTimes", "giftDistributionRule"],
             },
         },
-        required: ["amount", "blockSignature", "transactionSignature"],
+        required: ["blockSignature", "transactionSignature", "giftAsset"],
     },
 ];
 /**发送权益委托事件 */
 export const TR_TRUST_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             trustees: {
-                type: "array",
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
             },
             numberOfSignFor: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.POSITIVEINTEGER,
             },
-            sourceChainName: {
-                type: "string",
-            },
-            sourceChainMagic: {
-                type: "string",
-            },
-            assetType: {
-                type: "string",
-            },
-            amount: {
-                type: "string",
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    amount: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["amount"],
             },
         },
-        required: ["trustees", "numberOfSignFor", "amount", "recipientId"],
+        required: ["trustees", "numberOfSignFor", "assetInfo", "recipientId"],
     },
 ];
 /**发送签收权益委托事件 */
 export const TR_SIGN_FOR_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             transactionSignature: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["transactionSignature"],
@@ -207,75 +271,135 @@ export const TR_SIGN_FOR_ASSET: BFChainPcSdk.SchemaType[] = [
 export const TR_TO_EXCHANGE_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            toExchangeSource: {
-                type: "string",
+            toExchangeInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    toExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeNumber: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["toExchangeAsset", "toExchangeNumber"],
             },
-            beExchangeSource: {
-                type: "string",
+            beExchangeInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    beExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["beExchangeAsset"],
             },
-            toExchangeChainName: {
-                type: "string",
-            },
-            beExchangeChainName: {
-                type: "string",
-            },
-            toExchangeAsset: {
-                type: "string",
-            },
-            beExchangeAsset: {
-                type: "string",
-            },
-            toExchangeNumber: {
-                type: "string",
-            },
-            prevWeight: {
-                type: "string",
-            },
-            nextWeight: {
-                type: "string",
+            exchangeRate: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    prevWeight: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    nextWeight: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["prevWeight", "nextWeight"],
             },
             ciphertexts: {
-                type: "array",
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },
-        required: [
-            "toExchangeSource",
-            "beExchangeSource",
-            "toExchangeChainName",
-            "beExchangeChainName",
-            "toExchangeAsset",
-            "beExchangeAsset",
-            "toExchangeNumber",
-            "prevWeight",
-            "nextWeight",
-        ],
+        required: ["toExchangeInfo", "beExchangeInfo", "exchangeRate"],
     },
 ];
 /**发送接受权益交换事件 */
 export const TR_BE_EXCHANGE_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             transactionSignature: {
-                type: "string",
-            },
-            beExchangeNumber: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             toExchangeNumber: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            exchangeAsset: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    cipherPublicKeys: {
+                        type: BASE_ARGS_TYPE.ARRAY,
+                        items: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                    },
+                    toExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeNumber: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    exchangeRate: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            prevWeight: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            nextWeight: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["prevWeight", "nextWeight"],
+                    },
+                },
+                required: [
+                    "cipherPublicKeys",
+                    "toExchangeSource",
+                    "beExchangeSource",
+                    "toExchangeChainName",
+                    "beExchangeChainName",
+                    "toExchangeAsset",
+                    "beExchangeAsset",
+                    "toExchangeNumber",
+                    "exchangeRate",
+                ],
             },
             ciphertext: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
-        required: ["transactionSignature", "beExchangeNumber", "toExchangeNumber", "recipientId"],
+        required: ["transactionSignature", "toExchangeNumber", "exchangeAsset", "recipientId"],
     },
 ];
 
@@ -283,76 +407,94 @@ export const TR_BE_EXCHANGE_ASSET: BFChainPcSdk.SchemaType[] = [
 export const TR_DAPP: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            newDappid: {
-                type: "string",
-            },
-            type: {
-                type: "integer",
-            },
-            amount: {
-                type: "string",
-            },
-            sourceChainName: {
-                type: "string",
-            },
-            sourceChainMagic: {
-                type: "string",
-            },
-            assetType: {
-                type: "string",
+            dappInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    newDappid: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    type: {
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                    },
+                    purchanseAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["newDappid", "type", "purchanseAsset"],
             },
         },
-        required: ["newDappid", "type", "amount", "recipientId"],
+        required: ["dappInfo", "recipientId"],
     },
 ];
 /**发送dapp购买事件 */
 export const TR_DAPP_PURCHASING: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            transactionSignature: {
-                type: "string",
+            dappInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    dappid: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    type: {
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                    },
+                    purchanseAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["dappid", "type"],
             },
         },
-        required: ["transactionSignature", "recipientId"],
+        required: ["dappInfo"],
     },
 ];
 /**发送存证事件 */
 export const TR_MARK: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            transactionSignature: {
-                type: "string",
-            },
-            markPossessor: {
-                type: "string",
+            dappInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    dappid: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    type: {
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                    },
+                    purchanseAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["dappid", "type"],
             },
             content: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             action: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
-        required: ["transactionSignature", "markPossessor", "content", "action"],
+        required: ["dappInfo", "content", "action"],
     },
 ];
 /**发送注册、注销位名事件 */
 export const TR_LOCATION_NAME: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             name: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             operationType: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         required: ["name", "operationType", "recipientId"],
@@ -362,10 +504,10 @@ export const TR_LOCATION_NAME: BFChainPcSdk.SchemaType[] = [
 export const TR_SET_LNS_MANAGER: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             name: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["name", "recipientId"],
@@ -375,24 +517,34 @@ export const TR_SET_LNS_MANAGER: BFChainPcSdk.SchemaType[] = [
 export const TR_SET_LNS_RECORD_VALUE: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             name: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             operationType: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
             addRecord: {
-                type: "array",
-                items: {
-                    type: "string",
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    recordType: {
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                    },
+                    recordValue: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
                 },
             },
             deleteRecord: {
-                type: "array",
-                items: {
-                    type: "string",
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    recordType: {
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                    },
+                    recordValue: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
                 },
             },
         },
@@ -404,10 +556,10 @@ export const TR_SET_LNS_RECORD_VALUE: BFChainPcSdk.SchemaType[] = [
 export const TR_REGISTER_CHAIN: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             genesisBlockPath: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["genesisBlockPath"],
@@ -417,85 +569,137 @@ export const TR_REGISTER_CHAIN: BFChainPcSdk.SchemaType[] = [
 export const TR_TO_EXCHANGE_SPECIAL_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            toExchangeSource: {
-                type: "string",
+            toExchangeInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    toExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["toExchangeAsset"],
             },
-            beExchangeSource: {
-                type: "string",
-            },
-            toExchangeChainName: {
-                type: "string",
-            },
-            beExchangeChainName: {
-                type: "string",
-            },
-            toExchangeAsset: {
-                type: "string",
-            },
-            beExchangeAsset: {
-                type: "string",
+            beExchangeInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    beExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["beExchangeAsset"],
             },
             exchangeNumber: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             exchangeAssetType: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
             exchangeDirection: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
             ciphertexts: {
-                type: "array",
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },
-        required: [
-            "toExchangeSource",
-            "beExchangeSource",
-            "toExchangeChainName",
-            "beExchangeChainName",
-            "toExchangeAsset",
-            "beExchangeAsset",
-            "exchangeNumber",
-            "exchangeAssetType",
-            "exchangeDirection",
-        ],
+        required: ["toExchangeInfo", "beExchangeInfo", "exchangeNumber", "exchangeAssetType", "exchangeDirection"],
     },
 ];
 /**发送接受资产交换事件 */
 export const TR_BE_EXCHANGE_SPECIAL_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             transactionSignature: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            exchangeSpecialAsset: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    cipherPublicKeys: {
+                        type: BASE_ARGS_TYPE.ARRAY,
+                        items: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                    },
+                    toExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAsset: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    exchangeNumber: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    exchangeAssetType: {
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                    },
+                    exchangeDirection: {
+                        type: BASE_ARGS_TYPE.NATURALNUMBER,
+                    },
+                },
+                required: [
+                    "cipherPublicKeys",
+                    "toExchangeSource",
+                    "beExchangeSource",
+                    "toExchangeChainName",
+                    "beExchangeChainName",
+                    "toExchangeAsset",
+                    "beExchangeAsset",
+                    "exchangeNumber",
+                    "exchangeAssetType",
+                    "exchangeDirection",
+                ],
             },
             ciphertext: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
-        required: ["transactionSignature", "recipientId"],
+        required: ["transactionSignature", "exchangeSpecialAsset", "recipientId"],
     },
 ];
 /**发送权益迁出交易 */
 export const TR_EMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             genesisDelegateSignature: {
-                type: "array",
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
             },
             amount: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         required: ["genesisDelegateSignature", "amount"],
@@ -506,15 +710,15 @@ export const TR_EMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
 export const TR_IMMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
-        type: "object",
+        type: BASE_ARGS_TYPE.OBJECT,
         properties: {
             transactionSignature: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
             genesisDelegateSignature: {
-                type: "array",
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
-                    type: "string",
+                    type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },

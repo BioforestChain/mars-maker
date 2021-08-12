@@ -7,6 +7,7 @@
     "files": [
         "src/atom_schema/basicSchema.ts",
         "src/atom_schema/commonSchema.ts",
+        "src/atom_schema/constants.ts",
         "src/atom_schema/serviceSchema.ts",
         "src/atom_schema/systemSchema.ts",
         "src/atom_schema/transactionSchema.ts",

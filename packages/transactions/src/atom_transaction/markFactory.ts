@@ -10,6 +10,7 @@ export class MarkFactory extends TransactionFactory<MarkTransaction> {
 
     async generateTransaction(request: BFChainPcSdk.Transaction.MarkTransactionParams) {
         this.verify(request);
+        const { dappInfo } = request;
         const tr = await myMark.generateMark(
             this.getTransactionBody(request),
             {
@@ -18,9 +19,9 @@ export class MarkFactory extends TransactionFactory<MarkTransaction> {
                 dapp: {
                     sourceChainName: this.bfchainCore.config.chainName,
                     sourceChainMagic: this.bfchainCore.config.magic,
-                    dappid: request.dappid,
-                    type: request.type,
-                    purchaseAsset: request.purchanseAsset,
+                    dappid: dappInfo.dappid,
+                    type: dappInfo.type,
+                    purchaseAsset: dappInfo.purchanseAsset,
                 },
             },
             this.getAccountPowInfo(request),

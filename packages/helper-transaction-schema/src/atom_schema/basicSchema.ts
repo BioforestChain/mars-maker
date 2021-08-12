@@ -1,147 +1,149 @@
+import { BASE_ARGS_TYPE } from "./constants";
+
 /**创建新的创世块 */
 export const BASIC_GENERATE_GENESIS_BLOCK: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         genesisSecret: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         delegatesSecret: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         lang: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         chainName: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         assetType: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         magic: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         beginEpochTime: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         genesisLocationName: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         genesisAmount: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         minTransactionFeePerByte: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         maxTPSPerBlock: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         maxTransactionSize: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         maxBlockSize: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         consessusBeforeSyncBlockDiff: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         maxDelegateTxsPerRound: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         maxGrabTimesOfGiftAsset: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         issueAssetMinChainAsset: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         maxMultipleOfAssetAndMainAsset: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         registerChainMinChainAsset: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         maxApplyAndConfirmedBlockHeightDiff: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         blockPerRound: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         delegates: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         whetherToAllowDelegateContinusElections: {
-            type: "boolean",
+            type: BASE_ARGS_TYPE.BOOLEAN,
         },
         forgeInterval: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         votePercent: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         forgePercent: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         ports: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         heights: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         rewards: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         growthFactor: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         participationRatio: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         tpowOfWorkExemptionBlocks: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.NATURALNUMBER,
         },
         accountParticipationWeightRatio: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         blockParticipationWeightRatio: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "integer",
+                type: BASE_ARGS_TYPE.NATURALNUMBER,
             },
         },
         averageComputingPower: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.NATURALNUMBER,
         },
     },
     required: [
@@ -185,10 +187,10 @@ export const BASIC_GENERATE_GENESIS_BLOCK: BFChainPcSdk.SchemaType = {
 
 /**获取事件类型 */
 export const BASIC_GET_TRANSACTION_TYPE: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         baseType: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["baseType"],
@@ -196,10 +198,10 @@ export const BASIC_GET_TRANSACTION_TYPE: BFChainPcSdk.SchemaType = {
 
 /**输入命令行密码 */
 export const BASIC_SET_PASSWORD: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         password: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["password"],
@@ -207,16 +209,16 @@ export const BASIC_SET_PASSWORD: BFChainPcSdk.SchemaType = {
 
 /**获取指定区块 */
 export const BASIC_GET_BLOCK: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         signature: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         height: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         page: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.NATURALNUMBER,
         },
     },
     required: [],
@@ -224,31 +226,31 @@ export const BASIC_GET_BLOCK: BFChainPcSdk.SchemaType = {
 
 /**获取指定事件 */
 export const BASIC_GET_TRANSACTIONS: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         signature: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         height: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.POSITIVEINTEGER,
         },
         senderId: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         recipientId: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         address: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         type: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         page: {
-            type: "integer",
+            type: BASE_ARGS_TYPE.NATURALNUMBER,
         },
     },
     required: [],
@@ -256,10 +258,10 @@ export const BASIC_GET_TRANSACTIONS: BFChainPcSdk.SchemaType = {
 
 /**生成私钥 */
 export const BASIC_GENERATE_SECRET: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         lang: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["lang"],
@@ -267,10 +269,10 @@ export const BASIC_GENERATE_SECRET: BFChainPcSdk.SchemaType = {
 
 /**获取账户公钥 */
 export const BASIC_GET_ACCOUNT_PUBLICKEY: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         address: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["address"],
@@ -278,13 +280,13 @@ export const BASIC_GET_ACCOUNT_PUBLICKEY: BFChainPcSdk.SchemaType = {
 
 /**获取账户的最后一笔交易 */
 export const BASIC_GET_ACCOUNT_LAST_TRANSACTION: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         address: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         assetType: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["address", "assetType"],
@@ -292,10 +294,10 @@ export const BASIC_GET_ACCOUNT_LAST_TRANSACTION: BFChainPcSdk.SchemaType = {
 
 /**创建账户 */
 export const BASIC_CREATE_ACCOUNT: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         secret: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["secret"],
@@ -303,16 +305,16 @@ export const BASIC_CREATE_ACCOUNT: BFChainPcSdk.SchemaType = {
 
 /**生成权益迁出事件的创世受托人签名 */
 export const BASIC_EMIGRATE_ASSET_GENESIS_SIGNATURE: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         genesisAccount: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
         senderId: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
     },
     required: ["genesisAccount", "senderId"],
@@ -320,15 +322,15 @@ export const BASIC_EMIGRATE_ASSET_GENESIS_SIGNATURE: BFChainPcSdk.SchemaType = {
 
 /**生成权益迁入事件的创世受托人签名 */
 export const BASIC_IMMIGRATE_ASSET_GENESIS_SIGNATURE: BFChainPcSdk.SchemaType = {
-    type: "object",
+    type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         transactionSignature: {
-            type: "string",
+            type: BASE_ARGS_TYPE.STRING,
         },
         genesisAccount: {
-            type: "array",
+            type: BASE_ARGS_TYPE.ARRAY,
             items: {
-                type: "string",
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
     },
