@@ -12,14 +12,32 @@ export class Sdk {
             }
             this.__configOptions = configOptions;
         }
-        this.__api = new Api(this.__transactionServerPort, this.__configOptions.apiConfig);
+        const configRootPath = this.__configOptions.configRootPath;
+        const apiConfig = this.__configOptions.apiConfig;
+        this.__api = new Api(
+            this.__transactionServerPort,
+            configRootPath
+                ? apiConfig
+                    ? {
+                          ...apiConfig,
+                          configRootPath,
+                      }
+                    : {
+                          configRootPath,
+                      }
+                : apiConfig
+        );
     }
 
     get api() {
         return this.__api;
     }
 
-    async runTransactionServer(configOptions = this.__configOptions.transactionConfig) {
+    async runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions) {
+        configOptions = configOptions || {};
+        if (this.__configOptions.configRootPath) {
+            configOptions.configRootPath = this.__configOptions.configRootPath;
+        }
         await runTransactionServer(this.__transactionServerPort, configOptions);
     }
 }

@@ -3,18 +3,16 @@ import * as path from "path";
 import { Injectable } from "@bfchain/util-dep-inject";
 import { BLOCK_CHAIN_NET_WORK_TYPE, SECRET_LANGUAGE_TYPE } from "@bfchain/pc-sdk-api-constants";
 
-const CONFIG_ROOT_PATH = path.join(process.cwd(), "config");
-
 @Injectable()
 export class TransactionConfigHelper {
     private __transactionConfig!: BFChainPcSdk.TransactionConfig;
 
     constructor(configOptions?: BFChainPcSdk.TransactionConfigOptions) {
-        this.__initConfig();
+        this.__initConfig(configOptions && configOptions.configRootPath);
         configOptions && this.setTransactionConfig(configOptions);
     }
 
-    private __initConfig() {
+    private __initConfig(configRootPath?: string) {
         this.__transactionConfig = {
             genesisInfoConfig: {
                 isGenesisBlockProvidedExternally: false,
@@ -26,7 +24,7 @@ export class TransactionConfigHelper {
             lang: SECRET_LANGUAGE_TYPE.ENGLISH,
         };
 
-        const configPath = `${CONFIG_ROOT_PATH}/config.json`;
+        const configPath = path.join(configRootPath || path.join(process.cwd(), "config"), "config.json");
         if (fs.existsSync(configPath)) {
             const configData: {
                 transactionConfig: BFChainPcSdk.TransactionConfigOptions;

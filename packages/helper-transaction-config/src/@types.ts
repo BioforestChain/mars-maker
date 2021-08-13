@@ -17,6 +17,8 @@ declare namespace BFChainPcSdk {
     type GenesisInfoConfigOptions = Partial<GenesisInfoConfig>;
 
     interface TransactionConfig {
+        /**配置文件的根路径，如果提供的路径不存在会使用默认路径 */
+        configRootPath?: string;
         /**创世块配置信息 */
         genesisInfoConfig: GenesisInfoConfig;
         /**密码类型: cn 汉语 || jp 日语 || sp 西班牙语 || it 意大利语 || fr 法语 || en 英语, 默认值 en */

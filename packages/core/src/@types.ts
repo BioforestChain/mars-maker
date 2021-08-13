@@ -1,5 +1,7 @@
 declare namespace BFChainPcSdk {
     interface Config {
+        /**配置文件的根路径，如果提供的路径不存在会使用默认路径 */
+        configRootPath?: string;
         /**api 配置信息 */
         apiConfig: ApiConfig;
         /**交易服务端口号, 默认值 8888 */

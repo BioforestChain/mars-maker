@@ -93,9 +93,8 @@ const onRequest = async (request: http.IncomingMessage, response: http.ServerRes
     }
 };
 
-export const getTransactionServerPort = () => {
-    const CONFIG_ROOT_PATH = path.join(process.cwd(), "config");
-    const configPath = path.join(CONFIG_ROOT_PATH, "config.json");
+export const getTransactionServerPort = (configRootPath?: string) => {
+    const configPath = path.join(configRootPath || path.join(process.cwd(), "config"), "config.json");
     if (fs.existsSync(configPath)) {
         const config: {
             transactionServerPort: number;
@@ -114,7 +113,7 @@ export async function runTransactionServer(port?: number, configOptions: BFChain
         }
         const myBaseHelper = new MyBaseHelper(configOptions);
         if (port === undefined) {
-            port = getTransactionServerPort();
+            port = getTransactionServerPort(configOptions.configRootPath);
         }
         Router(myBaseHelper.bfchainCore);
         const server = http.createServer(onRequest);

@@ -16,7 +16,7 @@ import { Sdk } from "@bfchain/pc-sdk-core";
 
         const sdk = new Sdk();
 
-        const result = await sdk.api.transaction.generateRejectVote(argv);
+        const result = await sdk.api.transaction.sendAcceptVote(argv);
 
         console.log(result);
     } catch (e) {

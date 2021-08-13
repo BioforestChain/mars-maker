@@ -3,18 +3,16 @@ import * as path from "path";
 import { Injectable } from "@bfchain/util-dep-inject";
 import { REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
 
-const CONFIG_ROOT_PATH = path.join(process.cwd(), "config");
-
 @Injectable()
 export class ApiConfigHelper {
     private __apiConfig!: BFChainPcSdk.ApiConfig;
 
     constructor(configOptions?: BFChainPcSdk.ApiConfigOptions) {
-        this.__initConfig();
+        this.__initConfig(configOptions && configOptions.configRootPath);
         configOptions && this.setApiConfig(configOptions);
     }
 
-    private __initConfig() {
+    private __initConfig(configRootPath?: string) {
         this.__apiConfig = {
             ip: "127.0.0.1",
             port: 9003,
@@ -22,7 +20,7 @@ export class ApiConfigHelper {
             requestProtocol: REQUEST_PROTOCOL.WEBSOCKET,
         };
 
-        const configPath = `${CONFIG_ROOT_PATH}/config.json`;
+        const configPath = path.join(configRootPath || path.join(process.cwd(), "config"), "config.json");
         if (fs.existsSync(configPath)) {
             const configData: {
                 apiConfig: BFChainPcSdk.ApiConfigOptions;
