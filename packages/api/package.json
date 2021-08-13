@@ -1,6 +1,6 @@
 {
   "name": "@bfchain/pc-sdk-api",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
@@ -11,8 +11,8 @@
   "author": "BFChain Team",
   "license": "MIT",
   "dependencies": {
-    "@bfchain/pc-sdk-transactions-server": "1.2.2",
-    "@bfchain/pc-sdk-typings": "1.2.2",
+    "@bfchain/pc-sdk-transactions-server": "1.2.3",
+    "@bfchain/pc-sdk-typings": "1.2.3",
     "socket.io-client": "^2.4.0"
   },
   "devDependencies": {
