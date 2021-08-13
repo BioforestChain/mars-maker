@@ -1,3 +1,4 @@
+import * as path from "path";
 import { Sdk } from "@bfchain/pc-sdk-core";
 
 (async () => {
@@ -15,7 +16,7 @@ import { Sdk } from "@bfchain/pc-sdk-core";
 
         const sdk = new Sdk();
 
-        const result = await sdk.api.transaction.sendAcceptVote(argv);
+        const result = await sdk.api.transaction.generateRejectVote(argv);
 
         console.log(result);
     } catch (e) {

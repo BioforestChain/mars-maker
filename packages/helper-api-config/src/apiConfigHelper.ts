@@ -1,8 +1,9 @@
 import * as fs from "fs";
+import * as path from "path";
 import { Injectable } from "@bfchain/util-dep-inject";
 import { REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
 
-const CONFIG_ROOT_PATH = process.cwd() + "/config";
+const CONFIG_ROOT_PATH = path.join(process.cwd(), "config");
 
 @Injectable()
 export class ApiConfigHelper {

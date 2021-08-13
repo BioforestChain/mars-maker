@@ -1,8 +1,9 @@
 import * as fs from "fs";
+import * as path from "path";
 import { Injectable } from "@bfchain/util-dep-inject";
 import { BLOCK_CHAIN_NET_WORK_TYPE, SECRET_LANGUAGE_TYPE } from "@bfchain/pc-sdk-api-constants";
 
-const CONFIG_ROOT_PATH = process.cwd() + "/config";
+const CONFIG_ROOT_PATH = path.join(process.cwd(), "config");
 
 @Injectable()
 export class TransactionConfigHelper {
@@ -40,13 +41,14 @@ export class TransactionConfigHelper {
         if (!this.__transactionConfig) {
             this.__initConfig();
         }
-        const { isGenesisBlockProvidedExternally, networkType, chainAssetType, blockPerRound, forgeInterval } = genesisInfoConfigOptions;
+        const { isGenesisBlockProvidedExternally, networkType, chainAssetType, blockPerRound, forgeInterval, genesisBlockRootPath } = genesisInfoConfigOptions;
         isGenesisBlockProvidedExternally !== undefined &&
             (this.__transactionConfig.genesisInfoConfig.isGenesisBlockProvidedExternally = isGenesisBlockProvidedExternally);
         networkType !== undefined && (this.__transactionConfig.genesisInfoConfig.networkType = networkType);
         chainAssetType !== undefined && (this.__transactionConfig.genesisInfoConfig.chainAssetType = chainAssetType);
         blockPerRound !== undefined && (this.__transactionConfig.genesisInfoConfig.blockPerRound = blockPerRound);
         forgeInterval !== undefined && (this.__transactionConfig.genesisInfoConfig.forgeInterval = forgeInterval);
+        genesisBlockRootPath !== undefined && (this.__transactionConfig.genesisInfoConfig.genesisBlockRootPath = genesisBlockRootPath);
     }
 
     setTransactionConfig(transactionConfigOptions: BFChainPcSdk.TransactionConfigOptions) {

@@ -10,6 +10,8 @@ declare namespace BFChainPcSdk {
         blockPerRound: number;
         /**锻造区块的时间间隔, 默认值 128 */
         forgeInterval: number;
+        /**创世块的根路径，如果 isGenesisBlockProvidedExternally，并且配置了 genesisBlockRootPath，则从此目录搜索创世块 */
+        genesisBlockRootPath?: string;
     }
 
     type GenesisInfoConfigOptions = Partial<GenesisInfoConfig>;

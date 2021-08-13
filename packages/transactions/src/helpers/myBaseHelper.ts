@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as path from "path";
 import { BFChainSecret } from "@bfchain/coretools-secret";
 import { MyGenesisBlockHelper } from "./myGenesisBlockHelper";
 import { TransactionConfigHelper } from "@bfchain/pc-sdk-helper-transaction-config";
@@ -48,13 +49,16 @@ export class MyBaseHelper {
      *
      */
     getGenesisBlock() {
-        const { isGenesisBlockProvidedExternally, chainAssetType, networkType, blockPerRound, forgeInterval } = this.genesisInfoConfig;
+        const { isGenesisBlockProvidedExternally, chainAssetType, networkType, blockPerRound, forgeInterval, genesisBlockRootPath } = this.genesisInfoConfig;
         if (isGenesisBlockProvidedExternally) {
-            const rootPath = process.cwd() + "/genesisInfos";
+            const rootPath = genesisBlockRootPath || path.join(process.cwd(), "genesisInfos");
             if (!fs.existsSync(rootPath)) {
                 throw new Error(`Genesis block not exist ${rootPath}`);
             }
-            const filePath = `${rootPath}/${chainAssetType.toLowerCase()}-genesisBlock-${networkType.toLowerCase()}-${blockPerRound}b-${forgeInterval}s.json`;
+            const filePath = path.join(
+                rootPath,
+                `${chainAssetType.toLowerCase()}-genesisBlock-${networkType.toLowerCase()}-${blockPerRound}b-${forgeInterval}s.json`
+            );
             if (!fs.existsSync(filePath)) {
                 throw new Error(`Genesis block not exist ${filePath}`);
             }

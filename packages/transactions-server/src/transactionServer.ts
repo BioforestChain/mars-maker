@@ -94,7 +94,8 @@ const onRequest = async (request: http.IncomingMessage, response: http.ServerRes
 };
 
 export const getTransactionServerPort = () => {
-    const configPath = path.resolve(process.cwd(), "./config/config.json");
+    const CONFIG_ROOT_PATH = path.join(process.cwd(), "config");
+    const configPath = path.join(CONFIG_ROOT_PATH, "config.json");
     if (fs.existsSync(configPath)) {
         const config: {
             transactionServerPort: number;
