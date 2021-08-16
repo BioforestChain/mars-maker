@@ -1,0 +1,19 @@
+{
+    "extends": "./tsconfig",
+    "mixin": [
+        "./tsconfig.json",
+        "../../tsconfig.base.@types.json"
+    ],
+    "compilerOptions": {
+        "declarationDir": "../@types/bfchain__pc-sdk-helper-type",
+        "declaration": true,
+        "outDir": "../../.cache/helper-type",
+        "tsBuildInfoFile": "../../.cache/helper-type/@types.tsbuildinfo",
+        "declarationMap": false
+    },
+    "references": [
+        {
+            "path": "../typings/tsconfig.@types.json"
+        }
+    ]
+}

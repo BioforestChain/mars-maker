@@ -13,6 +13,12 @@
                 "type": "mergejson",
                 "from": "$ROOT_PROJECT/tsconfig.cjs.json",
                 "to": "$PACKAGE/tsconfig.json"
+            },
+            {
+                "packages": "*,-test",
+                "type": "jsonfromjs",
+                "src": "$ROOT_PROJECT/tsconfig.@types.js",
+                "to": "$PACKAGE/tsconfig.@types.json"
             }
         ]
     },
@@ -24,9 +30,11 @@
         "lsts": "bdk-lsts -p=./tsconfig.json",
         "clear": "node ./scripts/rmBuild.js",
         "dev": "bdk-tsc --build -w",
-        "build": "bdk-tsc --build tsconfig.json",
-        "rebuild": "npm run clear && npm run build",
+        "dev:all": "bdk-tsc --build ./tsconfig.all.json -w",
+        "build": "bdk-tsc --build ./tsconfig.all.json",
+        "rebuild": "yarn clear & yarn build",
         "publ": "lerna publish",
+        "publ:type": "yarn mono & node ./scripts/publish-types.js",
         "publ:force": "lerna publish --force-publish"
     },
     "repository": {

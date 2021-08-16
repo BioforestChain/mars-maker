@@ -1,0 +1,25 @@
+{
+    "extends": "./tsconfig",
+    "mixin": [
+        "./tsconfig.json",
+        "../../tsconfig.base.@types.json"
+    ],
+    "compilerOptions": {
+        "declarationDir": "../@types/bfchain__pc-sdk-helper-transaction-verify",
+        "declaration": true,
+        "outDir": "../../.cache/helper-transaction-verify",
+        "tsBuildInfoFile": "../../.cache/helper-transaction-verify/@types.tsbuildinfo",
+        "declarationMap": false
+    },
+    "references": [
+        {
+            "path": "../helper-transaction-schema-validation/tsconfig.@types.json"
+        },
+        {
+            "path": "../helper-type/tsconfig.@types.json"
+        },
+        {
+            "path": "../typings/tsconfig.@types.json"
+        }
+    ]
+}

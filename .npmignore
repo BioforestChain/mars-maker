@@ -16,3 +16,4 @@ genesisInfos
 genesisSecrets
 .prettierrc
 sdk.code-workspace
+.cache

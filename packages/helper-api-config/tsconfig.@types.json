@@ -1,0 +1,22 @@
+{
+    "extends": "./tsconfig",
+    "mixin": [
+        "./tsconfig.json",
+        "../../tsconfig.base.@types.json"
+    ],
+    "compilerOptions": {
+        "declarationDir": "../@types/bfchain__pc-sdk-helper-api-config",
+        "declaration": true,
+        "outDir": "../../.cache/helper-api-config",
+        "tsBuildInfoFile": "../../.cache/helper-api-config/@types.tsbuildinfo",
+        "declarationMap": false
+    },
+    "references": [
+        {
+            "path": "../api-constants/tsconfig.@types.json"
+        },
+        {
+            "path": "../typings/tsconfig.@types.json"
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+export declare const UNKNOWN_REQUEST_TYPE = "unknown request type";
+export declare const REQUEST_PARAMETER_PARSE_FAILED = "request parameter parse failed";
+export declare const REQUEST_URL_IS_REQUIRED = "request url is required";
+export declare const REQUEST_METHOD_IS_REQUIRED = "request method is required";
+export declare const REQUEST_PARAMETER_ONLY_CAN_BE_JSON = "request parameter only can be json";
+export declare const REQUEST_ERROR = "request {apiPath} error";
+export declare const API_ENDPOINT_NOT_FOUND = "api endpoint not found";
+export declare const MODULE_DUPLICATE = "{module} in {target} is already exists when {function}";
+export declare const MODULE_NOT_EXISTS = "{module} in {target} is not exists when {function}";
+export declare const PROP_IS_REQUIRE = "{prop} in {target} is required when {function}";
+export declare const PROP_IS_INVALID = "{prop} in {target} is invalid when {function}";
+export declare const errorCode: Map<string, string>;

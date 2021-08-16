@@ -1,0 +1,28 @@
+{
+    "extends": "./tsconfig",
+    "mixin": [
+        "./tsconfig.json",
+        "../../tsconfig.base.@types.json"
+    ],
+    "compilerOptions": {
+        "declarationDir": "../@types/bfchain__pc-sdk-transactions",
+        "declaration": true,
+        "outDir": "../../.cache/transactions",
+        "tsBuildInfoFile": "../../.cache/transactions/@types.tsbuildinfo",
+        "declarationMap": false
+    },
+    "references": [
+        {
+            "path": "../api-constants/tsconfig.@types.json"
+        },
+        {
+            "path": "../exception/tsconfig.@types.json"
+        },
+        {
+            "path": "../helpers/tsconfig.@types.json"
+        },
+        {
+            "path": "../typings/tsconfig.@types.json"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "extends": "./tsconfig",
+    "mixin": [
+        "./tsconfig.json",
+        "../../tsconfig.base.@types.json"
+    ],
+    "compilerOptions": {
+        "declarationDir": "../@types/bfchain__pc-sdk-exception",
+        "declaration": true,
+        "outDir": "../../.cache/exception",
+        "tsBuildInfoFile": "../../.cache/exception/@types.tsbuildinfo",
+        "declarationMap": false
+    },
+    "references": [
+        {
+            "path": "../exception-errorcode/tsconfig.@types.json"
+        },
+        {
+            "path": "../typings/tsconfig.@types.json"
+        }
+    ]
+}

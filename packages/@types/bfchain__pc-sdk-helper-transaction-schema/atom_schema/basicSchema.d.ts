@@ -1,0 +1,11 @@
+export declare const BASIC_GENERATE_GENESIS_BLOCK: BFChainPcSdk.SchemaType;
+export declare const BASIC_GET_TRANSACTION_TYPE: BFChainPcSdk.SchemaType;
+export declare const BASIC_SET_PASSWORD: BFChainPcSdk.SchemaType;
+export declare const BASIC_GET_BLOCK: BFChainPcSdk.SchemaType;
+export declare const BASIC_GET_TRANSACTIONS: BFChainPcSdk.SchemaType;
+export declare const BASIC_GENERATE_SECRET: BFChainPcSdk.SchemaType;
+export declare const BASIC_GET_ACCOUNT_PUBLICKEY: BFChainPcSdk.SchemaType;
+export declare const BASIC_GET_ACCOUNT_LAST_TRANSACTION: BFChainPcSdk.SchemaType;
+export declare const BASIC_CREATE_ACCOUNT: BFChainPcSdk.SchemaType;
+export declare const BASIC_EMIGRATE_ASSET_GENESIS_SIGNATURE: BFChainPcSdk.SchemaType;
+export declare const BASIC_IMMIGRATE_ASSET_GENESIS_SIGNATURE: BFChainPcSdk.SchemaType;

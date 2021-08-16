@@ -1,0 +1,9 @@
+{
+    "name": "@types/bfchain__pc-sdk-exception",
+    "types": "index.d.ts",
+    "version": "1.2.5",
+    "dependencies": {
+        "@types/bfchain__pc-sdk-exception-errorcode": "1.2.5",
+        "@types/bfchain__pc-sdk-typings": "1.2.5"
+    }
+}

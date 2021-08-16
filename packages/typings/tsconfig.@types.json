@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig",
+    "mixin": [
+        "./tsconfig.json",
+        "../../tsconfig.base.@types.json"
+    ],
+    "compilerOptions": {
+        "declarationDir": "../@types/bfchain__pc-sdk-typings",
+        "declaration": true,
+        "outDir": "../../.cache/typings",
+        "tsBuildInfoFile": "../../.cache/typings/@types.tsbuildinfo",
+        "declarationMap": false
+    }
+}
