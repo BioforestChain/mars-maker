@@ -1,12 +1,12 @@
 {
     "name": "@bfchain/pc-sdk-test",
     "version": "1.2.3",
-    "description": "",
+    "description": "pc-sdk-test for the third party",
     "main": "build/cjs/index.js",
     "module": "build/esm/index.js",
     "type": "commonjs",
     "keywords": [
-        "core"
+        "pc-sdk-test"
     ],
     "author": "BFChain Team",
     "license": "MIT",
