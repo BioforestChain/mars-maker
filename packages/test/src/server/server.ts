@@ -1,5 +1,5 @@
 import * as path from "path";
-import { Sdk } from "@bfchain/pc-sdk-core";
+import { Sdk } from "@bfchain/pc-sdk";
 
 // const config: BFChainPcSdk.ConfigOptions = {
 //     apiConfig: {

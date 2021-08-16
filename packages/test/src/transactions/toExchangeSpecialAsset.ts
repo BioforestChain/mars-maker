@@ -1,5 +1,5 @@
 import { EXCHANGE_DIRECTION, SPECIAL_ASSET_TYPE } from "@bfchain/core";
-import { Sdk } from "@bfchain/pc-sdk-core";
+import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {

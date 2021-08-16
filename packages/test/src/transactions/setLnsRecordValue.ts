@@ -1,5 +1,5 @@
 import { RECORD_OPERATION_TYPE, RECORD_TYPE } from "@bfchain/core";
-import { Sdk } from "@bfchain/pc-sdk-core";
+import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {

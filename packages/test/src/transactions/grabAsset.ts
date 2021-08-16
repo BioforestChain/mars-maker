@@ -1,5 +1,5 @@
 import { GIFT_DISTRIBUTION_RULE } from "@bfchain/core";
-import { Sdk } from "@bfchain/pc-sdk-core";
+import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {

@@ -2,7 +2,7 @@
 
 ## Installation - 安装
 
-`$ npm install @bfchain/pc-sdk-core`
+`$ npm install @bfchain/pc-sdk`
 
 ### Requrements - 必要条件
 
@@ -17,7 +17,7 @@
 ## Usage - 用法
 
 ```ts
-import { Sdk } from "@bfchain/pc-sdk-core";
+import { Sdk } from "@bfchain/pc-sdk";
 
 // 也可以再运行目录下建 config/config.json 填入以下内容，new 的时候就不用传参
 

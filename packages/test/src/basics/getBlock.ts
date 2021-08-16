@@ -1,5 +1,5 @@
 import type {} from "@bfchain/coretools";
-import { Sdk } from "@bfchain/pc-sdk-core";
+import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {

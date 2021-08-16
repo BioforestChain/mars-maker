@@ -34,7 +34,7 @@
     ],
     "references": [
         {
-            "path": "../core/tsconfig.json"
+            "path": "../pc-sdk/tsconfig.json"
         },
         {
             "path": "../typings/tsconfig.json"
