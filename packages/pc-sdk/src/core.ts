@@ -38,6 +38,10 @@ export class Sdk {
         if (this.__configOptions.configRootPath) {
             configOptions.configRootPath = this.__configOptions.configRootPath;
         }
+        if (this.__configOptions.genesisBlockRootPath) {
+            configOptions.genesisInfoConfig = configOptions.genesisInfoConfig || {};
+            configOptions.genesisInfoConfig.genesisBlockRootPath = this.__configOptions.genesisBlockRootPath;
+        }
         await runTransactionServer(this.__transactionServerPort, configOptions);
     }
 }

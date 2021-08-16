@@ -27,5 +27,3 @@ export * from "./helpers";
 export * from "./atom_transaction";
 
 export * from "./transaction";
-
-// type xx = BFChainCoreTools.MyTransactionArgv
