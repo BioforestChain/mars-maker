@@ -17,7 +17,7 @@
             {
                 "packages": "*,-test",
                 "type": "jsonfromjs",
-                "src": "$ROOT_PROJECT/tsconfig.@types.js",
+                "src": "$ROOT_PROJECT/scripts/tsconfig.@types.js",
                 "to": "$PACKAGE/tsconfig.@types.json"
             }
         ]

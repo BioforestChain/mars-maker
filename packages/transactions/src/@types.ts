@@ -1,7 +1,6 @@
 declare namespace BFChainPcSdk {
     namespace Transaction {
         type TransactionFactory<T extends BFChainCore.Transaction> = import("./atom_transaction/_transactionFactory").TransactionFactory<T>;
-        type TransactionFactoryConstructor<T extends BFChainCore.Transaction = any> = new (...args: any[]) => TransactionFactory<T>;
 
         /**交易通用参数 */
         interface TransactionCommonParams {
@@ -270,5 +269,26 @@ declare namespace BFChainPcSdk {
             /**加密密钥，如果资产交换事件填写了加密密钥，则必须携带某个资产交换事件指定密钥以生成密钥签名对 */
             ciphertext?: string;
         }
+
+        interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
+            /**创世块 */
+            genesisBlock: BFChainCore.GenesisBlockJSON;
+        }
+
+        interface EmigrateAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
+            /**携带迁出授权签名的凭证 */
+            migrateCertificate: BFChainCore.CrossChain.MigrateCertificateJSON;
+        }
+
+        interface ImmigrateAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
+            /**携带迁出、迁入授权签名的凭证 */
+            migrateCertificate: BFChainCore.CrossChain.MigrateCertificateJSON;
+        }
+    }
+
+    namespace CrossChain {
+        type MigrateCertificateFactory = import("./migrate_certificate/_migrateCertificateFactory").MigrateCertificateFactory;
+
+        type MigrateCertificateArgs = BFChainCore.CrossChain.GenerateMigrateCertificateArgs | BFChainCore.CrossChain.AuthSignMigrateCertificateArgs;
     }
 }

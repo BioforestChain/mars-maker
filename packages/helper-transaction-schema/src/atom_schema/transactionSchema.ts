@@ -558,11 +558,11 @@ export const TR_REGISTER_CHAIN: BFChainPcSdk.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            genesisBlockPath: {
-                type: BASE_ARGS_TYPE.STRING,
+            genesisBlock: {
+                type: BASE_ARGS_TYPE.OBJECT,
             },
         },
-        required: ["genesisBlockPath"],
+        required: ["genesisBlock"],
     },
 ];
 /**发送资产交换事件 */
@@ -692,17 +692,51 @@ export const TR_EMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            genesisDelegateSignature: {
-                type: BASE_ARGS_TYPE.ARRAY,
-                items: {
-                    type: BASE_ARGS_TYPE.STRING,
+            migrateCertificate: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    body: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            version: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            timestamp: {
+                                type: BASE_ARGS_TYPE.POSITIVEINTEGER,
+                                minimum: 1,
+                            },
+                            fromChainId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            toChainId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            fromId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            toId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            assetTypeId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            assets: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["version", "fromId", "toId", "timestamp", "fromChainId", "toChainId", "assetTypeId", "assets"],
+                    },
+                    signature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    fromAuthSignature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
                 },
-            },
-            amount: {
-                type: BASE_ARGS_TYPE.STRING,
+                required: ["body", "signature", "fromAuthSignature"],
             },
         },
-        required: ["genesisDelegateSignature", "amount"],
+        required: ["migrateCertificate"],
     },
 ];
 
@@ -712,16 +746,53 @@ export const TR_IMMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            transactionSignature: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            genesisDelegateSignature: {
-                type: BASE_ARGS_TYPE.ARRAY,
-                items: {
-                    type: BASE_ARGS_TYPE.STRING,
+            migrateCertificate: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    body: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            version: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            timestamp: {
+                                type: BASE_ARGS_TYPE.POSITIVEINTEGER,
+                                minimum: 1,
+                            },
+                            fromChainId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            toChainId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            fromId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            toId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            assetTypeId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            assets: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["version", "fromId", "toId", "timestamp", "fromChainId", "toChainId", "assetTypeId", "assets"],
+                    },
+                    signature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    fromAuthSignature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toAuthSignature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
                 },
+                required: ["body", "signature", "fromAuthSignature", "toAuthSignature"],
             },
         },
-        required: ["transactionSignature", "genesisDelegateSignature"],
+        required: ["migrateCertificate"],
     },
 ];

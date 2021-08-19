@@ -172,3 +172,12 @@ export const enum GENERATE_TRANSACTION_API_PATH {
     /**创建权益迁入交易 */
     TR_IMMIGRATE_ASSET = "/generate/immigrateAsset",
 }
+
+export const enum MIGRATE_CERTIFICATE_API_PATH {
+    /**创建迁移凭证 */
+    MIGRATE_CERTIFICATE_GENERATE = "/generate/migrateCertificate",
+    /**迁移凭证的迁出授权签名 */
+    MIGRATE_CERTIFICATE_FROM_AUTH_SIGNATURE = "/generate/migrateCertificateFromAuthSignature",
+    /**迁移凭证的迁入授权签名 */
+    MIGRATE_CERTIFICATE_TO_AUTH_SIGNATURE = "/generate/migrateCertificateToAuthSignature",
+}

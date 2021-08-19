@@ -12,24 +12,15 @@ export declare class WebsocketHelper {
     readonly URL_PREFIX = "";
     readonly TRANSACTION_SERVER_URL_PREFIX: string;
     constructor(__transactionServerPort: number, __configHelper: ApiConfigHelper);
-    createTransaction<T>(
-        url: string,
-        argv: {
-            [key: string]: any;
-        }
-    ): Promise<T>;
+    createTransaction<T>(url: string, argv: {
+        [key: string]: any;
+    }): Promise<T>;
     private __init;
     getSocket(): Promise<SocketIOClient.Socket>;
-    sendGetRequest<T>(
-        url: string,
-        argv?: {
-            [key: string]: any;
-        }
-    ): Promise<T>;
-    sendPostRequest<T>(
-        url: string,
-        argv: {
-            [key: string]: any;
-        }
-    ): Promise<T>;
+    sendGetRequest<T>(url: string, argv?: {
+        [key: string]: any;
+    }): Promise<T>;
+    sendPostRequest<T>(url: string, argv: {
+        [key: string]: any;
+    }): Promise<T>;
 }

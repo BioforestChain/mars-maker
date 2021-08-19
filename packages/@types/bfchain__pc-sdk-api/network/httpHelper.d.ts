@@ -8,22 +8,13 @@ export declare class HttpHelper {
     readonly REQUEST_PROTOCOL = REQUEST_PROTOCOL.HTTP;
     readonly URL_PREFIX: string;
     readonly TRANSACTION_SERVER_URL_PREFIX: string;
-    createTransaction<T>(
-        url: string,
-        argv: {
-            [key: string]: any;
-        }
-    ): Promise<T>;
-    sendGetRequest<T>(
-        url: string,
-        argv?: {
-            [key: string]: any;
-        }
-    ): Promise<T>;
-    sendPostRequest: <T>(
-        url: string,
-        argv: {
-            [key: string]: any;
-        }
-    ) => Promise<T>;
+    createTransaction<T>(url: string, argv: {
+        [key: string]: any;
+    }): Promise<T>;
+    sendGetRequest<T>(url: string, argv?: {
+        [key: string]: any;
+    }): Promise<T>;
+    sendPostRequest: <T>(url: string, argv: {
+        [key: string]: any;
+    }) => Promise<T>;
 }

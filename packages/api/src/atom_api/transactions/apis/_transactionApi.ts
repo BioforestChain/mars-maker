@@ -52,7 +52,7 @@ export abstract class TransactionApi<T extends BFChainCore.TransactionJSON> {
             // FIXME: 更好的写法
             return { ...generateResult, minFee: argv.fee };
         }
-        const broadcastResult = await this.broadcastTransaction(generateResult.transaction);
+        const broadcastResult = await this.broadcastTransaction(generateResult.result);
         return broadcastResult;
     }
 }

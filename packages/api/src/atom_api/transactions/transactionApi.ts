@@ -22,18 +22,25 @@ import {
     SetLnsRecordValueApi,
     ToExchangeSpecialAssetApi,
     BeExchangeSpecialAssetApi,
+    RegisterChainApi,
+    EmigrateAssetApi,
+    ImmigrateAssetApi,
+    GenerateMigrateCertificateApi,
+    FromAuthSignatureMigrateCertificateApi,
+    ToAuthSignatureMigrateCertificateApi,
 } from "./apis";
-import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
+import { GENERATE_TRANSACTION_API_PATH, MIGRATE_CERTIFICATE_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
 export class TransactionApi {
     private __TRANSACTION_API_MAP = new Map<BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH, BFChainPcSdk.Transaction.TransactionApi>();
+    private __MIGRATE_CERTIFICATE_API_MAP = new Map<BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH, BFChainPcSdk.CrossChain.MigrateCertificateApi>();
 
     constructor(private __networkHelper: BFChainPcSdk.NetworkHelper) {
         this.__init();
     }
 
     private __init() {
-        const { __networkHelper: networkHelper, __TRANSACTION_API_MAP: TRANSACTION_API_MAP } = this;
+        const { __networkHelper: networkHelper, __TRANSACTION_API_MAP: TRANSACTION_API_MAP, __MIGRATE_CERTIFICATE_API_MAP: MIGRATE_CERTIFICATE_API_MAP } = this;
 
         const usernameApi = new UsernameApi(networkHelper);
         const signatureApi = new SignatureApi(networkHelper);
@@ -58,6 +65,9 @@ export class TransactionApi {
         const setLnsRecordValueApi = new SetLnsRecordValueApi(networkHelper);
         const toExchangeSpecialAssetApi = new ToExchangeSpecialAssetApi(networkHelper);
         const beExchangeSpecialAssetApi = new BeExchangeSpecialAssetApi(networkHelper);
+        const registerChainApi = new RegisterChainApi(networkHelper);
+        const emigrateAssetApi = new EmigrateAssetApi(networkHelper);
+        const immigrateAssetApi = new ImmigrateAssetApi(networkHelper);
 
         TRANSACTION_API_MAP.set(usernameApi.GENERATE_API_PATH, usernameApi);
         TRANSACTION_API_MAP.set(signatureApi.GENERATE_API_PATH, signatureApi);
@@ -82,11 +92,27 @@ export class TransactionApi {
         TRANSACTION_API_MAP.set(setLnsRecordValueApi.GENERATE_API_PATH, setLnsRecordValueApi);
         TRANSACTION_API_MAP.set(toExchangeSpecialAssetApi.GENERATE_API_PATH, toExchangeSpecialAssetApi);
         TRANSACTION_API_MAP.set(beExchangeSpecialAssetApi.GENERATE_API_PATH, beExchangeSpecialAssetApi);
+        TRANSACTION_API_MAP.set(registerChainApi.GENERATE_API_PATH, registerChainApi);
+        TRANSACTION_API_MAP.set(emigrateAssetApi.GENERATE_API_PATH, emigrateAssetApi);
+        TRANSACTION_API_MAP.set(immigrateAssetApi.GENERATE_API_PATH, immigrateAssetApi);
+
+        const generateMigrateCertificateApi = new GenerateMigrateCertificateApi(networkHelper);
+        const fromAuthSignatureMigrateCertificateApi = new FromAuthSignatureMigrateCertificateApi(networkHelper);
+        const toAuthSignatureMigrateCertificateApi = new ToAuthSignatureMigrateCertificateApi(networkHelper);
+
+        MIGRATE_CERTIFICATE_API_MAP.set(generateMigrateCertificateApi.GENERATE_API_PATH, generateMigrateCertificateApi);
+        MIGRATE_CERTIFICATE_API_MAP.set(fromAuthSignatureMigrateCertificateApi.GENERATE_API_PATH, fromAuthSignatureMigrateCertificateApi);
+        MIGRATE_CERTIFICATE_API_MAP.set(toAuthSignatureMigrateCertificateApi.GENERATE_API_PATH, toAuthSignatureMigrateCertificateApi);
 
         Object.freeze(TRANSACTION_API_MAP);
     }
+
     private __getTransactionApi<T extends BFChainPcSdk.Transaction.TransactionApi>(apiPath: BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH) {
         return this.__TRANSACTION_API_MAP.get(apiPath) as T;
+    }
+
+    private __getMigrateCertificateApi<T extends BFChainPcSdk.CrossChain.MigrateCertificateApi>(apiPath: BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH) {
+        return this.__MIGRATE_CERTIFICATE_API_MAP.get(apiPath) as T;
     }
 
     /**创建设置用户名事件 */
@@ -523,6 +549,88 @@ export class TransactionApi {
     async sendBeExchangeSpecialAsset(argv: BFChainPcSdk.Transaction.BeExchangeSpecialAssetTransactionParams) {
         const api = this.__getTransactionApi<BFChainPcSdk.Transaction.BeExchangeSpecialAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_SPECIAL_ASSET);
         const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建注册链事件 */
+    async generateRegisterChain(argv: BFChainPcSdk.Transaction.RegisterChainTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.RegisterChainApi>(GENERATE_TRANSACTION_API_PATH.TR_REGISTER_CHAIN);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送注册链事件 */
+    async broadcastRegisterChain(transaction: BFChainCore.RegisterChainTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.RegisterChainApi>(GENERATE_TRANSACTION_API_PATH.TR_REGISTER_CHAIN);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送注册链事件 */
+    async sendRegisterChain(argv: BFChainPcSdk.Transaction.RegisterChainTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.RegisterChainApi>(GENERATE_TRANSACTION_API_PATH.TR_REGISTER_CHAIN);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建权益迁出事件 */
+    async generateEmigrateAsset(argv: BFChainPcSdk.Transaction.EmigrateAssetTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.EmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_EMIGRATE_ASSET);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送权益迁出事件 */
+    async broadcastEmigrateAsset(transaction: BFChainCore.EmigrateAssetTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.EmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_EMIGRATE_ASSET);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送权益迁出事件 */
+    async sendEmigrateAsset(argv: BFChainPcSdk.Transaction.EmigrateAssetTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.EmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_EMIGRATE_ASSET);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建权益迁入事件 */
+    async generateImmigrateAsset(argv: BFChainPcSdk.Transaction.ImmigrateAssetTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.ImmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_IMMIGRATE_ASSET);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送权益迁入事件 */
+    async broadcastImmigrateAsset(transaction: BFChainCore.ImmigrateAssetTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.ImmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_IMMIGRATE_ASSET);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送权益迁入事件 */
+    async sendImmigrateAsset(argv: BFChainPcSdk.Transaction.ImmigrateAssetTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.ImmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_IMMIGRATE_ASSET);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建权益迁移凭证 */
+    async generateMigrateCertificate(argv: BFChainCore.CrossChain.GenerateMigrateCertificateArgs) {
+        const api = this.__getMigrateCertificateApi<BFChainPcSdk.CrossChain.GenerateMigrateCertificateApi>(
+            MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_GENERATE
+        );
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+    /**创建权益迁移凭证的迁出授权签名 */
+    async fromAuthSignatureMigrateCertificate(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs) {
+        const api = this.__getMigrateCertificateApi<BFChainPcSdk.CrossChain.FromAuthSignatureMigrateCertificateApi>(
+            MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_FROM_AUTH_SIGNATURE
+        );
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+    /**创建权益迁移凭证的迁入授权签名 */
+    async toAuthSignatureMigrateCertificate(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs) {
+        const api = this.__getMigrateCertificateApi<BFChainPcSdk.CrossChain.ToAuthSignatureMigrateCertificateApi>(
+            MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_TO_AUTH_SIGNATURE
+        );
+        const result = await api.sendPostRequest(argv);
         return result;
     }
 }

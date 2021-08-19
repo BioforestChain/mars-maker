@@ -12,6 +12,10 @@ declare namespace BFChainPcSdk {
         type GENERATE_TRANSACTION_API_PATH = import("./apiPathConstant").GENERATE_TRANSACTION_API_PATH;
     }
 
+    namespace CrossChain {
+        type MIGRATE_CERTIFICATE_API_PATH = import("./apiPathConstant").MIGRATE_CERTIFICATE_API_PATH;
+    }
+
     type REQUEST_PROTOCOL = import("./commonConstants").REQUEST_PROTOCOL;
     type REQUEST_TYPE = import("./commonConstants").REQUEST_TYPE;
     type SECRET_LANGUAGE_TYPE = import("./commonConstants").SECRET_LANGUAGE_TYPE;

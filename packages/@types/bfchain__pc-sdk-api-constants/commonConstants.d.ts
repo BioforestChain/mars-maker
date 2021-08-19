@@ -1,14 +1,14 @@
 export declare const enum REQUEST_PROTOCOL {
     HTTP = "http",
-    WEBSOCKET = "websocket",
+    WEBSOCKET = "websocket"
 }
 export declare const enum REQUEST_TYPE {
     GET = "get",
-    POST = "post",
+    POST = "post"
 }
 export declare const enum BLOCK_CHAIN_NET_WORK_TYPE {
     TESTNET = "testnet",
-    MAINNET = "mainnet",
+    MAINNET = "mainnet"
 }
 export declare const enum SECRET_LANGUAGE_TYPE {
     CHINESE = "cn",
@@ -16,9 +16,9 @@ export declare const enum SECRET_LANGUAGE_TYPE {
     SPANISH = "sp",
     ITALIAN = "it",
     FRENCH = "fr",
-    ENGLISH = "en",
+    ENGLISH = "en"
 }
 export declare const enum READ_FILE_TYPE {
     READ_FILE_ASYNC = 0,
-    CREATE_READ_STREAM = 1,
+    CREATE_READ_STREAM = 1
 }

@@ -4,7 +4,7 @@ import * as url from "url";
 import * as http from "http";
 import { Router, route } from "./router";
 import { REQUEST_TYPE } from "./constants";
-import { MyBaseHelper } from "@bfchain/pc-sdk-transactions";
+import { GENERATE_TRANSACTION_API_PATH, MyBaseHelper } from "@bfchain/pc-sdk-transactions";
 import { parseGetRequestParameter, parsePostRequestParameter } from "@bfchain/pc-sdk-helper-request-parameter-parser";
 import {
     SdkExceptionGenerator,
@@ -47,11 +47,11 @@ const onRequest = async (request: http.IncomingMessage, response: http.ServerRes
         }
         if (method === REQUEST_TYPE.GET) {
             const query = (await parseGetRequestParameter(request)) as unknown as BFChainPcSdk.Transaction.TransactionCommonParams;
-            const txJson = await route(pathname, query);
+            const result = await route({ pathname, params: query });
             response.end(
                 JSON.stringify({
                     success: true,
-                    transaction: txJson,
+                    result,
                 })
             );
             return;
@@ -64,11 +64,11 @@ const onRequest = async (request: http.IncomingMessage, response: http.ServerRes
                     });
                 }
                 const body = (await parsePostRequestParameter(request)) as unknown as BFChainPcSdk.Transaction.TransactionCommonParams;
-                const txJson = await route(pathname, body);
+                const result = await route({ pathname, params: body });
                 response.end(
                     JSON.stringify({
                         success: true,
-                        transaction: txJson,
+                        result,
                     })
                 );
                 return;

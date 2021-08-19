@@ -1,7 +1,6 @@
 declare namespace BFChainPcSdk {
     namespace Transaction {
         type TransactionFactory<T extends BFChainCore.Transaction> = import("./atom_transaction/_transactionFactory").TransactionFactory<T>;
-        type TransactionFactoryConstructor<T extends BFChainCore.Transaction = any> = new (...args: any[]) => TransactionFactory<T>;
         interface TransactionCommonParams {
             secret: string;
             secondSecretInfo?: BFChainCoreTools.SecondSecretInfo;
@@ -34,9 +33,12 @@ declare namespace BFChainPcSdk {
         interface SignatureTransactionParams extends TransactionCommonParamsWithoutRecipientId {
             newSecondSecretInfo: BFChainCoreTools.SecondSecretInfo;
         }
-        interface DelegateTransactionParams extends TransactionCommonParamsWithoutRecipientId {}
-        interface AcceptVoteTransactionParams extends TransactionCommonParamsWithoutRecipientId {}
-        interface RejectVoteTransactionParams extends TransactionCommonParamsWithoutRecipientId {}
+        interface DelegateTransactionParams extends TransactionCommonParamsWithoutRecipientId {
+        }
+        interface AcceptVoteTransactionParams extends TransactionCommonParamsWithoutRecipientId {
+        }
+        interface RejectVoteTransactionParams extends TransactionCommonParamsWithoutRecipientId {
+        }
         interface VoteTransactionParams extends TransactionCommonParamsWithRecipientId {
             equity: string;
         }
@@ -174,5 +176,18 @@ declare namespace BFChainPcSdk {
             exchangeSpecialAsset: BFChainCore.ToExchangeSpecialAssetJSON;
             ciphertext?: string;
         }
+        interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
+            genesisBlock: BFChainCore.GenesisBlockJSON;
+        }
+        interface EmigrateAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
+            migrateCertificate: BFChainCore.CrossChain.MigrateCertificateJSON;
+        }
+        interface ImmigrateAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
+            migrateCertificate: BFChainCore.CrossChain.MigrateCertificateJSON;
+        }
+    }
+    namespace CrossChain {
+        type MigrateCertificateFactory = import("./migrate_certificate/_migrateCertificateFactory").MigrateCertificateFactory;
+        type MigrateCertificateArgs = BFChainCore.CrossChain.GenerateMigrateCertificateArgs | BFChainCore.CrossChain.AuthSignMigrateCertificateArgs;
     }
 }

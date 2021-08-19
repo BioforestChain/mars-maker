@@ -1,7 +1,8 @@
 declare namespace BFChainPcSdk {
     namespace Basic {
         type TRANSACTION_TYPES_BASE = import("@bfchain/core").TRANSACTION_TYPES_BASE;
-        interface BasicApiRequestParams {}
+        interface BasicApiRequestParams {
+        }
         interface GetBlockParams extends BasicApiRequestParams {
             signature?: string;
             height?: number;
@@ -33,7 +34,8 @@ declare namespace BFChainPcSdk {
             address: string;
             assetType: string;
         }
-        interface BasicApiRequestResult {}
+        interface BasicApiRequestResult {
+        }
         interface GetBlockResult extends BasicApiRequestResult {
             blocks: BFChainCore.BlockJSON[];
             count: number;
@@ -80,7 +82,8 @@ declare namespace BFChainPcSdk {
         interface BasicApiSuccessReturn<T extends BasicApiRequestResult> extends ApiSuccessReturn {
             result: T;
         }
-        interface BasicApiFailureReturn extends ApiFailureReturn {}
+        interface BasicApiFailureReturn extends ApiFailureReturn {
+        }
         type BasicApiReturn<T extends BasicApiRequestResult> = BasicApiSuccessReturn<T> | BasicApiFailureReturn;
         type BasicApi = import("./apis/_basicGetApi").BasicGetApi<any> | import("./apis/_basicPostApi").BasicPostApi<any>;
         type GetBlockApi = import("./apis").GetBlockApi;

@@ -5,5 +5,5 @@ export declare const enum BASE_ARGS_TYPE {
     NATURALNUMBER = "naturalNumber",
     POSITIVEINTEGER = "positiveInteger",
     BOOLEAN = "boolean",
-    ARRAY = "array",
+    ARRAY = "array"
 }

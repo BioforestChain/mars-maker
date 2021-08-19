@@ -1,7 +1,4 @@
-export declare function SdkExceptionGenerator(
-    MODULE: string,
-    FILE: string
-): {
+export declare function SdkExceptionGenerator(MODULE: string, FILE: string): {
     readonly log: BFChainUtilLogger.Pinter;
     readonly info: BFChainUtilLogger.Pinter;
     readonly warn: BFChainUtilLogger.Pinter;

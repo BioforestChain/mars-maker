@@ -1,7 +1,7 @@
 export declare const enum API_NAMESPACE {
     BASIC = "api/basic",
     SYSTEM = "api/system",
-    TRANSACTION = "api/transaction",
+    TRANSACTION = "api/transaction"
 }
 export declare const enum BASIC_API_PATH {
     BASIC_SET_PASSWORD = "/setPassword",
@@ -17,7 +17,7 @@ export declare const enum BASIC_API_PATH {
     BASIC_GET_ACCOUNT_PUBLICKEY = "/getAccountPublicKey",
     BASIC_GET_ACCOUNT_LAST_TRANSACTION = "/getAccountLastTransaction",
     BASIC_EMIGRATE_ASSET_GENESIS_SIGNATURE = "/emigrateAssetGenesisSignature",
-    BASIC_IMMIGRATE_ASSET_GENESIS_SIGNATURE = "/immigrateAssetGenesisSignature",
+    BASIC_IMMIGRATE_ASSET_GENESIS_SIGNATURE = "/immigrateAssetGenesisSignature"
 }
 export declare const enum SERVICE_API_PATH {
     SERVICE_USER_GET_PACKAGE_SOURCE = "/user/getPackageSource",
@@ -39,7 +39,7 @@ export declare const enum SERVICE_API_PATH {
     SERVICE_ADD_USER = "/addUser",
     SERVICE_ADD_SYSTEM_ADMINUSER = "/addSystemAdminuser",
     SERVICE_GET_PACKAGE_FILE = "/getPackageFile",
-    SERVICE_GET_USER_PACKAGE = "/getUserPackage",
+    SERVICE_GET_USER_PACKAGE = "/getUserPackage"
 }
 export declare const enum SYSTEM_API_PATH {
     SYSTEM_SAFETY_CLOSE = "/safetyClose",
@@ -78,7 +78,7 @@ export declare const enum SYSTEM_API_PATH {
     SYSTEM_SET_SOCKET_EMIT_ENABLE = "systemSetSocketEmitEnable",
     SYSTEM_GET_INJECT_GENERATORS = "systemGetInjectGenerators",
     SYSTEM_SET_SYSTEM_DELEGATE_MULTI = "systemSetSystemDelegateMulti",
-    SYSTEM_GET_SYSTEM_DELEGATE_DETAIL = "systemGetSystemDelegateDetail",
+    SYSTEM_GET_SYSTEM_DELEGATE_DETAIL = "systemGetSystemDelegateDetail"
 }
 export declare const enum GENERATE_TRANSACTION_API_PATH {
     TR_USERNAME = "/generate/username",
@@ -106,5 +106,10 @@ export declare const enum GENERATE_TRANSACTION_API_PATH {
     TR_BE_EXCHANGE_SPECIAL_ASSET = "/generate/beExchangeSpecAsset",
     TR_REGISTER_CHAIN = "/generate/registerChain",
     TR_EMIGRATE_ASSET = "/generate/emigrateAsset",
-    TR_IMMIGRATE_ASSET = "/generate/immigrateAsset",
+    TR_IMMIGRATE_ASSET = "/generate/immigrateAsset"
+}
+export declare const enum MIGRATE_CERTIFICATE_API_PATH {
+    MIGRATE_CERTIFICATE_GENERATE = "/generate/migrateCertificate",
+    MIGRATE_CERTIFICATE_FROM_AUTH_SIGNATURE = "/generate/migrateCertificateFromAuthSignature",
+    MIGRATE_CERTIFICATE_TO_AUTH_SIGNATURE = "/generate/migrateCertificateToAuthSignature"
 }

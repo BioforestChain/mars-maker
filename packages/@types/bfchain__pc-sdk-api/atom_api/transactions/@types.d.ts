@@ -24,6 +24,9 @@ declare namespace BFChainPcSdk {
         type SetLnsRecordValueApi = import("./apis").SetLnsRecordValueApi;
         type ToExchangeSpecialAssetApi = import("./apis").ToExchangeSpecialAssetApi;
         type BeExchangeSpecialAssetApi = import("./apis").BeExchangeSpecialAssetApi;
+        type RegisterChainApi = import("./apis").RegisterChainApi;
+        type EmigrateAssetApi = import("./apis").EmigrateAssetApi;
+        type ImmigrateAssetApi = import("./apis").ImmigrateAssetApi;
         interface TransactionApiSuccessReturn<T extends object> extends ApiSuccessReturn {
             result: T;
             minFee: string;
@@ -32,5 +35,11 @@ declare namespace BFChainPcSdk {
             minFee: string;
         }
         type TransactionApiReturn<T extends BFChainCore.TransactionJSON> = TransactionApiSuccessReturn<T> | TransactionApiFailureReturn;
+    }
+    namespace CrossChain {
+        type MigrateCertificateApi = import("./apis/_migrateCertificateApi").MigrateCertificateApi;
+        type GenerateMigrateCertificateApi = import("./apis").GenerateMigrateCertificateApi;
+        type FromAuthSignatureMigrateCertificateApi = import("./apis").FromAuthSignatureMigrateCertificateApi;
+        type ToAuthSignatureMigrateCertificateApi = import("./apis").ToAuthSignatureMigrateCertificateApi;
     }
 }

@@ -1,4 +1,6 @@
-export declare type __ = [typeof import("socket.io-client")];
+export declare type __ = [
+    typeof import("socket.io-client")
+];
 import "@bfchain/pc-sdk-typings";
 import "./@types";
 import "./atom_api/index";

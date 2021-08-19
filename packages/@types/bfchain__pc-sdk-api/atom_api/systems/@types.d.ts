@@ -40,8 +40,10 @@ declare namespace BFChainPcSdk {
             cryptoSecret: string;
             secondSecret?: string;
         }
-        interface GetSystemDelegateParams extends SystemApiRequestParams {}
-        interface MiningMachineInfoParams extends SystemApiRequestParams {}
+        interface GetSystemDelegateParams extends SystemApiRequestParams {
+        }
+        interface MiningMachineInfoParams extends SystemApiRequestParams {
+        }
         interface ConfigPort {
             turnserver: number;
             mongodb: number;
@@ -196,14 +198,17 @@ declare namespace BFChainPcSdk {
         interface SetSystemConfigParams extends SystemApiRequestParams {
             config: AllPartial<ConfigRevisable>;
         }
-        interface GetSystemConfigInfoDetailParams extends SystemApiRequestParams {}
-        interface GetRuntimeStateParams extends SystemApiRequestParams {}
+        interface GetSystemConfigInfoDetailParams extends SystemApiRequestParams {
+        }
+        interface GetRuntimeStateParams extends SystemApiRequestParams {
+        }
         interface GetSystemMonitorParams extends SystemApiRequestParams {
             monitorType?: string;
             limit?: number;
             offset?: number;
         }
-        interface GetSystemLoggerTypeParams extends SystemApiRequestParams {}
+        interface GetSystemLoggerTypeParams extends SystemApiRequestParams {
+        }
         interface GetSystemLoggerListParams extends SystemApiRequestParams {
             loggerType: string;
         }
@@ -243,7 +248,8 @@ declare namespace BFChainPcSdk {
         interface SetSystemWhiteListParams extends SystemApiRequestParams {
             whiteList: string[];
         }
-        interface GetSystemWhiteListParams extends SystemApiRequestParams {}
+        interface GetSystemWhiteListParams extends SystemApiRequestParams {
+        }
         interface DeleteSystemWhiteListParams extends SystemApiRequestParams {
             whiteList: string[];
         }
@@ -262,14 +268,19 @@ declare namespace BFChainPcSdk {
             offset?: number;
             processType?: string;
         }
-        interface SystemStatusParams extends SystemApiRequestParams {}
-        interface SystemProcessParams extends SystemApiRequestParams {}
-        interface SystemApiRequestResult {}
+        interface SystemStatusParams extends SystemApiRequestParams {
+        }
+        interface SystemProcessParams extends SystemApiRequestParams {
+        }
+        interface SystemApiRequestResult {
+        }
         interface SafetyCloseResult extends SystemApiRequestResult {
             machineStatus: number;
         }
-        interface SetSystemKeyResult extends SystemApiRequestResult {}
-        interface VerifySystemKeyResult extends SystemApiRequestResult {}
+        interface SetSystemKeyResult extends SystemApiRequestResult {
+        }
+        interface VerifySystemKeyResult extends SystemApiRequestResult {
+        }
         interface SystemAdminModel {
             adminAddress: string;
             adminAddTime: number;
@@ -281,8 +292,10 @@ declare namespace BFChainPcSdk {
         interface GetSystemAdminResult extends SystemApiRequestResult {
             systemAdmin: SystemAdminModel[];
         }
-        interface VerifySystemAdminResult extends SystemApiRequestResult {}
-        interface DeleteSystemAdminResult extends SystemApiRequestResult {}
+        interface VerifySystemAdminResult extends SystemApiRequestResult {
+        }
+        interface DeleteSystemAdminResult extends SystemApiRequestResult {
+        }
         interface ResetSystemAdminResult extends SystemApiRequestResult {
             systemAdmins: SystemAdminModel[];
         }
@@ -316,20 +329,11 @@ declare namespace BFChainPcSdk {
                 delegateStatus: boolean;
             };
         }
-        interface SetSystemConfigResult extends SystemApiRequestResult {}
-        type SystemConfigInfoDetail = Pick<
-            ConfigModel,
-            | "startConfig"
-            | "chainPort"
-            | "coreForProcess"
-            | "transactionConfig"
-            | "logConfig"
-            | "networkConfig"
-            | "flowControlConfig"
-            | "noticeConfig"
-            | "diskMonitorConfig"
-        >;
-        interface GetSystemConfigInfoDetailResult extends SystemApiRequestResult, SystemConfigInfoDetail {}
+        interface SetSystemConfigResult extends SystemApiRequestResult {
+        }
+        type SystemConfigInfoDetail = Pick<ConfigModel, "startConfig" | "chainPort" | "coreForProcess" | "transactionConfig" | "logConfig" | "networkConfig" | "flowControlConfig" | "noticeConfig" | "diskMonitorConfig">;
+        interface GetSystemConfigInfoDetailResult extends SystemApiRequestResult, SystemConfigInfoDetail {
+        }
         interface MemoryUsage {
             rss: number;
             heapTotal: number;
@@ -427,7 +431,8 @@ declare namespace BFChainPcSdk {
                 linesTotal: number;
             };
         }
-        interface DeleteSystemLoggerResult extends SystemApiRequestResult {}
+        interface DeleteSystemLoggerResult extends SystemApiRequestResult {
+        }
         interface GetEmailAddressResult extends SystemApiRequestResult {
             result: {
                 emailToAddress: string;
@@ -435,13 +440,17 @@ declare namespace BFChainPcSdk {
                 emailConfig: EmailConfig;
             };
         }
-        interface SetEmailAddressResult extends SystemApiRequestResult {}
-        interface VerifySystemSecretResult extends SystemApiRequestResult {}
-        interface SetSystemWhiteListResult extends SystemApiRequestResult {}
+        interface SetEmailAddressResult extends SystemApiRequestResult {
+        }
+        interface VerifySystemSecretResult extends SystemApiRequestResult {
+        }
+        interface SetSystemWhiteListResult extends SystemApiRequestResult {
+        }
         interface GetSystemWhiteListResult extends SystemApiRequestResult {
             whileList: string[];
         }
-        interface DeleteSystemWhiteListResult extends SystemApiRequestResult {}
+        interface DeleteSystemWhiteListResult extends SystemApiRequestResult {
+        }
         interface ProcessNetwork {
             processType: string;
             name: string;
@@ -559,7 +568,8 @@ declare namespace BFChainPcSdk {
         interface BasicApiSuccessReturnResult<T extends SystemApiRequestResult> extends ApiSuccessReturn {
             result: T;
         }
-        interface SystemApiFailureReturn extends ApiFailureReturn {}
+        interface SystemApiFailureReturn extends ApiFailureReturn {
+        }
         type SystemApiReturn<T extends SystemApiRequestResult> = BFChainPcSdk.Basic.BasicApiSuccessReturn<T> | SystemApiFailureReturn;
         type SystemApi = import("./apis/_systemGetApi").SystemGetApi<any> | import("./apis/_systemPostApi").SystemPostApi<any>;
         type SafetyCloseApi = import("./apis").SafetyCloseApi;

@@ -1,15 +1,14 @@
-import { RANGE_TYPE, BFChainCore } from "@bfchain/core";
+import type { BFChainCore } from "@bfchain/core";
+import type { TransactionVerifyHelper } from "@bfchain/pc-sdk-helper-transaction-verify";
+import { RANGE_TYPE } from "@bfchain/core";
 import { TRANSACTION_SCHEMA_MAP } from "@bfchain/pc-sdk-helper-transaction-schema";
-import { TransactionVerifyHelper } from "@bfchain/pc-sdk-helper-transaction-verify";
 import { SdkExceptionGenerator, PROP_IS_INVALID, PROP_IS_REQUIRE } from "@bfchain/pc-sdk-exception";
 const { ArgumentIllegalException } = SdkExceptionGenerator("Sdk", "Transactions");
 
 export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
     abstract readonly GENERATE_API_PATH: BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH;
 
-    private __transactionVerifyHelper = new TransactionVerifyHelper();
-
-    constructor(public bfchainCore: BFChainCore) {}
+    constructor(public bfchainCore: BFChainCore, private __transactionVerifyHelper: TransactionVerifyHelper) {}
 
     getTransactionBody(request: BFChainPcSdk.Transaction.TransactionCommonParams) {
         const exception = {

@@ -23,3 +23,7 @@ export * from "./setLnsManagerFactory";
 export * from "./setLnsRecordValueFactory";
 export * from "./toExchangeSpecialAssetFactory";
 export * from "./beExchangeSpecialAssetFactory";
+
+export * from "./registerChainFactory";
+export * from "./emigrateAssetFactory";
+export * from "./immigrateAssetFactory";

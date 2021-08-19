@@ -9,63 +9,29 @@ export declare class SystemApi {
     verifySystemKey(argv: BFChainPcSdk.System.VerifySystemKeyParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.VerifySystemKeyResult>>;
     addSystemAdmin(argv: BFChainPcSdk.System.AddSystemAdminParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.AddSystemAdminResult>>;
     getSystemAdmin(argv: BFChainPcSdk.System.GetSystemAdminParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemAdminResult>>;
-    verifySystemAdmin(
-        argv: BFChainPcSdk.System.VerifySystemAdminParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.VerifySystemAdminResult>>;
-    deleteSystemAdmin(
-        argv: BFChainPcSdk.System.DeleteSystemAdminParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.DeleteSystemAdminResult>>;
-    resetSystemAdmin(
-        argv: BFChainPcSdk.System.ResetSystemAdminParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.ResetSystemAdminResult>>;
+    verifySystemAdmin(argv: BFChainPcSdk.System.VerifySystemAdminParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.VerifySystemAdminResult>>;
+    deleteSystemAdmin(argv: BFChainPcSdk.System.DeleteSystemAdminParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.DeleteSystemAdminResult>>;
+    resetSystemAdmin(argv: BFChainPcSdk.System.ResetSystemAdminParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.ResetSystemAdminResult>>;
     bindingAccount(argv: BFChainPcSdk.System.BindingAccountParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.BindingAccountResult>>;
-    getSystemDelegate(
-        argv: BFChainPcSdk.System.GetSystemDelegateParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemDelegateResult>>;
+    getSystemDelegate(argv: BFChainPcSdk.System.GetSystemDelegateParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemDelegateResult>>;
     setSystemConfig(argv: BFChainPcSdk.System.SetSystemConfigParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.SetSystemConfigResult>>;
-    getSystemConfigInfoDetail(
-        argv: BFChainPcSdk.System.GetSystemConfigInfoDetailParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemConfigInfoDetailResult>>;
+    getSystemConfigInfoDetail(argv: BFChainPcSdk.System.GetSystemConfigInfoDetailParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemConfigInfoDetailResult>>;
     getRuntimeState(argv: BFChainPcSdk.System.GetRuntimeStateParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetRuntimeStateResult>>;
-    miningMachineInfo(
-        argv: BFChainPcSdk.System.MiningMachineInfoParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.MiningMachineInfoResult>>;
-    getSystemMonitor(
-        argv: BFChainPcSdk.System.GetSystemMonitorParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemMonitorResult>>;
-    getSystemLoggerType(
-        argv: BFChainPcSdk.System.GetSystemLoggerTypeParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemLoggerTypeResult>>;
-    getSystemLoggerList(
-        argv: BFChainPcSdk.System.GetSystemLoggerListParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemLoggerListResult>>;
-    getSystemLoggerDetail(
-        argv: BFChainPcSdk.System.GetSystemLoggerDetailParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemLoggerDetailResult>>;
-    deleteSystemLogger(
-        argv: BFChainPcSdk.System.DeleteSystemLoggerParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.DeleteSystemLoggerResult>>;
+    miningMachineInfo(argv: BFChainPcSdk.System.MiningMachineInfoParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.MiningMachineInfoResult>>;
+    getSystemMonitor(argv: BFChainPcSdk.System.GetSystemMonitorParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemMonitorResult>>;
+    getSystemLoggerType(argv: BFChainPcSdk.System.GetSystemLoggerTypeParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemLoggerTypeResult>>;
+    getSystemLoggerList(argv: BFChainPcSdk.System.GetSystemLoggerListParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemLoggerListResult>>;
+    getSystemLoggerDetail(argv: BFChainPcSdk.System.GetSystemLoggerDetailParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemLoggerDetailResult>>;
+    deleteSystemLogger(argv: BFChainPcSdk.System.DeleteSystemLoggerParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.DeleteSystemLoggerResult>>;
     getEmailAddress(argv: BFChainPcSdk.System.GetEmailAddressParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetEmailAddressResult>>;
     setEmailAddress(argv: BFChainPcSdk.System.SetEmailAddressParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.SetEmailAddressResult>>;
-    verifySystemSecret(
-        argv: BFChainPcSdk.System.VerifySystemSecretParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.VerifySystemSecretResult>>;
-    setSystemWhiteList(
-        argv: BFChainPcSdk.System.SetSystemWhiteListParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.SetSystemWhiteListResult>>;
-    getSystemWhiteList(
-        argv: BFChainPcSdk.System.GetSystemWhiteListParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemWhiteListResult>>;
-    deleteSystemWhiteList(
-        argv: BFChainPcSdk.System.DeleteSystemWhiteListParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.DeleteSystemWhiteListResult>>;
+    verifySystemSecret(argv: BFChainPcSdk.System.VerifySystemSecretParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.VerifySystemSecretResult>>;
+    setSystemWhiteList(argv: BFChainPcSdk.System.SetSystemWhiteListParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.SetSystemWhiteListResult>>;
+    getSystemWhiteList(argv: BFChainPcSdk.System.GetSystemWhiteListParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetSystemWhiteListResult>>;
+    deleteSystemWhiteList(argv: BFChainPcSdk.System.DeleteSystemWhiteListParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.DeleteSystemWhiteListResult>>;
     getProcessCPU(argv: BFChainPcSdk.System.GetProcessCPUParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetProcessCPUResult>>;
-    getProcessMemory(
-        argv: BFChainPcSdk.System.GetProcessMemoryParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetProcessMemoryResult>>;
-    getProcessNetwork(
-        argv: BFChainPcSdk.System.GetProcessNetworkParams
-    ): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetProcessNetworkResult>>;
+    getProcessMemory(argv: BFChainPcSdk.System.GetProcessMemoryParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetProcessMemoryResult>>;
+    getProcessNetwork(argv: BFChainPcSdk.System.GetProcessNetworkParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.GetProcessNetworkResult>>;
     systemStatus(argv: BFChainPcSdk.System.SystemStatusParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.SystemStatusResult>>;
     systemProcess(argv: BFChainPcSdk.System.SystemProcessParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.SystemProcessResult>>;
 }
