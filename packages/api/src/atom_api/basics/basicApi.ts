@@ -10,6 +10,7 @@ import {
     CreateAccountApi,
     GetAccountPublicKeyApi,
     GetAccountLastTransactionApi,
+    GetAccountLastTypeTransactionApi,
 } from "./apis";
 import { BASIC_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
@@ -33,6 +34,7 @@ export class BasicApi {
         const createAccountApi = new CreateAccountApi(networkHelper);
         const getAccountPublicKeyApi = new GetAccountPublicKeyApi(networkHelper);
         const getAccountLastTransactionApi = new GetAccountLastTransactionApi(networkHelper);
+        const getAccountLastTypeTransactionApi = new GetAccountLastTypeTransactionApi(networkHelper);
 
         BASIC_API_MAP.set(getBlockApi.REQUEST_API_PATH, getBlockApi);
         BASIC_API_MAP.set(getLastBlockApi.REQUEST_API_PATH, getLastBlockApi);
@@ -44,6 +46,7 @@ export class BasicApi {
         BASIC_API_MAP.set(createAccountApi.REQUEST_API_PATH, createAccountApi);
         BASIC_API_MAP.set(getAccountPublicKeyApi.REQUEST_API_PATH, getAccountPublicKeyApi);
         BASIC_API_MAP.set(getAccountLastTransactionApi.REQUEST_API_PATH, getAccountLastTransactionApi);
+        BASIC_API_MAP.set(getAccountLastTypeTransactionApi.REQUEST_API_PATH, getAccountLastTypeTransactionApi);
 
         Object.freeze(BASIC_API_MAP);
     }
@@ -110,6 +113,12 @@ export class BasicApi {
     /**获取账户的最后一笔事件 */
     async getAccountLastTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTransactionParams) {
         const api = this.__getBasicApi<BFChainPcSdk.Basic.GetAccountLastTransactionApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_LAST_TRANSACTION);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+    /**获取账户指定类型的最后一笔事件 */
+    async getAccountLastTypeTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTypeTransactionParams) {
+        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetAccountLastTypeTransactionApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION);
         const result = await api.sendPostRequest(argv);
         return result;
     }

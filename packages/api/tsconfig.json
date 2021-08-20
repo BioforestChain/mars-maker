@@ -11,6 +11,7 @@
         "src/atom_api/basics/apis/createAccountApi.ts",
         "src/atom_api/basics/apis/generateSecretApi.ts",
         "src/atom_api/basics/apis/getAccountLastTransactionApi.ts",
+        "src/atom_api/basics/apis/getAccountLastTypeTransactionApi.ts",
         "src/atom_api/basics/apis/getAccountPublicKeyApi.ts",
         "src/atom_api/basics/apis/getBfchainVersionApi.ts",
         "src/atom_api/basics/apis/getBlockApi.ts",

@@ -292,6 +292,20 @@ export const BASIC_GET_ACCOUNT_LAST_TRANSACTION: BFChainPcSdk.SchemaType = {
     required: ["address", "assetType"],
 };
 
+/**获取账户指定类型的最后一笔交易 */
+export const BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION: BFChainPcSdk.SchemaType = {
+    type: BASE_ARGS_TYPE.OBJECT,
+    properties: {
+        address: {
+            type: BASE_ARGS_TYPE.STRING,
+        },
+        transactionType: {
+            type: BASE_ARGS_TYPE.STRING,
+        },
+    },
+    required: ["address", "transactionType"],
+};
+
 /**创建账户 */
 export const BASIC_CREATE_ACCOUNT: BFChainPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
@@ -301,38 +315,4 @@ export const BASIC_CREATE_ACCOUNT: BFChainPcSdk.SchemaType = {
         },
     },
     required: ["secret"],
-};
-
-/**生成权益迁出事件的创世受托人签名 */
-export const BASIC_EMIGRATE_ASSET_GENESIS_SIGNATURE: BFChainPcSdk.SchemaType = {
-    type: BASE_ARGS_TYPE.OBJECT,
-    properties: {
-        genesisAccount: {
-            type: BASE_ARGS_TYPE.ARRAY,
-            items: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-        },
-        senderId: {
-            type: BASE_ARGS_TYPE.STRING,
-        },
-    },
-    required: ["genesisAccount", "senderId"],
-};
-
-/**生成权益迁入事件的创世受托人签名 */
-export const BASIC_IMMIGRATE_ASSET_GENESIS_SIGNATURE: BFChainPcSdk.SchemaType = {
-    type: BASE_ARGS_TYPE.OBJECT,
-    properties: {
-        transactionSignature: {
-            type: BASE_ARGS_TYPE.STRING,
-        },
-        genesisAccount: {
-            type: BASE_ARGS_TYPE.ARRAY,
-            items: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-        },
-    },
-    required: ["transactionSignature", "genesisAccount"],
 };

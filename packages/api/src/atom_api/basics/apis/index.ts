@@ -9,3 +9,4 @@ export * from "./generateSecretApi";
 export * from "./createAccountApi";
 export * from "./getAccountPublicKeyApi";
 export * from "./getAccountLastTransactionApi";
+export * from "./getAccountLastTypeTransactionApi";

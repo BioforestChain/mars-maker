@@ -33,11 +33,8 @@ export const enum BASIC_API_PATH {
     BASIC_GET_ACCOUNT_PUBLICKEY = "/getAccountPublicKey",
     /**获取账户最后一笔交易 */
     BASIC_GET_ACCOUNT_LAST_TRANSACTION = "/getAccountLastTransaction",
-
-    /**生成权益迁出的创世受托人签名 */
-    BASIC_EMIGRATE_ASSET_GENESIS_SIGNATURE = "/emigrateAssetGenesisSignature",
-    /**生成权益迁入的创世受托人签名 */
-    BASIC_IMMIGRATE_ASSET_GENESIS_SIGNATURE = "/immigrateAssetGenesisSignature",
+    /**获取账户指定类型的最后一笔交易 */
+    BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION = "/getAccountLastTypeTransaction",
 }
 
 export const enum SERVICE_API_PATH {

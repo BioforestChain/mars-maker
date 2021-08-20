@@ -34,6 +34,10 @@ declare namespace BFChainPcSdk {
             address: string;
             assetType: string;
         }
+        interface GetAccountLastTypeTransactionParams extends BasicApiRequestParams {
+            address: string;
+            transactionType: string;
+        }
         interface BasicApiRequestResult {
         }
         interface GetBlockResult extends BasicApiRequestResult {
@@ -63,13 +67,6 @@ declare namespace BFChainPcSdk {
         interface GetAccountPublicKeyResult extends BasicApiRequestResult {
             publicKey?: string;
         }
-        interface GetAccountLastTransactionResult extends BasicApiRequestResult {
-            transactionInBlock?: BFChainCore.TransactionInBlockJSON;
-            assetIndex?: {
-                [assetType: string]: number;
-            };
-            block?: BFChainCore.BlockJSON;
-        }
         interface GetBfchainVersionResult extends BasicApiRequestResult {
             version: string;
         }
@@ -78,6 +75,16 @@ declare namespace BFChainPcSdk {
             peers: number;
             isReady: boolean;
             serverTimestamp: number;
+        }
+        interface GetAccountLastTransactionResult extends BasicApiRequestResult {
+            transactionInBlock?: BFChainCore.TransactionInBlockJSON;
+            assetIndex?: {
+                [assetType: string]: number;
+            };
+            block?: BFChainCore.BlockJSON;
+        }
+        interface GetAccountLastTypeTransactionResult extends BasicApiRequestResult {
+            transactionInBlock?: BFChainCore.TransactionInBlockJSON;
         }
         interface BasicApiSuccessReturn<T extends BasicApiRequestResult> extends ApiSuccessReturn {
             result: T;
@@ -96,5 +103,6 @@ declare namespace BFChainPcSdk {
         type CreateAccountApi = import("./apis").CreateAccountApi;
         type GetAccountPublicKeyApi = import("./apis").GetAccountPublicKeyApi;
         type GetAccountLastTransactionApi = import("./apis").GetAccountLastTransactionApi;
+        type GetAccountLastTypeTransactionApi = import("./apis").GetAccountLastTypeTransactionApi;
     }
 }

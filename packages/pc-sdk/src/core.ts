@@ -34,7 +34,7 @@ export class Sdk {
     }
 
     async runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions) {
-        configOptions = configOptions || {};
+        configOptions = configOptions || this.__configOptions.transactionConfig || {};
         if (this.__configOptions.configRootPath) {
             configOptions.configRootPath = this.__configOptions.configRootPath;
         }

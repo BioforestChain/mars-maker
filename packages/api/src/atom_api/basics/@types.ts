@@ -60,6 +60,13 @@ declare namespace BFChainPcSdk {
             /**交易事件类型，通过GetTransactionType接口获得 */
             assetType: string;
         }
+        /**获取账户指定类型的最后一笔交易 */
+        interface GetAccountLastTypeTransactionParams extends BasicApiRequestParams {
+            /**账户地址 */
+            address: string;
+            /**交易事件类型，通过GetTransactionType接口获得 */
+            transactionType: string;
+        }
         // #endregion
 
         // #region response
@@ -105,12 +112,6 @@ declare namespace BFChainPcSdk {
             /**账户公钥 */
             publicKey?: string;
         }
-        /**获取账户的最后一笔交易 */
-        interface GetAccountLastTransactionResult extends BasicApiRequestResult {
-            transactionInBlock?: BFChainCore.TransactionInBlockJSON;
-            assetIndex?: { [assetType: string]: number };
-            block?: BFChainCore.BlockJSON;
-        }
         /**获得Bfchain版本号 */
         interface GetBfchainVersionResult extends BasicApiRequestResult {
             /**当前节点的版本号 */
@@ -122,6 +123,16 @@ declare namespace BFChainPcSdk {
             peers: number;
             isReady: boolean;
             serverTimestamp: number;
+        }
+        /**获取账户的最后一笔交易 */
+        interface GetAccountLastTransactionResult extends BasicApiRequestResult {
+            transactionInBlock?: BFChainCore.TransactionInBlockJSON;
+            assetIndex?: { [assetType: string]: number };
+            block?: BFChainCore.BlockJSON;
+        }
+        /**获取账户指定类型的最后一笔交易 */
+        interface GetAccountLastTypeTransactionResult extends BasicApiRequestResult {
+            transactionInBlock?: BFChainCore.TransactionInBlockJSON;
         }
         // #endregion
 
@@ -143,5 +154,6 @@ declare namespace BFChainPcSdk {
         type CreateAccountApi = import("./apis").CreateAccountApi;
         type GetAccountPublicKeyApi = import("./apis").GetAccountPublicKeyApi;
         type GetAccountLastTransactionApi = import("./apis").GetAccountLastTransactionApi;
+        type GetAccountLastTypeTransactionApi = import("./apis").GetAccountLastTypeTransactionApi;
     }
 }
