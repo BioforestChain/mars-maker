@@ -9,4 +9,5 @@ export declare class Api {
     get basic(): BasicApi;
     get system(): SystemApi;
     get transaction(): TransactionApi;
+    setApiconfig(configOptions: BFChainPcSdk.ApiConfigOptions): void;
 }

@@ -39,4 +39,8 @@ export class Api {
     get transaction() {
         return this.__transactionApi;
     }
+
+    setApiconfig(configOptions: BFChainPcSdk.ApiConfigOptions) {
+        return this.__configHelper.setApiConfig(configOptions);
+    }
 }

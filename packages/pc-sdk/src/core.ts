@@ -33,6 +33,10 @@ export class Sdk {
         return this.__api;
     }
 
+    setApiConfig(configOptions: BFChainPcSdk.ApiConfigOptions) {
+        this.api.setApiconfig(configOptions);
+    }
+
     async runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions) {
         configOptions = configOptions || this.__configOptions.transactionConfig || {};
         if (this.__configOptions.configRootPath) {
