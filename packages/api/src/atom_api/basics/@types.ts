@@ -79,9 +79,7 @@ declare namespace BFChainPcSdk {
             cmdLimitPerQuery: number;
         }
         /**获取本地节点当前最新区块 */
-        interface GetLastBlockResult extends BasicApiRequestResult {
-            result: BFChainCore.LastBlockInfo<any>;
-        }
+        type GetLastBlockResult = BFChainCore.LastBlockInfo<any>;
         /**获取事件类型 */
         interface GetTransactionTypeResult extends BasicApiRequestResult {
             /**事件类型全称 */

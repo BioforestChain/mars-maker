@@ -45,9 +45,7 @@ declare namespace BFChainPcSdk {
             count: number;
             cmdLimitPerQuery: number;
         }
-        interface GetLastBlockResult extends BasicApiRequestResult {
-            result: BFChainCore.LastBlockInfo<any>;
-        }
+        type GetLastBlockResult = BFChainCore.LastBlockInfo<any>;
         interface GetTransactionTypeResult extends BasicApiRequestResult {
             type: string;
         }

@@ -7,7 +7,9 @@ import { Sdk } from "@bfchain/pc-sdk";
 
         const result = await sdk.api.basic.getLastBlock();
 
-        console.log(result);
+        if (result.success) {
+            console.log(result.result);
+        }
     } catch (e) {
         console.log(e);
     }
