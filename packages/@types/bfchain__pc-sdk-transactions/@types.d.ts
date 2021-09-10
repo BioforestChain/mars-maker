@@ -190,4 +190,12 @@ declare namespace BFChainPcSdk {
         type MigrateCertificateFactory = import("./migrate_certificate/_migrateCertificateFactory").MigrateCertificateFactory;
         type MigrateCertificateArgs = BFChainCore.CrossChain.GenerateMigrateCertificateArgs | BFChainCore.CrossChain.AuthSignMigrateCertificateArgs;
     }
+    namespace Common {
+        interface CommonParams {
+        }
+        interface VerifyAddressParams extends CommonParams {
+            address: string;
+        }
+        type CommonFactory = import("./atom_common/_commonFactory").CommonFactory<any>;
+    }
 }

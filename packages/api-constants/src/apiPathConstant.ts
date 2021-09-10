@@ -178,3 +178,8 @@ export const enum MIGRATE_CERTIFICATE_API_PATH {
     /**迁移凭证的迁入授权签名 */
     MIGRATE_CERTIFICATE_TO_AUTH_SIGNATURE = "/generate/migrateCertificateToAuthSignature",
 }
+
+export const enum COMMON_API_PATH {
+    /**是否是合法的地址 */
+    VERIFY_ADDRESS = "/common/verifyAddress",
+}

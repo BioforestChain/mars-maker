@@ -2,10 +2,12 @@ export declare class TransactionApi {
     private __networkHelper;
     private __TRANSACTION_API_MAP;
     private __MIGRATE_CERTIFICATE_API_MAP;
+    private __COMMON_API_MAP;
     constructor(__networkHelper: BFChainPcSdk.NetworkHelper);
     private __init;
     private __getTransactionApi;
     private __getMigrateCertificateApi;
+    private __getCommonApi;
     generateUsername(argv: BFChainPcSdk.Transaction.UsernameTransactionParams): Promise<BFChainPcSdk.TransactionServer.GenerateTransactionReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.UsernameAssetJSON>, "recipientId"> & {
         recipientId: undefined;
     }>>;
@@ -243,4 +245,5 @@ export declare class TransactionApi {
     generateMigrateCertificate(argv: BFChainCore.CrossChain.GenerateMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
     fromAuthSignatureMigrateCertificate(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
     toAuthSignatureMigrateCertificate(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
+    verifyAddress(argv: BFChainPcSdk.Common.VerifyAddressParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<boolean>>;
 }

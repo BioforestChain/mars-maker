@@ -6,6 +6,9 @@
     },
     "files": [
         "src/@types.ts",
+        "src/atom_common/index.ts",
+        "src/atom_common/verifyAddress.ts",
+        "src/atom_common/_commonFactory.ts",
         "src/atom_transaction/acceptVoteFactory.ts",
         "src/atom_transaction/beExchangeAssetFactory.ts",
         "src/atom_transaction/beExchangeSpecialAssetFactory.ts",
@@ -34,6 +37,7 @@
         "src/atom_transaction/usernameFactory.ts",
         "src/atom_transaction/voteFactory.ts",
         "src/atom_transaction/_transactionFactory.ts",
+        "src/common.ts",
         "src/helpers/index.ts",
         "src/helpers/myBaseHelper.ts",
         "src/helpers/myGenesisBlockHelper.ts",

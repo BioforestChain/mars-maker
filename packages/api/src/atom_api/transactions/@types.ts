@@ -1,34 +1,34 @@
 declare namespace BFChainPcSdk {
     namespace Transaction {
-        type TransactionApi = import("./apis/_transactionApi").TransactionApi<any>;
-        type UsernameApi = import("./apis").UsernameApi;
-        type SignatureApi = import("./apis").SignatureApi;
-        type DelegateApi = import("./apis").DelegateApi;
-        type AcceptVoteApi = import("./apis").AcceptVoteApi;
-        type RejectVoteApi = import("./apis").RejectVoteApi;
-        type VoteApi = import("./apis").VoteApi;
+        type TransactionApi = import("./atom_transaction/_transactionApi").TransactionApi<any>;
+        type UsernameApi = import("./atom_transaction").UsernameApi;
+        type SignatureApi = import("./atom_transaction").SignatureApi;
+        type DelegateApi = import("./atom_transaction").DelegateApi;
+        type AcceptVoteApi = import("./atom_transaction").AcceptVoteApi;
+        type RejectVoteApi = import("./atom_transaction").RejectVoteApi;
+        type VoteApi = import("./atom_transaction").VoteApi;
 
-        type IssueAssetApi = import("./apis").IssueAssetApi;
-        type TransferAssetApi = import("./apis").TransferAssetApi;
-        type DestoryAssetApi = import("./apis").DestoryAssetApi;
-        type GiftAssetApi = import("./apis").GiftAssetApi;
-        type GrabAssetApi = import("./apis").GrabAssetApi;
-        type TrustAssetApi = import("./apis").TrustAssetApi;
-        type SignForAssetApi = import("./apis").SignForAssetApi;
-        type ToExchangeAssetApi = import("./apis").ToExchangeAssetApi;
-        type BeExchangeAssetApi = import("./apis").BeExchangeAssetApi;
+        type IssueAssetApi = import("./atom_transaction").IssueAssetApi;
+        type TransferAssetApi = import("./atom_transaction").TransferAssetApi;
+        type DestoryAssetApi = import("./atom_transaction").DestoryAssetApi;
+        type GiftAssetApi = import("./atom_transaction").GiftAssetApi;
+        type GrabAssetApi = import("./atom_transaction").GrabAssetApi;
+        type TrustAssetApi = import("./atom_transaction").TrustAssetApi;
+        type SignForAssetApi = import("./atom_transaction").SignForAssetApi;
+        type ToExchangeAssetApi = import("./atom_transaction").ToExchangeAssetApi;
+        type BeExchangeAssetApi = import("./atom_transaction").BeExchangeAssetApi;
 
-        type DAppApi = import("./apis").DAppApi;
-        type DAppPurchasingApi = import("./apis").DAppPurchasingApi;
-        type MarkApi = import("./apis").MarkApi;
-        type LocationNameApi = import("./apis").LocationNameApi;
-        type SetLnsManagerApi = import("./apis").SetLnsManagerApi;
-        type SetLnsRecordValueApi = import("./apis").SetLnsRecordValueApi;
-        type ToExchangeSpecialAssetApi = import("./apis").ToExchangeSpecialAssetApi;
-        type BeExchangeSpecialAssetApi = import("./apis").BeExchangeSpecialAssetApi;
-        type RegisterChainApi = import("./apis").RegisterChainApi;
-        type EmigrateAssetApi = import("./apis").EmigrateAssetApi;
-        type ImmigrateAssetApi = import("./apis").ImmigrateAssetApi;
+        type DAppApi = import("./atom_transaction").DAppApi;
+        type DAppPurchasingApi = import("./atom_transaction").DAppPurchasingApi;
+        type MarkApi = import("./atom_transaction").MarkApi;
+        type LocationNameApi = import("./atom_transaction").LocationNameApi;
+        type SetLnsManagerApi = import("./atom_transaction").SetLnsManagerApi;
+        type SetLnsRecordValueApi = import("./atom_transaction").SetLnsRecordValueApi;
+        type ToExchangeSpecialAssetApi = import("./atom_transaction").ToExchangeSpecialAssetApi;
+        type BeExchangeSpecialAssetApi = import("./atom_transaction").BeExchangeSpecialAssetApi;
+        type RegisterChainApi = import("./atom_transaction").RegisterChainApi;
+        type EmigrateAssetApi = import("./atom_transaction").EmigrateAssetApi;
+        type ImmigrateAssetApi = import("./atom_transaction").ImmigrateAssetApi;
 
         interface TransactionApiSuccessReturn<T extends object> extends ApiSuccessReturn {
             result: T;
@@ -41,9 +41,14 @@ declare namespace BFChainPcSdk {
     }
 
     namespace CrossChain {
-        type MigrateCertificateApi = import("./apis/_migrateCertificateApi").MigrateCertificateApi;
-        type GenerateMigrateCertificateApi = import("./apis").GenerateMigrateCertificateApi;
-        type FromAuthSignatureMigrateCertificateApi = import("./apis").FromAuthSignatureMigrateCertificateApi;
-        type ToAuthSignatureMigrateCertificateApi = import("./apis").ToAuthSignatureMigrateCertificateApi;
+        type MigrateCertificateApi = import("./migrate_certificate/_migrateCertificateApi").MigrateCertificateApi;
+        type GenerateMigrateCertificateApi = import("./migrate_certificate").GenerateMigrateCertificateApi;
+        type FromAuthSignatureMigrateCertificateApi = import("./migrate_certificate").FromAuthSignatureMigrateCertificateApi;
+        type ToAuthSignatureMigrateCertificateApi = import("./migrate_certificate").ToAuthSignatureMigrateCertificateApi;
+    }
+
+    namespace Common {
+        type CommonApi = import("./atom_common/_commonApi").CommonApi<any>;
+        type VerifyAddressApi = import("./atom_common/verifyAddressApi").VerifyAddressApi;
     }
 }

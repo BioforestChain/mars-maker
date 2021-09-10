@@ -1,9 +1,9 @@
 {
     "name": "@types/bfchain__pc-sdk-api",
     "types": "index.d.ts",
-    "version": "1.2.7",
+    "version": "1.2.10",
     "dependencies": {
-        "@types/bfchain__pc-sdk-transactions-server": "1.2.7",
-        "@types/bfchain__pc-sdk-typings": "1.2.7"
+        "@types/bfchain__pc-sdk-transactions-server": "1.2.10",
+        "@types/bfchain__pc-sdk-typings": "1.2.10"
     }
 }

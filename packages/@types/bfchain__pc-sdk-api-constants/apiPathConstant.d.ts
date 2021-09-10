@@ -112,3 +112,6 @@ export declare const enum MIGRATE_CERTIFICATE_API_PATH {
     MIGRATE_CERTIFICATE_FROM_AUTH_SIGNATURE = "/generate/migrateCertificateFromAuthSignature",
     MIGRATE_CERTIFICATE_TO_AUTH_SIGNATURE = "/generate/migrateCertificateToAuthSignature"
 }
+export declare const enum COMMON_API_PATH {
+    VERIFY_ADDRESS = "/common/verifyAddress"
+}

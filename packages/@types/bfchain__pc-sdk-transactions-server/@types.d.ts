@@ -8,7 +8,11 @@ declare namespace BFChainPcSdk {
             pathname: BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH;
             params: BFChainPcSdk.CrossChain.MigrateCertificateArgs;
         }
-        type RouterArgs = TransactionRouterArgs | MigrateCertificateRouterArgs;
+        interface CommonRouterArgs {
+            pathname: BFChainPcSdk.Common.COMMON_API_PATH;
+            params: BFChainPcSdk.Common.CommonParams;
+        }
+        type RouterArgs = TransactionRouterArgs | MigrateCertificateRouterArgs | CommonRouterArgs;
         interface GenerateTransactionFailureReturn {
             success: false;
             error: {
@@ -28,5 +32,18 @@ declare namespace BFChainPcSdk {
             result: BFChainCore.CrossChain.MigrateCertificateJSON;
         }
         type MigrateCertificateReturn = MigrateCertificateFailureReturn | MigrateCertificateSuccessReturn;
+        interface CommonFailureReturn {
+            success: false;
+            error: {
+                code: string;
+                message: string;
+                description?: string;
+            };
+        }
+        interface CommonSuccessReturn<T> {
+            success: true;
+            result: T;
+        }
+        type CommonReturn<T> = CommonFailureReturn | CommonSuccessReturn<T>;
     }
 }

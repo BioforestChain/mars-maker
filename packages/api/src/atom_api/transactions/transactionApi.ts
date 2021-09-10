@@ -25,22 +25,27 @@ import {
     RegisterChainApi,
     EmigrateAssetApi,
     ImmigrateAssetApi,
-    GenerateMigrateCertificateApi,
-    FromAuthSignatureMigrateCertificateApi,
-    ToAuthSignatureMigrateCertificateApi,
-} from "./apis";
-import { GENERATE_TRANSACTION_API_PATH, MIGRATE_CERTIFICATE_API_PATH } from "@bfchain/pc-sdk-api-constants";
+} from "./atom_transaction";
+import { GenerateMigrateCertificateApi, FromAuthSignatureMigrateCertificateApi, ToAuthSignatureMigrateCertificateApi } from "./migrate_certificate";
+import { VerifyAddressApi } from "./atom_common";
+import { COMMON_API_PATH, GENERATE_TRANSACTION_API_PATH, MIGRATE_CERTIFICATE_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
 export class TransactionApi {
     private __TRANSACTION_API_MAP = new Map<BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH, BFChainPcSdk.Transaction.TransactionApi>();
     private __MIGRATE_CERTIFICATE_API_MAP = new Map<BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH, BFChainPcSdk.CrossChain.MigrateCertificateApi>();
+    private __COMMON_API_MAP = new Map<BFChainPcSdk.Common.COMMON_API_PATH, BFChainPcSdk.Common.CommonApi>();
 
     constructor(private __networkHelper: BFChainPcSdk.NetworkHelper) {
         this.__init();
     }
 
     private __init() {
-        const { __networkHelper: networkHelper, __TRANSACTION_API_MAP: TRANSACTION_API_MAP, __MIGRATE_CERTIFICATE_API_MAP: MIGRATE_CERTIFICATE_API_MAP } = this;
+        const {
+            __networkHelper: networkHelper,
+            __TRANSACTION_API_MAP: TRANSACTION_API_MAP,
+            __MIGRATE_CERTIFICATE_API_MAP: MIGRATE_CERTIFICATE_API_MAP,
+            __COMMON_API_MAP: COMMON_API_MAP,
+        } = this;
 
         const usernameApi = new UsernameApi(networkHelper);
         const signatureApi = new SignatureApi(networkHelper);
@@ -96,6 +101,8 @@ export class TransactionApi {
         TRANSACTION_API_MAP.set(emigrateAssetApi.GENERATE_API_PATH, emigrateAssetApi);
         TRANSACTION_API_MAP.set(immigrateAssetApi.GENERATE_API_PATH, immigrateAssetApi);
 
+        Object.freeze(TRANSACTION_API_MAP);
+
         const generateMigrateCertificateApi = new GenerateMigrateCertificateApi(networkHelper);
         const fromAuthSignatureMigrateCertificateApi = new FromAuthSignatureMigrateCertificateApi(networkHelper);
         const toAuthSignatureMigrateCertificateApi = new ToAuthSignatureMigrateCertificateApi(networkHelper);
@@ -104,7 +111,12 @@ export class TransactionApi {
         MIGRATE_CERTIFICATE_API_MAP.set(fromAuthSignatureMigrateCertificateApi.GENERATE_API_PATH, fromAuthSignatureMigrateCertificateApi);
         MIGRATE_CERTIFICATE_API_MAP.set(toAuthSignatureMigrateCertificateApi.GENERATE_API_PATH, toAuthSignatureMigrateCertificateApi);
 
-        Object.freeze(TRANSACTION_API_MAP);
+        Object.freeze(MIGRATE_CERTIFICATE_API_MAP);
+
+        const verifyAddressApi = new VerifyAddressApi(networkHelper);
+        COMMON_API_MAP.set(verifyAddressApi.EXEC_API_PATH, verifyAddressApi);
+
+        Object.freeze(COMMON_API_MAP);
     }
 
     private __getTransactionApi<T extends BFChainPcSdk.Transaction.TransactionApi>(apiPath: BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH) {
@@ -113,6 +125,10 @@ export class TransactionApi {
 
     private __getMigrateCertificateApi<T extends BFChainPcSdk.CrossChain.MigrateCertificateApi>(apiPath: BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH) {
         return this.__MIGRATE_CERTIFICATE_API_MAP.get(apiPath) as T;
+    }
+
+    private __getCommonApi<T extends BFChainPcSdk.Common.CommonApi>(apiPath: BFChainPcSdk.Common.COMMON_API_PATH) {
+        return this.__COMMON_API_MAP.get(apiPath) as T;
     }
 
     /**创建设置用户名事件 */
@@ -630,6 +646,13 @@ export class TransactionApi {
         const api = this.__getMigrateCertificateApi<BFChainPcSdk.CrossChain.ToAuthSignatureMigrateCertificateApi>(
             MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_TO_AUTH_SIGNATURE
         );
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+
+    /**是否是一个地址 */
+    async verifyAddress(argv: BFChainPcSdk.Common.VerifyAddressParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.VerifyAddressApi>(COMMON_API_PATH.VERIFY_ADDRESS);
         const result = await api.sendPostRequest(argv);
         return result;
     }

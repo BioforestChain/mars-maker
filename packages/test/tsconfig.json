@@ -19,6 +19,7 @@
         "src/transactions/giftAsset.ts",
         "src/transactions/grabAsset.ts",
         "src/transactions/immigrateAsset.ts",
+        "src/transactions/isAddress.ts",
         "src/transactions/issueAsset.ts",
         "src/transactions/locationName.ts",
         "src/transactions/mark.ts",

@@ -27,7 +27,3 @@ export * from "./beExchangeSpecialAssetApi";
 export * from "./registerChainApi";
 export * from "./emigrateAssetApi";
 export * from "./immigrateAssetApi";
-
-export * from "./generateMigrateCertificateApi";
-export * from "./fromAuthSignatureMigrateCertificateApi";
-export * from "./toAuthSignatureMigrateCertificateApi";
