@@ -1,8 +1,9 @@
 import { Api } from "@bfchain/pc-sdk-api";
-import { getTransactionServerPort, runTransactionServer } from "@bfchain/pc-sdk-transactions-server";
+import { TransactionServer } from "@bfchain/pc-sdk-transactions-server";
 
 export class Sdk {
-    private __transactionServerPort = getTransactionServerPort();
+    private __transactionServer = new TransactionServer();
+    private __transactionServerPort = this.__transactionServer.getTransactionServerPort();
     private __api: Api;
     private __configOptions: BFChainPcSdk.ConfigOptions = {};
     constructor(configOptions?: BFChainPcSdk.ConfigOptions) {
@@ -37,6 +38,20 @@ export class Sdk {
         this.api.setApiconfig(configOptions);
     }
 
+    /**
+     * 事件服务器时间校正
+     *
+     * @param timeOffset 偏移量 ms
+     */
+    correctTransactionServerTime(timeOffset: number) {
+        this.__transactionServer.timeCorrecting(timeOffset);
+    }
+
+    /**
+     * 运行交易服务器
+     *
+     * @param configOptions
+     */
     async runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions) {
         configOptions = configOptions || this.__configOptions.transactionConfig || {};
         if (this.__configOptions.configRootPath) {
@@ -46,6 +61,6 @@ export class Sdk {
             configOptions.genesisInfoConfig = configOptions.genesisInfoConfig || {};
             configOptions.genesisInfoConfig.genesisBlockRootPath = this.__configOptions.genesisBlockRootPath;
         }
-        await runTransactionServer(this.__transactionServerPort, configOptions);
+        await this.__transactionServer.runTransactionServer(this.__transactionServerPort, configOptions);
     }
 }

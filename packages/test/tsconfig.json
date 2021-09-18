@@ -31,7 +31,7 @@
         "src/transactions/signForAsset.ts",
         "src/transactions/toExchangeAsset.ts",
         "src/transactions/toExchangeSpecialAsset.ts",
-        "src/transactions/transactionAsset.ts",
+        "src/transactions/transferAsset.ts",
         "src/transactions/trustAsset.ts",
         "src/transactions/username.ts",
         "src/transactions/vote.ts"

@@ -24,7 +24,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
         const sdk = new Sdk();
 
-        const result = await sdk.api.transaction.sendTransferAsset(argv);
+        const result = await sdk.api.transaction.generateTransferAsset(argv);
 
         console.log(result);
     } catch (e) {
