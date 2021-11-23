@@ -182,4 +182,12 @@ export const enum MIGRATE_CERTIFICATE_API_PATH {
 export const enum COMMON_API_PATH {
     /**是否是合法的地址 */
     VERIFY_ADDRESS = "/common/verifyAddress",
+    /**是否是合法的公钥 */
+    VERIFY_PUBLICKEY = "/common/verifyPublicKey",
+    /**创建账户 */
+    GENERATE_ACCOUNT = "/common/generateAccount",
+    /**根据密钥获取地址*/
+    GENERATE_ADDRESS_BY_SECRET = "/common/generateAddressBySecret",
+    /**根据公钥获取地址*/
+    GENERATE_ADDRESS_BY_PUBLICKEY = "/common/generateAddressByPublicKey",
 }

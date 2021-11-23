@@ -27,7 +27,7 @@ import {
     ImmigrateAssetApi,
 } from "./atom_transaction";
 import { GenerateMigrateCertificateApi, FromAuthSignatureMigrateCertificateApi, ToAuthSignatureMigrateCertificateApi } from "./migrate_certificate";
-import { VerifyAddressApi } from "./atom_common";
+import { VerifyAddressApi, VerifyPublicKeyApi, GenerateAccountApi, GenerateAddressBySecretApi, GenerateAddressByPublicKeyApi } from "./atom_common";
 import { COMMON_API_PATH, GENERATE_TRANSACTION_API_PATH, MIGRATE_CERTIFICATE_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
 export class TransactionApi {
@@ -114,21 +114,22 @@ export class TransactionApi {
         Object.freeze(MIGRATE_CERTIFICATE_API_MAP);
 
         const verifyAddressApi = new VerifyAddressApi(networkHelper);
+        const verifyPublicKeyApi = new VerifyPublicKeyApi(networkHelper);
+        const generateAccountApi = new GenerateAccountApi(networkHelper);
+        const generateAddressBySecretApi = new GenerateAddressBySecretApi(networkHelper);
+        const generateAddressByPublicKeyApi = new GenerateAddressByPublicKeyApi(networkHelper);
         COMMON_API_MAP.set(verifyAddressApi.EXEC_API_PATH, verifyAddressApi);
+        COMMON_API_MAP.set(verifyPublicKeyApi.EXEC_API_PATH, verifyPublicKeyApi);
+        COMMON_API_MAP.set(generateAccountApi.EXEC_API_PATH, generateAccountApi);
+        COMMON_API_MAP.set(generateAddressBySecretApi.EXEC_API_PATH, generateAddressBySecretApi);
+        COMMON_API_MAP.set(generateAddressByPublicKeyApi.EXEC_API_PATH, generateAddressByPublicKeyApi);
 
         Object.freeze(COMMON_API_MAP);
     }
 
+    // #region transaction
     private __getTransactionApi<T extends BFChainPcSdk.Transaction.TransactionApi>(apiPath: BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH) {
         return this.__TRANSACTION_API_MAP.get(apiPath) as T;
-    }
-
-    private __getMigrateCertificateApi<T extends BFChainPcSdk.CrossChain.MigrateCertificateApi>(apiPath: BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH) {
-        return this.__MIGRATE_CERTIFICATE_API_MAP.get(apiPath) as T;
-    }
-
-    private __getCommonApi<T extends BFChainPcSdk.Common.CommonApi>(apiPath: BFChainPcSdk.Common.COMMON_API_PATH) {
-        return this.__COMMON_API_MAP.get(apiPath) as T;
     }
 
     /**创建设置用户名事件 */
@@ -624,6 +625,12 @@ export class TransactionApi {
         const result = await api.sendTransaction(argv);
         return result;
     }
+    // #endregion
+
+    // #region migrateCertificate
+    private __getMigrateCertificateApi<T extends BFChainPcSdk.CrossChain.MigrateCertificateApi>(apiPath: BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH) {
+        return this.__MIGRATE_CERTIFICATE_API_MAP.get(apiPath) as T;
+    }
 
     /**创建权益迁移凭证 */
     async generateMigrateCertificate(argv: BFChainCore.CrossChain.GenerateMigrateCertificateArgs) {
@@ -649,6 +656,12 @@ export class TransactionApi {
         const result = await api.sendPostRequest(argv);
         return result;
     }
+    // #endregion
+
+    // #region common
+    private __getCommonApi<T extends BFChainPcSdk.Common.CommonApi>(apiPath: BFChainPcSdk.Common.COMMON_API_PATH) {
+        return this.__COMMON_API_MAP.get(apiPath) as T;
+    }
 
     /**是否是一个地址 */
     async verifyAddress(argv: BFChainPcSdk.Common.VerifyAddressParams) {
@@ -656,4 +669,33 @@ export class TransactionApi {
         const result = await api.sendPostRequest(argv);
         return result;
     }
+
+    /**是否是一个公钥 */
+    async verifyPublicKey(argv: BFChainPcSdk.Common.VerifyPublicKeyParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.VerifyPublicKeyApi>(COMMON_API_PATH.VERIFY_PUBLICKEY);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+
+    /**创建账户 */
+    async generateAccount(argv: BFChainPcSdk.Common.GenerateAccountParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.GenerateAccountApi>(COMMON_API_PATH.GENERATE_ACCOUNT);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+
+    /**根据密钥获取账户 */
+    async generateAddressBySecret(argv: BFChainPcSdk.Common.GenerateAddressBySecretParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.GenerateAddressBySecretApi>(COMMON_API_PATH.GENERATE_ADDRESS_BY_SECRET);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+
+    /**根据公钥获取账户 */
+    async generateAddressByPublicKey(argv: BFChainPcSdk.Common.GenerateAddressByPublicKeyParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.GenerateAddressByPublicKeyApi>(COMMON_API_PATH.GENERATE_ADDRESS_BY_PUBLICKEY);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+    // #endregion
 }

@@ -1,0 +1,10 @@
+import { CommonApi } from "./_commonApi";
+import { COMMON_API_PATH } from "@bfchain/pc-sdk-api-constants";
+
+export class VerifyPublicKeyApi extends CommonApi<boolean> {
+    readonly EXEC_API_PATH = COMMON_API_PATH.VERIFY_PUBLICKEY;
+
+    async sendPostRequest(argv: BFChainPcSdk.Common.VerifyPublicKeyParams) {
+        return super.sendPostRequest(argv);
+    }
+}
