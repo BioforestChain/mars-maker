@@ -1,8 +1,8 @@
 {
     "name": "@types/bfchain__pc-sdk-exception-errorcode",
     "types": "index.d.ts",
-    "version": "1.2.11",
+    "version": "1.2.13",
     "dependencies": {
-        "@types/bfchain__pc-sdk-typings": "1.2.11"
+        "@types/bfchain__pc-sdk-typings": "1.2.13"
     }
 }

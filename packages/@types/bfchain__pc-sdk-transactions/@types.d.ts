@@ -196,6 +196,24 @@ declare namespace BFChainPcSdk {
         interface VerifyAddressParams extends CommonParams {
             address: string;
         }
+        interface VerifyPublicKeyParams extends CommonParams {
+            publicKey: string;
+        }
+        interface GenerateAccountParams extends CommonParams {
+            secret: string;
+            secondSecret?: string;
+        }
+        interface GenerateAddressBySecretParams extends CommonParams {
+            secret: string;
+        }
+        interface GenerateAddressByPublicKeyParams extends CommonParams {
+            publicKey: string;
+        }
+        interface AccountInfo {
+            address: string;
+            publicKey: string;
+            secondPublicKey?: string;
+        }
         type CommonFactory = import("./atom_common/_commonFactory").CommonFactory<any>;
     }
 }

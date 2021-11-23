@@ -6,8 +6,6 @@ export declare class TransactionApi {
     constructor(__networkHelper: BFChainPcSdk.NetworkHelper);
     private __init;
     private __getTransactionApi;
-    private __getMigrateCertificateApi;
-    private __getCommonApi;
     generateUsername(argv: BFChainPcSdk.Transaction.UsernameTransactionParams): Promise<BFChainPcSdk.TransactionServer.GenerateTransactionReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.UsernameAssetJSON>, "recipientId"> & {
         recipientId: undefined;
     }>>;
@@ -242,8 +240,14 @@ export declare class TransactionApi {
     sendImmigrateAsset(argv: BFChainPcSdk.Transaction.ImmigrateAssetTransactionParams): Promise<BFChainPcSdk.Transaction.TransactionApiReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.ImmigrateAssetAssetJSON>, "recipientId"> & {
         recipientId: string;
     }>>;
+    private __getMigrateCertificateApi;
     generateMigrateCertificate(argv: BFChainCore.CrossChain.GenerateMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
     fromAuthSignatureMigrateCertificate(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
     toAuthSignatureMigrateCertificate(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
+    private __getCommonApi;
     verifyAddress(argv: BFChainPcSdk.Common.VerifyAddressParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<boolean>>;
+    verifyPublicKey(argv: BFChainPcSdk.Common.VerifyPublicKeyParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<boolean>>;
+    generateAccount(argv: BFChainPcSdk.Common.GenerateAccountParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.AccountInfo>>;
+    generateAddressBySecret(argv: BFChainPcSdk.Common.GenerateAddressBySecretParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<string>>;
+    generateAddressByPublicKey(argv: BFChainPcSdk.Common.GenerateAddressByPublicKeyParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<string>>;
 }
