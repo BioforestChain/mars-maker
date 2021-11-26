@@ -162,6 +162,17 @@ export const enum GENERATE_TRANSACTION_API_PATH {
     /**创建接受资产交换交易 */
     TR_BE_EXCHANGE_SPECIAL_ASSET = "/generate/beExchangeSpecAsset",
 
+    /**创建非同质权益模板 */
+    TR_ISSUE_ENTITY_FACTORY = "/generate/issueEntityFactory",
+    /**创建非同质权益 */
+    TR_ISSUE_ENTITY = "/generate/issueEntity",
+    /**销毁非同质权益 */
+    TR_DESTORY_ENTITY = "/generate/destoryEntity",
+    /**创建任意资产交换交易 */
+    TR_TO_EXCHANGE_ANY = "/generate/toExchangeAny",
+    /**创建接受任意资产交换交易 */
+    TR_BE_EXCHANGE_ANY = "/generate/beExchangeAny",
+
     /**创建注册链交易 */
     TR_REGISTER_CHAIN = "/generate/registerChain",
     /**创建权益迁出交易 */

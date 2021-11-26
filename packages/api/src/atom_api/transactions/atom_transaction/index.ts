@@ -24,6 +24,12 @@ export * from "./setLnsRecordValue";
 export * from "./toExchangeSpecialAssetApi";
 export * from "./beExchangeSpecialAssetApi";
 
+export * from "./issueEntityFactoryApi";
+export * from "./issueEntityApi";
+export * from "./destoryEntityApi";
+export * from "./toExchangeAnyApi";
+export * from "./beExchangeAnyApi";
+
 export * from "./registerChainApi";
 export * from "./emigrateAssetApi";
 export * from "./immigrateAssetApi";

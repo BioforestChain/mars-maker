@@ -23,7 +23,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 // };
 
 const config: BFChainPcSdk.ConfigOptions = {
-    configRootPath: path.join(process.cwd(), "qq"),
+    // configRootPath: path.join(process.cwd(), "qq"),
 };
 
 const sdk = new Sdk(config);
