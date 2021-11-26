@@ -67,6 +67,7 @@
         "src/atom_api/transactions/atom_common/generateAccountApi.ts",
         "src/atom_api/transactions/atom_common/generateAddressByPublicKeyApi.ts",
         "src/atom_api/transactions/atom_common/generateAddressBySecretApi.ts",
+        "src/atom_api/transactions/atom_common/generateKeypairApi.ts",
         "src/atom_api/transactions/atom_common/index.ts",
         "src/atom_api/transactions/atom_common/verifyAddressApi.ts",
         "src/atom_api/transactions/atom_common/verifyPublicKeyApi.ts",

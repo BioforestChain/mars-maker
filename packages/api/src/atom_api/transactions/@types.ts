@@ -51,6 +51,7 @@ declare namespace BFChainPcSdk {
         type CommonApi = import("./atom_common/_commonApi").CommonApi<any>;
         type VerifyAddressApi = import("./atom_common/verifyAddressApi").VerifyAddressApi;
         type VerifyPublicKeyApi = import("./atom_common/verifyPublicKeyApi").VerifyPublicKeyApi;
+        type GenerateKeypairApi = import("./atom_common/generateKeypairApi").GenerateKeypairApi;
         type GenerateAccountApi = import("./atom_common/generateAccountApi").GenerateAccountApi;
         type GenerateAddressBySecretApi = import("./atom_common/generateAddressBySecretApi").GenerateAddressBySecretApi;
         type GenerateAddressByPublicKeyApi = import("./atom_common/generateAddressByPublicKeyApi").GenerateAddressByPublicKeyApi;

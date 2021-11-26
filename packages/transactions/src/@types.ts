@@ -323,24 +323,40 @@ declare namespace BFChainPcSdk {
         }
 
         interface AsymmetricEncryptParams extends CommonParams {
-            msg: Uint8Array;
-            decryptPK: Uint8Array;
-            encryptSK: Uint8Array;
+            msg: string;
+            decryptPK: string;
+            encryptSK: string;
         }
 
         interface AsymmetricDecryptParams extends CommonParams {
-            encryptedMessage: Uint8Array;
-            encryptPK: Uint8Array;
-            decryptSK: Uint8Array;
-            nonce?: Uint8Array;
+            encryptedMessage: string;
+            encryptPK: string;
+            decryptSK: string;
+            nonce?: string;
         }
 
         interface AsymmetricEncrypt {
-            nonce: Uint8Array;
-            encryptedMessage: Uint8Array;
+            nonce: string;
+            encryptedMessage: string;
         }
 
-        type AsymmetricDecrypt = false | Uint8Array;
+        type AsymmetricDecrypt = false | string;
+
+        interface GenerateKeypairParams extends CommonParams {
+            secret: string;
+            secondSecret?: string;
+        }
+
+        interface Keypairs {
+            keypair: {
+                publicKey: string;
+                secretKey: string;
+            };
+            secondKeypair?: {
+                publicKey: string;
+                secretKey: string;
+            };
+        }
 
         type CommonFactory = import("./atom_common/_commonFactory").CommonFactory<any>;
     }

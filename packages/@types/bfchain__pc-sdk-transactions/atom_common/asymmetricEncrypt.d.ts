@@ -3,7 +3,7 @@ import { CommonFactory } from "./_commonFactory";
 export declare class AsymmetricEncryptFactory extends CommonFactory<BFChainPcSdk.Common.AsymmetricEncrypt> {
     readonly EXEC_API_PATH = COMMON_API_PATH.ASYMMETRIC_ENCRYPT;
     exec(request: BFChainPcSdk.Common.AsymmetricEncryptParams): Promise<{
-        nonce: Uint8Array;
-        encryptedMessage: Uint8Array;
+        nonce: string;
+        encryptedMessage: string;
     }>;
 }

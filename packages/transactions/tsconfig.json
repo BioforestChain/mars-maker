@@ -11,6 +11,7 @@
         "src/atom_common/generateAccount.ts",
         "src/atom_common/generateAddressByPublicKey.ts",
         "src/atom_common/generateAddressBySecret.ts",
+        "src/atom_common/generateKeypair.ts",
         "src/atom_common/index.ts",
         "src/atom_common/verifyAddress.ts",
         "src/atom_common/verifyPublicKey.ts",

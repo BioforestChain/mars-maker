@@ -30,6 +30,7 @@ import { GenerateMigrateCertificateApi, FromAuthSignatureMigrateCertificateApi, 
 import {
     VerifyAddressApi,
     VerifyPublicKeyApi,
+    GenerateKeypairApi,
     GenerateAccountApi,
     GenerateAddressBySecretApi,
     GenerateAddressByPublicKeyApi,
@@ -123,6 +124,7 @@ export class TransactionApi {
 
         const verifyAddressApi = new VerifyAddressApi(networkHelper);
         const verifyPublicKeyApi = new VerifyPublicKeyApi(networkHelper);
+        const generateKeypairApi = new GenerateKeypairApi(networkHelper);
         const generateAccountApi = new GenerateAccountApi(networkHelper);
         const generateAddressBySecretApi = new GenerateAddressBySecretApi(networkHelper);
         const generateAddressByPublicKeyApi = new GenerateAddressByPublicKeyApi(networkHelper);
@@ -130,6 +132,7 @@ export class TransactionApi {
         const asymmetricDecryptApi = new AsymmetricDecryptApi(networkHelper);
         COMMON_API_MAP.set(verifyAddressApi.EXEC_API_PATH, verifyAddressApi);
         COMMON_API_MAP.set(verifyPublicKeyApi.EXEC_API_PATH, verifyPublicKeyApi);
+        COMMON_API_MAP.set(generateKeypairApi.EXEC_API_PATH, generateKeypairApi);
         COMMON_API_MAP.set(generateAccountApi.EXEC_API_PATH, generateAccountApi);
         COMMON_API_MAP.set(generateAddressBySecretApi.EXEC_API_PATH, generateAddressBySecretApi);
         COMMON_API_MAP.set(generateAddressByPublicKeyApi.EXEC_API_PATH, generateAddressByPublicKeyApi);
@@ -706,6 +709,13 @@ export class TransactionApi {
     /**根据公钥获取账户 */
     async generateAddressByPublicKey(argv: BFChainPcSdk.Common.GenerateAddressByPublicKeyParams) {
         const api = this.__getCommonApi<BFChainPcSdk.Common.GenerateAddressByPublicKeyApi>(COMMON_API_PATH.GENERATE_ADDRESS_BY_PUBLICKEY);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+
+    /**创建公私钥对 */
+    async generateKeypair(argv: BFChainPcSdk.Common.GenerateKeypairParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.GenerateKeypairApi>(COMMON_API_PATH.GENERATE_KEYPAIR);
         const result = await api.sendPostRequest(argv);
         return result;
     }

@@ -115,7 +115,10 @@ export declare const enum MIGRATE_CERTIFICATE_API_PATH {
 export declare const enum COMMON_API_PATH {
     VERIFY_ADDRESS = "/common/verifyAddress",
     VERIFY_PUBLICKEY = "/common/verifyPublicKey",
+    GENERATE_KEYPAIR = "/common/generateKeypair",
     GENERATE_ACCOUNT = "/common/generateAccount",
     GENERATE_ADDRESS_BY_SECRET = "/common/generateAddressBySecret",
-    GENERATE_ADDRESS_BY_PUBLICKEY = "/common/generateAddressByPublicKey"
+    GENERATE_ADDRESS_BY_PUBLICKEY = "/common/generateAddressByPublicKey",
+    ASYMMETRIC_ENCRYPT = "/common/asymmetricEncrypt",
+    ASYMMETRIC_DECRYPT = "/common/asymmetricDecrypt"
 }

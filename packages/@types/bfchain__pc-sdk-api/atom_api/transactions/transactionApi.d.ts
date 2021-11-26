@@ -250,6 +250,7 @@ export declare class TransactionApi {
     generateAccount(argv: BFChainPcSdk.Common.GenerateAccountParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.AccountInfo>>;
     generateAddressBySecret(argv: BFChainPcSdk.Common.GenerateAddressBySecretParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<string>>;
     generateAddressByPublicKey(argv: BFChainPcSdk.Common.GenerateAddressByPublicKeyParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<string>>;
+    generateKeypair(argv: BFChainPcSdk.Common.GenerateKeypairParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.Keypairs>>;
     asymmetricEncrypt(argv: BFChainPcSdk.Common.AsymmetricEncryptParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.AsymmetricEncrypt>>;
     asymmetricDecrypt(argv: BFChainPcSdk.Common.AsymmetricDecryptParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.AsymmetricDecrypt>>;
 }

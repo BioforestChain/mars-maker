@@ -184,6 +184,8 @@ export const enum COMMON_API_PATH {
     VERIFY_ADDRESS = "/common/verifyAddress",
     /**是否是合法的公钥 */
     VERIFY_PUBLICKEY = "/common/verifyPublicKey",
+    /**创建公私钥对 */
+    GENERATE_KEYPAIR = "/common/generateKeypair",
     /**创建账户 */
     GENERATE_ACCOUNT = "/common/generateAccount",
     /**根据密钥获取地址*/
