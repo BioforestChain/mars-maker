@@ -3,3 +3,5 @@ export * from "./verifyPublicKey";
 export * from "./generateAccount";
 export * from "./generateAddressBySecret";
 export * from "./generateAddressByPublicKey";
+export * from "./asymmetricEncrypt";
+export * from "./asymmetricDecrypt";

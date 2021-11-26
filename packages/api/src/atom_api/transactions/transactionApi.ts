@@ -27,7 +27,15 @@ import {
     ImmigrateAssetApi,
 } from "./atom_transaction";
 import { GenerateMigrateCertificateApi, FromAuthSignatureMigrateCertificateApi, ToAuthSignatureMigrateCertificateApi } from "./migrate_certificate";
-import { VerifyAddressApi, VerifyPublicKeyApi, GenerateAccountApi, GenerateAddressBySecretApi, GenerateAddressByPublicKeyApi } from "./atom_common";
+import {
+    VerifyAddressApi,
+    VerifyPublicKeyApi,
+    GenerateAccountApi,
+    GenerateAddressBySecretApi,
+    GenerateAddressByPublicKeyApi,
+    AsymmetricEncryptApi,
+    AsymmetricDecryptApi,
+} from "./atom_common";
 import { COMMON_API_PATH, GENERATE_TRANSACTION_API_PATH, MIGRATE_CERTIFICATE_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
 export class TransactionApi {
@@ -118,11 +126,15 @@ export class TransactionApi {
         const generateAccountApi = new GenerateAccountApi(networkHelper);
         const generateAddressBySecretApi = new GenerateAddressBySecretApi(networkHelper);
         const generateAddressByPublicKeyApi = new GenerateAddressByPublicKeyApi(networkHelper);
+        const asymmetricEncryptApi = new AsymmetricEncryptApi(networkHelper);
+        const asymmetricDecryptApi = new AsymmetricDecryptApi(networkHelper);
         COMMON_API_MAP.set(verifyAddressApi.EXEC_API_PATH, verifyAddressApi);
         COMMON_API_MAP.set(verifyPublicKeyApi.EXEC_API_PATH, verifyPublicKeyApi);
         COMMON_API_MAP.set(generateAccountApi.EXEC_API_PATH, generateAccountApi);
         COMMON_API_MAP.set(generateAddressBySecretApi.EXEC_API_PATH, generateAddressBySecretApi);
         COMMON_API_MAP.set(generateAddressByPublicKeyApi.EXEC_API_PATH, generateAddressByPublicKeyApi);
+        COMMON_API_MAP.set(asymmetricEncryptApi.EXEC_API_PATH, asymmetricEncryptApi);
+        COMMON_API_MAP.set(asymmetricDecryptApi.EXEC_API_PATH, asymmetricDecryptApi);
 
         Object.freeze(COMMON_API_MAP);
     }
@@ -694,6 +706,20 @@ export class TransactionApi {
     /**根据公钥获取账户 */
     async generateAddressByPublicKey(argv: BFChainPcSdk.Common.GenerateAddressByPublicKeyParams) {
         const api = this.__getCommonApi<BFChainPcSdk.Common.GenerateAddressByPublicKeyApi>(COMMON_API_PATH.GENERATE_ADDRESS_BY_PUBLICKEY);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+
+    /**非对称加密 */
+    async asymmetricEncrypt(argv: BFChainPcSdk.Common.AsymmetricEncryptParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.AsymmetricEncryptApi>(COMMON_API_PATH.ASYMMETRIC_ENCRYPT);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+
+    /**非对称解密 */
+    async AsymmetricDecrypt(argv: BFChainPcSdk.Common.AsymmetricDecryptParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.AsymmetricDecryptApi>(COMMON_API_PATH.ASYMMETRIC_DECRYPT);
         const result = await api.sendPostRequest(argv);
         return result;
     }

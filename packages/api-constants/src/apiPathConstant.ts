@@ -190,4 +190,8 @@ export const enum COMMON_API_PATH {
     GENERATE_ADDRESS_BY_SECRET = "/common/generateAddressBySecret",
     /**根据公钥获取地址*/
     GENERATE_ADDRESS_BY_PUBLICKEY = "/common/generateAddressByPublicKey",
+    /**非对称加密 */
+    ASYMMETRIC_ENCRYPT = "/common/asymmetricEncrypt",
+    /**非对称解密 */
+    ASYMMETRIC_DECRYPT = "/common/asymmetricDecrypt",
 }
