@@ -718,7 +718,7 @@ export class TransactionApi {
     }
 
     /**非对称解密 */
-    async AsymmetricDecrypt(argv: BFChainPcSdk.Common.AsymmetricDecryptParams) {
+    async asymmetricDecrypt(argv: BFChainPcSdk.Common.AsymmetricDecryptParams) {
         const api = this.__getCommonApi<BFChainPcSdk.Common.AsymmetricDecryptApi>(COMMON_API_PATH.ASYMMETRIC_DECRYPT);
         const result = await api.sendPostRequest(argv);
         return result;
