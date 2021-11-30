@@ -103,6 +103,11 @@ export declare const enum GENERATE_TRANSACTION_API_PATH {
     TR_SET_LNS_RECORD_VALUE = "/generate/setLnsRecordValue",
     TR_TO_EXCHANGE_SPECIAL_ASSET = "/generate/toExchangeSpecAsset",
     TR_BE_EXCHANGE_SPECIAL_ASSET = "/generate/beExchangeSpecAsset",
+    TR_ISSUE_ENTITY_FACTORY = "/generate/issueEntityFactory",
+    TR_ISSUE_ENTITY = "/generate/issueEntity",
+    TR_DESTORY_ENTITY = "/generate/destoryEntity",
+    TR_TO_EXCHANGE_ANY = "/generate/toExchangeAny",
+    TR_BE_EXCHANGE_ANY = "/generate/beExchangeAny",
     TR_REGISTER_CHAIN = "/generate/registerChain",
     TR_EMIGRATE_ASSET = "/generate/emigrateAsset",
     TR_IMMIGRATE_ASSET = "/generate/immigrateAsset"

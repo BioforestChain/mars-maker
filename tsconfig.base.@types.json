@@ -2,7 +2,7 @@
     "extends": "./tsconfig.base.cjs",
     "compilerOptions": {
         "target": "esnext",
-        "module": "esnext",
+        "module": "commonjs",
         "declaration": true,
         "declarationMap": false,
         "sourceMap": false

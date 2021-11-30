@@ -4,13 +4,23 @@ import { REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
 import { parsePostRequestParameter } from "@bfchain/pc-sdk-helper-request-parameter-parser";
 
 export class HttpHelper {
-    constructor(private __transactionServerPort: number, private __configHelper: ApiConfigHelper) {}
+    private __transactionServerPort: number;
+    private __configHelper: ApiConfigHelper;
+    private __config: BFChainPcSdk.ApiConfig;
 
-    private __config = this.__configHelper.apiConfig;
     // FIXME: 兼容老燕辉设计的神奇的 api
     public readonly REQUEST_PROTOCOL = REQUEST_PROTOCOL.HTTP;
-    public readonly URL_PREFIX = `http://${this.__config.ip}:${this.__config.port}/`;
-    public readonly TRANSACTION_SERVER_URL_PREFIX = `http://127.0.0.1:${this.__transactionServerPort}`;
+    public readonly URL_PREFIX: string;
+    public readonly TRANSACTION_SERVER_URL_PREFIX: string;
+
+    constructor(transactionServerPort: number, configHelper: ApiConfigHelper) {
+        this.__transactionServerPort = transactionServerPort;
+        this.__configHelper = configHelper;
+        this.__config = this.__configHelper.apiConfig;
+
+        this.URL_PREFIX = `http://${this.__config.ip}:${this.__config.port}/`;
+        this.TRANSACTION_SERVER_URL_PREFIX = `http://127.0.0.1:${this.__transactionServerPort}`;
+    }
 
     createTransaction<T>(url: string, argv: { [key: string]: any }) {
         return new Promise<T>((resolve, reject) => {

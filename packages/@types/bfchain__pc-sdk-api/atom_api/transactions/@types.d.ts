@@ -24,6 +24,11 @@ declare namespace BFChainPcSdk {
         type SetLnsRecordValueApi = import("./atom_transaction").SetLnsRecordValueApi;
         type ToExchangeSpecialAssetApi = import("./atom_transaction").ToExchangeSpecialAssetApi;
         type BeExchangeSpecialAssetApi = import("./atom_transaction").BeExchangeSpecialAssetApi;
+        type IssueEntityFactoryApi = import("./atom_transaction").IssueEntityFactoryApi;
+        type IssueEntityApi = import("./atom_transaction").IssueEntityApi;
+        type DestoryEntityApi = import("./atom_transaction").DestoryEntityApi;
+        type ToExchangeAnyApi = import("./atom_transaction").ToExchangeAnyApi;
+        type BeExchangeAnyApi = import("./atom_transaction").BeExchangeAnyApi;
         type RegisterChainApi = import("./atom_transaction").RegisterChainApi;
         type EmigrateAssetApi = import("./atom_transaction").EmigrateAssetApi;
         type ImmigrateAssetApi = import("./atom_transaction").ImmigrateAssetApi;

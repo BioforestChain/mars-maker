@@ -6,16 +6,28 @@ import { parsePostRequestParameter } from "@bfchain/pc-sdk-helper-request-parame
 
 export class WebsocketHelper {
     private __socket!: SocketIOClient.Socket;
+    private __transactionServerPort: number;
+    private __configHelper: ApiConfigHelper;
+    private __config: BFChainPcSdk.ApiConfig;
 
-    private __config = this.__configHelper.apiConfig;
-    private readonly __URL = `http://${this.__config.ip}:${this.__config.port}`;
-    private readonly __WEBSOCKET_HOST = `${this.__URL}/systemChannel`;
+    private readonly __URL: string;
+    private readonly __WEBSOCKET_HOST: string;
+
     // FIXME: 兼容老燕辉设计的神奇的 api
     public readonly REQUEST_PROTOCOL = REQUEST_PROTOCOL.WEBSOCKET;
     public readonly URL_PREFIX = ``;
-    public readonly TRANSACTION_SERVER_URL_PREFIX = `http://127.0.0.1:${this.__transactionServerPort}`;
+    public readonly TRANSACTION_SERVER_URL_PREFIX: string;
 
-    constructor(private __transactionServerPort: number, private __configHelper: ApiConfigHelper) {}
+    constructor(transactionServerPort: number, configHelper: ApiConfigHelper) {
+        this.__transactionServerPort = transactionServerPort;
+        this.__configHelper = configHelper;
+        this.__config = this.__configHelper.apiConfig;
+
+        this.__URL = `http://${this.__config.ip}:${this.__config.port}`;
+        this.__WEBSOCKET_HOST = `${this.__URL}/systemChannel`;
+
+        this.TRANSACTION_SERVER_URL_PREFIX = `http://127.0.0.1:${this.__transactionServerPort}`;
+    }
 
     createTransaction<T>(url: string, argv: { [key: string]: any }) {
         return new Promise<T>((resolve, reject) => {

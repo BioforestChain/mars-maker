@@ -176,6 +176,82 @@ declare namespace BFChainPcSdk {
             exchangeSpecialAsset: BFChainCore.ToExchangeSpecialAssetJSON;
             ciphertext?: string;
         }
+        interface IssueEntityFactoryTransactionParams extends TransactionCommonParamsWithRecipientId {
+            factoryInfo: {
+                factoryId: string;
+                numberOfEntities: number;
+                entityFrozenAssetPrealnum: string;
+                purchaseAssetPrealnum: string;
+            };
+        }
+        interface IssueEntityTransactionParams extends TransactionCommonParamsWithRecipientId {
+            entityInfo: {
+                entityId: string;
+                entityFactoryPossessor: string;
+                entityFactory: {
+                    sourceChainName?: string;
+                    sourceChainMagic?: string;
+                    factoryId: string;
+                    numberOfEntities: number;
+                    entityFrozenAssetPrealnum: string;
+                    purchaseAssetPrealnum: string;
+                };
+            };
+        }
+        interface DestoryEntityTransactionParams extends TransactionCommonParamsWithRecipientId {
+            entityInfo: {
+                transactionSignature: string;
+                entityId: string;
+                entityFactoryApplicant: string;
+                entityFactoryPossessor: string;
+                entityFactory: {
+                    sourceChainName?: string;
+                    sourceChainMagic?: string;
+                    factoryId: string;
+                    numberOfEntities: number;
+                    entityFrozenAssetPrealnum: string;
+                    purchaseAssetPrealnum: string;
+                };
+            };
+        }
+        interface ToExchangeAnyTransactionParams extends TransactionCommonParamsWithoutRecipientId {
+            toExchangeInfo: {
+                toExchangeSource?: string;
+                toExchangeChainName?: string;
+                toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                toExchangeAssetType: string;
+                toExchangeAssetPrealnum: string;
+            };
+            beExchangeInfo: {
+                beExchangeSource?: string;
+                beExchangeChainName?: string;
+                beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                beExchangeAssetType: string;
+                beExchangeAssetPrealnum?: string;
+            };
+            assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
+            ciphertexts?: string[];
+        }
+        interface BeExchangeAnyTransactionParams extends TransactionCommonParamsWithRecipientId {
+            transactionSignature: string;
+            toExchangeAssetPrealnum: string;
+            beExchangeAssetPrealnum: string;
+            exchangeAny: {
+                cipherPublicKeys: string[];
+                toExchangeSource?: string;
+                beExchangeSource?: string;
+                toExchangeChainName?: string;
+                beExchangeChainName?: string;
+                toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                toExchangeAssetType: string;
+                beExchangeAssetType: string;
+                toExchangeAssetPrealnum: string;
+                beExchangeAssetPrealnum?: string;
+                assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
+            };
+            ciphertext?: string;
+        }
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
             genesisBlock: BFChainCore.GenesisBlockJSON;
         }

@@ -3,11 +3,11 @@ import { REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
 export declare class HttpHelper {
     private __transactionServerPort;
     private __configHelper;
-    constructor(__transactionServerPort: number, __configHelper: ApiConfigHelper);
     private __config;
     readonly REQUEST_PROTOCOL = REQUEST_PROTOCOL.HTTP;
     readonly URL_PREFIX: string;
     readonly TRANSACTION_SERVER_URL_PREFIX: string;
+    constructor(transactionServerPort: number, configHelper: ApiConfigHelper);
     createTransaction<T>(url: string, argv: {
         [key: string]: any;
     }): Promise<T>;
