@@ -24,6 +24,11 @@ import {
     SetLnsRecordValueFactory,
     ToExchangeSpecialAssetFactory,
     BeExchangeSpecialAssetFactory,
+    IssueEntityFactoryFactory,
+    IssueEntityFactory,
+    DestoryEntityFactory,
+    ToExchangeAnyFactory,
+    BeExchangeAnyFactory,
     RegisterChainFactory,
     EmigrateAssetFactory,
     ImmigrateAssetFactory,
@@ -82,6 +87,17 @@ export function TransactionFactory(bfchainCore: BFChainCore) {
     TRANSACTION_FACTORY_MAP.set(setLnsRecordValueFactory.GENERATE_API_PATH, setLnsRecordValueFactory);
     TRANSACTION_FACTORY_MAP.set(toExchangeSpecialAssetFactory.GENERATE_API_PATH, toExchangeSpecialAssetFactory);
     TRANSACTION_FACTORY_MAP.set(beExchangeSpecialAssetFactory.GENERATE_API_PATH, beExchangeSpecialAssetFactory);
+
+    const issueEntityFactoryFactory = new IssueEntityFactoryFactory(bfchainCore, transactionVerifyHelper);
+    const issueEntityFactory = new IssueEntityFactory(bfchainCore, transactionVerifyHelper);
+    const destoryEntityFactory = new DestoryEntityFactory(bfchainCore, transactionVerifyHelper);
+    const toExchangeAnyFactory = new ToExchangeAnyFactory(bfchainCore, transactionVerifyHelper);
+    const beExchangeAnyFactory = new BeExchangeAnyFactory(bfchainCore, transactionVerifyHelper);
+    TRANSACTION_FACTORY_MAP.set(issueEntityFactoryFactory.GENERATE_API_PATH, issueEntityFactoryFactory);
+    TRANSACTION_FACTORY_MAP.set(issueEntityFactory.GENERATE_API_PATH, issueEntityFactory);
+    TRANSACTION_FACTORY_MAP.set(destoryEntityFactory.GENERATE_API_PATH, destoryEntityFactory);
+    TRANSACTION_FACTORY_MAP.set(toExchangeAnyFactory.GENERATE_API_PATH, toExchangeAnyFactory);
+    TRANSACTION_FACTORY_MAP.set(beExchangeAnyFactory.GENERATE_API_PATH, beExchangeAnyFactory);
 
     const registerChainFactory = new RegisterChainFactory(bfchainCore, transactionVerifyHelper);
     const emigrateAssetFactory = new EmigrateAssetFactory(bfchainCore, transactionVerifyHelper);

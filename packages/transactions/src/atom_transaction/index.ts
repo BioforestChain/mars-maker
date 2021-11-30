@@ -24,6 +24,12 @@ export * from "./setLnsRecordValueFactory";
 export * from "./toExchangeSpecialAssetFactory";
 export * from "./beExchangeSpecialAssetFactory";
 
+export * from "./issueEntityFactoryFactory";
+export * from "./issueEntityFactory";
+export * from "./destoryEntityFactory";
+export * from "./toExchangeAnyFactory";
+export * from "./beExchangeAnyFactory";
+
 export * from "./registerChainFactory";
 export * from "./emigrateAssetFactory";
 export * from "./immigrateAssetFactory";

@@ -270,6 +270,136 @@ declare namespace BFChainPcSdk {
             ciphertext?: string;
         }
 
+        interface IssueEntityFactoryTransactionParams extends TransactionCommonParamsWithRecipientId {
+            factoryInfo: {
+                /**非同质资产模板 */
+                factoryId: string;
+                /**允许发行的非同质资产数量 */
+                numberOfEntities: number;
+                /**发行非同质资产时冻结的主权益数量，销毁时解冻 */
+                entityFrozenAssetPrealnum: string;
+                /**购买模板使用全的主权益数量 */
+                purchaseAssetPrealnum: string;
+            };
+        }
+        interface IssueEntityTransactionParams extends TransactionCommonParamsWithRecipientId {
+            entityInfo: {
+                /**非同质资产名称 */
+                entityId: string;
+                /**非同质资产模板的拥有者 */
+                entityFactoryPossessor: string;
+                /**非同质资产的模板 */
+                entityFactory: {
+                    /**非同质资产模板来源链名，小写字母组成，3-8 位 */
+                    sourceChainName?: string;
+                    /**非同质资产模板来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                    sourceChainMagic?: string;
+                    /**非同质资产模板 */
+                    factoryId: string;
+                    /**允许发行的非同质资产数量 */
+                    numberOfEntities: number;
+                    /**发行非同质资产时冻结的主权益数量，销毁时解冻 */
+                    entityFrozenAssetPrealnum: string;
+                    /**购买模板使用全的主权益数量 */
+                    purchaseAssetPrealnum: string;
+                };
+            };
+        }
+        interface DestoryEntityTransactionParams extends TransactionCommonParamsWithRecipientId {
+            entityInfo: {
+                /**要销毁的非同质资产发行事件的唯一标识符 */
+                transactionSignature: string;
+                /**非同质资产名称 */
+                entityId: string;
+                /**非同质资产模板的申请者 */
+                entityFactoryApplicant: string;
+                /**非同质资产模板的拥有者 */
+                entityFactoryPossessor: string;
+                /**非同质资产的模板 */
+                entityFactory: {
+                    /**非同质资产模板来源链名，小写字母组成，3-8 位 */
+                    sourceChainName?: string;
+                    /**非同质资产模板来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                    sourceChainMagic?: string;
+                    /**非同质资产模板 */
+                    factoryId: string;
+                    /**允许发行的非同质资产数量 */
+                    numberOfEntities: number;
+                    /**发行非同质资产时冻结的主权益数量，销毁时解冻 */
+                    entityFrozenAssetPrealnum: string;
+                    /**购买模板使用全的主权益数量 */
+                    purchaseAssetPrealnum: string;
+                };
+            };
+        }
+        interface ToExchangeAnyTransactionParams extends TransactionCommonParamsWithoutRecipientId {
+            toExchangeInfo: {
+                /**用于交换的资产/权益来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                toExchangeSource?: string;
+                /**用于交换的资产/权益来源链名，小写字母组成，3-8 位 */
+                toExchangeChainName?: string;
+                /**用于交换的资产所属大类 */
+                toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                /**用于交换的权益名，可能为 dappid，位名或者权益名 */
+                toExchangeAssetType: string;
+                /**用于交换的资产数量，0-9 组成并且不包含小数点 */
+                toExchangeAssetPrealnum: string;
+            };
+            beExchangeInfo: {
+                /**被交换的资产/权益来源链网络标识符，大写字母或数字组成，5个字符，最后一位是校验位 */
+                beExchangeSource?: string;
+                /**被交换的资产/权益来源链名，小写字母组成，3-8 位 */
+                beExchangeChainName?: string;
+                /**被交换的资产所属大类 */
+                beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                /**被交换的资产/权益名，可能为 dappid，位名或者权益名 */
+                beExchangeAssetType: string;
+                /**被交换的权益数量，0-9 组成并且不包含小数点，非同质权益交换时必填 */
+                beExchangeAssetPrealnum?: string;
+            };
+            /**交换比例，同质权益交换时必填 */
+            assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
+            /**加密密钥组，如果填写了密钥，则接收资产交换的事件必须携带某个密钥生成的签名对 */
+            ciphertexts?: string[];
+        }
+        interface BeExchangeAnyTransactionParams extends TransactionCommonParamsWithRecipientId {
+            /**资产交换事件的签名，128 个字节的 16 进制字符串 */
+            transactionSignature: string;
+            /**用于交换的权益数量，权益数量由0-9共十个数字组成，权益数量不包含小数点 */
+            toExchangeAssetPrealnum: string;
+            /**交换得到的权益数量，权益数量由0-9共十个数字组成，权益数量不包含小数点 */
+            beExchangeAssetPrealnum: string;
+            /**资产交换信息 */
+            exchangeAny: {
+                /**加密密钥生成的公钥数组 */
+                cipherPublicKeys: string[];
+                /**用于交换的资产来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                toExchangeSource?: string;
+                /**被交换的资产来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                beExchangeSource?: string;
+                /**用于交换的资产来源链名，小写字母组成，3-8 位 */
+                toExchangeChainName?: string;
+                /**被交换的资产来源链名，小写字母组成，3-8 位 */
+                beExchangeChainName?: string;
+                /**用于交换的资产所属大类 */
+                toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                /**被交换的资产所属大类 */
+                beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                /**用于交换的资产名 */
+                toExchangeAssetType: string;
+                /**被交换的资产名 */
+                beExchangeAssetType: string;
+                /**用于交换的资产数量，0-9 组成并且不包含小数点 */
+                toExchangeAssetPrealnum: string;
+                /**被交换的权益数量，0-9 组成并且不包含小数点，非同质权益交换时必填 */
+                beExchangeAssetPrealnum?: string;
+                /**交换比例，同质权益交换时必填 */
+                assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
+            };
+            /**加密密钥，如果资产交换事件填写了加密密钥，则必须携带某个资产交换事件指定密钥以生成密钥签名对 */
+            ciphertext?: string;
+        }
+
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
             /**创世块 */
             genesisBlock: BFChainCore.GenesisBlockJSON;
