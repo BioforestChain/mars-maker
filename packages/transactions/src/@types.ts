@@ -417,9 +417,16 @@ declare namespace BFChainPcSdk {
     }
 
     namespace CrossChain {
+        interface GenerateMigrateCertificateParams extends Omit<BFChainCore.CrossChain.GenerateMigrateCertificateArgs, "assetInfo"> {
+            assetInfo?: {
+                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                assetType: string;
+            };
+        }
+
         type MigrateCertificateFactory = import("./migrate_certificate/_migrateCertificateFactory").MigrateCertificateFactory;
 
-        type MigrateCertificateArgs = BFChainCore.CrossChain.GenerateMigrateCertificateArgs | BFChainCore.CrossChain.AuthSignMigrateCertificateArgs;
+        type MigrateCertificateArgs = GenerateMigrateCertificateParams | BFChainCore.CrossChain.AuthSignMigrateCertificateArgs;
     }
 
     namespace Common {

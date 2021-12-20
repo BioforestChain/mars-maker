@@ -4,7 +4,7 @@ const path = require("path");
 const rootpath = path.resolve(__dirname, "../packages");
 
 const dependencies = {
-    "@bfchain/coretools": "~1.11.13",
+    "@bfchain/coretools": "~1.11.26",
     "@bfchain/license": "~3.2.2",
     "@bfchain/protobuf": "~4.1.9",
     "@bfchain/util": "~4.12.26",
@@ -19,8 +19,11 @@ function package() {
         const filepath = `${rootpath}/${file}/package.json`;
         const package = JSON.parse(fs.readFileSync(filepath).toString());
         for (const pkg in dependencies) {
-            if (package.dependencies && package.dependencies[pkg]) {
-                package.dependencies[pkg] = dependencies[pkg];
+            if (package.dependencies) {
+                for (const key in package.dependencies)
+                    if (key === pkg || key.includes(`${pkg}-`)) {
+                        package.dependencies[key] = dependencies[pkg];
+                    }
             }
         }
         fs.writeFileSync(filepath, JSON.stringify(package, null, 2));

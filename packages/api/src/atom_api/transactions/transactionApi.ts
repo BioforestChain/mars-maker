@@ -758,7 +758,7 @@ export class TransactionApi {
     }
 
     /**创建权益迁移凭证 */
-    async generateMigrateCertificate(argv: BFChainCore.CrossChain.GenerateMigrateCertificateArgs) {
+    async generateMigrateCertificate(argv: BFChainPcSdk.CrossChain.GenerateMigrateCertificateParams) {
         const api = this.__getMigrateCertificateApi<BFChainPcSdk.CrossChain.GenerateMigrateCertificateApi>(
             MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_GENERATE
         );

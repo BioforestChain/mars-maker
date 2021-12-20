@@ -4,7 +4,7 @@ import { BFChainSecret } from "@bfchain/coretools-secret";
 import { MyGenesisBlockHelper } from "./myGenesisBlockHelper";
 import { TransactionConfigHelper } from "@bfchain/pc-sdk-helper-transaction-config";
 import { BFChainCoreFactory, ConfigHelper, BFChainCore } from "@bfchain/core";
-import { NodeJsCryptoHelper, NodeJsKeypairHelper, Ed2curveHelper } from "@bfchain/coretools-generate-genesis-block";
+import { NodeJsCryptoHelper, NodeJsKeypairHelper, Ed2curveHelper } from "@bfchain/coretools-helper-core";
 
 export class MyBaseHelper {
     private __bfchainSecret: BFChainSecret;

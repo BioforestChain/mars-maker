@@ -717,14 +717,14 @@ export const TR_EMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
                             toId: {
                                 type: BASE_ARGS_TYPE.STRING,
                             },
-                            assetTypeId: {
+                            assetId: {
                                 type: BASE_ARGS_TYPE.STRING,
                             },
-                            assets: {
+                            assetPrealnum: {
                                 type: BASE_ARGS_TYPE.STRING,
                             },
                         },
-                        required: ["version", "fromId", "toId", "timestamp", "fromChainId", "toChainId", "assetTypeId", "assets"],
+                        required: ["version", "fromId", "toId", "timestamp", "fromChainId", "toChainId", "assetId", "assetPrealnum"],
                     },
                     signature: {
                         type: BASE_ARGS_TYPE.STRING,
@@ -771,14 +771,14 @@ export const TR_IMMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
                             toId: {
                                 type: BASE_ARGS_TYPE.STRING,
                             },
-                            assetTypeId: {
+                            assetId: {
                                 type: BASE_ARGS_TYPE.STRING,
                             },
-                            assets: {
+                            assetPrealnum: {
                                 type: BASE_ARGS_TYPE.STRING,
                             },
                         },
-                        required: ["version", "fromId", "toId", "timestamp", "fromChainId", "toChainId", "assetTypeId", "assets"],
+                        required: ["version", "fromId", "toId", "timestamp", "fromChainId", "toChainId", "assetId", "assetPrealnum"],
                     },
                     signature: {
                         type: BASE_ARGS_TYPE.STRING,

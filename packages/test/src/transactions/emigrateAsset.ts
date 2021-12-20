@@ -31,7 +31,7 @@ import { Sdk } from "@bfchain/pc-sdk";
                 genesisBlockSignature:
                     "10e327bad24e85444a15877d47c653b37de5fa4a6268c89bd0b438d2ed437207a3f3e089919b3f7799ac101c8d26fb00d087979ceb697c4aa4fa0c608757b10e",
             },
-            assets: "10000",
+            assetPrealnum: "10000",
         });
 
         if (!result1.success) {

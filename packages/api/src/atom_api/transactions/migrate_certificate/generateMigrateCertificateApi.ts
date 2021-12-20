@@ -4,7 +4,7 @@ import { MIGRATE_CERTIFICATE_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class GenerateMigrateCertificateApi extends MigrateCertificateApi {
     readonly GENERATE_API_PATH = MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_GENERATE;
 
-    async sendPostRequest(argv: BFChainCore.CrossChain.GenerateMigrateCertificateArgs) {
+    async sendPostRequest(argv: BFChainPcSdk.CrossChain.GenerateMigrateCertificateParams) {
         const apiPath = `${this.networkHelper.TRANSACTION_SERVER_URL_PREFIX}${this.GENERATE_API_PATH}`;
         try {
             const result = await this.networkHelper.createTransaction<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>(apiPath, argv);

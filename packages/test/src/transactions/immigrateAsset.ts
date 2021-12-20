@@ -19,7 +19,7 @@ async function generateMigrateCertificate(recipientId: string, toChainInfo: BFCh
         senderSecret: "qqq",
         recipientId,
         toChainInfo,
-        assets: "10000",
+        assetPrealnum: "10000",
     });
 
     if (!result1.success) {
@@ -56,7 +56,7 @@ async function generateMigrateCertificate(recipientId: string, toChainInfo: BFCh
         const genesisSecret =
             "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon";
 
-        const fromMagic = "LLSBD";
+        const fromMagic = "6N6TI";
 
         const migrateCertificate = await generateMigrateCertificate(argv.recipientId, {
             magic: fromMagic,
@@ -79,7 +79,7 @@ async function generateMigrateCertificate(recipientId: string, toChainInfo: BFCh
         console.log(result2.result);
 
         argv.migrateCertificate = result2.result;
-        argv.fromMagic = "NCOH8";
+        argv.fromMagic = "PSSS5";
 
         const result = await sdk.api.transaction.generateImmigrateAsset(argv);
 
