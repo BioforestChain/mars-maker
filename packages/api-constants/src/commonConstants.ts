@@ -43,3 +43,6 @@ export const enum READ_FILE_TYPE {
     READ_FILE_ASYNC = 0,
     CREATE_READ_STREAM = 1,
 }
+
+//二进制数据单文件大小限制
+export const maxOneFileSize = 200 * 1024 * 1024; //200M

@@ -22,7 +22,15 @@ declare namespace BFChainPcSdk {
                 txCount: number;
                 equity: string;
             };
+            binaryInfos?: KVStorageInfo[];
         }
+        type KVStorageInfo = {
+            key: string;
+            fileInfo: {
+                name: string;
+                size: number;
+            };
+        };
         type TransactionCommonParamsWithRecipientId = TransactionCommonParams & {
             recipientId: string;
         };
@@ -263,8 +271,14 @@ declare namespace BFChainPcSdk {
         }
     }
     namespace CrossChain {
+        interface GenerateMigrateCertificateParams extends Omit<BFChainCore.CrossChain.GenerateMigrateCertificateArgs, "assetInfo"> {
+            assetInfo?: {
+                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                assetType: string;
+            };
+        }
         type MigrateCertificateFactory = import("./migrate_certificate/_migrateCertificateFactory").MigrateCertificateFactory;
-        type MigrateCertificateArgs = BFChainCore.CrossChain.GenerateMigrateCertificateArgs | BFChainCore.CrossChain.AuthSignMigrateCertificateArgs;
+        type MigrateCertificateArgs = GenerateMigrateCertificateParams | BFChainCore.CrossChain.AuthSignMigrateCertificateArgs;
     }
     namespace Common {
         interface CommonParams {

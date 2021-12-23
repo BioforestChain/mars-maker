@@ -67,6 +67,16 @@ declare namespace BFChainPcSdk {
             /**交易事件类型，通过GetTransactionType接口获得 */
             transactionType: string;
         }
+        /**临时设置KV二进制数据 */
+        interface SetKVStorageTempParams extends BasicApiRequestParams {
+            /**二进制的数据 */
+            datas: Uint8Array[];
+        }
+        /**获取KV二进制数据 */
+        interface GetKVStorageParams extends BasicApiRequestParams {
+            /**二进制的存储key值 */
+            key: string;
+        }
         // #endregion
 
         // #region response
@@ -132,6 +142,15 @@ declare namespace BFChainPcSdk {
         interface GetAccountLastTypeTransactionResult extends BasicApiRequestResult {
             transactionInBlock?: BFChainCore.TransactionInBlockJSON;
         }
+        /**临时设置KV二进制数据 */
+        interface SetKVStorageTempResult extends BasicApiRequestResult {
+            keys: string[];
+        }
+
+        /**获取KV二进制数据 */
+        interface GetKVStorageResult extends BasicApiRequestResult {
+            data: Uint8Array;
+        }
         // #endregion
 
         interface BasicApiSuccessReturn<T extends BasicApiRequestResult> extends ApiSuccessReturn {
@@ -153,5 +172,7 @@ declare namespace BFChainPcSdk {
         type GetAccountPublicKeyApi = import("./apis").GetAccountPublicKeyApi;
         type GetAccountLastTransactionApi = import("./apis").GetAccountLastTransactionApi;
         type GetAccountLastTypeTransactionApi = import("./apis").GetAccountLastTypeTransactionApi;
+        type SetKVStorageTempApi = import("./apis").SetKVStorageTempApi;
+        type GetKVStorageApi = import("./apis").GetKVStorageApi;
     }
 }

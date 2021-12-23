@@ -39,7 +39,18 @@ declare namespace BFChainPcSdk {
                 /**权益数 */
                 equity: string;
             };
+            /**事件的附加二进制数据 */
+            binaryInfos?: KVStorageInfo[];
         }
+
+        //交易体中的kvStorage信息
+        type KVStorageInfo = {
+            key: string;
+            fileInfo: {
+                name: string;
+                size: number;
+            };
+        };
 
         type TransactionCommonParamsWithRecipientId = TransactionCommonParams & { recipientId: string };
         type TransactionCommonParamsWithoutRecipientId = Omit<TransactionCommonParams, "recipientId">;

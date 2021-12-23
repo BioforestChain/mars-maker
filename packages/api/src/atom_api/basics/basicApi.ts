@@ -11,6 +11,8 @@ import {
     GetAccountPublicKeyApi,
     GetAccountLastTransactionApi,
     GetAccountLastTypeTransactionApi,
+    SetKVStorageTempApi,
+    GetKVStorageApi,
 } from "./apis";
 import { BASIC_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
@@ -35,6 +37,8 @@ export class BasicApi {
         const getAccountPublicKeyApi = new GetAccountPublicKeyApi(networkHelper);
         const getAccountLastTransactionApi = new GetAccountLastTransactionApi(networkHelper);
         const getAccountLastTypeTransactionApi = new GetAccountLastTypeTransactionApi(networkHelper);
+        const setKVStorageTempApi = new SetKVStorageTempApi(networkHelper);
+        const getKVStorageApi = new GetKVStorageApi(networkHelper);
 
         BASIC_API_MAP.set(getBlockApi.REQUEST_API_PATH, getBlockApi);
         BASIC_API_MAP.set(getLastBlockApi.REQUEST_API_PATH, getLastBlockApi);
@@ -47,6 +51,8 @@ export class BasicApi {
         BASIC_API_MAP.set(getAccountPublicKeyApi.REQUEST_API_PATH, getAccountPublicKeyApi);
         BASIC_API_MAP.set(getAccountLastTransactionApi.REQUEST_API_PATH, getAccountLastTransactionApi);
         BASIC_API_MAP.set(getAccountLastTypeTransactionApi.REQUEST_API_PATH, getAccountLastTypeTransactionApi);
+        BASIC_API_MAP.set(setKVStorageTempApi.REQUEST_API_PATH, setKVStorageTempApi);
+        BASIC_API_MAP.set(getKVStorageApi.REQUEST_API_PATH, getKVStorageApi);
 
         Object.freeze(BASIC_API_MAP);
     }
@@ -119,6 +125,18 @@ export class BasicApi {
     /**获取账户指定类型的最后一笔事件 */
     async getAccountLastTypeTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTypeTransactionParams) {
         const api = this.__getBasicApi<BFChainPcSdk.Basic.GetAccountLastTypeTransactionApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+    /**临时设置KV二进制数据 */
+    async setKVStorageTemp(argv: BFChainPcSdk.Basic.SetKVStorageTempParams) {
+        const api = this.__getBasicApi<BFChainPcSdk.Basic.SetKVStorageTempApi>(BASIC_API_PATH.SET_KVSTORAGE_TEMP);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+    /**获取KV二进制数据 */
+    async getKVStorage(argv: BFChainPcSdk.Basic.GetKVStorageParams) {
+        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetKVStorageApi>(BASIC_API_PATH.GET_KVSTORAGE);
         const result = await api.sendPostRequest(argv);
         return result;
     }

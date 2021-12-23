@@ -35,6 +35,10 @@ export const enum BASIC_API_PATH {
     BASIC_GET_ACCOUNT_LAST_TRANSACTION = "/getAccountLastTransaction",
     /**获取账户指定类型的最后一笔交易 */
     BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION = "/getAccountLastTypeTransaction",
+    /**临时设置KV二进制数据 */
+    SET_KVSTORAGE_TEMP = "/setKVStorageTemp",
+    /**获取KV二进制数据 */
+    GET_KVSTORAGE = "/getKVStorage",
 }
 
 export const enum SERVICE_API_PATH {

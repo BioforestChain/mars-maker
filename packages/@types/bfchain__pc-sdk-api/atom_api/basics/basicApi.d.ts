@@ -15,5 +15,7 @@ export declare class BasicApi {
     getAccountPublicKey(argv: BFChainPcSdk.Basic.GetAccountPublicKeyParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetAccountPublicKeyResult>>;
     getAccountLastTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTransactionParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetAccountLastTransactionResult>>;
     getAccountLastTypeTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTypeTransactionParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetAccountLastTypeTransactionResult>>;
+    setKVStorageTemp(argv: BFChainPcSdk.Basic.SetKVStorageTempParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.SetKVStorageTempResult>>;
+    getKVStorage(argv: BFChainPcSdk.Basic.GetKVStorageParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetKVStorageResult>>;
     getSystemKey(systemSecret: string): string;
 }

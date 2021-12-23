@@ -38,6 +38,12 @@ declare namespace BFChainPcSdk {
             address: string;
             transactionType: string;
         }
+        interface SetKVStorageTempParams extends BasicApiRequestParams {
+            datas: Uint8Array[];
+        }
+        interface GetKVStorageParams extends BasicApiRequestParams {
+            key: string;
+        }
         interface BasicApiRequestResult {
         }
         interface GetBlockResult extends BasicApiRequestResult {
@@ -84,6 +90,12 @@ declare namespace BFChainPcSdk {
         interface GetAccountLastTypeTransactionResult extends BasicApiRequestResult {
             transactionInBlock?: BFChainCore.TransactionInBlockJSON;
         }
+        interface SetKVStorageTempResult extends BasicApiRequestResult {
+            keys: string[];
+        }
+        interface GetKVStorageResult extends BasicApiRequestResult {
+            data: Uint8Array;
+        }
         interface BasicApiSuccessReturn<T extends BasicApiRequestResult> extends ApiSuccessReturn {
             result: T;
         }
@@ -102,5 +114,7 @@ declare namespace BFChainPcSdk {
         type GetAccountPublicKeyApi = import("./apis").GetAccountPublicKeyApi;
         type GetAccountLastTransactionApi = import("./apis").GetAccountLastTransactionApi;
         type GetAccountLastTypeTransactionApi = import("./apis").GetAccountLastTypeTransactionApi;
+        type SetKVStorageTempApi = import("./apis").SetKVStorageTempApi;
+        type GetKVStorageApi = import("./apis").GetKVStorageApi;
     }
 }

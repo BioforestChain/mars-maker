@@ -16,7 +16,9 @@ export declare const enum BASIC_API_PATH {
     BASIC_CREATE_ACCOUNT = "/createAccount",
     BASIC_GET_ACCOUNT_PUBLICKEY = "/getAccountPublicKey",
     BASIC_GET_ACCOUNT_LAST_TRANSACTION = "/getAccountLastTransaction",
-    BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION = "/getAccountLastTypeTransaction"
+    BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION = "/getAccountLastTypeTransaction",
+    SET_KVSTORAGE_TEMP = "/setKVStorageTemp",
+    GET_KVSTORAGE = "/getKVStorage"
 }
 export declare const enum SERVICE_API_PATH {
     SERVICE_USER_GET_PACKAGE_SOURCE = "/user/getPackageSource",

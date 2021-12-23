@@ -22,3 +22,4 @@ export declare const enum READ_FILE_TYPE {
     READ_FILE_ASYNC = 0,
     CREATE_READ_STREAM = 1
 }
+export declare const maxOneFileSize: number;

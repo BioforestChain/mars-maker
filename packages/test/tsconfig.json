@@ -7,6 +7,7 @@
     "files": [
         "src/basics/getBlock.ts",
         "src/basics/getLastBlock.ts",
+        "src/basics/kvStorage.ts",
         "src/common/asymmetricDecryptAndEncrypt.ts",
         "src/common/generateAccount.ts",
         "src/common/generateAddressByPublicKey.ts",

@@ -10,3 +10,5 @@ export * from "./createAccountApi";
 export * from "./getAccountPublicKeyApi";
 export * from "./getAccountLastTransactionApi";
 export * from "./getAccountLastTypeTransactionApi";
+export * from "./setKVStorageTempApi";
+export * from "./getKVStorageApi";

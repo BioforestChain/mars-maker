@@ -1,7 +1,7 @@
 import type { ApiConfigHelper } from "@bfchain/pc-sdk-helper-api-config";
 import * as http from "http";
 import * as io from "socket.io-client";
-import { REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
+import { maxOneFileSize, REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
 import { parsePostRequestParameter } from "@bfchain/pc-sdk-helper-request-parameter-parser";
 
 export class WebsocketHelper {
@@ -51,6 +51,11 @@ export class WebsocketHelper {
             const socket = io.connect(this.__WEBSOCKET_HOST, {
                 transports: ["websocket"],
                 timeout: this.__config.requestTimeOut,
+                transportOptions: {
+                    websocket: {
+                        maxPayload: maxOneFileSize,
+                    },
+                },
             });
             socket.on("connect", () => {
                 console.debug(`connected to ${this.__URL} `);

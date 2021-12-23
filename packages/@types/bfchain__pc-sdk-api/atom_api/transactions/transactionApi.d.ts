@@ -286,7 +286,7 @@ export declare class TransactionApi {
         recipientId: string;
     }>>;
     private __getMigrateCertificateApi;
-    generateMigrateCertificate(argv: BFChainCore.CrossChain.GenerateMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
+    generateMigrateCertificate(argv: BFChainPcSdk.CrossChain.GenerateMigrateCertificateParams): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
     fromAuthSignatureMigrateCertificate(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
     toAuthSignatureMigrateCertificate(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs): Promise<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>;
     private __getCommonApi;
