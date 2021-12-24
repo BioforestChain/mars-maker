@@ -38,6 +38,13 @@ export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
                 });
             }
         }
+        let remark = request.remark;
+        const binaryInfos = request.binaryInfos;
+        if (binaryInfos) {
+            const keys = binaryInfos.map((v) => v.key);
+            const fileInfos = binaryInfos.map((v) => v.fileInfo);
+            remark = this.setTransactionRemark(remark ?? {}, keys, fileInfos);
+        }
         const txBody: BFChainCoreTools.MyTransactionArgv = {
             version: this.bfchainCore.config.version,
             secret: request.secret,
@@ -48,7 +55,7 @@ export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
             timestamp: this.bfchainCore.time.getTimestamp(),
             fee: request.fee,
             applyBlockHeight: request.applyBlockHeight,
-            remark: request.remark,
+            remark,
             dappid: request.dappid,
             lns: request.lns,
             sourceIP: request.sourceIP,
@@ -83,4 +90,24 @@ export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
      * @param accountPowInfo
      */
     abstract generateTransaction(request: BFChainPcSdk.Transaction.TransactionCommonParams): Promise<BFChainCore.TransactionJSON>;
+
+    /**针对节点存储设置交易对象的remark字段 */
+    setTransactionRemark(remark: { [key: string]: string }, keys: string[], fileInfos: { name: string; size: number }[]): { [key: string]: string } {
+        if (keys.length !== fileInfos.length) {
+            throw new Error("键值长度和文件信息长度不匹配");
+        }
+        if (keys.length == 0) {
+            return remark;
+        }
+        remark.kvStorageKey = keys.join(",");
+        remark.kvStorageFileInfo = fileInfos
+            .map((v) => {
+                if (v.name && v.size) {
+                    return v.name + "_" + v.size;
+                }
+                return "";
+            })
+            .join(",");
+        return remark;
+    }
 }

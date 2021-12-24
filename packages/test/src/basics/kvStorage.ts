@@ -11,7 +11,7 @@ class ApiTest {
         let funcNames: string[] = [];
         for (let index = 0; index < 1; index++) {
             funcNames.push("setBinary");
-            // funcNames.push("getKVStorage");
+            funcNames.push("getKVStorage");
         }
         for (let idx = 0; idx < funcNames.length; idx++) {
             const apiName = funcNames[idx];
@@ -54,7 +54,7 @@ class ApiTest {
             throw Error(glbResult.error.message);
         }
         let argv: BFChainPcSdk.Transaction.TransferAssetTransactionParams = {
-            secret: "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor baco",
+            secret: "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon",
             fee: "500",
             applyBlockHeight: glbResult.result.height,
             numberOfEffectiveBlocks: 20000,
