@@ -1,6 +1,6 @@
 {
   "name": "@bfchain/pc-sdk-helpers",
-  "version": "1.2.19",
+  "version": "1.2.20",
   "description": "pc-sdk-helpers for the third party",
   "main": "build/cjs/index.js",
   "type": "commonjs",
@@ -10,14 +10,14 @@
   "author": "BFChain Team",
   "license": "MIT",
   "dependencies": {
-    "@bfchain/pc-sdk-helper-api-config": "1.2.19",
-    "@bfchain/pc-sdk-helper-request-parameter-parser": "1.2.19",
-    "@bfchain/pc-sdk-helper-transaction-config": "1.2.19",
-    "@bfchain/pc-sdk-helper-transaction-schema": "1.2.19",
-    "@bfchain/pc-sdk-helper-transaction-schema-validation": "1.2.19",
-    "@bfchain/pc-sdk-helper-transaction-verify": "1.2.19",
-    "@bfchain/pc-sdk-helper-type": "1.2.19",
-    "@bfchain/pc-sdk-typings": "1.2.19"
+    "@bfchain/pc-sdk-helper-api-config": "1.2.20",
+    "@bfchain/pc-sdk-helper-request-parameter-parser": "1.2.20",
+    "@bfchain/pc-sdk-helper-transaction-config": "1.2.20",
+    "@bfchain/pc-sdk-helper-transaction-schema": "1.2.20",
+    "@bfchain/pc-sdk-helper-transaction-schema-validation": "1.2.20",
+    "@bfchain/pc-sdk-helper-transaction-verify": "1.2.20",
+    "@bfchain/pc-sdk-helper-type": "1.2.20",
+    "@bfchain/pc-sdk-typings": "1.2.20"
   },
   "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
   "files": [
