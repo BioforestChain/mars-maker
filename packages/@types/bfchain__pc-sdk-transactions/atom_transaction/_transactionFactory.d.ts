@@ -9,4 +9,12 @@ export declare abstract class TransactionFactory<T extends BFChainCore.Transacti
     getAccountPowInfo(request: BFChainPcSdk.Transaction.TransactionCommonParams): BFChainCoreTools.AccountPowInfoModel;
     verify(request: BFChainPcSdk.Transaction.TransactionCommonParams): void;
     abstract generateTransaction(request: BFChainPcSdk.Transaction.TransactionCommonParams): Promise<BFChainCore.TransactionJSON>;
+    setTransactionRemark(remark: {
+        [key: string]: string;
+    }, keys: string[], fileInfos: {
+        name: string;
+        size: number;
+    }[]): {
+        [key: string]: string;
+    };
 }

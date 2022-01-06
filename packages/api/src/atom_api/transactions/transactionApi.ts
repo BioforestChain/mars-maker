@@ -1,4 +1,5 @@
 import {
+    CommonTransactionApi,
     UsernameApi,
     SignatureApi,
     DelegateApi,
@@ -61,6 +62,7 @@ export class TransactionApi {
             __COMMON_API_MAP: COMMON_API_MAP,
         } = this;
 
+        const commonTransactionApi = new CommonTransactionApi(networkHelper);
         const usernameApi = new UsernameApi(networkHelper);
         const signatureApi = new SignatureApi(networkHelper);
         const delegateApi = new DelegateApi(networkHelper);
@@ -93,6 +95,7 @@ export class TransactionApi {
         const emigrateAssetApi = new EmigrateAssetApi(networkHelper);
         const immigrateAssetApi = new ImmigrateAssetApi(networkHelper);
 
+        TRANSACTION_API_MAP.set(commonTransactionApi.GENERATE_API_PATH, commonTransactionApi);
         TRANSACTION_API_MAP.set(usernameApi.GENERATE_API_PATH, usernameApi);
         TRANSACTION_API_MAP.set(signatureApi.GENERATE_API_PATH, signatureApi);
         TRANSACTION_API_MAP.set(delegateApi.GENERATE_API_PATH, delegateApi);
@@ -160,6 +163,12 @@ export class TransactionApi {
     // #region transaction
     private __getTransactionApi<T extends BFChainPcSdk.Transaction.TransactionApi>(apiPath: BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH) {
         return this.__TRANSACTION_API_MAP.get(apiPath) as T;
+    }
+
+    async broadcastTransaction(argv: BFChainCore.TransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.CommonTransactionApi>(GENERATE_TRANSACTION_API_PATH.TR_COMMON);
+        const result = await api.broadcastTransaction(argv);
+        return result;
     }
 
     /**创建设置用户名事件 */

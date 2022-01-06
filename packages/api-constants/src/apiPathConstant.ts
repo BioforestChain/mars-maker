@@ -117,6 +117,9 @@ export const enum SYSTEM_API_PATH {
 }
 
 export const enum GENERATE_TRANSACTION_API_PATH {
+    /**通用的构建交易，就是没有 */
+    TR_COMMON = "/generate",
+
     /**创建设置用户名交易 */
     TR_USERNAME = "/generate/username",
     /**创建设置安全密码交易 */

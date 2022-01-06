@@ -82,6 +82,7 @@ export declare const enum SYSTEM_API_PATH {
     SYSTEM_GET_SYSTEM_DELEGATE_DETAIL = "systemGetSystemDelegateDetail"
 }
 export declare const enum GENERATE_TRANSACTION_API_PATH {
+    TR_COMMON = "/generate",
     TR_USERNAME = "/generate/username",
     TR_SIGNATURE = "/generate/signature",
     TR_DELEGATE = "/generate/delegate",

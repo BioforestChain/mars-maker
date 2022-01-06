@@ -6,6 +6,7 @@ export declare class TransactionApi {
     constructor(__networkHelper: BFChainPcSdk.NetworkHelper);
     private __init;
     private __getTransactionApi;
+    broadcastTransaction(argv: BFChainCore.TransactionJSON): Promise<BFChainPcSdk.Transaction.TransactionApiReturn<BFChainCore.TransactionJSON<object>>>;
     generateUsername(argv: BFChainPcSdk.Transaction.UsernameTransactionParams): Promise<BFChainPcSdk.TransactionServer.GenerateTransactionReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.UsernameAssetJSON>, "recipientId"> & {
         recipientId: undefined;
     }>>;

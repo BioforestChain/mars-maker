@@ -1,6 +1,7 @@
 declare namespace BFChainPcSdk {
     namespace Transaction {
         type TransactionApi = import("./atom_transaction/_transactionApi").TransactionApi<any>;
+        type CommonTransactionApi = import("./atom_transaction").CommonTransactionApi;
         type UsernameApi = import("./atom_transaction").UsernameApi;
         type SignatureApi = import("./atom_transaction").SignatureApi;
         type DelegateApi = import("./atom_transaction").DelegateApi;

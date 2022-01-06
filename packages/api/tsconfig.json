@@ -78,6 +78,7 @@
         "src/atom_api/transactions/atom_transaction/beExchangeAnyApi.ts",
         "src/atom_api/transactions/atom_transaction/beExchangeAssetApi.ts",
         "src/atom_api/transactions/atom_transaction/beExchangeSpecialAssetApi.ts",
+        "src/atom_api/transactions/atom_transaction/commonTransactionApi.ts",
         "src/atom_api/transactions/atom_transaction/dappApi.ts",
         "src/atom_api/transactions/atom_transaction/dappPurchasingApi.ts",
         "src/atom_api/transactions/atom_transaction/delegateApi.ts",
