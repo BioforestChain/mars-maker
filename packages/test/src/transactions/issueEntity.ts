@@ -13,7 +13,7 @@ import { Sdk } from "@bfchain/pc-sdk";
                 equity: "8888888888888",
             },
             entityInfo: {
-                entityId: "skyrim_dragonborn",
+                entityId: "dragonborn",
                 entityFactoryPossessor: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
                 entityFactory: {
                     factoryId: "skyrim",

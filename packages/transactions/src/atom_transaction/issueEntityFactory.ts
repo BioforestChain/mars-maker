@@ -17,7 +17,7 @@ export class IssueEntityFactory extends TransactionFactory<IssueEntityTransactio
             {
                 sourceChainMagic: magic,
                 sourceChainName: chainName,
-                entityId,
+                entityId: `${entityFactory.factoryId}_${entityId}`,
                 entityFactoryPossessor,
                 entityFactory: {
                     sourceChainMagic: entityFactory.sourceChainMagic || magic,
