@@ -128,5 +128,6 @@ export declare const enum COMMON_API_PATH {
     GENERATE_ADDRESS_BY_SECRET = "/common/generateAddressBySecret",
     GENERATE_ADDRESS_BY_PUBLICKEY = "/common/generateAddressByPublicKey",
     ASYMMETRIC_ENCRYPT = "/common/asymmetricEncrypt",
-    ASYMMETRIC_DECRYPT = "/common/asymmetricDecrypt"
+    ASYMMETRIC_DECRYPT = "/common/asymmetricDecrypt",
+    CALC_TRANSACTION_MIN_FEE = "/common/calcTransactionMinFee"
 }

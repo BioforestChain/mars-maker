@@ -42,6 +42,7 @@ import {
     GenerateAddressByPublicKeyApi,
     AsymmetricEncryptApi,
     AsymmetricDecryptApi,
+    CalcTransactionMinFeeApi,
 } from "./atom_common";
 import { COMMON_API_PATH, GENERATE_TRANSACTION_API_PATH, MIGRATE_CERTIFICATE_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
@@ -148,6 +149,7 @@ export class TransactionApi {
         const generateAddressByPublicKeyApi = new GenerateAddressByPublicKeyApi(networkHelper);
         const asymmetricEncryptApi = new AsymmetricEncryptApi(networkHelper);
         const asymmetricDecryptApi = new AsymmetricDecryptApi(networkHelper);
+        const calcTransactionMinFeeApi = new CalcTransactionMinFeeApi(networkHelper);
         COMMON_API_MAP.set(verifyAddressApi.EXEC_API_PATH, verifyAddressApi);
         COMMON_API_MAP.set(verifyPublicKeyApi.EXEC_API_PATH, verifyPublicKeyApi);
         COMMON_API_MAP.set(generateKeypairApi.EXEC_API_PATH, generateKeypairApi);
@@ -156,6 +158,7 @@ export class TransactionApi {
         COMMON_API_MAP.set(generateAddressByPublicKeyApi.EXEC_API_PATH, generateAddressByPublicKeyApi);
         COMMON_API_MAP.set(asymmetricEncryptApi.EXEC_API_PATH, asymmetricEncryptApi);
         COMMON_API_MAP.set(asymmetricDecryptApi.EXEC_API_PATH, asymmetricDecryptApi);
+        COMMON_API_MAP.set(calcTransactionMinFeeApi.EXEC_API_PATH, calcTransactionMinFeeApi);
 
         Object.freeze(COMMON_API_MAP);
     }
@@ -849,6 +852,13 @@ export class TransactionApi {
     /**非对称解密 */
     async asymmetricDecrypt(argv: BFChainPcSdk.Common.AsymmetricDecryptParams) {
         const api = this.__getCommonApi<BFChainPcSdk.Common.AsymmetricDecryptApi>(COMMON_API_PATH.ASYMMETRIC_DECRYPT);
+        const result = await api.sendPostRequest(argv);
+        return result;
+    }
+
+    /**非对称解密 */
+    async calcTransactionMinFee(argv: BFChainPcSdk.Common.CalcTransactionMinFeeParams) {
+        const api = this.__getCommonApi<BFChainPcSdk.Common.CalcTransactionMinFeeApi>(COMMON_API_PATH.CALC_TRANSACTION_MIN_FEE);
         const result = await api.sendPostRequest(argv);
         return result;
     }

@@ -15,7 +15,19 @@ import { Sdk } from "@bfchain/pc-sdk";
 
         const sdk = new Sdk();
 
-        const result = await sdk.api.transaction.sendAcceptVote(argv);
+        const result = await sdk.api.transaction.generateAcceptVote(argv);
+
+        if (result.success) {
+            const xx = await sdk.api.transaction.calcTransactionMinFee({
+                transaction: result.result,
+                customMinFeePerByte: {
+                    numerator: 1000,
+                    denominator: 1000,
+                },
+            });
+
+            console.log(xx);
+        }
 
         console.log(result);
     } catch (e) {

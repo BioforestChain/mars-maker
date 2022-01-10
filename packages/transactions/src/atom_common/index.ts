@@ -6,3 +6,4 @@ export * from "./generateAddressBySecret";
 export * from "./generateAddressByPublicKey";
 export * from "./asymmetricEncrypt";
 export * from "./asymmetricDecrypt";
+export * from "./calcTransactionMinFee";

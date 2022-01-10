@@ -1,8 +1,8 @@
 {
     "name": "@types/bfchain__pc-sdk-helper-request-parameter-parser",
     "types": "index.d.ts",
-    "version": "1.2.19",
+    "version": "1.2.21",
     "dependencies": {
-        "@types/bfchain__pc-sdk-typings": "1.2.19"
+        "@types/bfchain__pc-sdk-typings": "1.2.21"
     }
 }

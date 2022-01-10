@@ -334,6 +334,13 @@ declare namespace BFChainPcSdk {
                 secretKey: string;
             };
         }
+        interface CalcTransactionMinFeeParams extends CommonParams {
+            transaction: BFChainCore.Transaction | BFChainCore.TransactionJSON;
+            customMinFeePerByte?: BFChainCore.FractionJSON;
+        }
+        interface TransactionMinFee {
+            minFee: string;
+        }
         type CommonFactory = import("./atom_common/_commonFactory").CommonFactory<any>;
     }
 }

@@ -1,11 +1,11 @@
 {
     "name": "@types/bfchain__pc-sdk",
     "types": "index.d.ts",
-    "version": "1.2.19",
+    "version": "1.2.21",
     "dependencies": {
-        "@types/bfchain__pc-sdk-api": "1.2.19",
-        "@types/bfchain__pc-sdk-helpers": "1.2.19",
-        "@types/bfchain__pc-sdk-transactions-server": "1.2.19",
-        "@types/bfchain__pc-sdk-typings": "1.2.19"
+        "@types/bfchain__pc-sdk-api": "1.2.21",
+        "@types/bfchain__pc-sdk-helpers": "1.2.21",
+        "@types/bfchain__pc-sdk-transactions-server": "1.2.21",
+        "@types/bfchain__pc-sdk-typings": "1.2.21"
     }
 }

@@ -65,5 +65,6 @@ declare namespace BFChainPcSdk {
         type GenerateAddressByPublicKeyApi = import("./atom_common/generateAddressByPublicKeyApi").GenerateAddressByPublicKeyApi;
         type AsymmetricEncryptApi = import("./atom_common/asymmetricEncryptApi").AsymmetricEncryptApi;
         type AsymmetricDecryptApi = import("./atom_common/asymmetricDecryptApi").AsymmetricDecryptApi;
+        type CalcTransactionMinFeeApi = import("./atom_common/calcTransactionMinFee").CalcTransactionMinFeeApi;
     }
 }

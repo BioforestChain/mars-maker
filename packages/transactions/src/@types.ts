@@ -349,9 +349,9 @@ declare namespace BFChainPcSdk {
                 toExchangeSource?: string;
                 /**用于交换的资产/权益来源链名，小写字母组成，3-8 位 */
                 toExchangeChainName?: string;
-                /**用于交换的资产所属大类 */
+                /**用于交换的资产所属类型，1 dappid，2 位名 3 entityId 4 权益 5 */
                 toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
-                /**用于交换的权益名，可能为 dappid，位名或者权益名 */
+                /**用于交换的权益名，可能为 entityId, dappid，位名或者权益名 */
                 toExchangeAssetType: string;
                 /**用于交换的资产数量，0-9 组成并且不包含小数点 */
                 toExchangeAssetPrealnum: string;
@@ -361,9 +361,9 @@ declare namespace BFChainPcSdk {
                 beExchangeSource?: string;
                 /**被交换的资产/权益来源链名，小写字母组成，3-8 位 */
                 beExchangeChainName?: string;
-                /**被交换的资产所属大类 */
+                /**被交换的资产所属类型，1 dappid，2 位名 3 entityId 4 权益 5 */
                 beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
-                /**被交换的资产/权益名，可能为 dappid，位名或者权益名 */
+                /**被交换的资产/权益名，可能为 entityId, dappid，位名或者权益名 */
                 beExchangeAssetType: string;
                 /**被交换的权益数量，0-9 组成并且不包含小数点，非同质权益交换时必填 */
                 beExchangeAssetPrealnum?: string;
@@ -430,7 +430,9 @@ declare namespace BFChainPcSdk {
     namespace CrossChain {
         interface GenerateMigrateCertificateParams extends Omit<BFChainCore.CrossChain.GenerateMigrateCertificateArgs, "assetInfo"> {
             assetInfo?: {
+                /**资产所属大类 */
                 parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                /**资产名 */
                 assetType: string;
             };
         }
@@ -444,41 +446,56 @@ declare namespace BFChainPcSdk {
         interface CommonParams {}
 
         interface VerifyAddressParams extends CommonParams {
+            /**账户地址 */
             address: string;
         }
 
         interface VerifyPublicKeyParams extends CommonParams {
+            /**账户公钥 */
             publicKey: string;
         }
 
         interface GenerateAccountParams extends CommonParams {
+            /**密钥 */
             secret: string;
+            /**安全密钥 */
             secondSecret?: string;
         }
 
         interface GenerateAddressBySecretParams extends CommonParams {
+            /**密钥 */
             secret: string;
         }
 
         interface GenerateAddressByPublicKeyParams extends CommonParams {
+            /**账户公钥 */
             publicKey: string;
         }
 
         interface AccountInfo {
+            /**账户地址 */
             address: string;
+            /**账户公钥 */
             publicKey: string;
+            /**账户安全公钥 */
             secondPublicKey?: string;
         }
 
         interface AsymmetricEncryptParams extends CommonParams {
+            /**要加密的信息 */
             msg: string;
+            /**用于加密的公钥 */
             decryptPK: string;
+            /**用于加密的私钥 */
             encryptSK: string;
         }
 
         interface AsymmetricDecryptParams extends CommonParams {
+            /**要解密的信息 */
             encryptedMessage: string;
+            /**用于解密的公钥 */
             encryptPK: string;
+            /**用于解密的私钥 */
             decryptSK: string;
             nonce?: string;
         }
@@ -491,7 +508,9 @@ declare namespace BFChainPcSdk {
         type AsymmetricDecrypt = false | string;
 
         interface GenerateKeypairParams extends CommonParams {
+            /**密钥 */
             secret: string;
+            /**安全密钥 */
             secondSecret?: string;
         }
 
@@ -504,6 +523,17 @@ declare namespace BFChainPcSdk {
                 publicKey: string;
                 secretKey: string;
             };
+        }
+
+        interface CalcTransactionMinFeeParams extends CommonParams {
+            /**完整的事件 */
+            transaction: BFChainCore.Transaction | BFChainCore.TransactionJSON;
+            /**自定义的最低手续费 */
+            customMinFeePerByte?: BFChainCore.FractionJSON;
+        }
+
+        interface TransactionMinFee {
+            minFee: string;
         }
 
         type CommonFactory = import("./atom_common/_commonFactory").CommonFactory<any>;

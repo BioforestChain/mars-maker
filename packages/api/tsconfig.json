@@ -66,6 +66,7 @@
         "src/atom_api/transactions/@types.ts",
         "src/atom_api/transactions/atom_common/asymmetricDecryptApi.ts",
         "src/atom_api/transactions/atom_common/asymmetricEncryptApi.ts",
+        "src/atom_api/transactions/atom_common/calcTransactionMinFee.ts",
         "src/atom_api/transactions/atom_common/generateAccountApi.ts",
         "src/atom_api/transactions/atom_common/generateAddressByPublicKeyApi.ts",
         "src/atom_api/transactions/atom_common/generateAddressBySecretApi.ts",

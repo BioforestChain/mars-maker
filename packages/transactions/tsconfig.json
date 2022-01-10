@@ -8,6 +8,7 @@
         "src/@types.ts",
         "src/atom_common/asymmetricDecrypt.ts",
         "src/atom_common/asymmetricEncrypt.ts",
+        "src/atom_common/calcTransactionMinFee.ts",
         "src/atom_common/generateAccount.ts",
         "src/atom_common/generateAddressByPublicKey.ts",
         "src/atom_common/generateAddressBySecret.ts",
