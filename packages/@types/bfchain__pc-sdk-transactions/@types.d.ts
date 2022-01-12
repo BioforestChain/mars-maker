@@ -261,7 +261,7 @@ declare namespace BFChainPcSdk {
             ciphertext?: string;
         }
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
-            genesisBlock: BFChainCore.GenesisBlockJSON;
+            genesisBlock: string;
         }
         interface EmigrateAssetTransactionParams extends TransactionCommonParamsWithRecipientId {
             migrateCertificate: BFChainCore.CrossChain.MigrateCertificateJSON;

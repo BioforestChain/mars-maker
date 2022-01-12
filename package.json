@@ -25,7 +25,7 @@
     "scripts": {
         "package": "node ./scripts/package.js",
         "format": "bdk-format -m all",
-        "prepare": "yarn mono",
+        "//prepare": "yarn mono",
         "mono": "bdk-mono",
         "lsts": "bdk-lsts -p=./tsconfig.json",
         "clear": "node ./scripts/rmBuild.js",

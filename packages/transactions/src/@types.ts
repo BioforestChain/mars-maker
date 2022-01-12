@@ -413,7 +413,7 @@ declare namespace BFChainPcSdk {
 
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
             /**创世块 */
-            genesisBlock: BFChainCore.GenesisBlockJSON;
+            genesisBlock: string;
         }
 
         interface EmigrateAssetTransactionParams extends TransactionCommonParamsWithRecipientId {

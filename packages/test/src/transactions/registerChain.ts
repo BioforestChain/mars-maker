@@ -4,9 +4,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const genesisBlock: BFChainCore.GenesisBlockJSON = JSON.parse(
-            fs.readFileSync(path.join(process.cwd(), "genesisInfos/fin-genesisBlock-testnet-60b-9s.json")).toString()
-        );
+        const genesisBlock = fs.readFileSync(path.join(process.cwd(), "genesisInfos/ccc-genesisBlock-testnet-hex.txt")).toString();
 
         const argv: BFChainPcSdk.Transaction.RegisterChainTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
