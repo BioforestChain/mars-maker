@@ -286,7 +286,7 @@ declare namespace BFChainPcSdk {
                 /**非同质资产模板 */
                 factoryId: string;
                 /**允许发行的非同质资产数量 */
-                numberOfEntities: number;
+                entityPrealnum: string;
                 /**发行非同质资产时冻结的主权益数量，销毁时解冻 */
                 entityFrozenAssetPrealnum: string;
                 /**购买模板使用全的主权益数量 */
@@ -308,7 +308,7 @@ declare namespace BFChainPcSdk {
                     /**非同质资产模板 */
                     factoryId: string;
                     /**允许发行的非同质资产数量 */
-                    numberOfEntities: number;
+                    entityPrealnum: string;
                     /**发行非同质资产时冻结的主权益数量，销毁时解冻 */
                     entityFrozenAssetPrealnum: string;
                     /**购买模板使用全的主权益数量 */
@@ -335,7 +335,7 @@ declare namespace BFChainPcSdk {
                     /**非同质资产模板 */
                     factoryId: string;
                     /**允许发行的非同质资产数量 */
-                    numberOfEntities: number;
+                    entityPrealnum: string;
                     /**发行非同质资产时冻结的主权益数量，销毁时解冻 */
                     entityFrozenAssetPrealnum: string;
                     /**购买模板使用全的主权益数量 */

@@ -17,7 +17,7 @@ import { Sdk } from "@bfchain/pc-sdk";
                 entityFactoryPossessor: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
                 entityFactory: {
                     factoryId: "skyrim",
-                    numberOfEntities: 1,
+                    entityPrealnum: "1",
                     entityFrozenAssetPrealnum: "10000",
                     purchaseAssetPrealnum: "10000",
                 },

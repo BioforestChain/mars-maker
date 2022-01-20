@@ -187,7 +187,7 @@ declare namespace BFChainPcSdk {
         interface IssueEntityFactoryTransactionParams extends TransactionCommonParamsWithRecipientId {
             factoryInfo: {
                 factoryId: string;
-                numberOfEntities: number;
+                entityPrealnum: string;
                 entityFrozenAssetPrealnum: string;
                 purchaseAssetPrealnum: string;
             };
@@ -200,7 +200,7 @@ declare namespace BFChainPcSdk {
                     sourceChainName?: string;
                     sourceChainMagic?: string;
                     factoryId: string;
-                    numberOfEntities: number;
+                    entityPrealnum: string;
                     entityFrozenAssetPrealnum: string;
                     purchaseAssetPrealnum: string;
                 };
@@ -216,7 +216,7 @@ declare namespace BFChainPcSdk {
                     sourceChainName?: string;
                     sourceChainMagic?: string;
                     factoryId: string;
-                    numberOfEntities: number;
+                    entityPrealnum: string;
                     entityFrozenAssetPrealnum: string;
                     purchaseAssetPrealnum: string;
                 };

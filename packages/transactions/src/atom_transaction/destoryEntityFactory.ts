@@ -25,7 +25,7 @@ export class DestoryEntityFactory extends TransactionFactory<DestoryEntityTransa
                     sourceChainMagic: entityFactory.sourceChainMagic || magic,
                     sourceChainName: entityFactory.sourceChainName || chainName,
                     factoryId: entityFactory.factoryId,
-                    numberOfEntities: entityFactory.numberOfEntities,
+                    entityPrealnum: entityFactory.entityPrealnum,
                     entityFrozenAssetPrealnum: entityFactory.entityFrozenAssetPrealnum,
                     purchaseAssetPrealnum: entityFactory.purchaseAssetPrealnum,
                 },
