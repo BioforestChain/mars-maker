@@ -24,6 +24,7 @@ import {
     ToExchangeSpecialAssetApi,
     BeExchangeSpecialAssetApi,
     IssueEntityFactoryApi,
+    IssueEntityFactoryV1Api,
     IssueEntityApi,
     DestoryEntityApi,
     ToExchangeAnyApi,
@@ -89,6 +90,7 @@ export class TransactionApi {
         const toExchangeSpecialAssetApi = new ToExchangeSpecialAssetApi(networkHelper);
         const beExchangeSpecialAssetApi = new BeExchangeSpecialAssetApi(networkHelper);
         const issueEntityFactoryApi = new IssueEntityFactoryApi(networkHelper);
+        const issueEntityFactoryV1Api = new IssueEntityFactoryV1Api(networkHelper);
         const issueEntityApi = new IssueEntityApi(networkHelper);
         const destoryEntityApi = new DestoryEntityApi(networkHelper);
         const toExchangeAnyApi = new ToExchangeAnyApi(networkHelper);
@@ -122,6 +124,7 @@ export class TransactionApi {
         TRANSACTION_API_MAP.set(toExchangeSpecialAssetApi.GENERATE_API_PATH, toExchangeSpecialAssetApi);
         TRANSACTION_API_MAP.set(beExchangeSpecialAssetApi.GENERATE_API_PATH, beExchangeSpecialAssetApi);
         TRANSACTION_API_MAP.set(issueEntityFactoryApi.GENERATE_API_PATH, issueEntityFactoryApi);
+        TRANSACTION_API_MAP.set(issueEntityFactoryV1Api.GENERATE_API_PATH, issueEntityFactoryV1Api);
         TRANSACTION_API_MAP.set(issueEntityApi.GENERATE_API_PATH, issueEntityApi);
         TRANSACTION_API_MAP.set(destoryEntityApi.GENERATE_API_PATH, destoryEntityApi);
         TRANSACTION_API_MAP.set(toExchangeAnyApi.GENERATE_API_PATH, toExchangeAnyApi);
@@ -630,6 +633,25 @@ export class TransactionApi {
     /**创建并发送发行非同质权益模板事件 */
     async sendIssueEntityFactory(argv: BFChainPcSdk.Transaction.IssueEntityFactoryTransactionParams) {
         const api = this.__getTransactionApi<BFChainPcSdk.Transaction.IssueEntityFactoryApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建发行非同质权益模板事件 */
+    async generateIssueEntityFactoryV1(argv: BFChainPcSdk.Transaction.IssueEntityFactoryTransactionV1Params) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.IssueEntityFactoryV1Api>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY_V1);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送发行非同质权益模板事件 */
+    async broadcastIssueEntityFactoryV1(transaction: BFChainCore.IssueEntityFactoryTransactionV1JSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.IssueEntityFactoryV1Api>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY_V1);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送发行非同质权益模板事件 */
+    async sendIssueEntityFactoryV1(argv: BFChainPcSdk.Transaction.IssueEntityFactoryTransactionV1Params) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.IssueEntityFactoryV1Api>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY_V1);
         const result = await api.sendTransaction(argv);
         return result;
     }

@@ -94,6 +94,7 @@
         "src/atom_api/transactions/atom_transaction/issueAssetApi.ts",
         "src/atom_api/transactions/atom_transaction/issueEntityApi.ts",
         "src/atom_api/transactions/atom_transaction/issueEntityFactoryApi.ts",
+        "src/atom_api/transactions/atom_transaction/issueEntityFactoryV1Api.ts",
         "src/atom_api/transactions/atom_transaction/locationNameApi.ts",
         "src/atom_api/transactions/atom_transaction/markApi.ts",
         "src/atom_api/transactions/atom_transaction/registerChainApi.ts",

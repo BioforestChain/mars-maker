@@ -25,6 +25,7 @@ export * from "./toExchangeSpecialAssetFactory";
 export * from "./beExchangeSpecialAssetFactory";
 
 export * from "./issueEntityFactoryFactory";
+export * from "./issueEntityFactoryV1Factory";
 export * from "./issueEntityFactory";
 export * from "./destoryEntityFactory";
 export * from "./toExchangeAnyFactory";

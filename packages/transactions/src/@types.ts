@@ -293,6 +293,7 @@ declare namespace BFChainPcSdk {
                 purchaseAssetPrealnum: string;
             };
         }
+        type IssueEntityFactoryTransactionV1Params = IssueEntityFactoryTransactionParams;
         interface IssueEntityTransactionParams extends TransactionCommonParamsWithRecipientId {
             entityInfo: {
                 /**非同质资产名称 */

@@ -27,6 +27,7 @@ export * from "./toExchangeSpecialAssetApi";
 export * from "./beExchangeSpecialAssetApi";
 
 export * from "./issueEntityFactoryApi";
+export * from "./issueEntityFactoryV1Api";
 export * from "./issueEntityApi";
 export * from "./destoryEntityApi";
 export * from "./toExchangeAnyApi";

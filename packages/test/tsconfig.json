@@ -32,6 +32,7 @@
         "src/transactions/issueAsset.ts",
         "src/transactions/issueEntity.ts",
         "src/transactions/issueEntityFactory.ts",
+        "src/transactions/issueEntityFactoryV1.ts",
         "src/transactions/locationName.ts",
         "src/transactions/mark.ts",
         "src/transactions/registerChain.ts",
