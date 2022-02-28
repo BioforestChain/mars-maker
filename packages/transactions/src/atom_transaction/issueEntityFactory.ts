@@ -1,7 +1,7 @@
 import type { IssueEntityTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
 import { TransactionFactory } from "./_transactionFactory";
-import { myIssueEntity } from "@bfchain/coretools-transaction";
+import { myIssueEntityV1 } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
 @Injectable()
@@ -10,14 +10,15 @@ export class IssueEntityFactory extends TransactionFactory<IssueEntityTransactio
 
     async generateTransaction(request: BFChainPcSdk.Transaction.IssueEntityTransactionParams) {
         this.verify(request);
-        const { entityId, entityFactoryPossessor, entityFactory } = request.entityInfo;
+        const { entityId, entityFactoryPossessor, entityFactory, taxAssetPrealnum } = request.entityInfo;
         const { magic, chainName } = this.bfchainCore.config;
-        const tr = await myIssueEntity.generateEntity(
+        const tr = await myIssueEntityV1.generateEntity(
             this.getTransactionBody(request),
             {
                 sourceChainMagic: magic,
                 sourceChainName: chainName,
                 entityId: `${entityFactory.factoryId}_${entityId}`,
+                taxAssetPrealnum: taxAssetPrealnum || "0",
                 entityFactoryPossessor,
                 entityFactory: {
                     sourceChainMagic: entityFactory.sourceChainMagic || magic,

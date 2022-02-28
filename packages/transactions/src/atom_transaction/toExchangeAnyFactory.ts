@@ -10,7 +10,7 @@ export class ToExchangeAnyFactory extends TransactionFactory<ToExchangeAnyTransa
 
     async generateTransaction(request: BFChainPcSdk.Transaction.ToExchangeAnyTransactionParams) {
         this.verify(request);
-        const { toExchangeInfo, beExchangeInfo, assetExchangeWeightRatio, ciphertexts } = request;
+        const { toExchangeInfo, beExchangeInfo, assetExchangeWeightRatio, ciphertexts, taxInformation } = request;
         const { magic, chainName } = this.bfchainCore.config;
         const tr = await myToExchangeAny.generateToExchangeAny(
             this.getTransactionBody(request),
@@ -27,6 +27,7 @@ export class ToExchangeAnyFactory extends TransactionFactory<ToExchangeAnyTransa
                 toExchangeAssetPrealnum: toExchangeInfo.toExchangeAssetPrealnum,
                 beExchangeAssetPrealnum: beExchangeInfo.beExchangeAssetPrealnum,
                 assetExchangeWeightRatio: assetExchangeWeightRatio,
+                taxInformation,
             },
             ciphertexts,
             this.getAccountPowInfo(request),

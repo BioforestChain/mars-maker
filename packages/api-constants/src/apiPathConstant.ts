@@ -177,6 +177,14 @@ export const enum GENERATE_TRANSACTION_API_PATH {
     TR_ISSUE_ENTITY = "/generate/issueEntity",
     /**销毁非同质权益 */
     TR_DESTORY_ENTITY = "/generate/destoryEntity",
+
+    /**创建任意资产转移交易 */
+    TR_TRANSFER_ANY = "/generate/transferAny",
+    /**创建任意资产赠送交易 */
+    TR_GIFT_ANY = "/generate/giftAny",
+    /**创建接受任意资产赠送交易 */
+    TR_GRAB_ANY = "/generate/grabAny",
+
     /**创建任意资产交换交易 */
     TR_TO_EXCHANGE_ANY = "/generate/toExchangeAny",
     /**创建接受任意资产交换交易 */

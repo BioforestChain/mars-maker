@@ -22,6 +22,10 @@ import { Sdk } from "@bfchain/pc-sdk";
                 beExchangeAssetType: "BFT",
                 beExchangeAssetPrealnum: "100000",
             },
+            taxInformation: {
+                taxCollector: "cCET2Sxt2LPDhx44wxJ9uhkpviKNrSacvE",
+                taxAssetPrealnum: "1000",
+            },
         };
 
         const sdk = new Sdk();

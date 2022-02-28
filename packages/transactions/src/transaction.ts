@@ -28,6 +28,9 @@ import {
     IssueEntityFactoryV1Factory,
     IssueEntityFactory,
     DestoryEntityFactory,
+    TransferAnyFactory,
+    GiftAnyFactory,
+    GrabAnyFactory,
     ToExchangeAnyFactory,
     BeExchangeAnyFactory,
     RegisterChainFactory,
@@ -101,14 +104,21 @@ export function TransactionFactory(bfchainCore: BFChainCore) {
     const issueEntityFactoryV1Factory = new IssueEntityFactoryV1Factory(bfchainCore, transactionVerifyHelper);
     const issueEntityFactory = new IssueEntityFactory(bfchainCore, transactionVerifyHelper);
     const destoryEntityFactory = new DestoryEntityFactory(bfchainCore, transactionVerifyHelper);
-    const toExchangeAnyFactory = new ToExchangeAnyFactory(bfchainCore, transactionVerifyHelper);
-    const beExchangeAnyFactory = new BeExchangeAnyFactory(bfchainCore, transactionVerifyHelper);
     TRANSACTION_FACTORY_MAP.set(issueEntityFactoryFactory.GENERATE_API_PATH, issueEntityFactoryFactory);
     TRANSACTION_FACTORY_MAP.set(issueEntityFactoryV1Factory.GENERATE_API_PATH, issueEntityFactoryV1Factory);
     TRANSACTION_FACTORY_MAP.set(issueEntityFactory.GENERATE_API_PATH, issueEntityFactory);
     TRANSACTION_FACTORY_MAP.set(destoryEntityFactory.GENERATE_API_PATH, destoryEntityFactory);
+
+    const toExchangeAnyFactory = new ToExchangeAnyFactory(bfchainCore, transactionVerifyHelper);
+    const beExchangeAnyFactory = new BeExchangeAnyFactory(bfchainCore, transactionVerifyHelper);
+    const transferAnyFactory = new TransferAnyFactory(bfchainCore, transactionVerifyHelper);
+    const giftAnyFactory = new GiftAnyFactory(bfchainCore, transactionVerifyHelper);
+    const grabAnyFactory = new GrabAnyFactory(bfchainCore, transactionVerifyHelper);
     TRANSACTION_FACTORY_MAP.set(toExchangeAnyFactory.GENERATE_API_PATH, toExchangeAnyFactory);
     TRANSACTION_FACTORY_MAP.set(beExchangeAnyFactory.GENERATE_API_PATH, beExchangeAnyFactory);
+    TRANSACTION_FACTORY_MAP.set(transferAnyFactory.GENERATE_API_PATH, transferAnyFactory);
+    TRANSACTION_FACTORY_MAP.set(giftAnyFactory.GENERATE_API_PATH, giftAnyFactory);
+    TRANSACTION_FACTORY_MAP.set(grabAnyFactory.GENERATE_API_PATH, grabAnyFactory);
 
     const registerChainFactory = new RegisterChainFactory(bfchainCore, transactionVerifyHelper);
     const emigrateAssetFactory = new EmigrateAssetFactory(bfchainCore, transactionVerifyHelper);

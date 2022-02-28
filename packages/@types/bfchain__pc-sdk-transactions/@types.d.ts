@@ -192,9 +192,11 @@ declare namespace BFChainPcSdk {
                 purchaseAssetPrealnum: string;
             };
         }
+        type IssueEntityFactoryTransactionV1Params = IssueEntityFactoryTransactionParams;
         interface IssueEntityTransactionParams extends TransactionCommonParamsWithRecipientId {
             entityInfo: {
                 entityId: string;
+                taxAssetPrealnum?: string;
                 entityFactoryPossessor: string;
                 entityFactory: {
                     sourceChainName?: string;
@@ -239,25 +241,44 @@ declare namespace BFChainPcSdk {
             };
             assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
             ciphertexts?: string[];
+            taxInformation?: BFChainCore.TaxInformationJson;
         }
         interface BeExchangeAnyTransactionParams extends TransactionCommonParamsWithRecipientId {
             transactionSignature: string;
             toExchangeAssetPrealnum: string;
             beExchangeAssetPrealnum: string;
-            exchangeAny: {
-                cipherPublicKeys: string[];
-                toExchangeSource?: string;
-                beExchangeSource?: string;
-                toExchangeChainName?: string;
-                beExchangeChainName?: string;
-                toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
-                beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
-                toExchangeAssetType: string;
-                beExchangeAssetType: string;
-                toExchangeAssetPrealnum: string;
-                beExchangeAssetPrealnum?: string;
-                assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
+            taxInformation?: BFChainCore.TaxInformationJson;
+            exchangeAny: BFChainCore.ToExchangeAnyJSON;
+            ciphertext?: string;
+        }
+        interface TransferAnyTransactionParams extends TransactionCommonParamsWithRecipientId {
+            assetInfo: {
+                sourceChainMagic?: string;
+                sourceChainName?: string;
+                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                assetType?: string;
+                amount?: string;
             };
+            taxInformation?: BFChainCore.TaxInformationJson;
+        }
+        interface GiftAnyTransactionParams extends TransactionCommonParams {
+            assetInfo: {
+                sourceChainMagic?: string;
+                sourceChainName?: string;
+                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                assetType?: string;
+                amount?: string;
+            };
+            totalGrabableTimes?: number;
+            giftDistributionRule?: BFChainCore.GIFT_DISTRIBUTION_RULE;
+            numberOfBeginUnfrozenBlocks?: number;
+            ciphertexts?: string[];
+            taxInformation?: BFChainCore.TaxInformationJson;
+        }
+        interface GrabAnyTransactionParams extends TransactionCommonParamsWithRecipientId {
+            blockSignature: string;
+            transactionSignature: string;
+            giftAny: BFChainCore.GiftAnyJSON;
             ciphertext?: string;
         }
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {

@@ -298,6 +298,8 @@ declare namespace BFChainPcSdk {
             entityInfo: {
                 /**非同质资产名称 */
                 entityId: string;
+                /**非同质资产流通需要缴纳的版税 */
+                taxAssetPrealnum?: string;
                 /**非同质资产模板的拥有者 */
                 entityFactoryPossessor: string;
                 /**非同质资产的模板 */
@@ -373,6 +375,8 @@ declare namespace BFChainPcSdk {
             assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
             /**加密密钥组，如果填写了密钥，则接收资产交换的事件必须携带某个密钥生成的签名对 */
             ciphertexts?: string[];
+            /**纳税信息 */
+            taxInformation?: BFChainCore.TaxInformationJson;
         }
         interface BeExchangeAnyTransactionParams extends TransactionCommonParamsWithRecipientId {
             /**资产交换事件的签名，128 个字节的 16 进制字符串 */
@@ -381,34 +385,63 @@ declare namespace BFChainPcSdk {
             toExchangeAssetPrealnum: string;
             /**交换得到的权益数量，权益数量由0-9共十个数字组成，权益数量不包含小数点 */
             beExchangeAssetPrealnum: string;
+            /**纳税信息 */
+            taxInformation?: BFChainCore.TaxInformationJson;
             /**资产交换信息 */
-            exchangeAny: {
-                /**加密密钥生成的公钥数组 */
-                cipherPublicKeys: string[];
-                /**用于交换的资产来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
-                toExchangeSource?: string;
-                /**被交换的资产来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
-                beExchangeSource?: string;
-                /**用于交换的资产来源链名，小写字母组成，3-8 位 */
-                toExchangeChainName?: string;
-                /**被交换的资产来源链名，小写字母组成，3-8 位 */
-                beExchangeChainName?: string;
-                /**用于交换的资产所属大类 */
-                toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
-                /**被交换的资产所属大类 */
-                beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
-                /**用于交换的资产名 */
-                toExchangeAssetType: string;
-                /**被交换的资产名 */
-                beExchangeAssetType: string;
-                /**用于交换的资产数量，0-9 组成并且不包含小数点 */
-                toExchangeAssetPrealnum: string;
-                /**被交换的权益数量，0-9 组成并且不包含小数点，非同质权益交换时必填 */
-                beExchangeAssetPrealnum?: string;
-                /**交换比例，同质权益交换时必填 */
-                assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
-            };
+            exchangeAny: BFChainCore.ToExchangeAnyJSON;
             /**加密密钥，如果资产交换事件填写了加密密钥，则必须携带某个资产交换事件指定密钥以生成密钥签名对 */
+            ciphertext?: string;
+        }
+
+        interface TransferAnyTransactionParams extends TransactionCommonParamsWithRecipientId {
+            assetInfo: {
+                /**转移的资产所属链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                sourceChainMagic?: string;
+                /**转移的资产所属链名，小写字母组成，3-8 位 */
+                sourceChainName?: string;
+                /**转移的资产所属类型 */
+                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                /**转移的资产类型，大写字母组成，3-5 个字符 */
+                assetType?: string;
+                /**转移的资产数量，0-9 组成并且不包含小数点，必须大于 0 */
+                amount?: string;
+            };
+            /**纳税信息 */
+            taxInformation?: BFChainCore.TaxInformationJson;
+        }
+
+        interface GiftAnyTransactionParams extends TransactionCommonParams {
+            assetInfo: {
+                /**赠送的资产所属链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                sourceChainMagic?: string;
+                /**赠送的资产所属链名，小写字母组成，3-8 位 */
+                sourceChainName?: string;
+                /**赠送的资产所属类型 */
+                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                /**赠送的资产类型，大写字母组成，3-5 个字符 */
+                assetType?: string;
+                /**赠送的资产数量，0-9 组成并且不包含小数点，必须大于 0 */
+                amount?: string;
+            };
+            /**可被接收的次数，0-9 组成并且不包含小数点，必须大于 0 */
+            totalGrabableTimes?: number;
+            /**接收规则, 只能为 0，1 或 2，0 表示平均分配，1 表示根据任意账户的地址的随机分配，2 表示根据接收者列表中账户地址的随机分配 */
+            giftDistributionRule?: BFChainCore.GIFT_DISTRIBUTION_RULE;
+            /**从权益赠送事件发起到开始被签收的区块间隔，0-9 组成并且不包含小数点，可选，必须小于等于事件的有效期 */
+            numberOfBeginUnfrozenBlocks?: number;
+            /**加密密钥组，如果填写了密钥，则接收权益交换的事件必须携带某个密钥生成的签名对 */
+            ciphertexts?: string[];
+            /**纳税信息 */
+            taxInformation?: BFChainCore.TaxInformationJson;
+        }
+        interface GrabAnyTransactionParams extends TransactionCommonParamsWithRecipientId {
+            /**赠送事件所在的区块签名，128 个字节的 16 进制字符串 */
+            blockSignature: string;
+            /**赠送事件的签名，128 个字节的 16 进制字符串 */
+            transactionSignature: string;
+            /**权益赠送信息 */
+            giftAny: BFChainCore.GiftAnyJSON;
+            /**加密密钥，如果权益赠送事件填写了加密密钥，则必须携带某个权益交换事件指定密钥以生成密钥签名对 */
             ciphertext?: string;
         }
 

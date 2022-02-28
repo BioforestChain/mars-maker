@@ -28,6 +28,11 @@ export * from "./issueEntityFactoryFactory";
 export * from "./issueEntityFactoryV1Factory";
 export * from "./issueEntityFactory";
 export * from "./destoryEntityFactory";
+
+export * from "./transferAnyFactory";
+export * from "./giftAnyFactory";
+export * from "./grabAnyFactory";
+
 export * from "./toExchangeAnyFactory";
 export * from "./beExchangeAnyFactory";
 

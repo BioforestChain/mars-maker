@@ -32,8 +32,12 @@ declare namespace BFChainPcSdk {
         type IssueEntityFactoryV1Api = import("./atom_transaction").IssueEntityFactoryV1Api;
         type IssueEntityApi = import("./atom_transaction").IssueEntityApi;
         type DestoryEntityApi = import("./atom_transaction").DestoryEntityApi;
+
         type ToExchangeAnyApi = import("./atom_transaction").ToExchangeAnyApi;
         type BeExchangeAnyApi = import("./atom_transaction").BeExchangeAnyApi;
+        type TransferAnyApi = import("./atom_transaction").TransferAnyApi;
+        type GiftAnyApi = import("./atom_transaction").GiftAnyApi;
+        type GrabAnyApi = import("./atom_transaction").GrabAnyApi;
 
         type RegisterChainApi = import("./atom_transaction").RegisterChainApi;
         type EmigrateAssetApi = import("./atom_transaction").EmigrateAssetApi;

@@ -30,6 +30,10 @@ export * from "./issueEntityFactoryApi";
 export * from "./issueEntityFactoryV1Api";
 export * from "./issueEntityApi";
 export * from "./destoryEntityApi";
+
+export * from "./transferAnyApi";
+export * from "./giftAnyApi";
+export * from "./grabAnyApi";
 export * from "./toExchangeAnyApi";
 export * from "./beExchangeAnyApi";
 

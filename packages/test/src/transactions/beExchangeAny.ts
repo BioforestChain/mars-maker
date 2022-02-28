@@ -18,12 +18,20 @@ import { Sdk } from "@bfchain/pc-sdk";
             beExchangeAssetPrealnum: "100000",
             exchangeAny: {
                 cipherPublicKeys: [],
+                toExchangeSource: "NCOH8",
+                beExchangeSource: "NCOH8",
+                toExchangeChainName: "bfchain",
+                beExchangeChainName: "bfchain",
                 toExchangeParentAssetType: PARENT_ASSET_TYPE.ENTITY,
                 beExchangeParentAssetType: PARENT_ASSET_TYPE.ASSETS,
                 toExchangeAssetType: "skyrim_dragonborn",
                 beExchangeAssetType: "BFT",
                 toExchangeAssetPrealnum: "1",
                 beExchangeAssetPrealnum: "100000",
+                taxInformation: {
+                    taxCollector: "cCET2Sxt2LPDhx44wxJ9uhkpviKNrSacvE",
+                    taxAssetPrealnum: "1000",
+                },
             },
             recipientId: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
         };

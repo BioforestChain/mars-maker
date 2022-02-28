@@ -27,6 +27,9 @@ import {
     IssueEntityFactoryV1Api,
     IssueEntityApi,
     DestoryEntityApi,
+    TransferAnyApi,
+    GiftAnyApi,
+    GrabAnyApi,
     ToExchangeAnyApi,
     BeExchangeAnyApi,
     RegisterChainApi,
@@ -93,6 +96,9 @@ export class TransactionApi {
         const issueEntityFactoryV1Api = new IssueEntityFactoryV1Api(networkHelper);
         const issueEntityApi = new IssueEntityApi(networkHelper);
         const destoryEntityApi = new DestoryEntityApi(networkHelper);
+        const transferAnyApi = new TransferAnyApi(networkHelper);
+        const giftAnyApi = new GiftAnyApi(networkHelper);
+        const grabAnyApi = new GrabAnyApi(networkHelper);
         const toExchangeAnyApi = new ToExchangeAnyApi(networkHelper);
         const beExchangeAnyApi = new BeExchangeAnyApi(networkHelper);
         const registerChainApi = new RegisterChainApi(networkHelper);
@@ -129,6 +135,9 @@ export class TransactionApi {
         TRANSACTION_API_MAP.set(destoryEntityApi.GENERATE_API_PATH, destoryEntityApi);
         TRANSACTION_API_MAP.set(toExchangeAnyApi.GENERATE_API_PATH, toExchangeAnyApi);
         TRANSACTION_API_MAP.set(beExchangeAnyApi.GENERATE_API_PATH, beExchangeAnyApi);
+        TRANSACTION_API_MAP.set(transferAnyApi.GENERATE_API_PATH, transferAnyApi);
+        TRANSACTION_API_MAP.set(giftAnyApi.GENERATE_API_PATH, giftAnyApi);
+        TRANSACTION_API_MAP.set(grabAnyApi.GENERATE_API_PATH, grabAnyApi);
         TRANSACTION_API_MAP.set(registerChainApi.GENERATE_API_PATH, registerChainApi);
         TRANSACTION_API_MAP.set(emigrateAssetApi.GENERATE_API_PATH, emigrateAssetApi);
         TRANSACTION_API_MAP.set(immigrateAssetApi.GENERATE_API_PATH, immigrateAssetApi);
@@ -728,6 +737,63 @@ export class TransactionApi {
     /**创建并发送接受任意资产交换事件 */
     async sendBeExchangeAny(argv: BFChainPcSdk.Transaction.BeExchangeAnyTransactionParams) {
         const api = this.__getTransactionApi<BFChainPcSdk.Transaction.BeExchangeAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建任意资产转移事件 */
+    async generateTransferAny(argv: BFChainPcSdk.Transaction.TransferAnyTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.TransferAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_TRANSFER_ANY);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送任意资产转移事件 */
+    async broadcastTransferAny(transaction: BFChainCore.TransferAnyTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.TransferAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_TRANSFER_ANY);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送任意资产转移事件 */
+    async sendTransferAny(argv: BFChainPcSdk.Transaction.TransferAnyTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.TransferAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_TRANSFER_ANY);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建任意资产赠送事件 */
+    async generateGiftAny(argv: BFChainPcSdk.Transaction.GiftAnyTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.GiftAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GIFT_ANY);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送任意资产赠送事件 */
+    async broadcastGiftAny(transaction: BFChainCore.GiftAnyTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.GiftAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GIFT_ANY);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送任意资产赠送事件 */
+    async sendGiftAny(argv: BFChainPcSdk.Transaction.GiftAnyTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.GiftAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GIFT_ANY);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建接受任意资产赠送事件 */
+    async generateGrabAny(argv: BFChainPcSdk.Transaction.GrabAnyTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.GrabAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GRAB_ANY);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送接受任意资产赠送事件 */
+    async broadcastGrabAny(transaction: BFChainCore.GrabAnyTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.GrabAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GRAB_ANY);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送接受任意资产赠送事件 */
+    async sendGrabAny(argv: BFChainPcSdk.Transaction.GrabAnyTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.GrabAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GRAB_ANY);
         const result = await api.sendTransaction(argv);
         return result;
     }

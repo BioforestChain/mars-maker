@@ -18,6 +18,7 @@ export class BeExchangeAnyFactory extends TransactionFactory<BeExchangeAnyTransa
                 transactionSignature: request.transactionSignature,
                 toExchangeAssetPrealnum: request.toExchangeAssetPrealnum,
                 beExchangeAssetPrealnum: request.beExchangeAssetPrealnum,
+                taxInformation: request.taxInformation,
                 exchangeAny: {
                     cipherPublicKeys: exchangeAny.cipherPublicKeys,
                     toExchangeSource: exchangeAny.toExchangeSource || magic,
@@ -31,6 +32,7 @@ export class BeExchangeAnyFactory extends TransactionFactory<BeExchangeAnyTransa
                     toExchangeAssetPrealnum: exchangeAny.toExchangeAssetPrealnum,
                     beExchangeAssetPrealnum: exchangeAny.beExchangeAssetPrealnum,
                     assetExchangeWeightRatio: exchangeAny.assetExchangeWeightRatio,
+                    taxInformation: exchangeAny.taxInformation,
                 },
             },
             this.getAccountPowInfo(request),
