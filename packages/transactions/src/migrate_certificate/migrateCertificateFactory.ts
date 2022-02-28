@@ -22,7 +22,7 @@ export class MigrateCertificateGenerateFactory extends MigrateCertificateFactory
                         parentAssetType = PARENT_ASSET_TYPE.ASSETS;
                     } else if (baseHelper.isValidDAppId(inputAssetType)) {
                         parentAssetType = PARENT_ASSET_TYPE.DAPP;
-                    } else if (baseHelper.isValidLnsName(inputAssetType)) {
+                    } else if (baseHelper.isValidLocationName(inputAssetType)) {
                         parentAssetType = PARENT_ASSET_TYPE.LOCATION_NAME;
                     } else if (baseHelper.isValidEntityId(inputAssetType)) {
                         parentAssetType = PARENT_ASSET_TYPE.ENTITY;
