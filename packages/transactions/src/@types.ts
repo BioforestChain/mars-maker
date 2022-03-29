@@ -445,6 +445,35 @@ declare namespace BFChainPcSdk {
             ciphertext?: string;
         }
 
+        interface IssueEntityMultiTransactionParams extends TransactionCommonParamsWithRecipientId {
+            entityInfo: {
+                /**要发行的非同质资产列表 */
+                entityStructList: {
+                    /**非同质资产名称 */
+                    entityId: string;
+                    /**非同质资产流通需要缴纳的版税 */
+                    taxAssetPrealnum?: string;
+                }[];
+                /**非同质资产模板的拥有者 */
+                entityFactoryPossessor: string;
+                /**非同质资产的模板 */
+                entityFactory: {
+                    /**非同质资产模板来源链名，小写字母组成，3-8 位 */
+                    sourceChainName?: string;
+                    /**非同质资产模板来源链网络标识符，大写字母或数字组成，5 个字符，最后一位是校验位 */
+                    sourceChainMagic?: string;
+                    /**非同质资产模板 */
+                    factoryId: string;
+                    /**允许发行的非同质资产数量 */
+                    entityPrealnum: string;
+                    /**发行非同质资产时冻结的主权益数量，销毁时解冻 */
+                    entityFrozenAssetPrealnum: string;
+                    /**购买模板使用全的主权益数量 */
+                    purchaseAssetPrealnum: string;
+                };
+            };
+        }
+
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
             /**创世块 */
             genesisBlock: string;

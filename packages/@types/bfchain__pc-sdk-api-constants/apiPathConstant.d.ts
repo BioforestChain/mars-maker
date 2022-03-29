@@ -115,6 +115,7 @@ export declare const enum GENERATE_TRANSACTION_API_PATH {
     TR_GRAB_ANY = "/generate/grabAny",
     TR_TO_EXCHANGE_ANY = "/generate/toExchangeAny",
     TR_BE_EXCHANGE_ANY = "/generate/beExchangeAny",
+    TR_ISSUE_ENTITY_MULTI = "/generate/issueEntityMulti",
     TR_REGISTER_CHAIN = "/generate/registerChain",
     TR_EMIGRATE_ASSET = "/generate/emigrateAsset",
     TR_IMMIGRATE_ASSET = "/generate/immigrateAsset"

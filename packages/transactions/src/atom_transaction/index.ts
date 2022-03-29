@@ -36,6 +36,8 @@ export * from "./grabAnyFactory";
 export * from "./toExchangeAnyFactory";
 export * from "./beExchangeAnyFactory";
 
+export * from "./issueEntityMultiFactory";
+
 export * from "./registerChainFactory";
 export * from "./emigrateAssetFactory";
 export * from "./immigrateAssetFactory";

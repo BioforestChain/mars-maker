@@ -281,6 +281,23 @@ declare namespace BFChainPcSdk {
             giftAny: BFChainCore.GiftAnyJSON;
             ciphertext?: string;
         }
+        interface IssueEntityMultiTransactionParams extends TransactionCommonParamsWithRecipientId {
+            entityInfo: {
+                entityStructList: {
+                    entityId: string;
+                    taxAssetPrealnum?: string;
+                }[];
+                entityFactoryPossessor: string;
+                entityFactory: {
+                    sourceChainName?: string;
+                    sourceChainMagic?: string;
+                    factoryId: string;
+                    entityPrealnum: string;
+                    entityFrozenAssetPrealnum: string;
+                    purchaseAssetPrealnum: string;
+                };
+            };
+        }
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
             genesisBlock: string;
         }

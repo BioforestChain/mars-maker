@@ -33,6 +33,7 @@ import {
     GrabAnyFactory,
     ToExchangeAnyFactory,
     BeExchangeAnyFactory,
+    IssueEntityMultiFactory,
     RegisterChainFactory,
     EmigrateAssetFactory,
     ImmigrateAssetFactory,
@@ -119,6 +120,9 @@ export function TransactionFactory(bfchainCore: BFChainCore) {
     TRANSACTION_FACTORY_MAP.set(transferAnyFactory.GENERATE_API_PATH, transferAnyFactory);
     TRANSACTION_FACTORY_MAP.set(giftAnyFactory.GENERATE_API_PATH, giftAnyFactory);
     TRANSACTION_FACTORY_MAP.set(grabAnyFactory.GENERATE_API_PATH, grabAnyFactory);
+
+    const issueEntityMultiFactory = new IssueEntityMultiFactory(bfchainCore, transactionVerifyHelper);
+    TRANSACTION_FACTORY_MAP.set(issueEntityMultiFactory.GENERATE_API_PATH, issueEntityMultiFactory);
 
     const registerChainFactory = new RegisterChainFactory(bfchainCore, transactionVerifyHelper);
     const emigrateAssetFactory = new EmigrateAssetFactory(bfchainCore, transactionVerifyHelper);

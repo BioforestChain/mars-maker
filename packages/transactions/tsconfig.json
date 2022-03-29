@@ -38,6 +38,7 @@
         "src/atom_transaction/issueEntityFactory.ts",
         "src/atom_transaction/issueEntityFactoryFactory.ts",
         "src/atom_transaction/issueEntityFactoryV1Factory.ts",
+        "src/atom_transaction/issueEntityMultiFactory.ts",
         "src/atom_transaction/locationNameFactory.ts",
         "src/atom_transaction/markFactory.ts",
         "src/atom_transaction/registerChainFactory.ts",

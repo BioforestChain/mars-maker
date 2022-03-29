@@ -31,6 +31,7 @@ export * from "./giftAnyApi";
 export * from "./grabAnyApi";
 export * from "./toExchangeAnyApi";
 export * from "./beExchangeAnyApi";
+export * from "./issueEntityMultiApi";
 export * from "./registerChainApi";
 export * from "./emigrateAssetApi";
 export * from "./immigrateAssetApi";
