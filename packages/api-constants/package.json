@@ -1,20 +1,20 @@
 {
-  "name": "@bfchain/pc-sdk-api-constants",
-  "version": "1.2.27",
-  "description": "pc-sdk-api-constants for the third party",
-  "main": "build/cjs/index.js",
-  "type": "commonjs",
-  "keywords": [
-    "pc-sdk-api-constants"
-  ],
-  "author": "BFChain Team",
-  "license": "MIT",
-  "dependencies": {
-    "@bfchain/pc-sdk-typings": "1.2.27"
-  },
-  "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
-  "files": [
-    "build"
-  ],
-  "types": "build/cjs/index.d.ts"
+    "name": "@bfchain/pc-sdk-api-constants",
+    "version": "1.2.27",
+    "description": "pc-sdk-api-constants for the third party",
+    "main": "build/cjs/index.js",
+    "type": "commonjs",
+    "keywords": [
+        "pc-sdk-api-constants"
+    ],
+    "author": "BFChain Team",
+    "license": "MIT",
+    "dependencies": {
+        "@bfchain/pc-sdk-typings": "1.2.27"
+    },
+    "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
+    "files": [
+        "build"
+    ],
+    "types": "build/cjs/index.d.ts"
 }
