@@ -1,6 +1,6 @@
 {
     "name": "@bfchain/pc-sdk-helper-type",
-    "version": "1.2.27",
+    "version": "1.2.28",
     "description": "pc-sdk-helper-type for the third party",
     "main": "build/cjs/index.js",
     "type": "commonjs",
@@ -10,7 +10,7 @@
     "author": "BFChain Team",
     "license": "MIT",
     "dependencies": {
-        "@bfchain/pc-sdk-typings": "1.2.27"
+        "@bfchain/pc-sdk-typings": "1.2.28"
     },
     "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
     "files": [

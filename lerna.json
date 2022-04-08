@@ -1,13 +1,13 @@
 {
-  "packages": [
-    "packages/*",
-    "packages/@types/*"
-  ],
-  "version": "1.2.27",
-  "useWorkspaces": true,
-  "npmClient": "yarn",
-  "publishConifg": {
-    "registry": "http://192.168.250.245:4873/"
-  },
-  "exact": true
+    "packages": [
+        "packages/*",
+        "packages/@types/*"
+    ],
+    "version": "1.2.28",
+    "useWorkspaces": true,
+    "npmClient": "yarn",
+    "publishConifg": {
+        "registry": "http://192.168.250.245:4873/"
+    },
+    "exact": true
 }
