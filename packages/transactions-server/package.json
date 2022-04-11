@@ -1,6 +1,6 @@
 {
     "name": "@bfchain/pc-sdk-transactions-server",
-    "version": "1.2.30",
+    "version": "1.2.31",
     "description": "pc-sdk-transactions-server for the third party",
     "main": "build/cjs/index.js",
     "type": "commonjs",
@@ -10,9 +10,9 @@
     "author": "BFChain Team",
     "license": "MIT",
     "dependencies": {
-        "@bfchain/pc-sdk-exception": "1.2.30",
-        "@bfchain/pc-sdk-transactions": "1.2.30",
-        "@bfchain/pc-sdk-typings": "1.2.30"
+        "@bfchain/pc-sdk-exception": "1.2.31",
+        "@bfchain/pc-sdk-transactions": "1.2.31",
+        "@bfchain/pc-sdk-typings": "1.2.31"
     },
     "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
     "files": [
