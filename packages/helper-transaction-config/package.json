@@ -1,6 +1,6 @@
 {
     "name": "@bfchain/pc-sdk-helper-transaction-config",
-    "version": "1.2.35",
+    "version": "1.2.36",
     "description": "pc-sdk-helper-transaction-config for the third party",
     "main": "build/cjs/index.js",
     "type": "commonjs",
@@ -10,8 +10,8 @@
     "author": "BFChain Team",
     "license": "MIT",
     "dependencies": {
-        "@bfchain/pc-sdk-api-constants": "1.2.35",
-        "@bfchain/pc-sdk-typings": "1.2.35"
+        "@bfchain/pc-sdk-api-constants": "1.2.36",
+        "@bfchain/pc-sdk-typings": "1.2.36"
     },
     "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
     "files": [
