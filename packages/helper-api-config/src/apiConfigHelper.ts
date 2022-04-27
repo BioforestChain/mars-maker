@@ -14,7 +14,7 @@ export class ApiConfigHelper {
 
     private __initConfig(configRootPath?: string) {
         this.__apiConfig = {
-            ip: "127.0.0.1",
+            ips: ["127.0.0.1"],
             port: 9003,
             requestTimeOut: 10000,
             requestProtocol: REQUEST_PROTOCOL.WEBSOCKET,
@@ -36,8 +36,8 @@ export class ApiConfigHelper {
         if (!this.__apiConfig) {
             this.__initConfig();
         }
-        const { ip, port, requestTimeOut, requestProtocol } = apiConfigOptions;
-        ip !== undefined && (this.__apiConfig.ip = ip);
+        const { ips, port, requestTimeOut, requestProtocol } = apiConfigOptions;
+        ips !== undefined && (this.__apiConfig.ips = ips);
         port !== undefined && (this.__apiConfig.port = port);
         requestTimeOut !== undefined && (this.__apiConfig.requestTimeOut = requestTimeOut);
         requestProtocol !== undefined && (this.__apiConfig.requestProtocol = requestProtocol);

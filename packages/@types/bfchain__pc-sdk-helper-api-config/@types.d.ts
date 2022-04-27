@@ -1,7 +1,7 @@
 declare namespace BFChainPcSdk {
     interface ApiConfig {
         configRootPath?: string;
-        ip: string;
+        ips: string[];
         port: number;
         requestTimeOut: number;
         requestProtocol: BFChainPcSdk.REQUEST_PROTOCOL;

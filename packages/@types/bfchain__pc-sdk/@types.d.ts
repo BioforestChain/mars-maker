@@ -6,5 +6,11 @@ declare namespace BFChainPcSdk {
         transactionServerPort: number;
         transactionConfig: TransactionConfig;
     }
-    type ConfigOptions = AllPartial<Config>;
+    interface ConfigOptions {
+        configRootPath?: string;
+        genesisBlockRootPath?: string;
+        apiConfig?: ApiConfigOptions;
+        transactionServerPort?: number;
+        transactionConfig?: TransactionConfigOptions;
+    }
 }

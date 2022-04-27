@@ -5,9 +5,10 @@ export declare class HttpHelper {
     private __configHelper;
     private __config;
     readonly REQUEST_PROTOCOL = REQUEST_PROTOCOL.HTTP;
-    readonly URL_PREFIX: string;
     readonly TRANSACTION_SERVER_URL_PREFIX: string;
     constructor(transactionServerPort: number, configHelper: ApiConfigHelper);
+    private __getUrlPrefix;
+    get URL_PREFIX(): string;
     createTransaction<T>(url: string, argv: {
         [key: string]: any;
     }): Promise<T>;

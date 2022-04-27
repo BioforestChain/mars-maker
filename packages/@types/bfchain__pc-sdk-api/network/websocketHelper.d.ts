@@ -6,12 +6,14 @@ export declare class WebsocketHelper {
     private __transactionServerPort;
     private __configHelper;
     private __config;
-    private readonly __URL;
-    private readonly __WEBSOCKET_HOST;
     readonly REQUEST_PROTOCOL = REQUEST_PROTOCOL.WEBSOCKET;
     readonly URL_PREFIX = "";
     readonly TRANSACTION_SERVER_URL_PREFIX: string;
     constructor(transactionServerPort: number, configHelper: ApiConfigHelper);
+    private __getUrl;
+    get URL(): string;
+    private __getWebsocketHost;
+    get WEBSOCKET_HOST(): string;
     createTransaction<T>(url: string, argv: {
         [key: string]: any;
     }): Promise<T>;
