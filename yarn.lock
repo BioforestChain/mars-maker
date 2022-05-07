@@ -35,639 +35,639 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@bfchain/core-account@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-account/-/core-account-5.25.60.tgz#2394e886554d9c87f5eed282591bae2a84a9079b"
-  integrity sha512-EDMEQn9lTsS6fGSTllB4LIMjNe0ZKlSi4RzRzyIeNg/4sJLxx0n5IFr0qv6tZtrejPgccubC64Y+uP8JqjQyLg==
+"@bfchain/core-account@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-account/-/core-account-5.25.61.tgz#ab1eab53ebebbbeaa6ebad3f107de2e9b6a30ced"
+  integrity sha512-r4QsrIFn5yITcroYp4GudoiDYFcythRynmKnl1ZcqULv+0WITIEV5A2yn1GyHF2c1mM04zRnwltqBqlSgZoz2g==
   dependencies:
-    "@bfchain/core-helper-account-base" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-helper-account-base" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-block-logic-verifier@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-block-logic-verifier/-/core-block-logic-verifier-5.25.60.tgz#4da2541823726c2e88c35b400d90868d8d6e270c"
-  integrity sha512-J1zKcWV021Xcum1pcL8E1maRQ5FthjDuRJqxFcUEfJTF4Fc+Yx0dbgOw9yVPLISMDLwZmvrm7ahbnmGUpAq6Zg==
+"@bfchain/core-block-logic-verifier@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-block-logic-verifier/-/core-block-logic-verifier-5.25.61.tgz#9217393f7d689b4aea181ca0b4b2aabfea411325"
+  integrity sha512-cxV6tKoyFc/N/5Fx6KmNmIGXuodDFE36y0Td2gNNuvnbMJKWgZpiO98OCJDH8m0Xc0dylAwBWjsLyg33gOlh1w==
   dependencies:
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-model" "5.25.60"
-    "@bfchain/core-transaction-logic-verifier" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-model" "5.25.61"
+    "@bfchain/core-transaction-logic-verifier" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
 
-"@bfchain/core-block-ticker@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-block-ticker/-/core-block-ticker-5.25.60.tgz#2e68129c5a8e524e29bae6c36a8088584c0e2272"
-  integrity sha512-msT+9vDkkUrZGJot20VSnh2AhdUII72MJChU5omjp7n8DnrXCLqGaprFrejLB4KMT7488Y5zAmSEHgaiW8P10A==
+"@bfchain/core-block-ticker@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-block-ticker/-/core-block-ticker-5.25.61.tgz#99b9e81aa3c6648310afc2d976234f50aa968040"
+  integrity sha512-qFnev9gTrvcJdey/vKpeGgBnANlspnNDg+oaZj3fjDmZARD59uIA2NQRRakmTeTCr6YHMiLkAaQGLyRcbrtYjw==
   dependencies:
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-model-block" "5.25.60"
-    "@bfchain/core-transaction-logic-verifier" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-model-block" "5.25.61"
+    "@bfchain/core-transaction-logic-verifier" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
 
-"@bfchain/core-block@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-block/-/core-block-5.25.60.tgz#f02f48d6f19b1ee19b769f0a3bc818c4bb553549"
-  integrity sha512-zimopiPFS7abgOudPvMO26nApEGNyQimcfe33aqmBTzqkwGuMeXURhQNCQ3v0B0dkxFhMWDgJ6K0mcuAjKByOA==
+"@bfchain/core-block@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-block/-/core-block-5.25.61.tgz#9996cbbb617a7f774e68b43a9387e183e3d0dbba"
+  integrity sha512-GWuhZJ7x4l4fZRA0v05lPGG7B35rGhpIsb5plScHkbNbdGXKJWNHTbXoJ3SJ88fF/cmwNOUpey3hTCuFLyJZVw==
   dependencies:
-    "@bfchain/core-channel" "5.25.60"
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-model" "5.25.60"
-    "@bfchain/core-transaction-logic-verifier" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-channel" "5.25.61"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-model" "5.25.61"
+    "@bfchain/core-transaction-logic-verifier" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-channel@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-channel/-/core-channel-5.25.60.tgz#881376e8521160bae444db553ea62919c9340a41"
-  integrity sha512-REtSQwOgc4ZEIKhj9mB4VSWkuCUr7qJVVMBbQ9ii7n5hdtvL/p1eWlG1FstW/FBdW3DUXmXvjq33A2QSzO98Mg==
+"@bfchain/core-channel@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-channel/-/core-channel-5.25.61.tgz#8b1a4aef1002daaae37cd06d2204877232b077c9"
+  integrity sha512-YId0Le84n2HvD0ySLicSvTCv+prDlOOABxoUnUInpkQ4dT/ZfXbqCQj29xbaN+R6rwGzl7a0NHLOmIlZBa+6Yg==
   dependencies:
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-model" "5.25.60"
-    "@bfchain/core-transaction" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-model" "5.25.61"
+    "@bfchain/core-transaction" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-crypto-ed2curve@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-crypto-ed2curve/-/core-crypto-ed2curve-5.25.60.tgz#8a55fc05fa0d07d52a7de4fa8a34c2576c66b7a8"
-  integrity sha512-aoHd9L8Zf7iSzTVE3sk3VCEwblz8dlj8rjHYwLGn/kAhoBBSgGyi67YC/GrBwWFNfvyJ3LlEr5uXRnOvwdGV5A==
+"@bfchain/core-crypto-ed2curve@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-crypto-ed2curve/-/core-crypto-ed2curve-5.25.61.tgz#4bbdb976c10130348098e00ea5780ac783ee618d"
+  integrity sha512-T/fHQ7dMpqvRYVjydgYL1/skBUaRnHRtRBWP8fmmaz9fXmDl8j/IH/5GejHNhst8tH5yYLxZQKODr/QMWY+y3Q==
   dependencies:
-    "@bfchain/core-crypto-tweetnacl" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-crypto-tweetnacl" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-crypto-tweetnacl@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-crypto-tweetnacl/-/core-crypto-tweetnacl-5.25.60.tgz#068b9bad5e589a0df66ff318de25c675d675fcda"
-  integrity sha512-Ky86OVNqIif2uurLhJEOZJAg2M0ppfY2pEfH5xvy7F/bycucIr4YFAybymMS7y6gqIWzlHkjs9qJmbs8BlGcgQ==
+"@bfchain/core-crypto-tweetnacl@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-crypto-tweetnacl/-/core-crypto-tweetnacl-5.25.61.tgz#97b527824a37d10cf560f71b1fe7a09acd70925f"
+  integrity sha512-PcA9E5XatMc9BWP25AGuHHKfPlBM2URUcDeU4uQybicecFDsXThGP1fTOpmLYDXvAUFKbRp6+Ap4Y34KzFjTVw==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-crypto@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-crypto/-/core-crypto-5.25.60.tgz#789775dd07c8f96ccd1794e3179a23f4b531ee54"
-  integrity sha512-iLLOIuV/LYWHYY7PibvLi2vS1T2hJwz7NqjvYrbehDW6KE3Oj9hIggxUvIDmLHmxzeM8iXcQ2MEZUanKSMe6Pw==
+"@bfchain/core-crypto@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-crypto/-/core-crypto-5.25.61.tgz#5b71eb58b6ebb7c2a27bcd0e1669004ae8318d56"
+  integrity sha512-99m5NJTXmEXL6ar7B85mIMO0AxowrjdCB0xMvRMPiGMh9gLk3ks67NnbDij0EI2/ePchMrHyxcPDUCZXIlTf/Q==
   dependencies:
-    "@bfchain/core-crypto-ed2curve" "5.25.60"
-    "@bfchain/core-crypto-tweetnacl" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-crypto-ed2curve" "5.25.61"
+    "@bfchain/core-crypto-tweetnacl" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-helper-account-base@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-account-base/-/core-helper-account-base-5.25.60.tgz#7ce6a64d533d545b94cc3116684b07d7a1d4f7e8"
-  integrity sha512-PlgyC03uB/eyah2230kQ0tH2KPMYa+T1rvfYC7ArzvGu8PQvMRyHObNZKwhadB33x4dXNNscK8EGCYEGqjRvLw==
+"@bfchain/core-helper-account-base@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-account-base/-/core-helper-account-base-5.25.61.tgz#ce111dc0b202dbd3df49bc733d363a80beb5d650"
+  integrity sha512-raXewl/VGVfK3ADBYXN/j6YXvBwi2ebwpQ+cWIDq3jkiv7EiG0Xc0Imt0RlpYh9Yz445Oxc3l0f8BUHlV2ZHxg==
   dependencies:
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-model-block-base" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-base58" "5.25.60"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-model-block-base" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-base58" "5.25.61"
 
-"@bfchain/core-helper-account@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-account/-/core-helper-account-5.25.60.tgz#b066bc8336946c79ea4bafab4e81623757665da4"
-  integrity sha512-+5lEp4PYbMCK1jgeos3cX6/LEjHbEVtzQ4DWKphxQFpRxJZNLqe36i81qqvpS3rOhwQx6xNk3+YhFAdbWqXmdw==
+"@bfchain/core-helper-account@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-account/-/core-helper-account-5.25.61.tgz#4a38b3f401790d1ee3f2bdc69e749c5ef14b08e7"
+  integrity sha512-rO6NqYVEfOg/4+CJztqxUHRmZFBlupnC5Q9dpyev2X4V6/qG/VQfXGsERmexne2GZRqQBiKNoRPkjPlsDK1CuA==
   dependencies:
-    "@bfchain/core-helper-block" "5.25.60"
-    "@bfchain/core-model-block-base" "5.25.60"
-    "@bfchain/core-model-transaction-base" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
+    "@bfchain/core-helper-block" "5.25.61"
+    "@bfchain/core-model-block-base" "5.25.61"
+    "@bfchain/core-model-transaction-base" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
 
-"@bfchain/core-helper-asymmetric@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-asymmetric/-/core-helper-asymmetric-5.25.60.tgz#33e10c5ac8c3a2de6166b217cdfc4974b9fb0040"
-  integrity sha512-8q26eJo8roAVeZTmiJxSWpyBcZ98qhvpa/t6J0KbOCR3iyGhqN1+13XyoCYEGiC4xC/mJJ7EX3S6DG+ltfUA0A==
+"@bfchain/core-helper-asymmetric@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-asymmetric/-/core-helper-asymmetric-5.25.61.tgz#9f258bbce8906020bac8ecee621df7a749c69b29"
+  integrity sha512-ki2Qu9EdfOzltGx7uQrfCHmkT11M9BBzk9jVOLLniubqImgoblnwTc8b2W1+8n/JMOiuSQxjJ0fedBcIWZ/3Kw==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-helper-bigint@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-bigint/-/core-helper-bigint-5.25.60.tgz#f09e58a383009d0962b29027080e4f0dc8250593"
-  integrity sha512-ANINSvcBtXwvyeHfAaQv3VvHqDQEikUUJauhvPa0G2ltd22ryj5YoeUqg6kTDouSigxvk7ZwACYUvgN8Ypml1g==
+"@bfchain/core-helper-bigint@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-bigint/-/core-helper-bigint-5.25.61.tgz#b11572da76aadaca94b163235969ad8efcf06d0f"
+  integrity sha512-zPWaG+nNIo6g1mZdO5rNipnWK5tDUiNueXgr5xnsKSnTGVsXMW2G7/jlkQpMdNUsoD0vFf2+0iVVEz9JnNnArw==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-helper-block-base-statistics@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-block-base-statistics/-/core-helper-block-base-statistics-5.25.60.tgz#1da2bdfa0fdf760030d3c645804292b56703e7cb"
-  integrity sha512-Ia0ZIgiPpiELjTjVzbO85jU2xmYjkFPWqv5Xpguz74CFekCmrkvSFU1ibnS/yw1lpimC/xxS0vQUeLP+TVqKTw==
+"@bfchain/core-helper-block-base-statistics@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-block-base-statistics/-/core-helper-block-base-statistics-5.25.61.tgz#eb8f8868a798f8ead04fd9bddf43860ac3eb4816"
+  integrity sha512-3VOSEjwXDlxA3Jy0nd4t5lydtdehuHYVDDSMp204anjp/mIT21VImLn5ze5WoHH5tKYQ102SnIhq3DVkEY7Uuw==
   dependencies:
-    "@bfchain/core-helper-chain-asset-info" "5.25.60"
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-helper-transaction" "5.25.60"
-    "@bfchain/core-model" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-helper-chain-asset-info" "5.25.61"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-helper-transaction" "5.25.61"
+    "@bfchain/core-model" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-helper-block@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-block/-/core-helper-block-5.25.60.tgz#2499a56555916a0aff14ca43cbb8f2996b546ce9"
-  integrity sha512-k59VyI84HOVD/f4Vb8QvULW90dmEen6U6qxopC3c7j/QlXRifzK4ZgUXJbn4Sk4r1mzpkJoRNzuGllSICTaXQA==
+"@bfchain/core-helper-block@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-block/-/core-helper-block-5.25.61.tgz#d2275f652d3a23565c1346abbc6a86090ca3f945"
+  integrity sha512-iPHv8NAcuzWjDUtF/8+iiExMOJT0NbZi7fFiCay0lA3f+ZdQJOFLVrT01vo7WB6FCYiW62rAWMbmdnWAduVyHg==
   dependencies:
-    "@bfchain/core-helper-account-base" "5.25.60"
-    "@bfchain/core-helper-bigint" "5.25.60"
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-helper-type" "5.25.60"
-    "@bfchain/core-model" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-helper-account-base" "5.25.61"
+    "@bfchain/core-helper-bigint" "5.25.61"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-helper-type" "5.25.61"
+    "@bfchain/core-model" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-helper-chain-asset-info@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-chain-asset-info/-/core-helper-chain-asset-info-5.25.60.tgz#46a77871d86a6ffa7d2a305bbfb83998460d1755"
-  integrity sha512-JRxNdT492lm3xMzSBdoFw00zA1RG5S4ZMyUsbRlJHVUQ/nhEF8x6f1wahKwX7ChqrTgKOJB/fcc8iW6GIuir/Q==
+"@bfchain/core-helper-chain-asset-info@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-chain-asset-info/-/core-helper-chain-asset-info-5.25.61.tgz#72658837507fd5a6b122159b9af2a9506e40c91d"
+  integrity sha512-vrmQG39P+oUPTvENqy6r4+8RNC4IMRLshf96+HkLqV5uaDbYyuzP8vswqmV0DA5Ko8HLPQXE7RHfSMmO5qBTrg==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-helper-chain-time@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-chain-time/-/core-helper-chain-time-5.25.60.tgz#a93621f8561dd2be1dae3420af06b9f60dda0274"
-  integrity sha512-WjGwTHDU4vpuLnW5Yl2+h+0MT7xEm1MDmdI1Jn9EFaslUIoB9eOTVp5fmmFdDMNbr5U/OHVkDQjipTBw35TtPw==
+"@bfchain/core-helper-chain-time@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-chain-time/-/core-helper-chain-time-5.25.61.tgz#8cc7cd3c275cd4d5a81c3a05309aa8542e84715c"
+  integrity sha512-zms6T8g3jom3t7sLJK99FFi+phdkEoz7naIKpHDn9QN6sKoyVSEYztpK2H1qlEwpna4HUF0KjiVPeE9QXp3QBQ==
   dependencies:
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-helper-config@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-config/-/core-helper-config-5.25.60.tgz#bbcae72138d6807bbe8b0d695089b9cd5965f938"
-  integrity sha512-InnqBPGcbjzAReOIWpsY3gMRQkMhm38Zj5Dl4ZSZgGRYIyCY1gVGoIEi8iZZdX9Iah6Ac38YO5RJMXOudH1nRQ==
+"@bfchain/core-helper-config@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-config/-/core-helper-config-5.25.61.tgz#9ced8efcfeae8692c8749d80c0e16d80216bd002"
+  integrity sha512-eIsBZGkOagZyko80RBvKm1xSnskg/Bm/gWYxNJyIXhhGqyfx9mV84t8qhcqaK/L5h2ClC8rARqTwKzbmqrp6WA==
   dependencies:
-    "@bfchain/core-model-block" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-model-block" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-helper-migrate-certificate@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-migrate-certificate/-/core-helper-migrate-certificate-5.25.60.tgz#f44fbcb7cf250f0450f9840c99af8cc7ad309a2f"
-  integrity sha512-aYgDp3JdQJhOnSgKmYnM0/ABerQOZ3+3GsXS2ZlPA6gqE6vQWDAdwerdv4pl9A1uhtql9MhzPJQasKWGLa0cZQ==
+"@bfchain/core-helper-migrate-certificate@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-migrate-certificate/-/core-helper-migrate-certificate-5.25.61.tgz#4f2441454701b0f9d33c6536ab526046146ec92a"
+  integrity sha512-iQAqkyVeJMGU6WCl+5uA6ytCfuRhA1vyPR47fv3UpPEaiTPg2N/XMN2kDqiHS/+uzEeTYSMaFod+FeWoqPWIdA==
   dependencies:
-    "@bfchain/core-helper-account-base" "5.25.60"
-    "@bfchain/core-helper-asymmetric" "5.25.60"
-    "@bfchain/core-helper-chain-time" "5.25.60"
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-helper-transaction" "5.25.60"
-    "@bfchain/core-helper-type" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-helper-account-base" "5.25.61"
+    "@bfchain/core-helper-asymmetric" "5.25.61"
+    "@bfchain/core-helper-chain-time" "5.25.61"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-helper-transaction" "5.25.61"
+    "@bfchain/core-helper-type" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-helper-milestones@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-milestones/-/core-helper-milestones-5.25.60.tgz#424c86e780a2fb98701a0aa12642dccb84e844da"
-  integrity sha512-oqU7PEyGUgq+e2RSEBeb20lDjMQoLBiyPYxhi+6mI1LLeUQ2YssS5uJokq1AgiDtgAyDeM7LXcAkSF14iIFlhQ==
+"@bfchain/core-helper-milestones@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-milestones/-/core-helper-milestones-5.25.61.tgz#ddf4e49a94bd6cfe8870ded49b76d00b3de86c39"
+  integrity sha512-LoBcVSBFrY9DPIH021SyiGDanFIihBEDtuLpE8kNP9IIJiEsts8RkVXR5QixS1o1GJ31yxz9B07yfmkYuk03IQ==
   dependencies:
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-helper-type" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-helper-type" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-helper-parity-bit@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-parity-bit/-/core-helper-parity-bit-5.25.60.tgz#06c1f0f751b5779bfd16b12bdc5bf93a9c16ef1b"
-  integrity sha512-DZCYEqVoEbt9akXxbgwIroEXUdJvAqJp/NePTqvZ1uqTQ+442vhD9EADiCrL0Ip8nFjnv8H7imop4oXNe0zrQQ==
+"@bfchain/core-helper-parity-bit@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-parity-bit/-/core-helper-parity-bit-5.25.61.tgz#f01a5b4347c1b4bdc3608712aa9eb800f8762ce8"
+  integrity sha512-VKVw0nLLpuXqtfBNCGqge+pZaKuGPuX+vL8/lCuhmei3iqaLMeYItDUg919fSAtKjWIHf3Dt52jgYoikZFiPrQ==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-helper-transaction-pow@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-transaction-pow/-/core-helper-transaction-pow-5.25.60.tgz#346498e57f4249752b04fbcd03bdf2411c118cc6"
-  integrity sha512-TKiXhs4ZWBrgNCHnSx5n0NolpeDHl7S1MBPajlcHZaNGpZffM7srzTviash4xb5ANFLrkHn91TOIkWaRhkQyjw==
+"@bfchain/core-helper-transaction-pow@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-transaction-pow/-/core-helper-transaction-pow-5.25.61.tgz#66b1b4454698b3acf2997de8a5dbc9dbb239a825"
+  integrity sha512-68L/kLT1rEkizQZoYMnpZVvo5GIr9MH+tfA3TENzooTPZSLiDeMvfZUksAWK1wft/69ynQKIcwOaeeGWNKUGzQ==
   dependencies:
-    "@bfchain/core-helper-bigint" "5.25.60"
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-helper-bigint" "5.25.61"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-helper-transaction@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-transaction/-/core-helper-transaction-5.25.60.tgz#c9288105129e22a056d5eb07d820bf50a8fa3d06"
-  integrity sha512-WI5K2JfateStd30UTA1QSS4BPsI49YYIqOIoixj81Fnpt8ExPAxoYz2WPVb4bmrJKL6YZQ9r+ttTehQMCYbBxg==
+"@bfchain/core-helper-transaction@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-transaction/-/core-helper-transaction-5.25.61.tgz#2923ad2c60c0e2d60b028865b5ce69585f435277"
+  integrity sha512-cWmPt1TmIjpjK5V95MYCTWZagI/MGgPZ5CW/PoP9+dzBzBekDIuvZQkWU7sOICKHCtmCySn8dKuq2hmDfUeoAA==
   dependencies:
-    "@bfchain/core-helper-account-base" "5.25.60"
-    "@bfchain/core-helper-asymmetric" "5.25.60"
-    "@bfchain/core-helper-bigint" "5.25.60"
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-helper-transaction-pow" "5.25.60"
-    "@bfchain/core-helper-type" "5.25.60"
-    "@bfchain/core-model-constants" "5.25.60"
-    "@bfchain/core-model-transaction" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
+    "@bfchain/core-helper-account-base" "5.25.61"
+    "@bfchain/core-helper-asymmetric" "5.25.61"
+    "@bfchain/core-helper-bigint" "5.25.61"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-helper-transaction-pow" "5.25.61"
+    "@bfchain/core-helper-type" "5.25.61"
+    "@bfchain/core-model-constants" "5.25.61"
+    "@bfchain/core-model-transaction" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
 
-"@bfchain/core-helper-type@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-type/-/core-helper-type-5.25.60.tgz#a70b4455cb1a63a73506805d7847c65e7dd1a715"
-  integrity sha512-NmIq3NX2iKei/j8DKL+fo/4i7tB1OB5SrBqbhuCQyTbG8By7e+xcX5rnRv16Nw1vCwf8AKUOFZMnVNxPX7gB3A==
+"@bfchain/core-helper-type@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper-type/-/core-helper-type-5.25.61.tgz#3e59e0709248aaca6a2a4a079e6525d7c25c04c2"
+  integrity sha512-VNIXifs2cba67iv4VneJrM8gWjsMwqWuDphACgdX/wYQ33wf+uJlN1hoJ1Aeo0qsVJ1u6W4Ea67OTGxo7Vq0sA==
   dependencies:
-    "@bfchain/core-helper-account-base" "5.25.60"
-    "@bfchain/core-helper-bigint" "5.25.60"
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-helper-parity-bit" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-helper-account-base" "5.25.61"
+    "@bfchain/core-helper-bigint" "5.25.61"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-helper-parity-bit" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-helper@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper/-/core-helper-5.25.60.tgz#58620a2f92fb651dab14fbe4ce1cb08389ff62e3"
-  integrity sha512-qNWODWZSC7pvylJPy73LZ8hl0/8XPL/DPckMjUtr5QuVfqhoF0q8cfEFZrpOQGi34CRk5Gdk0bWdcr5zBNdd4g==
+"@bfchain/core-helper@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-helper/-/core-helper-5.25.61.tgz#b223ba9c59f4cb876f8b9da098752529b8d176a3"
+  integrity sha512-wLqzwLdZdld1fenyA0R5QNk8pSnJhdYNSIUUwr8+8aa6655ZuU0My7KYyvB4/wUjBi/4L5DKWBbFldJ24jUt0A==
   dependencies:
-    "@bfchain/core-helper-account" "5.25.60"
-    "@bfchain/core-helper-account-base" "5.25.60"
-    "@bfchain/core-helper-asymmetric" "5.25.60"
-    "@bfchain/core-helper-bigint" "5.25.60"
-    "@bfchain/core-helper-block" "5.25.60"
-    "@bfchain/core-helper-block-base-statistics" "5.25.60"
-    "@bfchain/core-helper-chain-asset-info" "5.25.60"
-    "@bfchain/core-helper-chain-time" "5.25.60"
-    "@bfchain/core-helper-config" "5.25.60"
-    "@bfchain/core-helper-migrate-certificate" "5.25.60"
-    "@bfchain/core-helper-milestones" "5.25.60"
-    "@bfchain/core-helper-parity-bit" "5.25.60"
-    "@bfchain/core-helper-transaction" "5.25.60"
-    "@bfchain/core-helper-transaction-pow" "5.25.60"
-    "@bfchain/core-helper-type" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-helper-account" "5.25.61"
+    "@bfchain/core-helper-account-base" "5.25.61"
+    "@bfchain/core-helper-asymmetric" "5.25.61"
+    "@bfchain/core-helper-bigint" "5.25.61"
+    "@bfchain/core-helper-block" "5.25.61"
+    "@bfchain/core-helper-block-base-statistics" "5.25.61"
+    "@bfchain/core-helper-chain-asset-info" "5.25.61"
+    "@bfchain/core-helper-chain-time" "5.25.61"
+    "@bfchain/core-helper-config" "5.25.61"
+    "@bfchain/core-helper-migrate-certificate" "5.25.61"
+    "@bfchain/core-helper-milestones" "5.25.61"
+    "@bfchain/core-helper-parity-bit" "5.25.61"
+    "@bfchain/core-helper-transaction" "5.25.61"
+    "@bfchain/core-helper-transaction-pow" "5.25.61"
+    "@bfchain/core-helper-type" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-model-block-asset@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-block-asset/-/core-model-block-asset-5.25.60.tgz#a619c92adcb9e6f86f8d9c5f093b1683f72b444a"
-  integrity sha512-rgMpXjHkx9MdFi59RFdSp4kuKy6GRlRP0bxVJXDrbKc4YaSR9p9C+JTuD8CeDYHhVmtNMbZGq65lPI3iYvtUtg==
+"@bfchain/core-model-block-asset@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-block-asset/-/core-model-block-asset-5.25.61.tgz#259ce2f6ce344fa84d0c41aebc058d77c81e42b0"
+  integrity sha512-vnQmZQZUtuljx5/JGq+VvkvzdM1z7+g0MSJcG927FZyrAE31HYkpF4/zFU+pv4D3ebGNyqoh+gGRoNawPKwL1Q==
   dependencies:
-    "@bfchain/core-model-block-base" "5.25.60"
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-block-base" "5.25.61"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-block-base@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-block-base/-/core-model-block-base-5.25.60.tgz#06380720a9380a5f3e821e35e4049c289141e297"
-  integrity sha512-jZLJvjwaZm5JHjyEypzdDZdRy7xxVwXaqIzYk7gO8Wk94+0VizcW+0bV+M0eCxqE3GoOMKQpyzhe5RdDjbudSg==
+"@bfchain/core-model-block-base@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-block-base/-/core-model-block-base-5.25.61.tgz#ea4e67df4721ce996ea6566d642ae602c6122a4a"
+  integrity sha512-77YryMNeCgzZm0y0XtiqGIQuAUKHfkFNg3jxGiXj6tp8iZJG/H/oSiByY+9Yb7WhsBou6PpK8qaquDMwibm7hA==
   dependencies:
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-model-transaction" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-model-transaction" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-block@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-block/-/core-model-block-5.25.60.tgz#5859c3ab2aae745af923f108b10ad75d40a2bade"
-  integrity sha512-lfTEtHvHyon9BhLb4OTnaH8wZBPd6QTU1hUrlIsRY1tiANOEhjar4hqkyVnRHf0Ax2q90XTkq/jcqpDmUrTp/g==
+"@bfchain/core-model-block@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-block/-/core-model-block-5.25.61.tgz#54e437ea7cf884e8bf9db5804804b7bdd7aff390"
+  integrity sha512-eUvNOE61aWI1B4IOfWSmDGgjLOcOyorK58j4H+k6Rnp8zgjUwGsTa/ZVbdrLEkV8dmSLT4l5Y0mrKzQA4GJZxQ==
   dependencies:
-    "@bfchain/core-model-block-asset" "5.25.60"
-    "@bfchain/core-model-block-base" "5.25.60"
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-model-transaction" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-block-asset" "5.25.61"
+    "@bfchain/core-model-block-base" "5.25.61"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-model-transaction" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-cacher@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-cacher/-/core-model-cacher-5.25.60.tgz#089a86526c621f2fa4b3b23270dab60a9e57da0f"
-  integrity sha512-ZMwkXmYBka9BFLXmkrdGclBr5k56jqo8zQ+9Gw5DLPpHt06pjDO7XH5cWBztEI2yGLkyD9EG2auyx3sZlCmAQg==
+"@bfchain/core-model-cacher@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-cacher/-/core-model-cacher-5.25.61.tgz#5dddec6aa075fa1ce82f97afffa9d7104cf498e4"
+  integrity sha512-ZMmEB0LESSKisMM84fHcbefCWOaEfap5rVBXtHjQFVHr874/V51/UMur/PUmFfRvsr9aWc9mxguo3CdSgn2GkQ==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-channel@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-channel/-/core-model-channel-5.25.60.tgz#4a0fdb91cc8dd42df144c248fca07ad02e7151c8"
-  integrity sha512-gOeJxhmiDf7Jaey+1qbWsJQuL1qXaX1lVDQtyT7UF0GW8rn2WydI8dhe8vH6htnCXshDWRtgqwd4I81OKjtAHA==
+"@bfchain/core-model-channel@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-channel/-/core-model-channel-5.25.61.tgz#4a48ec7aa8442c8ae5e75fde7c46314e450ebf31"
+  integrity sha512-CdEzB7LWZ97IkP2DPopKH/Gycx31kGlIhQMEdUjaOhrFLw8IOOKN2dIWV99LCVLcz02yvS+NCYDkd9nNZhorug==
   dependencies:
-    "@bfchain/core-model-block" "5.25.60"
-    "@bfchain/core-model-constants" "5.25.60"
-    "@bfchain/core-model-progress" "5.25.60"
-    "@bfchain/core-model-transaction" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-block" "5.25.61"
+    "@bfchain/core-model-constants" "5.25.61"
+    "@bfchain/core-model-progress" "5.25.61"
+    "@bfchain/core-model-transaction" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-common@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-common/-/core-model-common-5.25.60.tgz#f520e875ea5c36b2b19c331fb4a891eb3143aac4"
-  integrity sha512-7BXArr9vhMIrAKVn8KVijx/fnP68zj5kpTLaSzFGmPJCxB2Fx011Hb6uElC9cZgt0yrNc/Ha+13AdP9wUuM21A==
+"@bfchain/core-model-common@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-common/-/core-model-common-5.25.61.tgz#7b13cfaa66bc82a87a3275e401d79edbbcea96a8"
+  integrity sha512-ubEPuic9uZuXmU5z4W3J1fJ05DDOx8x2Hh4o6piBtn0D4dF+povlcZBHhfaZUtfcPqeB3jksJq/jPyV2pB7B3w==
   dependencies:
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-constants@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-constants/-/core-model-constants-5.25.60.tgz#c0e74c7bc57ee0ace62c451b9062236f1f694d89"
-  integrity sha512-/lKOxzFNPnf4AxirF10TUuuQVUBRaK3Ig3NYHf5BaIztYyKV7pyZXcDQtkkJ1SEUcPUUCo6MOUlzvT0CMULeZA==
+"@bfchain/core-model-constants@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-constants/-/core-model-constants-5.25.61.tgz#9691824bba9d4b5a1d65d4d17b02f516cf5c7d59"
+  integrity sha512-MgXW2s9WBTG5A3qpWkx0qEUutMDqloGxiqQCjMDgieNKo0yxZ7OF0NLNOzgz59bNKseBHtisAvvlZ6rNLlVhPw==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-progress@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-progress/-/core-model-progress-5.25.60.tgz#1fcebe130ddb24612d77b143be5041e55420c97a"
-  integrity sha512-FDdmCJBOAOMClSNafTNSNvtKZFYi1/ujnTyWTPhVfIMe01QCkZ8KsO7v/H0un+pLs1uiKhcN5lR9yBbuDKEAZg==
+"@bfchain/core-model-progress@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-progress/-/core-model-progress-5.25.61.tgz#385031df9cd7cf9634b49a6cb010498a8556d45c"
+  integrity sha512-GDaKKAFXpSUWFph94tcn6vnJvnTnWIQA3yZUu6q1kI1/GVkw0uQdRUNsVJR1NY51qz3aUAyIlp+YxfJLOFuIvQ==
   dependencies:
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-transaction-asset@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-transaction-asset/-/core-model-transaction-asset-5.25.60.tgz#68d299633bd6a1bf9bdf13a526db0de2c34bf7ee"
-  integrity sha512-TqPz8V13Z3R4fvH0jKvD5X1Q1jrcbYU5pcU05pMO7oCIzx7palZw7iCUFn71i+A4UNR+2TO8gdSl/dpXpIOmZg==
+"@bfchain/core-model-transaction-asset@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-transaction-asset/-/core-model-transaction-asset-5.25.61.tgz#db8a5ae2825ca6304a56445f4142d3178881293c"
+  integrity sha512-WgCiwWbtihC9xWaDlksbrKmwmRP7Yqee93In49oa6Q5MRdyQDd3QIwdCnLnIQLNREVoGOx59DU0YRTCsvsmdew==
   dependencies:
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-model-constants" "5.25.60"
-    "@bfchain/core-model-transaction-base" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-model-constants" "5.25.61"
+    "@bfchain/core-model-transaction-base" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-transaction-base@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-transaction-base/-/core-model-transaction-base-5.25.60.tgz#5abbb111172ca291d58513d87bb3c5678d39dd16"
-  integrity sha512-BMhBuCJGC1KdmKxUnGr+2K82K732m46wkCpEqXP1jMISs321WVFrQi3LfY9w3uDUltXB20BfO5zSFZ0v0+qu+A==
+"@bfchain/core-model-transaction-base@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-transaction-base/-/core-model-transaction-base-5.25.61.tgz#e488c91a9819a41b334b87a359f43e6c4de5884f"
+  integrity sha512-w2JNFUJYIenBiaoF6M+3QjzKgNxzGi2HyFcMypYWWychtpaemG2MlcC3l9+VzRFcorou6jOMtstqZD/S0Z2a3Q==
   dependencies:
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-model-constants" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-model-constants" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-transaction-complex@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-transaction-complex/-/core-model-transaction-complex-5.25.60.tgz#d5267b6a98344941ef72808a520158947a7142ea"
-  integrity sha512-ikvjoUxvTdrlT9g6eOAKhIO/tx3q4vuaAKBt+hsyu6XsY2zBr3UvHocZLFEK2EOCZMEEdK/KGnI8v5Iza7FI4A==
+"@bfchain/core-model-transaction-complex@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-transaction-complex/-/core-model-transaction-complex-5.25.61.tgz#168b57c022041833703a4f87d39d5a2f4aef7ad1"
+  integrity sha512-FyqN2lUdHeLKbaHsImCaYUnIJh393x2CgUzxiSaHHHnKFZiW30zexR+xsQHT5nersuQiQ3Lv4y3bqAuOL/ttvQ==
   dependencies:
-    "@bfchain/core-model-block" "5.25.60"
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-model-constants" "5.25.60"
-    "@bfchain/core-model-transaction" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-block" "5.25.61"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-model-constants" "5.25.61"
+    "@bfchain/core-model-transaction" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-model-transaction@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-transaction/-/core-model-transaction-5.25.60.tgz#71307f1a68a5a6423c8be4f2486939efa8146ff5"
-  integrity sha512-A/G1Sk9BDhZkXYKmSJJ9oADKKQqlQJjYKBrnOwfR852uHdfXnFh6VeH+FaX9LrTQu1S0iS1DCrwDbpR5KhET1w==
+"@bfchain/core-model-transaction@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model-transaction/-/core-model-transaction-5.25.61.tgz#89eb39ce209d9b02b6ec42e0f64203b60e1483b7"
+  integrity sha512-FInnUxrkttRdHxb0i3Z16vmjpf7XVZSexkJvW3uAwRwnUJON4yzGDgIIu6mUU1vsv7tef3O5Tm8XO/v/5cOvrQ==
   dependencies:
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-model-transaction-asset" "5.25.60"
-    "@bfchain/core-model-transaction-base" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-model-transaction-asset" "5.25.61"
+    "@bfchain/core-model-transaction-base" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
 
-"@bfchain/core-model@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model/-/core-model-5.25.60.tgz#773c8ba8632c1fdc8e79c645451b4006d664b5fa"
-  integrity sha512-2S2SwhBjHLYmYDdgy4JiIC/DJ05PRFZWDxtBQOUUk5Xba49pvVLdL0ab9LKV16rAJpj+mLRzJkDaNkPd4RaYEA==
+"@bfchain/core-model@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-model/-/core-model-5.25.61.tgz#d496d76eb0c1d16a01168eb50569079c04f3cc2d"
+  integrity sha512-Imy7nn0s+b6mf+3+uPXidThjNYHa037t0ZBV2vYCss79lvYrCnm1Gh0M3L7/RQS55Z0+q0vYQwIdO8CtHoB8Lg==
   dependencies:
-    "@bfchain/core-model-block" "5.25.60"
-    "@bfchain/core-model-cacher" "5.25.60"
-    "@bfchain/core-model-channel" "5.25.60"
-    "@bfchain/core-model-common" "5.25.60"
-    "@bfchain/core-model-constants" "5.25.60"
-    "@bfchain/core-model-progress" "5.25.60"
-    "@bfchain/core-model-transaction" "5.25.60"
-    "@bfchain/core-model-transaction-complex" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-model-block" "5.25.61"
+    "@bfchain/core-model-cacher" "5.25.61"
+    "@bfchain/core-model-channel" "5.25.61"
+    "@bfchain/core-model-common" "5.25.61"
+    "@bfchain/core-model-constants" "5.25.61"
+    "@bfchain/core-model-progress" "5.25.61"
+    "@bfchain/core-model-transaction" "5.25.61"
+    "@bfchain/core-model-transaction-complex" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-patch-1@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-1/-/core-patch-1-5.25.60.tgz#75002ff853c61f0e3a3435eb5960b551ef619921"
-  integrity sha512-XUGg7gHpneCsrfA7B34r7wNBtNLzyKMIhyBcBYbrAt9La/xd5lcWWSeSwcboW7IUvtJxsWuaRFXqt2QjJJ5A/Q==
+"@bfchain/core-patch-1@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-1/-/core-patch-1-5.25.61.tgz#004142ecd420da96aaa6018cf54a8ef101b46756"
+  integrity sha512-XzU5CHYxVrVMXakhm0c2foeOrVzZIaP2lNqZxg8W0YRfWNYXwDCe1wo7Mn5VM70hjbwDdGGVJ5EjDm5SEg6J6Q==
   dependencies:
-    "@bfchain/core-patch-base" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-patch-base" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-patch-base@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-base/-/core-patch-base-5.25.60.tgz#b2d0c3f5419684181b5896019033f16bba31f8b7"
-  integrity sha512-OZV/SuNAJqydQ2qCQBjug57QgR/ozH4I5Lk7jfD5Oin+3qtYDaGrpiEuUXCph1odg5SDCWqaOatd2q8UfCeL4w==
+"@bfchain/core-patch-base@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-base/-/core-patch-base-5.25.61.tgz#c2b8dfb39a0b4a7a2f8d6d6df46c15ba9ab289a3"
+  integrity sha512-hcbnchKPpfRJdvXPE5IFIEN+tDnabPYiQGalPI3SH8okZsLhFHE0x40L3WyPvDOTu6M9H47cK3MHC34BJEchhQ==
   dependencies:
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-patch-v2@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-v2/-/core-patch-v2-5.25.60.tgz#7eaba3e5a5f92969760ac388dcebb7dc7359c878"
-  integrity sha512-Lz2Dr+B89G93SH9D/I+L8tX3VOgZju0LdcHU1WrUi8EBoI3IM0UEnCkaOSkhW4V4mHS6oiAl6oFHWIBcQOCvcA==
+"@bfchain/core-patch-v2@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-v2/-/core-patch-v2-5.25.61.tgz#e5141440cf5af83fd2e408deb661b55654e126e3"
+  integrity sha512-J4i2cH28MA231BFpo6n5jatsr6MzSqpH+aU4SRB41crzXZiM4V5TBNr2accqGCn6sZ2Z5cEw91Kk5scUiNabsg==
   dependencies:
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-patch-base" "5.25.60"
-    "@bfchain/core-transaction-logic-verifier" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-patch-base" "5.25.61"
+    "@bfchain/core-transaction-logic-verifier" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-patch-v3@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-v3/-/core-patch-v3-5.25.60.tgz#be433807ba7577cdf1427b669692b0ad1d87b358"
-  integrity sha512-T8NFoFiNpjDaBsCTrpG0QtEn6B2EkERYhjJ/6w/mOIcpPGZGRO/Vp3cGxVfrID6FFDrV56+lDNybbD26fHbRnw==
+"@bfchain/core-patch-v3@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-v3/-/core-patch-v3-5.25.61.tgz#17db72fadce7a49749e9b4b12c2531068b600524"
+  integrity sha512-3SXQ/tMuON93n9KHf0YAWEyJI+Iy+VWSqLJh63UvI9sNihJUI2uU3cTQWlixC1rXfYXguQKObVCo9lorNTQP7g==
   dependencies:
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-patch-base" "5.25.60"
-    "@bfchain/core-transaction-logic-verifier" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-patch-base" "5.25.61"
+    "@bfchain/core-transaction-logic-verifier" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-patch-v4@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-v4/-/core-patch-v4-5.25.60.tgz#c665bd23e9e6556e350ba9ff0d6d575aba620b57"
-  integrity sha512-EME8xV6gEYkHgLiDRohf1pjuhVm2/rZpMBkc7nBdnhtjhYRcLuliMdkO05qCny9OZo5s9xQR6eD2GSqxNYeq5w==
+"@bfchain/core-patch-v4@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-v4/-/core-patch-v4-5.25.61.tgz#34ad9806143c761f8a3178b6c7820ad0b6183370"
+  integrity sha512-sZ14Vz/Gk9eEayRu8LATB46gByQlWBT3yqnrwwGI9MCbG8IMVy1NzBrus/tgTQ/pOmx07HHzJPhhkV32D1gA8Q==
   dependencies:
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-patch-base" "5.25.60"
-    "@bfchain/core-patch-v2" "5.25.60"
-    "@bfchain/core-transaction-logic-verifier" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-patch-base" "5.25.61"
+    "@bfchain/core-patch-v2" "5.25.61"
+    "@bfchain/core-transaction-logic-verifier" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-patch-v5@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-v5/-/core-patch-v5-5.25.60.tgz#45dc2ad7a82a8b21f69848220a4a88dd028990ef"
-  integrity sha512-3NIuza31q8sVs4tC2mMXGKIUEw0Drcg0zEFZrG+WASH0zEQ0C+nd7x5m8OlR91NwcO/966UAy7hDlvw92LTS3w==
+"@bfchain/core-patch-v5@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch-v5/-/core-patch-v5-5.25.61.tgz#afa8a79f01ecab51e67522e1a3712340e2479957"
+  integrity sha512-rbKC+IXr80J1Gh1mvRzr1fnYlX7+w/D5l7LoQZdn/vVMJ8p9WBUL25PUdWVAQ8wAYTGBhOUYwIrPgWRzx/MWWA==
   dependencies:
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-patch-base" "5.25.60"
-    "@bfchain/core-transaction-logic-verifier" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-patch-base" "5.25.61"
+    "@bfchain/core-transaction-logic-verifier" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-patch@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch/-/core-patch-5.25.60.tgz#87ebdf99c552a11efd462b770ee94d6de10da0b5"
-  integrity sha512-ELFhynkbRknJ5lSPEqfRvE46fc/OV2U+2ZyzVqHP7qtQB/ldZJZP2m5V7OGkjPCWb4gmnNvBEQ18nmaqR/fwtA==
+"@bfchain/core-patch@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-patch/-/core-patch-5.25.61.tgz#24b0b380ef673af5a1d1fb39f6818c90ee46e9a5"
+  integrity sha512-qwy7cCanVQSj4116frLpvALHgrObWCYXgRrOM/rKx3lpJ4i+l7vPm+pWOLBnNPTor/44L23cmqfJ7c9RRGpolw==
   dependencies:
-    "@bfchain/core-patch-1" "5.25.60"
-    "@bfchain/core-patch-base" "5.25.60"
-    "@bfchain/core-patch-v2" "5.25.60"
-    "@bfchain/core-patch-v3" "5.25.60"
-    "@bfchain/core-patch-v4" "5.25.60"
-    "@bfchain/core-patch-v5" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-patch-1" "5.25.61"
+    "@bfchain/core-patch-base" "5.25.61"
+    "@bfchain/core-patch-v2" "5.25.61"
+    "@bfchain/core-patch-v3" "5.25.61"
+    "@bfchain/core-patch-v4" "5.25.61"
+    "@bfchain/core-patch-v5" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-transaction-complex@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-transaction-complex/-/core-transaction-complex-5.25.60.tgz#2c2529b1a1205fdf03fcc07daaec58911e7f900c"
-  integrity sha512-Gb9+OaSEJO8UlvapvZUB26RJSNOE3L7yI5TRSex1EB0LXAvZuOuXCOK04KrA/4rJNX6icPlhL3doMj3bmkjLXA==
+"@bfchain/core-transaction-complex@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-transaction-complex/-/core-transaction-complex-5.25.61.tgz#00f1f2e6e25809bcc1e7100288d56cc6d47448ce"
+  integrity sha512-qxgTTCAYAGE3rn4iLXUa+0952E2+XyNrQRFBeGPZTL1b9Z0P9XInRKWcubJ2RzPdE9FX4VlQrNLGIUwh8E9gcA==
   dependencies:
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-transaction" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-transaction" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-transaction-logic-verifier@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-transaction-logic-verifier/-/core-transaction-logic-verifier-5.25.60.tgz#80720bfb509730093b54828f93b19001bbbd4ac8"
-  integrity sha512-hqaXm68TcIEt9DdvcCtKF7yBnjg8rZZAKtbOqLZVILsAgO3+wOwibo8vl8hW77MVS+Tzcn7jwxWLkGxqdUxwPw==
+"@bfchain/core-transaction-logic-verifier@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-transaction-logic-verifier/-/core-transaction-logic-verifier-5.25.61.tgz#ed59a8d4948eb0626a253284f5a82f3d04ea5bae"
+  integrity sha512-4IrmyxZHJfua5IQ119c6GFFZDMsBCGvzcaM6d9VfkVjOc2sEXTUtsoC8i/h8Tgc+431F9OGuND6pPv7MTR2amw==
   dependencies:
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-model" "5.25.60"
-    "@bfchain/core-transaction" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-model" "5.25.61"
+    "@bfchain/core-transaction" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
 
-"@bfchain/core-transaction@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-transaction/-/core-transaction-5.25.60.tgz#3c34baaa0be575b6cbe672ddd5a9351c6668e2e5"
-  integrity sha512-igkHf8HSgZzoSYxsNSD+2Ih1Zc28yqF+ri9teAl82URZF27qBD8iR3wERtsJGu8NJu1u24Q3yurm+keu/55xgg==
+"@bfchain/core-transaction@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-transaction/-/core-transaction-5.25.61.tgz#65808236968e243613b20aa0ea97367b05d4fce5"
+  integrity sha512-M8FfEMtEpbkkbEKcNVDQRSgZet7qLqtbo8g3OmKkjVXMXNISP6yXocXq4w37NUBPVk8iABqbej7vrGILreeqpg==
   dependencies:
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-model" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-model" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
 
-"@bfchain/core-typings@5.25.60", "@bfchain/core-typings@~5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-typings/-/core-typings-5.25.60.tgz#2312a6e97c60e0a7a8d7d6ed6ef614c9aaf58493"
-  integrity sha512-JhiNsHCOsgSkJTkzuH+2+68ktsIXZpqFWV+CmsLYhTAaI7To9o42HGjO8BLLsvZhCZ9V18VvwB1socO6P0NqBg==
+"@bfchain/core-typings@5.25.61", "@bfchain/core-typings@~5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-typings/-/core-typings-5.25.61.tgz#3d2817583d168e1baa6fecc0b135c613a8492d45"
+  integrity sha512-qWmeG4s7mFXLNilfjjDMJ7Ax4qEKd4Szaak7SYxxkUaO+BbEZeULRd9Wd4AtKiCiSUmwwxloy5udhT3WNZDVuQ==
 
-"@bfchain/core-util-base58@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-util-base58/-/core-util-base58-5.25.60.tgz#54b8604159eae1743a711c7ef84a8e7ef8cb6917"
-  integrity sha512-0l1YEJ7lffOD21GbX6RKj81BWH4sAM2ht+72zymQoeqCJ0YcXNJwXGutME6Be3YLAyzd9vO1ULwMDrwzyh5gtw==
+"@bfchain/core-util-base58@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-util-base58/-/core-util-base58-5.25.61.tgz#37c910095d57ad683138d911822191b734bd4456"
+  integrity sha512-mM/rOO0Kqx/O8D7VJCJGcM6/F71ScP3WxpbgVgY8JLVRFvMVKOGVU9z24mZuhRRJFQSukWi1km5EiVRbauhNgQ==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core-util-exception-errorcode@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-util-exception-errorcode/-/core-util-exception-errorcode-5.25.60.tgz#a2e08ff7fcad8a8d9f231f96f36f2c069b899a05"
-  integrity sha512-1vz9DG1q/7P40qAcg6wd+44pzivKzch74KDgaKNt0czrwyUkFKjbd4gQgldc/I4In09n2ZePfJu8z/5vsht11g==
+"@bfchain/core-util-exception-errorcode@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-util-exception-errorcode/-/core-util-exception-errorcode-5.25.61.tgz#5ed416fe3cdeff9430f7b71e76e58121d468f09c"
+  integrity sha512-xkrOmq2OAQEge2km4HkK/zUwNaXM42BtbNAm/D549CR1ve6zQWdJa5jBDxbmNVXs5EueaS3aGzxKWtwpx6tpaw==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
 
-"@bfchain/core-util-exception@5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore-util-exception/-/core-util-exception-5.25.60.tgz#add7ddbe8c37fe74db5f143e7209722f1f1a32a6"
-  integrity sha512-bJ4mbvM+AWhDuF3dVtfEWGx5yTFPsMoBAvTpQ5Dm++CLADGidOgrDYawkvn2CvjPW0T6f9PRAbwGvxIlAIdTBQ==
+"@bfchain/core-util-exception@5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore-util-exception/-/core-util-exception-5.25.61.tgz#564ecbc5f3652eaf8af943ea1083db1f30616e93"
+  integrity sha512-NnL2H/6IWJfV5A1Ou1dkHN6fRFoVzL0s3Ykvu9bF4JXG9qwzVUrWNjOt3RUhOOQhJB1hnFzJC56YILbV7XbxkA==
   dependencies:
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-exception-errorcode" "5.25.60"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-exception-errorcode" "5.25.61"
 
-"@bfchain/core@~5.25.60":
-  version "5.25.60"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcore/-/core-5.25.60.tgz#6f6bc091e620d4b1a6f73b16336317768f1952e1"
-  integrity sha512-8/m5vhABgItTnZxy5V5MLGUios5nY6XwvcG9X4AUy7aWPzzqk1OoY2zYqgtOdABzGLnmFm5RS94sAMzWjdOZBA==
+"@bfchain/core@~5.25.61":
+  version "5.25.61"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcore/-/core-5.25.61.tgz#e125f912e00297fcec4a7952fd09f6d70ae525f5"
+  integrity sha512-DszDTt1KbLWdOsFU3fqiPJ7GjrEz2BGVxzIU228xc3QXsP+KssixRL5NLhDiFOUZEqfZmCaLGJxmewygTAVTTQ==
   dependencies:
-    "@bfchain/core-account" "5.25.60"
-    "@bfchain/core-block" "5.25.60"
-    "@bfchain/core-block-logic-verifier" "5.25.60"
-    "@bfchain/core-block-ticker" "5.25.60"
-    "@bfchain/core-channel" "5.25.60"
-    "@bfchain/core-crypto" "5.25.60"
-    "@bfchain/core-helper" "5.25.60"
-    "@bfchain/core-model" "5.25.60"
-    "@bfchain/core-patch" "5.25.60"
-    "@bfchain/core-transaction" "5.25.60"
-    "@bfchain/core-transaction-complex" "5.25.60"
-    "@bfchain/core-transaction-logic-verifier" "5.25.60"
-    "@bfchain/core-typings" "5.25.60"
-    "@bfchain/core-util-base58" "5.25.60"
-    "@bfchain/core-util-exception" "5.25.60"
+    "@bfchain/core-account" "5.25.61"
+    "@bfchain/core-block" "5.25.61"
+    "@bfchain/core-block-logic-verifier" "5.25.61"
+    "@bfchain/core-block-ticker" "5.25.61"
+    "@bfchain/core-channel" "5.25.61"
+    "@bfchain/core-crypto" "5.25.61"
+    "@bfchain/core-helper" "5.25.61"
+    "@bfchain/core-model" "5.25.61"
+    "@bfchain/core-patch" "5.25.61"
+    "@bfchain/core-transaction" "5.25.61"
+    "@bfchain/core-transaction-complex" "5.25.61"
+    "@bfchain/core-transaction-logic-verifier" "5.25.61"
+    "@bfchain/core-typings" "5.25.61"
+    "@bfchain/core-util-base58" "5.25.61"
+    "@bfchain/core-util-exception" "5.25.61"
 
-"@bfchain/coretools-generate-genesis-block-license@1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-generate-genesis-block-license/-/coretools-generate-genesis-block-license-1.12.37.tgz#c61bf8f3ea28b7b1c801f876b313a1e0894b2d53"
-  integrity sha512-O3IiJ+4/b9GY/adFG37hvN81vQ9Wgdsp5NgkA0x3HcZaERdhznN1p8JVfltZlUxOqX7XMshirQp54XXMh9KWMA==
+"@bfchain/coretools-generate-genesis-block-license@1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-generate-genesis-block-license/-/coretools-generate-genesis-block-license-1.12.38.tgz#41c07adea65e6b712944b4df4c194852fcf2720f"
+  integrity sha512-lQ+4ZuLlLfrBMp8d7vS8UOfbOPi9Rvf/DRER4SaVourSqQz7DNZW9Xad1J/DW+HIKQXCKLKcnY5YCGGI0dvJWw==
   dependencies:
-    "@bfchain/core" "~5.25.60"
-    "@bfchain/coretools-generate-genesis-block" "1.12.37"
-    "@bfchain/coretools-helper-core" "1.12.37"
-    "@bfchain/coretools-typings" "1.12.37"
-    "@bfchain/license" "~3.2.20"
+    "@bfchain/core" "~5.25.61"
+    "@bfchain/coretools-generate-genesis-block" "1.12.38"
+    "@bfchain/coretools-helper-core" "1.12.38"
+    "@bfchain/coretools-typings" "1.12.38"
+    "@bfchain/license" "~3.2.21"
     "@bfchain/protobuf" "~4.1.10"
     "@bfchain/util" "~4.12.26"
 
-"@bfchain/coretools-generate-genesis-block@1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-generate-genesis-block/-/coretools-generate-genesis-block-1.12.37.tgz#b08541f19c0c5a4f2ba9471c04b46c5d6264c38a"
-  integrity sha512-KM+D99qLLHoZ6vMMGP8On2r/ZLHWOq6DCSkmfAHX+3yYem+3xE9cvRXWX9sG46cl5jGnWafE4Bv+TYZrvkWWHQ==
+"@bfchain/coretools-generate-genesis-block@1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-generate-genesis-block/-/coretools-generate-genesis-block-1.12.38.tgz#28216409cb66a14306c9ae21cab701ab30e707fa"
+  integrity sha512-YRnrKdpAS0yBPCcN/rvlJuJtzOEmmgLK0LOf3aq5bS3X5drHOmayIc6kE54cpEwOdlc/i7jxaL2CZEL9TdAj9A==
   dependencies:
-    "@bfchain/core" "~5.25.60"
-    "@bfchain/coretools-helper-core" "1.12.37"
-    "@bfchain/coretools-secret" "1.12.37"
-    "@bfchain/coretools-transaction" "1.12.37"
-    "@bfchain/coretools-typings" "1.12.37"
+    "@bfchain/core" "~5.25.61"
+    "@bfchain/coretools-helper-core" "1.12.38"
+    "@bfchain/coretools-secret" "1.12.38"
+    "@bfchain/coretools-transaction" "1.12.38"
+    "@bfchain/coretools-typings" "1.12.38"
     "@bfchain/protobuf" "~4.1.10"
     "@bfchain/util" "~4.12.26"
 
-"@bfchain/coretools-helper-core@1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-helper-core/-/coretools-helper-core-1.12.37.tgz#44b9c5b143362092ca56979432e980548960b622"
-  integrity sha512-UKOmxgBhkgOchUFfg2iKzSdjgZr34zmESPLGNHKLBlYPu4ehARS6UZNOPRQTFNmi98NPqBgqLQOtytiVXTunYg==
+"@bfchain/coretools-helper-core@1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-helper-core/-/coretools-helper-core-1.12.38.tgz#92a011028de4eec3b5a640abe589112a2d6bf77e"
+  integrity sha512-mtcCM8Cxm8LoCS1T36dvjCc6SPUKZ6o2+59gYZ3BDF9BsGEf3AHtRnOj5Q9xioyKJYXB77j/+p2fN7FGMQ+mfw==
   dependencies:
-    "@bfchain/coretools-typings" "1.12.37"
+    "@bfchain/coretools-typings" "1.12.38"
 
-"@bfchain/coretools-helper@1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-helper/-/coretools-helper-1.12.37.tgz#1ea7331aa611ae82da67665277feddf383bfc741"
-  integrity sha512-eTTMP+1gUXDuS7sK+kYNGFFuwghinh0AoSRHa9YRjV2qADVWuunyROv9qIVfHPvJCORPiMapfcoB42/8/QCj9Q==
+"@bfchain/coretools-helper@1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-helper/-/coretools-helper-1.12.38.tgz#f85b5fb39c07e5bf46d98e6a355c4ac22d4305e7"
+  integrity sha512-nOJnwNw4yneW402FEjeXpkxnjLnVPpg3s528S/qh6JYzNxkRvvqjJDY3c7rbPLyZnOwG5/zXRoI3Obp+1FPP2g==
   dependencies:
-    "@bfchain/coretools-helper-core" "1.12.37"
-    "@bfchain/coretools-typings" "1.12.37"
+    "@bfchain/coretools-helper-core" "1.12.38"
+    "@bfchain/coretools-typings" "1.12.38"
 
-"@bfchain/coretools-obtain-genesis-info@1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-obtain-genesis-info/-/coretools-obtain-genesis-info-1.12.37.tgz#8ffa8c40619650ad2d03fde2eeff72a6458acfe3"
-  integrity sha512-T6DZomhirsgBtWRfhx03JlyPtSCSQkbn7sgD7O1zjrqyyilMePu53kYFK5JyBMqi21SOlMiqOAivYb6YqURDIA==
+"@bfchain/coretools-obtain-genesis-info@1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-obtain-genesis-info/-/coretools-obtain-genesis-info-1.12.38.tgz#3159097a9043fb53942657623fb0eeb099d3142f"
+  integrity sha512-GiUG8ishiRtUWQSDJrTsE4b+U6SErMH1QdImrFnSberkgg7PJic9wJlO9vFPI1VYBFbHaYAYxbPCW9T2QfFt2w==
   dependencies:
-    "@bfchain/coretools-helper-core" "1.12.37"
-    "@bfchain/coretools-typings" "1.12.37"
-    "@bfchain/license" "~3.2.20"
+    "@bfchain/coretools-helper-core" "1.12.38"
+    "@bfchain/coretools-typings" "1.12.38"
+    "@bfchain/license" "~3.2.21"
 
-"@bfchain/coretools-secret@1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-secret/-/coretools-secret-1.12.37.tgz#f300a0492afe7667a9d599b37aa3698bfe46573c"
-  integrity sha512-LRFVBXp5Ffq3AYxVxShpGgB+7vwjDs1Mf0NEgfQVGO1a8Cun7S1fkghJWNUhCIgeXu1++ui4/92LNJMf5PkbRA==
+"@bfchain/coretools-secret@1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-secret/-/coretools-secret-1.12.38.tgz#efee7c38bb9b803d87caa52bd3854d5e074faf54"
+  integrity sha512-ZZZeMTjSmEvqDfGdUsOOPfKtDojYjBp92dhwPO/oQxXsTl61r1URUSYy95M8/5AFdQrHGJfIXI2mPaVuuvqwVA==
   dependencies:
-    "@bfchain/core-typings" "~5.25.60"
-    "@bfchain/coretools-typings" "1.12.37"
+    "@bfchain/core-typings" "~5.25.61"
+    "@bfchain/coretools-typings" "1.12.38"
     bn.js "=4.11.8"
     unorm "^1.4.1"
 
-"@bfchain/coretools-transaction@1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-transaction/-/coretools-transaction-1.12.37.tgz#88b377d9f523e7b4878b22aa27221182b3605393"
-  integrity sha512-Y4dfaTac/CUch9LLAHnbbJMD/IpZWYe8//ybOIpG3bZCC+TI5owKe2dx4ai1URHWlBE9wrhc/PeRe7hmjp+HhA==
+"@bfchain/coretools-transaction@1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-transaction/-/coretools-transaction-1.12.38.tgz#0db75f97409a9adafe539fe1a3014bf4e151d76a"
+  integrity sha512-M1btyaPq+jbfARWaBgoYlXVsNMdAfnwsMFln8Tr4CNF0UCSKKx2jxfPub2XmWX0tRyLKdJSki5oRNbbjYUDjDw==
   dependencies:
-    "@bfchain/core" "~5.25.60"
-    "@bfchain/coretools-typings" "1.12.37"
+    "@bfchain/core" "~5.25.61"
+    "@bfchain/coretools-typings" "1.12.38"
     "@bfchain/protobuf" "~4.1.10"
     "@bfchain/util" "~4.12.26"
 
-"@bfchain/coretools-typings@1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-typings/-/coretools-typings-1.12.37.tgz#da2f84f5f47288c8d9cde9d58e4f844f76cda867"
-  integrity sha512-SGDGVyz2KNiw5m0E+6ezlAXHBY1yOZcQZh7sTmX2YFN1ywpHc+aCp2XeQaayfxqRBxx4DmALk0AeleLejDnQQw==
+"@bfchain/coretools-typings@1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools-typings/-/coretools-typings-1.12.38.tgz#2f2dcde109827245494f39deb93cc6c5e897f5a1"
+  integrity sha512-fYSsIIuU4j79n4Pp6hS5FKXy/VHcxEr4e2rStDPafGbd9qGqVT1A/k4R09EZfy4YprOZ6aT9qcnyYzxA/L8YyA==
 
-"@bfchain/coretools@~1.12.37":
-  version "1.12.37"
-  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools/-/coretools-1.12.37.tgz#670d10aff00a2a931d171ab9f75da0684b8b108f"
-  integrity sha512-yalKKvPw3sj7Y1dk7tujVBrxQUSt/ow9cYAlLasIs1iL5JVgGFGEDK03cs24lwnGDGPYgfRoqZA5gbGT1gcB+g==
+"@bfchain/coretools@~1.12.38":
+  version "1.12.38"
+  resolved "http://192.168.250.245:4873/@bfchain%2fcoretools/-/coretools-1.12.38.tgz#50d650274771d21cb4f7c07a118759db21197fa2"
+  integrity sha512-etJnsWRN6YrYiBqUC5kllZxgrB4E4ToWBf3Pfn6rXIGBz/OGjjLhFKtXNvxvGyM2QYRj3eDwC1+UXTd9QWrxxw==
   dependencies:
-    "@bfchain/coretools-generate-genesis-block" "1.12.37"
-    "@bfchain/coretools-generate-genesis-block-license" "1.12.37"
-    "@bfchain/coretools-helper" "1.12.37"
-    "@bfchain/coretools-obtain-genesis-info" "1.12.37"
-    "@bfchain/coretools-secret" "1.12.37"
-    "@bfchain/coretools-transaction" "1.12.37"
-    "@bfchain/coretools-typings" "1.12.37"
+    "@bfchain/coretools-generate-genesis-block" "1.12.38"
+    "@bfchain/coretools-generate-genesis-block-license" "1.12.38"
+    "@bfchain/coretools-helper" "1.12.38"
+    "@bfchain/coretools-obtain-genesis-info" "1.12.38"
+    "@bfchain/coretools-secret" "1.12.38"
+    "@bfchain/coretools-transaction" "1.12.38"
+    "@bfchain/coretools-typings" "1.12.38"
 
 "@bfchain/devkit-ts-creator@^1.3.4":
   version "1.3.4"
@@ -725,17 +725,17 @@
     yaml "^1.10.2"
     yargs "^17.0.1"
 
-"@bfchain/license-typings@3.2.20":
-  version "3.2.20"
-  resolved "http://192.168.250.245:4873/@bfchain%2flicense-typings/-/license-typings-3.2.20.tgz#56e121f434b3da7290eeeeff36568d52ecf49ccf"
-  integrity sha512-az7DSfhAnyMl+Bi8gY3jmi2EU7ijd9sXdB/Gx/vnrVhP9ByrEF7FYxO+HuMhOSGEeVanFlEaDjeYZdsI2MxwRQ==
+"@bfchain/license-typings@3.2.21":
+  version "3.2.21"
+  resolved "http://192.168.250.245:4873/@bfchain%2flicense-typings/-/license-typings-3.2.21.tgz#d77aa33bb871a74303f58c15486968e265ea4d6b"
+  integrity sha512-oKn0/CxBnbiQ6iRamzipPxASWEy5J6BaOvY5AyglA3ENJFRv1ormnVvPrQgaehr45ycTF+ynFaPdxek1/iwmbw==
 
-"@bfchain/license@~3.2.20":
-  version "3.2.20"
-  resolved "http://192.168.250.245:4873/@bfchain%2flicense/-/license-3.2.20.tgz#4933a5645c69f457c0c9a1a1cda9eaf285ca5b06"
-  integrity sha512-On9v1seQnHQk4Y09UXiYu4LpaHrj/Bi57hRg67T4Z3frUvCCtk2VApQQqPPIvDp1qfxaANo5QD3AMHg3G1Accg==
+"@bfchain/license@~3.2.21":
+  version "3.2.21"
+  resolved "http://192.168.250.245:4873/@bfchain%2flicense/-/license-3.2.21.tgz#94df63a08d5cdbc343b675436492694649419462"
+  integrity sha512-JXTSGNNvOJBjfaSu3c8iQNYaFjzg+mTB+MEFZ1fUhswbJqqGnaQ4IGqvuWEmgtJHWDtXLnsSx4uIgy/rVHbv9A==
   dependencies:
-    "@bfchain/license-typings" "3.2.20"
+    "@bfchain/license-typings" "3.2.21"
 
 "@bfchain/pkgm@^1.1.1":
   version "1.2.3"
