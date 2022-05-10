@@ -193,6 +193,11 @@ export const enum GENERATE_TRANSACTION_API_PATH {
     /**批量创建非同质权益 */
     TR_ISSUE_ENTITY_MULTI = "/generate/issueEntityMulti",
 
+    /**创建批量任意资产交换交易 */
+    TR_TO_EXCHANGE_ANY_MULTI = "/generate/toExchangeAnyMulti",
+    /**创建接受批量任意资产交换交易 */
+    TR_BE_EXCHANGE_ANY_MULTI = "/generate/beExchangeAnyMulti",
+
     /**创建注册链交易 */
     TR_REGISTER_CHAIN = "/generate/registerChain",
     /**创建权益迁出交易 */

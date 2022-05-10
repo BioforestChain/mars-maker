@@ -1,0 +1,48 @@
+import type { ToExchangeAnyMultiTransaction } from "@bfchain/core";
+import { Injectable } from "@bfchain/util";
+import { TransactionFactory } from "./_transactionFactory";
+import { myToExchangeAnyMulti } from "@bfchain/coretools-transaction";
+import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
+
+@Injectable()
+export class ToExchangeAnyMultiFactory extends TransactionFactory<ToExchangeAnyMultiTransaction> {
+    readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY_MULTI;
+
+    async generateTransaction(request: BFChainPcSdk.Transaction.ToExchangeAnyMultiTransactionParams) {
+        this.verify(request);
+        const { toExchangeInfos, beExchangeInfo, ciphertexts } = request;
+        const { magic, chainName } = this.bfchainCore.config;
+
+        const toExchangeAssets: BFChainCore.ToExchangeAssetV1JSON[] = [];
+        for (const toExchangeInfo of toExchangeInfos) {
+            toExchangeAssets.push({
+                toExchangeSource: toExchangeInfo.toExchangeSource || magic,
+                toExchangeChainName: toExchangeInfo.toExchangeChainName || chainName,
+                toExchangeParentAssetType: toExchangeInfo.toExchangeParentAssetType,
+                toExchangeAssetType: toExchangeInfo.toExchangeAssetType,
+                toExchangeAssetPrealnum: toExchangeInfo.toExchangeAssetPrealnum,
+                assetExchangeWeightRatio: toExchangeInfo.assetExchangeWeightRatio,
+                taxInformation: toExchangeInfo.taxInformation,
+            });
+        }
+
+        const tr = await myToExchangeAnyMulti.generateToExchangeAnyMulti(
+            this.getTransactionBody(request),
+            {
+                cipherPublicKeys: [],
+                toExchangeAssets,
+                beExchangeAsset: {
+                    beExchangeSource: beExchangeInfo.beExchangeSource || magic,
+                    beExchangeChainName: beExchangeInfo.beExchangeChainName || chainName,
+                    beExchangeParentAssetType: beExchangeInfo.beExchangeParentAssetType,
+                    beExchangeAssetType: beExchangeInfo.beExchangeAssetType,
+                    beExchangeAssetPrealnum: beExchangeInfo.beExchangeAssetPrealnum,
+                },
+            },
+            ciphertexts,
+            this.getAccountPowInfo(request),
+            this.bfchainCore
+        );
+        return tr.toJSON();
+    }
+}

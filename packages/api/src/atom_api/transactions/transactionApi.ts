@@ -33,6 +33,8 @@ import {
     ToExchangeAnyApi,
     BeExchangeAnyApi,
     IssueEntityMultiApi,
+    ToExchangeAnyMultiApi,
+    BeExchangeAnyMultiApi,
     RegisterChainApi,
     EmigrateAssetApi,
     ImmigrateAssetApi,
@@ -103,6 +105,8 @@ export class TransactionApi {
         const toExchangeAnyApi = new ToExchangeAnyApi(networkHelper);
         const beExchangeAnyApi = new BeExchangeAnyApi(networkHelper);
         const issueEntityMultiApi = new IssueEntityMultiApi(networkHelper);
+        const toExchangeAnyMultiApi = new ToExchangeAnyMultiApi(networkHelper);
+        const beExchangeAnyMultiApi = new BeExchangeAnyMultiApi(networkHelper);
         const registerChainApi = new RegisterChainApi(networkHelper);
         const emigrateAssetApi = new EmigrateAssetApi(networkHelper);
         const immigrateAssetApi = new ImmigrateAssetApi(networkHelper);
@@ -141,6 +145,8 @@ export class TransactionApi {
         TRANSACTION_API_MAP.set(giftAnyApi.GENERATE_API_PATH, giftAnyApi);
         TRANSACTION_API_MAP.set(grabAnyApi.GENERATE_API_PATH, grabAnyApi);
         TRANSACTION_API_MAP.set(issueEntityMultiApi.GENERATE_API_PATH, issueEntityMultiApi);
+        TRANSACTION_API_MAP.set(toExchangeAnyMultiApi.GENERATE_API_PATH, toExchangeAnyMultiApi);
+        TRANSACTION_API_MAP.set(beExchangeAnyMultiApi.GENERATE_API_PATH, beExchangeAnyMultiApi);
         TRANSACTION_API_MAP.set(registerChainApi.GENERATE_API_PATH, registerChainApi);
         TRANSACTION_API_MAP.set(emigrateAssetApi.GENERATE_API_PATH, emigrateAssetApi);
         TRANSACTION_API_MAP.set(immigrateAssetApi.GENERATE_API_PATH, immigrateAssetApi);
@@ -816,6 +822,44 @@ export class TransactionApi {
     /**创建并发送批量发行非同质权益模板事件 */
     async sendIssueEntityMulti(argv: BFChainPcSdk.Transaction.IssueEntityMultiTransactionParams) {
         const api = this.__getTransactionApi<BFChainPcSdk.Transaction.IssueEntityMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_MULTI);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建批量任意资产交换事件 */
+    async generateToExchangeAnyMulti(argv: BFChainPcSdk.Transaction.ToExchangeAnyMultiTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.ToExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY_MULTI);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送批量任意资产交换事件 */
+    async broadcastToExchangeAnyMulti(transaction: BFChainCore.ToExchangeAnyMultiTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.ToExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY_MULTI);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送批量任意资产交换事件 */
+    async sendToExchangeAnyMulti(argv: BFChainPcSdk.Transaction.ToExchangeAnyMultiTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.ToExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY_MULTI);
+        const result = await api.sendTransaction(argv);
+        return result;
+    }
+
+    /**创建接受批量任意资产交换事件 */
+    async generateBeExchangeAnyMulti(argv: BFChainPcSdk.Transaction.BeExchangeAnyMultiTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.BeExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY_MULTI);
+        const result = await api.generateTransaction(argv);
+        return result;
+    }
+    /**发送接受批量任意资产交换事件 */
+    async broadcastBeExchangeAnyMulti(transaction: BFChainCore.BeExchangeAnyMultiTransactionJSON) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.BeExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY_MULTI);
+        const result = await api.broadcastTransaction(transaction);
+        return result;
+    }
+    /**创建并发送接受批量任意资产交换事件 */
+    async sendBeExchangeAnyMulti(argv: BFChainPcSdk.Transaction.BeExchangeAnyMultiTransactionParams) {
+        const api = this.__getTransactionApi<BFChainPcSdk.Transaction.BeExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY_MULTI);
         const result = await api.sendTransaction(argv);
         return result;
     }

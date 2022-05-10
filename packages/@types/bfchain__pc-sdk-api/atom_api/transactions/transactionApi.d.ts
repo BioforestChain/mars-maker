@@ -304,6 +304,24 @@ export declare class TransactionApi {
     sendIssueEntityMulti(argv: BFChainPcSdk.Transaction.IssueEntityMultiTransactionParams): Promise<BFChainPcSdk.Transaction.TransactionApiReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.IssueEntityMultiAssetV1JSON>, "recipientId"> & {
         recipientId: string;
     }>>;
+    generateToExchangeAnyMulti(argv: BFChainPcSdk.Transaction.ToExchangeAnyMultiTransactionParams): Promise<BFChainPcSdk.TransactionServer.GenerateTransactionReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.ToExchangeAnyMultiAssetJSON>, "recipientId"> & {
+        recipientId: undefined;
+    }>>;
+    broadcastToExchangeAnyMulti(transaction: BFChainCore.ToExchangeAnyMultiTransactionJSON): Promise<BFChainPcSdk.Transaction.TransactionApiReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.ToExchangeAnyMultiAssetJSON>, "recipientId"> & {
+        recipientId: undefined;
+    }>>;
+    sendToExchangeAnyMulti(argv: BFChainPcSdk.Transaction.ToExchangeAnyMultiTransactionParams): Promise<BFChainPcSdk.Transaction.TransactionApiReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.ToExchangeAnyMultiAssetJSON>, "recipientId"> & {
+        recipientId: undefined;
+    }>>;
+    generateBeExchangeAnyMulti(argv: BFChainPcSdk.Transaction.BeExchangeAnyMultiTransactionParams): Promise<BFChainPcSdk.TransactionServer.GenerateTransactionReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.BeExchangeAnyMultiAssetJSON>, "recipientId"> & {
+        recipientId: string;
+    }>>;
+    broadcastBeExchangeAnyMulti(transaction: BFChainCore.BeExchangeAnyMultiTransactionJSON): Promise<BFChainPcSdk.Transaction.TransactionApiReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.BeExchangeAnyMultiAssetJSON>, "recipientId"> & {
+        recipientId: string;
+    }>>;
+    sendBeExchangeAnyMulti(argv: BFChainPcSdk.Transaction.BeExchangeAnyMultiTransactionParams): Promise<BFChainPcSdk.Transaction.TransactionApiReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.BeExchangeAnyMultiAssetJSON>, "recipientId"> & {
+        recipientId: string;
+    }>>;
     generateRegisterChain(argv: BFChainPcSdk.Transaction.RegisterChainTransactionParams): Promise<BFChainPcSdk.TransactionServer.GenerateTransactionReturn<Omit<BFChainCore.TransactionJSON<BFChainCore.RegisterChainAssetJSON>, "recipientId"> & {
         recipientId: undefined;
     }>>;

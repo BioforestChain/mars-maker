@@ -298,6 +298,46 @@ declare namespace BFChainPcSdk {
                 };
             };
         }
+        interface ToExchangeAnyMultiTransactionParams extends TransactionCommonParamsWithoutRecipientId {
+            toExchangeInfos: {
+                toExchangeSource?: string;
+                toExchangeChainName?: string;
+                toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                toExchangeAssetType: string;
+                toExchangeAssetPrealnum: string;
+                assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
+                taxInformation?: BFChainCore.TaxInformationJson;
+            }[];
+            beExchangeInfo: {
+                beExchangeSource?: string;
+                beExchangeChainName?: string;
+                beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                beExchangeAssetType: string;
+                beExchangeAssetPrealnum?: string;
+            };
+            ciphertexts?: string[];
+        }
+        interface BeExchangeAnyMultiTransactionParams extends TransactionCommonParamsWithRecipientId {
+            transactionSignature: string;
+            toExchangeInfos: {
+                toExchangeSource?: string;
+                toExchangeChainName?: string;
+                toExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                toExchangeAssetType: string;
+                toExchangeAssetPrealnum: string;
+                assetExchangeWeightRatio?: BFChainCore.AssetExchangeWeightRatioJSON;
+                taxInformation?: BFChainCore.TaxInformationJson;
+            }[];
+            beExchangeInfo: {
+                beExchangeSource?: string;
+                beExchangeChainName?: string;
+                beExchangeParentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                beExchangeAssetType: string;
+                beExchangeAssetPrealnum?: string;
+                taxInformation?: BFChainCore.TaxInformationJson;
+            };
+            ciphertext?: string;
+        }
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
             genesisBlock: string;
         }
