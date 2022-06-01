@@ -341,6 +341,11 @@ declare namespace BFChainPcSdk {
         interface TransactionMinFee {
             minFee: string;
         }
+        interface GenerateCiphertextSignatureParams extends CommonParams {
+            secret: string;
+            transactionSignature: string;
+            senderId: string;
+        }
         type CommonFactory = import("./atom_common/_commonFactory").CommonFactory<any>;
     }
 }

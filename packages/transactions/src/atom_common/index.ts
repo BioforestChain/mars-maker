@@ -7,3 +7,4 @@ export * from "./generateAddressByPublicKey";
 export * from "./asymmetricEncrypt";
 export * from "./asymmetricDecrypt";
 export * from "./calcTransactionMinFee";
+export * from "./generateCiphertextSignature";

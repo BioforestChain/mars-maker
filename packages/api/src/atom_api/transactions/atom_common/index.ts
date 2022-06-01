@@ -7,3 +7,4 @@ export * from "./generateAddressByPublicKeyApi";
 export * from "./asymmetricDecryptApi";
 export * from "./asymmetricEncryptApi";
 export * from "./calcTransactionMinFee";
+export * from "./generateCiphertextSignatureApi";

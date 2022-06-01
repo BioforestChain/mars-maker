@@ -300,4 +300,5 @@ export declare class TransactionApi {
     asymmetricEncrypt(argv: BFChainPcSdk.Common.AsymmetricEncryptParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.AsymmetricEncrypt>>;
     asymmetricDecrypt(argv: BFChainPcSdk.Common.AsymmetricDecryptParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.AsymmetricDecrypt>>;
     calcTransactionMinFee(argv: BFChainPcSdk.Common.CalcTransactionMinFeeParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.TransactionMinFee>>;
+    generateCiphertextSignature(argv: BFChainPcSdk.Common.GenerateCiphertextSignatureParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<string>>;
 }

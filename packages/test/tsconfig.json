@@ -12,6 +12,7 @@
         "src/common/generateAccount.ts",
         "src/common/generateAddressByPublicKey.ts",
         "src/common/generateAddressBySecret.ts",
+        "src/common/generateCiphertextSignature.ts",
         "src/common/isAddress.ts",
         "src/common/isPublicKey.ts",
         "src/index.ts",

@@ -9,6 +9,7 @@ import {
     AsymmetricEncryptFactory,
     AsymmetricDecryptFactory,
     CalcTransactionMinFee,
+    GenerateCiphertextSignatureFactory,
 } from "./atom_common";
 
 export const COMMON_FACTORY_MAP = new Map<BFChainPcSdk.Common.COMMON_API_PATH, BFChainPcSdk.Common.CommonFactory>();
@@ -23,6 +24,7 @@ export function CommonFactory(bfchainCore: BFChainCore) {
     const asymmetricEncryptFactory = new AsymmetricEncryptFactory(bfchainCore);
     const asymmetricDecryptFactory = new AsymmetricDecryptFactory(bfchainCore);
     const calcTransactionMinFee = new CalcTransactionMinFee(bfchainCore);
+    const generateCiphertextSignatureFactory = new GenerateCiphertextSignatureFactory(bfchainCore);
 
     COMMON_FACTORY_MAP.set(verifyAddressFactory.EXEC_API_PATH, verifyAddressFactory);
     COMMON_FACTORY_MAP.set(verifyPublicKeyFactory.EXEC_API_PATH, verifyPublicKeyFactory);
@@ -33,6 +35,7 @@ export function CommonFactory(bfchainCore: BFChainCore) {
     COMMON_FACTORY_MAP.set(asymmetricEncryptFactory.EXEC_API_PATH, asymmetricEncryptFactory);
     COMMON_FACTORY_MAP.set(asymmetricDecryptFactory.EXEC_API_PATH, asymmetricDecryptFactory);
     COMMON_FACTORY_MAP.set(calcTransactionMinFee.EXEC_API_PATH, calcTransactionMinFee);
+    COMMON_FACTORY_MAP.set(generateCiphertextSignatureFactory.EXEC_API_PATH, generateCiphertextSignatureFactory);
 
     Object.freeze(COMMON_FACTORY_MAP);
 }

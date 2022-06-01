@@ -216,4 +216,7 @@ export const enum COMMON_API_PATH {
     ASYMMETRIC_DECRYPT = "/common/asymmetricDecrypt",
     /**计算事件的最小手续费 */
     CALC_TRANSACTION_MIN_FEE = "/common/calcTransactionMinFee",
+
+    /**创建加密签名*/
+    GENERATE_CIPHERTEXT_SIGNATURE = "/common/generateCiphertextSignature",
 }

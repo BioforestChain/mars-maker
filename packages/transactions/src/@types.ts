@@ -536,6 +536,15 @@ declare namespace BFChainPcSdk {
             minFee: string;
         }
 
+        interface GenerateCiphertextSignatureParams extends CommonParams {
+            /**加密密钥 */
+            secret: string;
+            /**关联交易的签名 */
+            transactionSignature: string;
+            /**交易的发起账户地址 */
+            senderId: string;
+        }
+
         type CommonFactory = import("./atom_common/_commonFactory").CommonFactory<any>;
     }
 }
