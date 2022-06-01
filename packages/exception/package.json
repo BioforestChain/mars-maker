@@ -1,6 +1,6 @@
 {
   "name": "@bfchain/pc-sdk-exception",
-  "version": "1.2.46",
+  "version": "1.2.47",
   "description": "pc-sdk-exception for the third party",
   "main": "build/cjs/index.js",
   "type": "commonjs",
@@ -10,8 +10,8 @@
   "author": "BFChain Team",
   "license": "MIT",
   "dependencies": {
-    "@bfchain/pc-sdk-exception-errorcode": "1.2.46",
-    "@bfchain/pc-sdk-typings": "1.2.46"
+    "@bfchain/pc-sdk-exception-errorcode": "1.2.47",
+    "@bfchain/pc-sdk-typings": "1.2.47"
   },
   "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
   "files": [
