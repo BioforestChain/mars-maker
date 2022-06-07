@@ -1,25 +1,25 @@
 {
-  "name": "@bfchain/pc-sdk-api",
-  "version": "1.2.47",
-  "description": "pc-sdk-api for the third party",
-  "main": "build/cjs/index.js",
-  "type": "commonjs",
-  "keywords": [
-    "pc-sdk-api"
-  ],
-  "author": "BFChain Team",
-  "license": "MIT",
-  "dependencies": {
-    "@bfchain/pc-sdk-transactions-server": "1.2.47",
-    "@bfchain/pc-sdk-typings": "1.2.47",
-    "socket.io-client": "^1.7.4"
-  },
-  "devDependencies": {
-    "@types/socket.io-client": "^1.4.36"
-  },
-  "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
-  "files": [
-    "build"
-  ],
-  "types": "build/cjs/index.d.ts"
+    "name": "@bfchain/pc-sdk-api",
+    "version": "1.2.47",
+    "description": "pc-sdk-api for the third party",
+    "main": "build/cjs/index.js",
+    "type": "commonjs",
+    "keywords": [
+        "pc-sdk-api"
+    ],
+    "author": "BFChain Team",
+    "license": "MIT",
+    "dependencies": {
+        "@bfchain/pc-sdk-transactions-server": "1.2.47",
+        "@bfchain/pc-sdk-typings": "1.2.47",
+        "socket.io-client": "^1.7.4"
+    },
+    "devDependencies": {
+        "@types/socket.io-client": "^1.4.36"
+    },
+    "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
+    "files": [
+        "build"
+    ],
+    "types": "build/cjs/index.d.ts"
 }
