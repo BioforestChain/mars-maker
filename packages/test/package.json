@@ -1,6 +1,6 @@
 {
     "name": "@bfchain/pc-sdk-test",
-    "version": "1.2.48",
+    "version": "1.2.49",
     "description": "pc-sdk-test for the third party",
     "main": "build/cjs/index.js",
     "type": "commonjs",
@@ -11,8 +11,8 @@
     "license": "MIT",
     "dependencies": {
         "@bfchain/coretools": "~1.12.47",
-        "@bfchain/pc-sdk": "1.2.48",
-        "@bfchain/pc-sdk-typings": "1.2.48"
+        "@bfchain/pc-sdk": "1.2.49",
+        "@bfchain/pc-sdk-typings": "1.2.49"
     },
     "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
     "files": [
