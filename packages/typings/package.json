@@ -1,6 +1,6 @@
 {
     "name": "@bfchain/pc-sdk-typings",
-    "version": "1.2.49",
+    "version": "1.2.50",
     "description": "pc-sdk-typings for the third party",
     "main": "build/cjs/index.js",
     "type": "commonjs",
