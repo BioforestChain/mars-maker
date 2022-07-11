@@ -10,7 +10,7 @@
     "author": "BFChain Team",
     "license": "MIT",
     "dependencies": {
-        "@bfchain/coretools": "~1.12.49",
+        "@bfchain/coretools": "~1.12.50",
         "@bfchain/pc-sdk": "1.2.51",
         "@bfchain/pc-sdk-typings": "1.2.51"
     },
