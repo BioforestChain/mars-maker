@@ -14,7 +14,7 @@ export abstract class BasicPostApi<T extends BFChainPcSdk.Basic.BasicApiRequestR
         try {
             const result = await this.networkHelper.sendPostRequest<BFChainPcSdk.Basic.BasicApiReturn<T>>(apiPath, argv);
             return result;
-        } catch (e) {
+        } catch (e: any) {
             const errorInfo: BFChainPcSdk.Basic.BasicApiFailureReturn = {
                 success: false,
                 error: {

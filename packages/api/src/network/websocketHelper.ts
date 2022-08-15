@@ -5,7 +5,7 @@ import { maxOneFileSize, REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants"
 import { parsePostRequestParameter } from "@bfchain/pc-sdk-helper-request-parameter-parser";
 
 export class WebsocketHelper {
-    private __socket!: SocketIOClient.Socket;
+    private __socketMap = new Map<string, SocketIOClient.Socket>();
     private __transactionServerPort: number;
     private __configHelper: ApiConfigHelper;
     private __config: BFChainPcSdk.ApiConfig;
@@ -28,16 +28,8 @@ export class WebsocketHelper {
         return `http://${ips[Math.floor(Math.random() * ips.length)]}:${this.__config.port}`;
     }
 
-    get URL() {
-        return this.__getUrl();
-    }
-
-    private __getWebsocketHost() {
-        return `${this.URL}/systemChannel`;
-    }
-
-    get WEBSOCKET_HOST() {
-        return this.__getWebsocketHost();
+    private __getWebsocketHost(url = this.__getUrl()) {
+        return `${url}/systemChannel`;
     }
 
     createTransaction<T>(url: string, argv: { [key: string]: any }) {
@@ -57,9 +49,10 @@ export class WebsocketHelper {
         });
     }
 
-    private __init() {
+    private __init(url: string) {
+        const wsHost = this.__getWebsocketHost(url);
         return new Promise<SocketIOClient.Socket>((resolve, reject) => {
-            const socket = io.connect(this.WEBSOCKET_HOST, {
+            const socket = io.connect(wsHost, {
                 transports: ["websocket"],
                 timeout: this.__config.requestTimeOut,
                 transportOptions: {
@@ -69,43 +62,48 @@ export class WebsocketHelper {
                 },
             });
             socket.on("connect", () => {
-                console.debug(`connected to ${this.URL} `);
-                this.__socket = socket;
+                console.debug(`connected to ${url}`);
+                this.__socketMap.set(url, socket);
                 return resolve(socket);
             });
             socket.on("connect_error", (data: any) => {
-                return reject(new Error(`${this.URL} connect_error`));
+                return reject(new Error(`${url} connect_error`));
             });
             socket.on("connect_timeout", (data: any) => {
-                return reject(new Error(`${this.URL} connect_timeout`));
+                return reject(new Error(`${url} connect_timeout`));
             });
             socket.on("reconnect_attempt", (data: any) => {
-                return reject(new Error(`${this.URL} reconnect_attempt`));
+                return reject(new Error(`${url} reconnect_attempt`));
             });
             socket.on("reconnect_error", (data: any) => {
-                return reject(new Error(`${this.URL} reconnect_error`));
+                return reject(new Error(`${url} reconnect_error`));
             });
             socket.on("error", (data: any) => {
-                return reject(new Error(`${this.URL} error with`));
+                return reject(new Error(`${url} error with`));
             });
             socket.on("close", (data: any) => {
-                return reject(new Error(`${this.URL} close with`));
+                return reject(new Error(`${url} close with`));
             });
             socket.on("disconnect", () => {
-                return reject(new Error(`${this.URL} disconnected `));
+                return reject(new Error(`${url} disconnected `));
             });
         });
     }
 
     async getSocket() {
-        if (!this.__socket) {
-            await this.__init();
+        const url = this.__getUrl();
+        let socket = this.__socketMap.get(url);
+        if (!socket) {
+            socket = await this.__init(url);
         }
-        return this.__socket;
+        return socket;
     }
 
     async sendGetRequest<T>(url: string, argv?: { [key: string]: any }) {
         return new Promise<T>(async (resolve, reject) => {
+            const timeoutId = setTimeout(() => {
+                throw new Error(`request timeout ${url}`);
+            }, this.__config.requestTimeOut);
             try {
                 const socket = await this.getSocket();
                 socket.emit(url, argv, (result: BFChainPcSdk.ApiReturn) => {
@@ -113,12 +111,17 @@ export class WebsocketHelper {
                 });
             } catch (e) {
                 return reject(e);
+            } finally {
+                clearTimeout(timeoutId);
             }
         });
     }
 
     async sendPostRequest<T>(url: string, argv: { [key: string]: any }) {
         return new Promise<T>(async (resolve, reject) => {
+            const timeoutId = setTimeout(() => {
+                throw new Error(`request timeout ${url}`);
+            }, this.__config.requestTimeOut);
             try {
                 const socket = await this.getSocket();
                 socket.emit(url, argv, (result: BFChainPcSdk.ApiReturn) => {
@@ -126,6 +129,8 @@ export class WebsocketHelper {
                 });
             } catch (e) {
                 return reject(e);
+            } finally {
+                clearTimeout(timeoutId);
             }
         });
     }
