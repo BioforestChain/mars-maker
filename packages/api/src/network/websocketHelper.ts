@@ -101,36 +101,38 @@ export class WebsocketHelper {
 
     async sendGetRequest<T>(url: string, argv?: { [key: string]: any }) {
         return new Promise<T>(async (resolve, reject) => {
-            const timeoutId = setTimeout(() => {
-                throw new Error(`request timeout ${url}`);
-            }, this.__config.requestTimeOut);
+            let timeoutId!: NodeJS.Timeout;
             try {
+                timeoutId = setTimeout(() => {
+                    throw new Error(`request timeout ${url}`);
+                }, this.__config.requestTimeOut);
                 const socket = await this.getSocket();
                 socket.emit(url, argv, (result: BFChainPcSdk.ApiReturn) => {
+                    clearTimeout(timeoutId);
                     return resolve(result as any);
                 });
             } catch (e) {
-                return reject(e);
-            } finally {
                 clearTimeout(timeoutId);
+                return reject(e);
             }
         });
     }
 
     async sendPostRequest<T>(url: string, argv: { [key: string]: any }) {
         return new Promise<T>(async (resolve, reject) => {
-            const timeoutId = setTimeout(() => {
-                throw new Error(`request timeout ${url}`);
-            }, this.__config.requestTimeOut);
+            let timeoutId!: NodeJS.Timeout;
             try {
+                timeoutId = setTimeout(() => {
+                    throw new Error(`request timeout ${url}`);
+                }, this.__config.requestTimeOut);
                 const socket = await this.getSocket();
                 socket.emit(url, argv, (result: BFChainPcSdk.ApiReturn) => {
+                    clearTimeout(timeoutId);
                     return resolve(result as any);
                 });
             } catch (e) {
-                return reject(e);
-            } finally {
                 clearTimeout(timeoutId);
+                return reject(e);
             }
         });
     }
