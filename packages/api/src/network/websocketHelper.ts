@@ -104,7 +104,8 @@ export class WebsocketHelper {
             let timeoutId!: NodeJS.Timeout;
             try {
                 timeoutId = setTimeout(() => {
-                    throw new Error(`request timeout ${url}`);
+                    clearTimeout(timeoutId);
+                    reject(new Error(`request timeout ${url}`));
                 }, this.__config.requestTimeOut);
                 const socket = await this.getSocket();
                 socket.emit(url, argv, (result: BFChainPcSdk.ApiReturn) => {
@@ -123,7 +124,8 @@ export class WebsocketHelper {
             let timeoutId!: NodeJS.Timeout;
             try {
                 timeoutId = setTimeout(() => {
-                    throw new Error(`request timeout ${url}`);
+                    clearTimeout(timeoutId);
+                    reject(new Error(`request timeout ${url}`));
                 }, this.__config.requestTimeOut);
                 const socket = await this.getSocket();
                 socket.emit(url, argv, (result: BFChainPcSdk.ApiReturn) => {
