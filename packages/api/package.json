@@ -1,6 +1,6 @@
 {
     "name": "@bfchain/pc-sdk-api",
-    "version": "1.2.61",
+    "version": "1.2.62",
     "description": "pc-sdk-api for the third party",
     "main": "build/cjs/index.js",
     "type": "commonjs",
@@ -10,8 +10,8 @@
     "author": "BFChain Team",
     "license": "MIT",
     "dependencies": {
-        "@bfchain/pc-sdk-transactions-server": "1.2.61",
-        "@bfchain/pc-sdk-typings": "1.2.61",
+        "@bfchain/pc-sdk-transactions-server": "1.2.62",
+        "@bfchain/pc-sdk-typings": "1.2.62",
         "socket.io-client": "^1.7.4"
     },
     "devDependencies": {
