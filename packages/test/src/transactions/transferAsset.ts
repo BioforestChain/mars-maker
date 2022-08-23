@@ -22,11 +22,23 @@ import { Sdk } from "@bfchain/pc-sdk";
             recipientId: "cCET2Sxt2LPDhx44wxJ9uhkpviKNrSacvE",
         };
 
-        const sdk = new Sdk();
+        const sdk = new Sdk({ transactionServerPort: 8888 });
 
         const result = await sdk.api.transaction.generateTransferAsset(argv);
 
-        console.log(result);
+        if (result.success) {
+            console.log(result.result.asset.transferAsset);
+        }
+
+        const sdk2 = new Sdk({ transactionServerPort: 9999 });
+
+        const result2 = await sdk2.api.transaction.generateTransferAsset(argv);
+
+        if (result2.success) {
+            console.log(result2.result.asset.transferAsset);
+        }
+
+        // console.log(result);
     } catch (e) {
         console.log(e);
     }

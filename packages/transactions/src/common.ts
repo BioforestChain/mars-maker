@@ -11,10 +11,16 @@ import {
     CalcTransactionMinFee,
     GenerateCiphertextSignatureFactory,
 } from "./atom_common";
-
-export const COMMON_FACTORY_MAP = new Map<BFChainPcSdk.Common.COMMON_API_PATH, BFChainPcSdk.Common.CommonFactory>();
+import { EasyWeakMap } from "@bfchain/util";
+export const COMMON_FACTORY_MAP_WM = EasyWeakMap.from<BFChainCore, Map<BFChainPcSdk.Common.COMMON_API_PATH, BFChainPcSdk.Common.CommonFactory>>({
+    creater() {
+        return new Map();
+    },
+});
 
 export function CommonFactory(bfchainCore: BFChainCore) {
+    const COMMON_FACTORY_MAP = COMMON_FACTORY_MAP_WM.forceGet(bfchainCore);
+
     const verifyAddressFactory = new VerifyAddressFactory(bfchainCore);
     const verifyPublicKeyFactory = new VerifyPublicKeyFactory(bfchainCore);
     const generateKeypairFactory = new GenerateKeypairFactory(bfchainCore);

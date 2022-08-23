@@ -1,12 +1,18 @@
 import type { BFChainCore } from "@bfchain/core";
 import { MigrateCertificateGenerateFactory, MigrateCertificateFromAuthSignatureFactory, MigrateCertificateToAuthSignatureFactory } from "./migrate_certificate";
-
-export const MIGRATE_CERTIFICATE_FACTORY_MAP = new Map<
-    BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH,
-    BFChainPcSdk.CrossChain.MigrateCertificateFactory
->();
+import { EasyWeakMap } from "@bfchain/util";
+export const MIGRATE_CERTIFICATE_FACTORY_MAP_WM = EasyWeakMap.from<
+    BFChainCore,
+    Map<BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH, BFChainPcSdk.CrossChain.MigrateCertificateFactory>
+>({
+    creater() {
+        return new Map();
+    },
+});
 
 export function MigrateCertificateFactory(bfchainCore: BFChainCore) {
+    const MIGRATE_CERTIFICATE_FACTORY_MAP = MIGRATE_CERTIFICATE_FACTORY_MAP_WM.forceGet(bfchainCore);
+
     const migrateCertificateGenerateFactory = new MigrateCertificateGenerateFactory(bfchainCore);
     const migrateCertificateFromAuthSignatureFactory = new MigrateCertificateFromAuthSignatureFactory(bfchainCore);
     const migrateCertificateToAuthSignatureFactory = new MigrateCertificateToAuthSignatureFactory(bfchainCore);

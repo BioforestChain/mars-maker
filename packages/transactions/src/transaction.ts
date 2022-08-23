@@ -33,11 +33,19 @@ import {
     EmigrateAssetFactory,
     ImmigrateAssetFactory,
 } from "./atom_transaction";
-
-export const TRANSACTION_FACTORY_MAP = new Map<BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH, BFChainPcSdk.Transaction.TransactionFactory<any>>();
+import { EasyWeakMap } from "@bfchain/util";
+export const TRANSACTION_FACTORY_MAP_WM = EasyWeakMap.from<
+    BFChainCore,
+    Map<BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH, BFChainPcSdk.Transaction.TransactionFactory<any>>
+>({
+    creater() {
+        return new Map();
+    },
+});
 
 export function TransactionFactory(bfchainCore: BFChainCore) {
     const transactionVerifyHelper = new TransactionVerifyHelper();
+    const TRANSACTION_FACTORY_MAP = TRANSACTION_FACTORY_MAP_WM.forceGet(bfchainCore);
 
     const usernameFactory = new UsernameFactory(bfchainCore, transactionVerifyHelper);
     const signatureFactory = new SignatureFactory(bfchainCore, transactionVerifyHelper);

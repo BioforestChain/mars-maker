@@ -59,7 +59,7 @@ export class TransactionServer {
             }
             if (method === REQUEST_TYPE.GET) {
                 const query = (await parseGetRequestParameter(request)) as unknown as BFChainPcSdk.Transaction.TransactionCommonParams;
-                const result = await route({ pathname, params: query });
+                const result = await route({ pathname, params: query }, this.__bfchainCore);
                 response.end(
                     JSON.stringify({
                         success: true,
@@ -76,7 +76,7 @@ export class TransactionServer {
                         });
                     }
                     const body = (await parsePostRequestParameter(request)) as unknown as BFChainPcSdk.Transaction.TransactionCommonParams;
-                    const result = await route({ pathname, params: body });
+                    const result = await route({ pathname, params: body }, this.__bfchainCore);
                     response.end(
                         JSON.stringify({
                             success: true,
