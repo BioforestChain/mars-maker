@@ -1,11 +1,13 @@
 import { BFChainSecret } from "@bfchain/coretools-secret";
 import { MyGenesisBlockHelper } from "./myGenesisBlockHelper";
+import { BLOCK_CHAIN_NET_WORK_TYPE } from "@bfchain/pc-sdk-helper-transaction-config";
 import { ConfigHelper, BFChainCore } from "@bfchain/core";
 export declare class MyBaseHelper {
     private __bfchainSecret;
     private __myGenesisBlockHelper;
     private __myConfigHelper;
-    constructor(configOptions?: BFChainPcSdk.TransactionConfigOptions);
+    private __genesisBlock?;
+    constructor(configOptions?: BFChainPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON);
     get genesisInfoConfig(): BFChainPcSdk.GenesisInfoConfig;
     setGenesisInfoConfig(genesisInfoConfigOptions: BFChainPcSdk.GenesisInfoConfigOptions): void;
     get config(): BFChainPcSdk.TransactionConfig;
@@ -14,7 +16,7 @@ export declare class MyBaseHelper {
     get genesisBlockHelper(): MyGenesisBlockHelper;
     getGenesisBlock(): BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON>;
     get bfchainCore(): BFChainCore;
-    getConfigHelper(genesisBlock?: BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON>, networkType?: import("@bfchain/pc-sdk-helper-transaction-config").BLOCK_CHAIN_NET_WORK_TYPE): ConfigHelper;
+    getConfigHelper(genesisBlock?: BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON>, networkType?: BLOCK_CHAIN_NET_WORK_TYPE): ConfigHelper;
     cacheMap: Map<string, BFChainCore>;
     getBfchainCore(genesisBlock?: BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON>): BFChainCore;
     getBfchainHelper(): {

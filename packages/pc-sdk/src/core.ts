@@ -52,7 +52,7 @@ export class Sdk {
      *
      * @param configOptions
      */
-    async runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions) {
+    async runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         configOptions = configOptions || this.__configOptions.transactionConfig || {};
         if (this.__configOptions.configRootPath) {
             configOptions.configRootPath = this.__configOptions.configRootPath;
@@ -61,6 +61,6 @@ export class Sdk {
             configOptions.genesisInfoConfig = configOptions.genesisInfoConfig || {};
             configOptions.genesisInfoConfig.genesisBlockRootPath = this.__configOptions.genesisBlockRootPath;
         }
-        await this.__transactionServer.runTransactionServer(this.__transactionServerPort, configOptions);
+        await this.__transactionServer.runTransactionServer(this.__transactionServerPort, configOptions, genesisBlock || this.__configOptions.genesisBlock);
     }
 }

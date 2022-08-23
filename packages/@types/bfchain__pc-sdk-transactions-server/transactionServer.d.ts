@@ -7,5 +7,5 @@ export declare class TransactionServer {
     private __onRequest;
     getTransactionServerPort(configRootPath?: string): number;
     timeCorrecting(timeOffset: number): void;
-    runTransactionServer(port?: number, configOptions?: BFChainPcSdk.TransactionConfigOptions): Promise<void>;
+    runTransactionServer(port?: number, configOptions?: BFChainPcSdk.TransactionConfigOptions, genesisBlockJson?: BFChainCore.GenesisBlockJSON): Promise<void>;
 }

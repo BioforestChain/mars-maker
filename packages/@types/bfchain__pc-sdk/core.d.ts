@@ -8,5 +8,5 @@ export declare class Sdk {
     get api(): Api;
     setApiConfig(configOptions: BFChainPcSdk.ApiConfigOptions): void;
     correctTransactionServerTime(timeOffset: number): void;
-    runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions): Promise<void>;
+    runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON): Promise<void>;
 }

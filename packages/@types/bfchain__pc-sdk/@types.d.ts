@@ -12,5 +12,6 @@ declare namespace BFChainPcSdk {
         apiConfig?: ApiConfigOptions;
         transactionServerPort?: number;
         transactionConfig?: TransactionConfigOptions;
+        genesisBlock?: BFChainCore.GenesisBlockJSON;
     }
 }

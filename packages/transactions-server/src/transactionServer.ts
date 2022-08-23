@@ -90,7 +90,7 @@ export class TransactionServer {
                 ...exception,
                 description: "only support response GET or POST",
             });
-        } catch (e) {
+        } catch (e: any) {
             const errorInfo: BFChainPcSdk.TransactionServer.GenerateTransactionFailureReturn = {
                 success: false,
                 error: {
@@ -147,7 +147,7 @@ export class TransactionServer {
      * @param configOptions
      * @returns
      */
-    async runTransactionServer(port?: number, configOptions: BFChainPcSdk.TransactionConfigOptions = {}) {
+    async runTransactionServer(port?: number, configOptions: BFChainPcSdk.TransactionConfigOptions = {}, genesisBlockJson?: BFChainCore.GenesisBlockJSON) {
         if (this.__isRunning) {
             console.debug(`transaction server already running`);
             return;
@@ -157,7 +157,7 @@ export class TransactionServer {
             if (!configOptions) {
                 configOptions = {};
             }
-            const myBaseHelper = new MyBaseHelper(configOptions);
+            const myBaseHelper = new MyBaseHelper(configOptions, genesisBlockJson);
             if (port === undefined) {
                 port = this.getTransactionServerPort(configOptions.configRootPath);
             }

@@ -23,5 +23,7 @@ declare namespace BFChainPcSdk {
         transactionServerPort?: number;
         /**交易配置信息 */
         transactionConfig?: TransactionConfigOptions;
+        /**创世块 */
+        genesisBlock?: BFChainCore.GenesisBlockJSON;
     }
 }

@@ -2,16 +2,29 @@ import * as fs from "fs";
 import * as path from "path";
 import { BFChainSecret } from "@bfchain/coretools-secret";
 import { MyGenesisBlockHelper } from "./myGenesisBlockHelper";
-import { TransactionConfigHelper } from "@bfchain/pc-sdk-helper-transaction-config";
-import { BFChainCoreFactory, ConfigHelper, BFChainCore } from "@bfchain/core";
+import { BLOCK_CHAIN_NET_WORK_TYPE, TransactionConfigHelper } from "@bfchain/pc-sdk-helper-transaction-config";
+import { BFChainCoreFactory, ConfigHelper, BFChainCore, BNID_TYPE } from "@bfchain/core";
 import { NodeJsCryptoHelper, NodeJsKeypairHelper, Ed2curveHelper } from "@bfchain/coretools-helper-core";
 
 export class MyBaseHelper {
     private __bfchainSecret: BFChainSecret;
     private __myGenesisBlockHelper: MyGenesisBlockHelper;
     private __myConfigHelper: TransactionConfigHelper;
+    private __genesisBlock?: BFChainCore.GenesisBlockJSON;
 
-    constructor(configOptions?: BFChainPcSdk.TransactionConfigOptions) {
+    constructor(configOptions: BFChainPcSdk.TransactionConfigOptions = {}, genesisBlock?: BFChainCore.GenesisBlockJSON) {
+        if (genesisBlock) {
+            const genesisAsset = genesisBlock.asset.genesisAsset;
+            configOptions.genesisInfoConfig = {
+                isGenesisBlockProvidedExternally: false,
+                networkType: genesisAsset.bnid === BNID_TYPE.MAINNET ? BLOCK_CHAIN_NET_WORK_TYPE.MAINNET : BLOCK_CHAIN_NET_WORK_TYPE.TESTNET,
+                chainAssetType: genesisAsset.assetType,
+                blockPerRound: genesisAsset.blockPerRound,
+                forgeInterval: genesisAsset.forgeInterval,
+            };
+            this.__genesisBlock = genesisBlock;
+        }
+
         this.__myConfigHelper = new TransactionConfigHelper(configOptions);
 
         this.__bfchainSecret = new BFChainSecret(NodeJsCryptoHelper);
@@ -49,6 +62,9 @@ export class MyBaseHelper {
      *
      */
     getGenesisBlock() {
+        if (this.__genesisBlock) {
+            return this.__genesisBlock;
+        }
         const { isGenesisBlockProvidedExternally, chainAssetType, networkType, blockPerRound, forgeInterval, genesisBlockRootPath } = this.genesisInfoConfig;
         if (isGenesisBlockProvidedExternally) {
             const rootPath = genesisBlockRootPath || path.join(process.cwd(), "genesisInfos");
