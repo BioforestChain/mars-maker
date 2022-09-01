@@ -1,6 +1,6 @@
 {
     "name": "@bfchain/pc-sdk-transactions",
-    "version": "1.2.66",
+    "version": "1.2.67",
     "description": "pc-sdk-transactions for the third party",
     "main": "build/cjs/index.js",
     "type": "commonjs",
@@ -11,10 +11,10 @@
     "license": "MIT",
     "dependencies": {
         "@bfchain/coretools": "~1.12.59",
-        "@bfchain/pc-sdk-api-constants": "1.2.66",
-        "@bfchain/pc-sdk-exception": "1.2.66",
-        "@bfchain/pc-sdk-helpers": "1.2.66",
-        "@bfchain/pc-sdk-typings": "1.2.66"
+        "@bfchain/pc-sdk-api-constants": "1.2.67",
+        "@bfchain/pc-sdk-exception": "1.2.67",
+        "@bfchain/pc-sdk-helpers": "1.2.67",
+        "@bfchain/pc-sdk-typings": "1.2.67"
     },
     "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
     "files": [
