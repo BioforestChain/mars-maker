@@ -67,25 +67,31 @@ export class WebsocketHelper {
                 return resolve(socket);
             });
             socket.on("connect_error", (data: any) => {
+                this.__socketMap.delete(url);
                 return reject(new Error(`${url} connect_error`));
             });
             socket.on("connect_timeout", (data: any) => {
+                this.__socketMap.delete(url);
                 return reject(new Error(`${url} connect_timeout`));
             });
             socket.on("reconnect_attempt", (data: any) => {
                 return reject(new Error(`${url} reconnect_attempt`));
             });
             socket.on("reconnect_error", (data: any) => {
+                this.__socketMap.delete(url);
                 return reject(new Error(`${url} reconnect_error`));
             });
             socket.on("error", (data: any) => {
-                return reject(new Error(`${url} error with`));
+                this.__socketMap.delete(url);
+                return reject(new Error(`${url} error`));
             });
             socket.on("close", (data: any) => {
-                return reject(new Error(`${url} close with`));
+                this.__socketMap.delete(url);
+                return reject(new Error(`${url} close`));
             });
             socket.on("disconnect", () => {
-                return reject(new Error(`${url} disconnected `));
+                this.__socketMap.delete(url);
+                return reject(new Error(`${url} disconnected`));
             });
         });
     }
