@@ -1,22 +1,22 @@
 {
-  "name": "@bfchain/pc-sdk-transactions-server",
-  "version": "2.0.0",
-  "description": "pc-sdk-transactions-server for the third party",
-  "main": "build/cjs/index.js",
-  "type": "commonjs",
-  "keywords": [
-    "pc-sdk-transactions-server"
-  ],
-  "author": "BFChain Team",
-  "license": "MIT",
-  "dependencies": {
-    "@bfchain/pc-sdk-exception": "2.0.0",
-    "@bfchain/pc-sdk-transactions": "2.0.0",
-    "@bfchain/pc-sdk-typings": "2.0.0"
-  },
-  "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
-  "files": [
-    "build"
-  ],
-  "types": "build/cjs/index.d.ts"
+    "name": "@bfchain/pc-sdk-transactions-server",
+    "version": "2.0.0",
+    "description": "pc-sdk-transactions-server for the third party",
+    "main": "build/cjs/index.js",
+    "type": "commonjs",
+    "keywords": [
+        "pc-sdk-transactions-server"
+    ],
+    "author": "BFChain Team",
+    "license": "MIT",
+    "dependencies": {
+        "@bfchain/pc-sdk-exception": "2.0.0",
+        "@bfchain/pc-sdk-transactions": "2.0.0",
+        "@bfchain/pc-sdk-typings": "2.0.0"
+    },
+    "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
+    "files": [
+        "build"
+    ],
+    "types": "build/cjs/index.d.ts"
 }
