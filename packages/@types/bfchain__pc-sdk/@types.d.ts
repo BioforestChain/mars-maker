@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     interface Config {
         configRootPath?: string;
         genesisBlockRootPath?: string;

@@ -18,7 +18,7 @@ class NetworkHelper {
      * @param sdk
      * @param options
      */
-    async init(sdk: BFChainPC_SDK, options: BFChainPcSdk.SdkNetOptions) {
+    async init(sdk: BFChainPC_SDK, options: BFMetaPcSdk.SdkNetOptions) {
         //默认用WS方式调用
         this.__apiType = options.apiType ?? ApiType.WS;
         this.__httpHost = `${options.protocol ?? ProtocolType.HTTP}${options.ip}:${options.port}`;
@@ -42,7 +42,7 @@ class NetworkHelper {
      * @param api
      * @param request
      */
-    async sendRequest(api: ApiBase, request?: BFChainPcSdk.PcApiRequest) {
+    async sendRequest(api: ApiBase, request?: BFMetaPcSdk.PcApiRequest) {
         switch (this.__apiType) {
             case ApiType.WS:
                 return await this.__sendWsRequest(api.getWsPath(), request);
@@ -59,7 +59,7 @@ class NetworkHelper {
      * @param path
      * @param request
      */
-    private async __sendWsRequest(path: string, request?: BFChainPcSdk.PcApiRequest): Promise<BFChainPcSdk.SDKReturn> {
+    private async __sendWsRequest(path: string, request?: BFMetaPcSdk.PcApiRequest): Promise<BFMetaPcSdk.SDKReturn> {
         try {
             if (!this.__wsManager) {
                 throw new Error(`__wsManager is undefined`);
@@ -76,7 +76,7 @@ class NetworkHelper {
      * @param path
      * @param request
      */
-    private async __sendHttpRequest(method: RequestMethod, path: string, request?: BFChainPcSdk.PcApiRequest): Promise<BFChainPcSdk.SDKReturn> {
+    private async __sendHttpRequest(method: RequestMethod, path: string, request?: BFMetaPcSdk.PcApiRequest): Promise<BFMetaPcSdk.SDKReturn> {
         try {
             return new Promise((resolve, reject) => {
                 const url = this.__httpHost + path;
@@ -87,7 +87,7 @@ class NetworkHelper {
                 func(
                     url,
                     { headers: { "Content-Type": "application/json" }, json: request },
-                    (error: any, response: requestApi.Response, result: BFChainPcSdk.PcApiReturn) => {
+                    (error: any, response: requestApi.Response, result: BFMetaPcSdk.PcApiReturn) => {
                         if (error) {
                             return reject(error);
                         }

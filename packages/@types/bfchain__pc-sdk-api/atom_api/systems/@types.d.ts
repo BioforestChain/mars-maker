@@ -1,5 +1,5 @@
 /// <reference types="node" />
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     namespace System {
         interface SystemApiRequestParams {
             verifyType: string;
@@ -217,7 +217,7 @@ declare namespace BFChainPcSdk {
             limit?: number;
             offset?: number;
             searchString?: string;
-            readFileType?: BFChainPcSdk.READ_FILE_TYPE;
+            readFileType?: BFMetaPcSdk.READ_FILE_TYPE;
         }
         interface DeleteSystemLoggerParams extends SystemApiRequestParams {
             loggerName: string;
@@ -570,7 +570,7 @@ declare namespace BFChainPcSdk {
         }
         interface SystemApiFailureReturn extends ApiFailureReturn {
         }
-        type SystemApiReturn<T extends SystemApiRequestResult> = BFChainPcSdk.Basic.BasicApiSuccessReturn<T> | SystemApiFailureReturn;
+        type SystemApiReturn<T extends SystemApiRequestResult> = BFMetaPcSdk.Basic.BasicApiSuccessReturn<T> | SystemApiFailureReturn;
         type SystemApi = import("./apis/_systemGetApi").SystemGetApi<any> | import("./apis/_systemPostApi").SystemPostApi<any>;
         type SafetyCloseApi = import("./apis").SafetyCloseApi;
         type SetSystemKeyApi = import("./apis").SetSystemKeyApi;

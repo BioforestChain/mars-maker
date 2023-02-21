@@ -1,21 +1,21 @@
 export declare class BasicApi {
     private __networkHelper;
     private __BASIC_API_MAP;
-    constructor(__networkHelper: BFChainPcSdk.NetworkHelper);
+    constructor(__networkHelper: BFMetaPcSdk.NetworkHelper);
     private __init;
     private __getBasicApi;
-    getBlock(argv: BFChainPcSdk.Basic.GetBlockParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetBlockResult>>;
-    getLastBlock(): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetLastBlockResult>>;
-    getTransactionType(argv: BFChainPcSdk.Basic.GetTransactionTypeParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetTransactionTypeResult>>;
-    getTransactions(argv: BFChainPcSdk.Basic.GetTransactionsParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetTransactionsResult>>;
-    getBfchainVersion(): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetBfchainVersionResult>>;
-    getBlockChainStatus(): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetBlockChainStatusResult>>;
-    generateSecret(argv: BFChainPcSdk.Basic.GenerateSecretParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GenerateSecretResult>>;
-    createAccount(argv: BFChainPcSdk.Basic.CreateAccountParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.CreateAccountResult>>;
-    getAccountPublicKey(argv: BFChainPcSdk.Basic.GetAccountPublicKeyParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetAccountPublicKeyResult>>;
-    getAccountLastTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTransactionParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetAccountLastTransactionResult>>;
-    getAccountLastTypeTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTypeTransactionParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetAccountLastTypeTransactionResult>>;
-    setKVStorageTemp(argv: BFChainPcSdk.Basic.SetKVStorageTempParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.SetKVStorageTempResult>>;
-    getKVStorage(argv: BFChainPcSdk.Basic.GetKVStorageParams): Promise<BFChainPcSdk.Basic.BasicApiReturn<BFChainPcSdk.Basic.GetKVStorageResult>>;
+    getBlock(argv: BFMetaPcSdk.Basic.GetBlockParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetBlockResult>>;
+    getLastBlock(): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetLastBlockResult>>;
+    getTransactionType(argv: BFMetaPcSdk.Basic.GetTransactionTypeParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetTransactionTypeResult>>;
+    getTransactions(argv: BFMetaPcSdk.Basic.GetTransactionsParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetTransactionsResult>>;
+    getBfchainVersion(): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetBfchainVersionResult>>;
+    getBlockChainStatus(): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetBlockChainStatusResult>>;
+    generateSecret(argv: BFMetaPcSdk.Basic.GenerateSecretParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GenerateSecretResult>>;
+    createAccount(argv: BFMetaPcSdk.Basic.CreateAccountParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.CreateAccountResult>>;
+    getAccountPublicKey(argv: BFMetaPcSdk.Basic.GetAccountPublicKeyParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetAccountPublicKeyResult>>;
+    getAccountLastTransaction(argv: BFMetaPcSdk.Basic.GetAccountLastTransactionParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetAccountLastTransactionResult>>;
+    getAccountLastTypeTransaction(argv: BFMetaPcSdk.Basic.GetAccountLastTypeTransactionParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetAccountLastTypeTransactionResult>>;
+    setKVStorageTemp(argv: BFMetaPcSdk.Basic.SetKVStorageTempParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.SetKVStorageTempResult>>;
+    getKVStorage(argv: BFMetaPcSdk.Basic.GetKVStorageParams): Promise<BFMetaPcSdk.Basic.BasicApiReturn<BFMetaPcSdk.Basic.GetKVStorageResult>>;
     getSystemKey(systemSecret: string): string;
 }

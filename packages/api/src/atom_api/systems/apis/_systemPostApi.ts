@@ -1,21 +1,21 @@
 import { API_NAMESPACE, REQUEST_PROTOCOL, REQUEST_TYPE } from "@bfchain/pc-sdk-api-constants";
 
-export abstract class SystemPostApi<T extends BFChainPcSdk.System.SystemApiRequestResult> {
+export abstract class SystemPostApi<T extends BFMetaPcSdk.System.SystemApiRequestResult> {
     private readonly __API_NAMESPACE = API_NAMESPACE.SYSTEM;
-    abstract readonly REQUEST_API_PATH: BFChainPcSdk.System.SYSTEM_API_PATH;
+    abstract readonly REQUEST_API_PATH: BFMetaPcSdk.System.SYSTEM_API_PATH;
 
-    constructor(protected networkHelper: BFChainPcSdk.NetworkHelper) {}
+    constructor(protected networkHelper: BFMetaPcSdk.NetworkHelper) {}
 
-    async sendPostRequest(argv: BFChainPcSdk.System.SystemApiRequestParams) {
+    async sendPostRequest(argv: BFMetaPcSdk.System.SystemApiRequestParams) {
         // FIXME: 兼容老燕辉设计的神奇的 api
         const apiPath = `${this.networkHelper.URL_PREFIX}${this.networkHelper.REQUEST_PROTOCOL === REQUEST_PROTOCOL.WEBSOCKET ? REQUEST_TYPE.POST + "/" : ""}${
             this.__API_NAMESPACE
         }${this.REQUEST_API_PATH}`;
         try {
-            const result = await this.networkHelper.sendPostRequest<BFChainPcSdk.System.SystemApiReturn<T>>(apiPath, argv);
+            const result = await this.networkHelper.sendPostRequest<BFMetaPcSdk.System.SystemApiReturn<T>>(apiPath, argv);
             return result;
         } catch (e) {
-            const errorInfo: BFChainPcSdk.System.SystemApiFailureReturn = {
+            const errorInfo: BFMetaPcSdk.System.SystemApiFailureReturn = {
                 success: false,
                 error: {
                     code: "7001",

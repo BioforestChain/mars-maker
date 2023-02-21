@@ -1,6 +1,6 @@
 import { CommonApi } from "./_commonApi";
 import { COMMON_API_PATH } from "@bfchain/pc-sdk-api-constants";
-export declare class GenerateKeypairApi extends CommonApi<BFChainPcSdk.Common.Keypairs> {
+export declare class GenerateKeypairApi extends CommonApi<BFMetaPcSdk.Common.Keypairs> {
     readonly EXEC_API_PATH = COMMON_API_PATH.GENERATE_KEYPAIR;
-    sendPostRequest(argv: BFChainPcSdk.Common.GenerateKeypairParams): Promise<BFChainPcSdk.TransactionServer.CommonFailureReturn | BFChainPcSdk.TransactionServer.CommonSuccessReturn<BFChainPcSdk.Common.Keypairs>>;
+    sendPostRequest(argv: BFMetaPcSdk.Common.GenerateKeypairParams): Promise<BFMetaPcSdk.TransactionServer.CommonFailureReturn | BFMetaPcSdk.TransactionServer.CommonSuccessReturn<BFMetaPcSdk.Common.Keypairs>>;
 }

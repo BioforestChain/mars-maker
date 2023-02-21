@@ -5,9 +5,9 @@ import { BLOCK_CHAIN_NET_WORK_TYPE, SECRET_LANGUAGE_TYPE } from "@bfchain/pc-sdk
 
 @Injectable()
 export class TransactionConfigHelper {
-    private __transactionConfig!: BFChainPcSdk.TransactionConfig;
+    private __transactionConfig!: BFMetaPcSdk.TransactionConfig;
 
-    constructor(configOptions?: BFChainPcSdk.TransactionConfigOptions) {
+    constructor(configOptions?: BFMetaPcSdk.TransactionConfigOptions) {
         this.__initConfig(configOptions && configOptions.configRootPath);
         configOptions && this.setTransactionConfig(configOptions);
     }
@@ -27,7 +27,7 @@ export class TransactionConfigHelper {
         const configPath = path.join(configRootPath || path.join(process.cwd(), "config"), "config.json");
         if (fs.existsSync(configPath)) {
             const configData: {
-                transactionConfig: BFChainPcSdk.TransactionConfigOptions;
+                transactionConfig: BFMetaPcSdk.TransactionConfigOptions;
             } = JSON.parse(fs.readFileSync(configPath).toString());
             if (configData.transactionConfig) {
                 this.setTransactionConfig(configData.transactionConfig);
@@ -35,7 +35,7 @@ export class TransactionConfigHelper {
         }
     }
 
-    setGenesisInfoConfig(genesisInfoConfigOptions: BFChainPcSdk.GenesisInfoConfigOptions) {
+    setGenesisInfoConfig(genesisInfoConfigOptions: BFMetaPcSdk.GenesisInfoConfigOptions) {
         if (!this.__transactionConfig) {
             this.__initConfig();
         }
@@ -49,7 +49,7 @@ export class TransactionConfigHelper {
         genesisBlockRootPath !== undefined && (this.__transactionConfig.genesisInfoConfig.genesisBlockRootPath = genesisBlockRootPath);
     }
 
-    setTransactionConfig(transactionConfigOptions: BFChainPcSdk.TransactionConfigOptions) {
+    setTransactionConfig(transactionConfigOptions: BFMetaPcSdk.TransactionConfigOptions) {
         if (!this.__transactionConfig) {
             this.__initConfig();
         }

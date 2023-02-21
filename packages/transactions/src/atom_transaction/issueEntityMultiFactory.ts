@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class IssueEntityMultiFactory extends TransactionFactory<IssueEntityMultiTransactionV1> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_MULTI;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.IssueEntityMultiTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.IssueEntityMultiTransactionParams) {
         this.verify(request);
         const { entityStructList, entityFactoryPossessor, entityFactory } = request.entityInfo;
         const { magic, chainName } = this.bfchainCore.config;

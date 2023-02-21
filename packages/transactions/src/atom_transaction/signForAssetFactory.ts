@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class SignForAssetFactory extends TransactionFactory<SignForAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_SIGN_FOR_ASSET;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.SignForAssetTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.SignForAssetTransactionParams) {
         this.verify(request);
         const tr = await mySignForAsset.generateSignForAsset(
             this.getTransactionBody(request),

@@ -51,14 +51,14 @@ export class TransactionServer {
                     ...exception,
                 });
             }
-            const pathname = url.parse(request.url).pathname as unknown as BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH | null;
+            const pathname = url.parse(request.url).pathname as unknown as BFMetaPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH | null;
             if (!pathname) {
                 throw new ArgumentException(REQUEST_URL_IS_REQUIRED, {
                     ...exception,
                 });
             }
             if (method === REQUEST_TYPE.GET) {
-                const query = (await parseGetRequestParameter(request)) as unknown as BFChainPcSdk.Transaction.TransactionCommonParams;
+                const query = (await parseGetRequestParameter(request)) as unknown as BFMetaPcSdk.Transaction.TransactionCommonParams;
                 const result = await route({ pathname, params: query }, this.__bfchainCore);
                 response.end(
                     JSON.stringify({
@@ -75,7 +75,7 @@ export class TransactionServer {
                             ...exception,
                         });
                     }
-                    const body = (await parsePostRequestParameter(request)) as unknown as BFChainPcSdk.Transaction.TransactionCommonParams;
+                    const body = (await parsePostRequestParameter(request)) as unknown as BFMetaPcSdk.Transaction.TransactionCommonParams;
                     const result = await route({ pathname, params: body }, this.__bfchainCore);
                     response.end(
                         JSON.stringify({
@@ -91,7 +91,7 @@ export class TransactionServer {
                 description: "only support response GET or POST",
             });
         } catch (e: any) {
-            const errorInfo: BFChainPcSdk.TransactionServer.GenerateTransactionFailureReturn = {
+            const errorInfo: BFMetaPcSdk.TransactionServer.GenerateTransactionFailureReturn = {
                 success: false,
                 error: {
                     code: e.CODE === undefined ? 7001 : e.CODE,
@@ -147,7 +147,7 @@ export class TransactionServer {
      * @param configOptions
      * @returns
      */
-    async runTransactionServer(port?: number, configOptions: BFChainPcSdk.TransactionConfigOptions = {}, genesisBlockJson?: BFChainCore.GenesisBlockJSON) {
+    async runTransactionServer(port?: number, configOptions: BFMetaPcSdk.TransactionConfigOptions = {}, genesisBlockJson?: BFChainCore.GenesisBlockJSON) {
         if (this.__isRunning) {
             console.debug(`transaction server already running`);
             return;

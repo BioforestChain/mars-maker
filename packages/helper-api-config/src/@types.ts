@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     interface ApiConfig {
         /**配置文件的根路径，如果提供的路径不存在会使用默认路径 */
         configRootPath?: string;
@@ -9,7 +9,7 @@ declare namespace BFChainPcSdk {
         /**请求超时时间，单位 ms，默认 10000 */
         requestTimeOut: number;
         /**请求协议, http || websocket, 默认值 websocket */
-        requestProtocol: BFChainPcSdk.REQUEST_PROTOCOL;
+        requestProtocol: BFMetaPcSdk.REQUEST_PROTOCOL;
     }
 
     type ApiConfigOptions = Partial<ApiConfig>;

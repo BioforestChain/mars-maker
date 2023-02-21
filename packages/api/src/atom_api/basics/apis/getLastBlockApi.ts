@@ -1,7 +1,7 @@
 import { BasicGetApi } from "./_basicGetApi";
 import { BASIC_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
-export class GetLastBlockApi extends BasicGetApi<BFChainPcSdk.Basic.GetLastBlockResult> {
+export class GetLastBlockApi extends BasicGetApi<BFMetaPcSdk.Basic.GetLastBlockResult> {
     readonly REQUEST_API_PATH = BASIC_API_PATH.BASIC_GET_LAST_BLOCK;
 
     async sendGetRequest() {

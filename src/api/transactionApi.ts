@@ -4,7 +4,7 @@ import { API } from "./apiConst";
 export namespace TRS_API {
     /**交易接口基类 */
     abstract class TrsApi extends ApiBase {
-        constructor(apiInfo: BFChainPcSdk.ApiInfo) {
+        constructor(apiInfo: BFMetaPcSdk.ApiInfo) {
             super(apiInfo);
         }
 

@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class ImmigrateAssetFactory extends TransactionFactory<ImmigrateAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_IMMIGRATE_ASSET;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.ImmigrateAssetTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.ImmigrateAssetTransactionParams) {
         this.verify(request);
         const bfchainCore = this.bfchainCore;
         const config = bfchainCore.config;

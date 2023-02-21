@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     namespace Transaction {
         type TransactionApi = import("./atom_transaction/_transactionApi").TransactionApi<any>;
         type CommonTransactionApi = import("./atom_transaction").CommonTransactionApi;

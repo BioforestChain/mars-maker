@@ -1,7 +1,7 @@
 import { BASE_ARGS_TYPE } from "./constants";
 
 /**admin通用参数 */
-export const ADMIN_COMMON_PARAM: BFChainPcSdk.SchemaType = {
+export const ADMIN_COMMON_PARAM: BFMetaPcSdk.SchemaType = {
     type: "object",
     properties: {
         verifyType: {
@@ -15,7 +15,7 @@ export const ADMIN_COMMON_PARAM: BFChainPcSdk.SchemaType = {
 };
 
 /**user通用参数 */
-export const USER_COMMON_PARAM: BFChainPcSdk.SchemaType = {
+export const USER_COMMON_PARAM: BFMetaPcSdk.SchemaType = {
     type: "object",
     properties: {
         userKey: {
@@ -30,7 +30,7 @@ export const USER_COMMON_PARAM: BFChainPcSdk.SchemaType = {
 };
 
 /**交易通用参数 */
-export const TR_COMMON_PARAM: BFChainPcSdk.SchemaType = {
+export const TR_COMMON_PARAM: BFMetaPcSdk.SchemaType = {
     type: "object",
     properties: {
         secret: {

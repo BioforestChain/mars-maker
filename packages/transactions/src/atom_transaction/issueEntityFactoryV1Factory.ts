@@ -9,7 +9,7 @@ export class IssueEntityFactoryV1Factory extends TransactionFactory<IssueEntityF
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY_V1;
 
     async generateTransaction(
-        request: BFChainPcSdk.Transaction.IssueEntityFactoryTransactionV1Params
+        request: BFMetaPcSdk.Transaction.IssueEntityFactoryTransactionV1Params
     ): Promise<BFChainCore.IssueEntityFactoryTransactionV1JSON> {
         this.verify(request);
         const factoryInfo = request.factoryInfo;

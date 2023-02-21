@@ -1,7 +1,7 @@
 import { BasicGetApi } from "./_basicGetApi";
 import { BASIC_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
-export class GetBlockChainStatusApi extends BasicGetApi<BFChainPcSdk.Basic.GetBlockChainStatusResult> {
+export class GetBlockChainStatusApi extends BasicGetApi<BFMetaPcSdk.Basic.GetBlockChainStatusResult> {
     readonly REQUEST_API_PATH = BASIC_API_PATH.BASIC_GET_BLOCK_CHAIN_STATUS;
 
     async sendGetRequest() {

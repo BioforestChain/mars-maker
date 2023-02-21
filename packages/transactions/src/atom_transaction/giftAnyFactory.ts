@@ -9,7 +9,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class GiftAnyFactory extends TransactionFactory<GiftAnyTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_GIFT_ANY;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.GiftAnyTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.GiftAnyTransactionParams) {
         this.verify(request);
         const assetInfo = request.assetInfo;
         const config = this.bfchainCore.config;

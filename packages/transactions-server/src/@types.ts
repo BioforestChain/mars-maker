@@ -1,18 +1,18 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     namespace TransactionServer {
         interface TransactionRouterArgs {
-            pathname: BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH;
-            params: BFChainPcSdk.Transaction.TransactionCommonParams;
+            pathname: BFMetaPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH;
+            params: BFMetaPcSdk.Transaction.TransactionCommonParams;
         }
 
         interface MigrateCertificateRouterArgs {
-            pathname: BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH;
-            params: BFChainPcSdk.CrossChain.MigrateCertificateArgs;
+            pathname: BFMetaPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH;
+            params: BFMetaPcSdk.CrossChain.MigrateCertificateArgs;
         }
 
         interface CommonRouterArgs {
-            pathname: BFChainPcSdk.Common.COMMON_API_PATH;
-            params: BFChainPcSdk.Common.CommonParams;
+            pathname: BFMetaPcSdk.Common.COMMON_API_PATH;
+            params: BFMetaPcSdk.Common.CommonParams;
         }
 
         type RouterArgs = TransactionRouterArgs | MigrateCertificateRouterArgs | CommonRouterArgs;

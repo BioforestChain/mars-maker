@@ -4,7 +4,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class IssueEntityMultiApi extends TransactionApi<BFChainCore.IssueEntityMultiTransactionV1JSON> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_MULTI;
 
-    async generateTransaction(argv: BFChainPcSdk.Transaction.IssueEntityMultiTransactionParams) {
+    async generateTransaction(argv: BFMetaPcSdk.Transaction.IssueEntityMultiTransactionParams) {
         return await super.generateTransaction(argv);
     }
 

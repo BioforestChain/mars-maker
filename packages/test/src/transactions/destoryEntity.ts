@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.DestoryEntityTransactionParams = {
+        const argv: BFMetaPcSdk.Transaction.DestoryEntityTransactionParams = {
             secret: "boost scorpion peanut output undo useful trash burden custom party click offer leisure magnet obscure drop gather blind predict walk since strike thumb minimum",
             fee: "1000",
             applyBlockHeight: 10,

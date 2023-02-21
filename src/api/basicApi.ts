@@ -4,7 +4,7 @@ import { ApiBase } from "./apiBase";
 export namespace BASIC_API {
     /**基础接口基类 */
     abstract class BasicApi extends ApiBase {
-        constructor(apiInfo: BFChainPcSdk.ApiInfo) {
+        constructor(apiInfo: BFMetaPcSdk.ApiInfo) {
             super(apiInfo);
         }
 
@@ -22,17 +22,17 @@ export namespace BASIC_API {
 
     /**获取交易类型 */
     export class GetTransactionType extends BasicApi {
-        private __trTypeMap = new Map<BFChainPcSdk.TRANSACTION_TYPES_BASE, string>();
+        private __trTypeMap = new Map<BFMetaPcSdk.TRANSACTION_TYPES_BASE, string>();
         constructor() {
             super(API.BASIC.GET_TRANSACTION_TYPE);
         }
 
-        async execute(request: BFChainPcSdk.ApiRequest.BASIC.GetTransactionType): Promise<BFChainPcSdk.ApiResp.BASIC.GetTransactionType> {
+        async execute(request: BFMetaPcSdk.ApiRequest.BASIC.GetTransactionType): Promise<BFMetaPcSdk.ApiResp.BASIC.GetTransactionType> {
             const type = this.__trTypeMap.get(request.baseType);
             if (type) {
                 return { success: true, result: { type } };
             }
-            const result = (await this.sendRequest(request)) as BFChainPcSdk.ApiResp.BASIC.GetTransactionType;
+            const result = (await this.sendRequest(request)) as BFMetaPcSdk.ApiResp.BASIC.GetTransactionType;
             if (result.success && result.result.type) {
                 //缓存交易类型
                 this.__trTypeMap.set(request.baseType, result.result.type);

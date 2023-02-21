@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class GrabAssetFactory extends TransactionFactory<GrabAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_GRAB_ASSET;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.GrabAssetTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.GrabAssetTransactionParams) {
         this.verify(request);
         const tr = await myGrabAsset.generateGrabAsset(
             this.getTransactionBody(request),

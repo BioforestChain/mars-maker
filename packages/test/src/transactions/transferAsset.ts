@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.TransferAssetTransactionParams = {
+        const argv: BFMetaPcSdk.Transaction.TransferAssetTransactionParams = {
             secret: "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon",
             // secondSecretInfo: {
             //     useOld: false,

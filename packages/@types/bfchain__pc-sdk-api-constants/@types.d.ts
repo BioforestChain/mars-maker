@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     namespace Basic {
         type BASIC_API_PATH = import("./apiPathConstant").BASIC_API_PATH;
     }

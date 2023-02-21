@@ -3,10 +3,10 @@ import { COMMON_API_PATH } from "@bfchain/pc-sdk-api-constants";
 import { CommonFactory } from "./_commonFactory";
 
 @Injectable()
-export class AsymmetricEncryptFactory extends CommonFactory<BFChainPcSdk.Common.AsymmetricEncrypt> {
+export class AsymmetricEncryptFactory extends CommonFactory<BFMetaPcSdk.Common.AsymmetricEncrypt> {
     readonly EXEC_API_PATH = COMMON_API_PATH.ASYMMETRIC_ENCRYPT;
 
-    async exec(request: BFChainPcSdk.Common.AsymmetricEncryptParams) {
+    async exec(request: BFMetaPcSdk.Common.AsymmetricEncryptParams) {
         const result = await this.bfchainCore.asymmetricHelper.asymmetricEncrypt(
             parseHexToArrayBuffer(request.msg),
             parseHexToArrayBuffer(request.decryptPK),

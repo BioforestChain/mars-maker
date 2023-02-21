@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Common.GenerateAddressBySecretParams = {
+        const argv: BFMetaPcSdk.Common.GenerateAddressBySecretParams = {
             secret: "qqq",
         };
 

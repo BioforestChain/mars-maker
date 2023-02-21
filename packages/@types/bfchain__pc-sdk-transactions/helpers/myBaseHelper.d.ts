@@ -7,11 +7,11 @@ export declare class MyBaseHelper {
     private __myGenesisBlockHelper;
     private __myConfigHelper;
     private __genesisBlock?;
-    constructor(configOptions?: BFChainPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON);
-    get genesisInfoConfig(): BFChainPcSdk.GenesisInfoConfig;
-    setGenesisInfoConfig(genesisInfoConfigOptions: BFChainPcSdk.GenesisInfoConfigOptions): void;
-    get config(): BFChainPcSdk.TransactionConfig;
-    setTransactionConfig(transactionConfigOptions: BFChainPcSdk.TransactionConfigOptions): void;
+    constructor(configOptions?: BFMetaPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON);
+    get genesisInfoConfig(): BFMetaPcSdk.GenesisInfoConfig;
+    setGenesisInfoConfig(genesisInfoConfigOptions: BFMetaPcSdk.GenesisInfoConfigOptions): void;
+    get config(): BFMetaPcSdk.TransactionConfig;
+    setTransactionConfig(transactionConfigOptions: BFMetaPcSdk.TransactionConfigOptions): void;
     get bfchainSecret(): BFChainSecret;
     get genesisBlockHelper(): MyGenesisBlockHelper;
     getGenesisBlock(): BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON>;

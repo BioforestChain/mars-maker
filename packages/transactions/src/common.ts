@@ -12,7 +12,7 @@ import {
     GenerateCiphertextSignatureFactory,
 } from "./atom_common";
 import { EasyWeakMap } from "@bfchain/util";
-export const COMMON_FACTORY_MAP_WM = EasyWeakMap.from<BFChainCore, Map<BFChainPcSdk.Common.COMMON_API_PATH, BFChainPcSdk.Common.CommonFactory>>({
+export const COMMON_FACTORY_MAP_WM = EasyWeakMap.from<BFChainCore, Map<BFMetaPcSdk.Common.COMMON_API_PATH, BFMetaPcSdk.Common.CommonFactory>>({
     creater() {
         return new Map();
     },

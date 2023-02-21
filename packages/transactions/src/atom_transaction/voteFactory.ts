@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class VoteFactory extends TransactionFactory<VoteTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_VOTE;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.VoteTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.VoteTransactionParams) {
         this.verify(request);
         const tr = await myVote.generateVote(this.getTransactionBody(request), { equity: request.equity }, this.getAccountPowInfo(request), this.bfchainCore);
         return tr.toJSON();

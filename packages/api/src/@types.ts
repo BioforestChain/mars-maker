@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     type HttpHelper = import("./network").HttpHelper;
     type WebsocketHelper = import("./network").WebsocketHelper;
     type NetworkHelper = HttpHelper | WebsocketHelper;

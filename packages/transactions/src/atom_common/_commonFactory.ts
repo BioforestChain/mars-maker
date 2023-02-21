@@ -1,7 +1,7 @@
 import type { BFChainCore } from "@bfchain/core";
 
 export abstract class CommonFactory<T> {
-    abstract readonly EXEC_API_PATH: BFChainPcSdk.Common.COMMON_API_PATH;
+    abstract readonly EXEC_API_PATH: BFMetaPcSdk.Common.COMMON_API_PATH;
 
     constructor(public bfchainCore: BFChainCore) {}
 
@@ -10,5 +10,5 @@ export abstract class CommonFactory<T> {
      *
      * @param request
      */
-    abstract exec(request: BFChainPcSdk.Common.CommonParams): Promise<T>;
+    abstract exec(request: BFMetaPcSdk.Common.CommonParams): Promise<T>;
 }

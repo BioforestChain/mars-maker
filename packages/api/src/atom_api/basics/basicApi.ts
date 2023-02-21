@@ -17,9 +17,9 @@ import {
 import { BASIC_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
 export class BasicApi {
-    private __BASIC_API_MAP = new Map<BFChainPcSdk.Basic.BASIC_API_PATH, BFChainPcSdk.Basic.BasicApi>();
+    private __BASIC_API_MAP = new Map<BFMetaPcSdk.Basic.BASIC_API_PATH, BFMetaPcSdk.Basic.BasicApi>();
 
-    constructor(private __networkHelper: BFChainPcSdk.NetworkHelper) {
+    constructor(private __networkHelper: BFMetaPcSdk.NetworkHelper) {
         this.__init();
     }
 
@@ -57,86 +57,86 @@ export class BasicApi {
         Object.freeze(BASIC_API_MAP);
     }
 
-    private __getBasicApi<T extends BFChainPcSdk.Basic.BasicApi>(apiPath: BFChainPcSdk.Basic.BASIC_API_PATH) {
+    private __getBasicApi<T extends BFMetaPcSdk.Basic.BasicApi>(apiPath: BFMetaPcSdk.Basic.BASIC_API_PATH) {
         return this.__BASIC_API_MAP.get(apiPath) as T;
     }
 
     // #region basicApi
     /**获取指定区块 */
-    async getBlock(argv: BFChainPcSdk.Basic.GetBlockParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetBlockApi>(BASIC_API_PATH.BASIC_GET_BLOCK);
+    async getBlock(argv: BFMetaPcSdk.Basic.GetBlockParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetBlockApi>(BASIC_API_PATH.BASIC_GET_BLOCK);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**获取本地节点当前最新区块 */
     async getLastBlock() {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetLastBlockApi>(BASIC_API_PATH.BASIC_GET_LAST_BLOCK);
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetLastBlockApi>(BASIC_API_PATH.BASIC_GET_LAST_BLOCK);
         const result = await api.sendGetRequest();
         return result;
     }
     /**获取交易类型 */
-    async getTransactionType(argv: BFChainPcSdk.Basic.GetTransactionTypeParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetTransactionTypeApi>(BASIC_API_PATH.BASIC_GET_TRANSACTION_TYPE);
+    async getTransactionType(argv: BFMetaPcSdk.Basic.GetTransactionTypeParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetTransactionTypeApi>(BASIC_API_PATH.BASIC_GET_TRANSACTION_TYPE);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**获取指定事件 */
-    async getTransactions(argv: BFChainPcSdk.Basic.GetTransactionsParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetTransactionsApi>(BASIC_API_PATH.BASIC_GET_TRANSACTIONS);
+    async getTransactions(argv: BFMetaPcSdk.Basic.GetTransactionsParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetTransactionsApi>(BASIC_API_PATH.BASIC_GET_TRANSACTIONS);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**获取Bfchain版本号 */
     async getBfchainVersion() {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetBfchainVersionApi>(BASIC_API_PATH.BASIC_GET_BFCHAIN_VERSION);
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetBfchainVersionApi>(BASIC_API_PATH.BASIC_GET_BFCHAIN_VERSION);
         const result = await api.sendGetRequest();
         return result;
     }
     /**获取节点状态 */
     async getBlockChainStatus() {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetBlockChainStatusApi>(BASIC_API_PATH.BASIC_GET_BLOCK_CHAIN_STATUS);
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetBlockChainStatusApi>(BASIC_API_PATH.BASIC_GET_BLOCK_CHAIN_STATUS);
         const result = await api.sendGetRequest();
         return result;
     }
     /**生成账户私钥 */
-    async generateSecret(argv: BFChainPcSdk.Basic.GenerateSecretParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GenerateSecretApi>(BASIC_API_PATH.BASIC_GENERATE_SECRET);
+    async generateSecret(argv: BFMetaPcSdk.Basic.GenerateSecretParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GenerateSecretApi>(BASIC_API_PATH.BASIC_GENERATE_SECRET);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**创建账户 */
-    async createAccount(argv: BFChainPcSdk.Basic.CreateAccountParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.CreateAccountApi>(BASIC_API_PATH.BASIC_CREATE_ACCOUNT);
+    async createAccount(argv: BFMetaPcSdk.Basic.CreateAccountParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.CreateAccountApi>(BASIC_API_PATH.BASIC_CREATE_ACCOUNT);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**获取账户公钥 */
-    async getAccountPublicKey(argv: BFChainPcSdk.Basic.GetAccountPublicKeyParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetAccountPublicKeyApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_PUBLICKEY);
+    async getAccountPublicKey(argv: BFMetaPcSdk.Basic.GetAccountPublicKeyParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetAccountPublicKeyApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_PUBLICKEY);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**获取账户的最后一笔事件 */
-    async getAccountLastTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTransactionParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetAccountLastTransactionApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_LAST_TRANSACTION);
+    async getAccountLastTransaction(argv: BFMetaPcSdk.Basic.GetAccountLastTransactionParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetAccountLastTransactionApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_LAST_TRANSACTION);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**获取账户指定类型的最后一笔事件 */
-    async getAccountLastTypeTransaction(argv: BFChainPcSdk.Basic.GetAccountLastTypeTransactionParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetAccountLastTypeTransactionApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION);
+    async getAccountLastTypeTransaction(argv: BFMetaPcSdk.Basic.GetAccountLastTypeTransactionParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetAccountLastTypeTransactionApi>(BASIC_API_PATH.BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**临时设置KV二进制数据 */
-    async setKVStorageTemp(argv: BFChainPcSdk.Basic.SetKVStorageTempParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.SetKVStorageTempApi>(BASIC_API_PATH.SET_KVSTORAGE_TEMP);
+    async setKVStorageTemp(argv: BFMetaPcSdk.Basic.SetKVStorageTempParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.SetKVStorageTempApi>(BASIC_API_PATH.SET_KVSTORAGE_TEMP);
         const result = await api.sendPostRequest(argv);
         return result;
     }
     /**获取KV二进制数据 */
-    async getKVStorage(argv: BFChainPcSdk.Basic.GetKVStorageParams) {
-        const api = this.__getBasicApi<BFChainPcSdk.Basic.GetKVStorageApi>(BASIC_API_PATH.GET_KVSTORAGE);
+    async getKVStorage(argv: BFMetaPcSdk.Basic.GetKVStorageParams) {
+        const api = this.__getBasicApi<BFMetaPcSdk.Basic.GetKVStorageApi>(BASIC_API_PATH.GET_KVSTORAGE);
         const result = await api.sendPostRequest(argv);
         return result;
     }

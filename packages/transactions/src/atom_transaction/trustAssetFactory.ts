@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class TrustAssetFactory extends TransactionFactory<TrustAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_TRUST_ASSET;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.TrustAssetTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.TrustAssetTransactionParams) {
         this.verify(request);
         const assetInfo = request.assetInfo;
         const { magic, chainName, assetType } = this.bfchainCore.config;

@@ -3,5 +3,5 @@ export declare class TransactionVerifyHelper {
     private __baseHelper;
     private __checkRange;
     private __verify;
-    verify(value: BFChainPcSdk.FormaterCallbackArgv, schema?: BFChainPcSdk.SchemaType | BFChainPcSdk.SchemaType[], keyName?: string): void;
+    verify(value: BFMetaPcSdk.FormaterCallbackArgv, schema?: BFMetaPcSdk.SchemaType | BFMetaPcSdk.SchemaType[], keyName?: string): void;
 }

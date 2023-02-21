@@ -6,7 +6,7 @@ import { CommonFactory } from "./_commonFactory";
 export class GenerateAddressBySecretFactory extends CommonFactory<string> {
     readonly EXEC_API_PATH = COMMON_API_PATH.GENERATE_ADDRESS_BY_SECRET;
 
-    async exec(request: BFChainPcSdk.Common.GenerateAddressBySecretParams) {
+    async exec(request: BFMetaPcSdk.Common.GenerateAddressBySecretParams) {
         const accountBaseHelper = this.bfchainCore.accountBaseHelper;
         const keypair = await accountBaseHelper.createSecretKeypair(request.secret);
         const address = await accountBaseHelper.getAddressFromPublicKey(keypair.publicKey);

@@ -56,7 +56,7 @@ export class TransactionVerifyHelper {
         }
     }
 
-    private __verify(value: BFChainPcSdk.FormaterCallbackArgv, schema: BFChainPcSdk.SchemaType, keyName?: string) {
+    private __verify(value: BFMetaPcSdk.FormaterCallbackArgv, schema: BFMetaPcSdk.SchemaType, keyName?: string) {
         const exception = {
             target: "request",
             function: "verify",
@@ -176,7 +176,7 @@ export class TransactionVerifyHelper {
         }
     }
 
-    verify(value: BFChainPcSdk.FormaterCallbackArgv, schema?: BFChainPcSdk.SchemaType | BFChainPcSdk.SchemaType[], keyName?: string) {
+    verify(value: BFMetaPcSdk.FormaterCallbackArgv, schema?: BFMetaPcSdk.SchemaType | BFMetaPcSdk.SchemaType[], keyName?: string) {
         if (!schema) {
             return;
         }

@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class DestoryAssetFactory extends TransactionFactory<DestoryAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_DESTORY_ASSET;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.DestoryAssetTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.DestoryAssetTransactionParams) {
         this.verify(request);
         const assetInfo = request.assetInfo;
         const { magic, chainName } = this.bfchainCore.config;

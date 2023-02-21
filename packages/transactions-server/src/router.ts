@@ -16,21 +16,21 @@ export function Router(bfchainCore: BFChainCore) {
     CommonFactory(bfchainCore);
 }
 
-export async function route(args: BFChainPcSdk.TransactionServer.RouterArgs, bfchainCore: BFChainCore) {
+export async function route(args: BFMetaPcSdk.TransactionServer.RouterArgs, bfchainCore: BFChainCore) {
     const TRANSACTION_FACTORY_MAP = TRANSACTION_FACTORY_MAP_WM.forceGet(bfchainCore);
-    const txFactory = TRANSACTION_FACTORY_MAP.get((args as BFChainPcSdk.TransactionServer.TransactionRouterArgs).pathname);
+    const txFactory = TRANSACTION_FACTORY_MAP.get((args as BFMetaPcSdk.TransactionServer.TransactionRouterArgs).pathname);
     if (txFactory) {
-        return await txFactory.generateTransaction((args as BFChainPcSdk.TransactionServer.TransactionRouterArgs).params);
+        return await txFactory.generateTransaction((args as BFMetaPcSdk.TransactionServer.TransactionRouterArgs).params);
     }
     const COMMON_FACTORY_MAP = COMMON_FACTORY_MAP_WM.forceGet(bfchainCore);
-    const commonFactory = COMMON_FACTORY_MAP.get((args as BFChainPcSdk.TransactionServer.CommonRouterArgs).pathname);
+    const commonFactory = COMMON_FACTORY_MAP.get((args as BFMetaPcSdk.TransactionServer.CommonRouterArgs).pathname);
     if (commonFactory) {
-        return await commonFactory.exec((args as BFChainPcSdk.TransactionServer.CommonRouterArgs).params);
+        return await commonFactory.exec((args as BFMetaPcSdk.TransactionServer.CommonRouterArgs).params);
     }
     const MIGRATE_CERTIFICATE_FACTORY_MAP = MIGRATE_CERTIFICATE_FACTORY_MAP_WM.forceGet(bfchainCore);
-    const migrateCertificateFactory = MIGRATE_CERTIFICATE_FACTORY_MAP.get((args as BFChainPcSdk.TransactionServer.MigrateCertificateRouterArgs).pathname);
+    const migrateCertificateFactory = MIGRATE_CERTIFICATE_FACTORY_MAP.get((args as BFMetaPcSdk.TransactionServer.MigrateCertificateRouterArgs).pathname);
     if (migrateCertificateFactory) {
-        return await migrateCertificateFactory.generate((args as BFChainPcSdk.TransactionServer.MigrateCertificateRouterArgs).params);
+        return await migrateCertificateFactory.generate((args as BFMetaPcSdk.TransactionServer.MigrateCertificateRouterArgs).params);
     }
     throw new ArgumentIllegalException(API_ENDPOINT_NOT_FOUND, {
         target: "request",

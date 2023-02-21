@@ -1,7 +1,7 @@
 export declare class ApiConfigHelper {
     private __apiConfig;
-    constructor(configOptions?: BFChainPcSdk.ApiConfigOptions);
+    constructor(configOptions?: BFMetaPcSdk.ApiConfigOptions);
     private __initConfig;
-    setApiConfig(apiConfigOptions: BFChainPcSdk.ApiConfigOptions): void;
-    get apiConfig(): BFChainPcSdk.ApiConfig;
+    setApiConfig(apiConfigOptions: BFMetaPcSdk.ApiConfigOptions): void;
+    get apiConfig(): BFMetaPcSdk.ApiConfig;
 }

@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class SetLnsManagerFactory extends TransactionFactory<SetLnsManagerTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_SET_LNS_MANAGER;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.SetLnsManagerTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.SetLnsManagerTransactionParams) {
         this.verify(request);
         const tr = await mySetLnsManager.generateSetLnsManager(
             this.getTransactionBody(request),

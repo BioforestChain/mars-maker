@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class UsernameFactory extends TransactionFactory<UsernameTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_USERNAME;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.UsernameTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.UsernameTransactionParams) {
         this.verify(request);
         const tr = await myUsername.generateUsername(
             this.getTransactionBody(request),

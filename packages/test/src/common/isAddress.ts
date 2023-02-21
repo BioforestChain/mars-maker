@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Common.VerifyAddressParams = {
+        const argv: BFMetaPcSdk.Common.VerifyAddressParams = {
             address: "cEAXDkaEJgWKMM61KYz2dYU1RfuxbB8Ma",
         };
 

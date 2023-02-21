@@ -3,7 +3,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.BeExchangeAnyTransactionParams = {
+        const argv: BFMetaPcSdk.Transaction.BeExchangeAnyTransactionParams = {
             secret: "boost scorpion peanut output undo useful trash burden custom party click offer leisure magnet obscure drop gather blind predict walk since strike thumb minimum",
             fee: "200",
             applyBlockHeight: 50,
