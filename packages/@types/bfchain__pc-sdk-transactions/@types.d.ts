@@ -255,9 +255,9 @@ declare namespace BFChainPcSdk {
             assetInfo: {
                 sourceChainMagic?: string;
                 sourceChainName?: string;
-                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
-                assetType?: string;
-                amount?: string;
+                parentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                assetType: string;
+                amount: string;
             };
             taxInformation?: BFChainCore.TaxInformationJson;
         }
@@ -265,9 +265,9 @@ declare namespace BFChainPcSdk {
             assetInfo: {
                 sourceChainMagic?: string;
                 sourceChainName?: string;
-                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
-                assetType?: string;
-                amount?: string;
+                parentAssetType: BFChainCore.PARENT_ASSET_TYPE;
+                assetType: string;
+                amount: string;
             };
             totalGrabableTimes?: number;
             giftDistributionRule?: BFChainCore.GIFT_DISTRIBUTION_RULE;
@@ -351,7 +351,7 @@ declare namespace BFChainPcSdk {
     namespace CrossChain {
         interface GenerateMigrateCertificateParams extends Omit<BFChainCore.CrossChain.GenerateMigrateCertificateArgs, "assetInfo"> {
             assetInfo?: {
-                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                parentAssetType: BFChainCore.PARENT_ASSET_TYPE;
                 assetType: string;
             };
         }

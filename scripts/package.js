@@ -4,10 +4,10 @@ const path = require("path");
 const rootpath = path.resolve(__dirname, "../packages");
 
 const dependencies = {
-    "@bfchain/coretools": "~3.0.1",
-    "@bfchain/license": "~4.0.0",
+    "@bfchain/coretools": "~3.0.12",
+    "@bfchain/license": "~4.0.4",
     "@bfchain/protobuf": "~4.1.10",
-    "@bfchain/util": "~4.12.26",
+    "@bfchain/util": "~4.12.44",
 };
 
 function package() {

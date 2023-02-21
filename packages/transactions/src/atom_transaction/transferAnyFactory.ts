@@ -17,20 +17,11 @@ export class TransferAnyFactory extends TransactionFactory<TransferAnyTransactio
         const transferAny: BFChainCore.TransferAnyJSON = {
             sourceChainMagic: assetInfo.sourceChainMagic || config.magic,
             sourceChainName: assetInfo.sourceChainName || config.chainName,
-            parentAssetType: PARENT_ASSET_TYPE.ASSETS,
-            assetType: config.assetType,
-            amount: assetInfo.amount || "1",
+            parentAssetType: assetInfo.parentAssetType,
+            assetType: assetInfo.assetType,
+            amount: assetInfo.amount,
             taxInformation: request.taxInformation,
         };
-
-        if (assetInfo.assetType) {
-            transferAny.assetType = assetInfo.assetType;
-            transferAny.parentAssetType = this.bfchainCore.transactionHelper.getParentAssetType(assetInfo.assetType);
-        }
-
-        if (assetInfo.parentAssetType) {
-            transferAny.parentAssetType = assetInfo.parentAssetType;
-        }
 
         const tr = await myTransferAny.generateTransferAny(this.getTransactionBody(request), transferAny, this.getAccountPowInfo(request), this.bfchainCore);
         return tr.toJSON();

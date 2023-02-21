@@ -400,11 +400,11 @@ declare namespace BFChainPcSdk {
                 /**转移的资产所属链名，小写字母组成，3-8 位 */
                 sourceChainName?: string;
                 /**转移的资产所属类型 */
-                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                parentAssetType: BFChainCore.PARENT_ASSET_TYPE;
                 /**转移的资产类型，大写字母组成，3-5 个字符 */
-                assetType?: string;
+                assetType: string;
                 /**转移的资产数量，0-9 组成并且不包含小数点，必须大于 0 */
-                amount?: string;
+                amount: string;
             };
             /**纳税信息 */
             taxInformation?: BFChainCore.TaxInformationJson;
@@ -417,11 +417,11 @@ declare namespace BFChainPcSdk {
                 /**赠送的资产所属链名，小写字母组成，3-8 位 */
                 sourceChainName?: string;
                 /**赠送的资产所属类型 */
-                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                parentAssetType: BFChainCore.PARENT_ASSET_TYPE;
                 /**赠送的资产类型，大写字母组成，3-5 个字符 */
-                assetType?: string;
+                assetType: string;
                 /**赠送的资产数量，0-9 组成并且不包含小数点，必须大于 0 */
-                amount?: string;
+                amount: string;
             };
             /**可被接收的次数，0-9 组成并且不包含小数点，必须大于 0 */
             totalGrabableTimes?: number;
@@ -564,7 +564,7 @@ declare namespace BFChainPcSdk {
         interface GenerateMigrateCertificateParams extends Omit<BFChainCore.CrossChain.GenerateMigrateCertificateArgs, "assetInfo"> {
             assetInfo?: {
                 /**资产所属大类 */
-                parentAssetType?: BFChainCore.PARENT_ASSET_TYPE;
+                parentAssetType: BFChainCore.PARENT_ASSET_TYPE;
                 /**资产名 */
                 assetType: string;
             };

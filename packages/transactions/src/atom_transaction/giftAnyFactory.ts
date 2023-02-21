@@ -18,22 +18,13 @@ export class GiftAnyFactory extends TransactionFactory<GiftAnyTransaction> {
             cipherPublicKeys: [],
             sourceChainMagic: assetInfo.sourceChainMagic || config.magic,
             sourceChainName: assetInfo.sourceChainName || config.chainName,
-            parentAssetType: PARENT_ASSET_TYPE.ASSETS,
-            assetType: config.assetType,
-            amount: assetInfo.amount || "1",
+            parentAssetType: assetInfo.parentAssetType,
+            assetType: assetInfo.assetType,
+            amount: assetInfo.amount,
             giftDistributionRule: request.giftDistributionRule,
             totalGrabableTimes: request.totalGrabableTimes || 1,
             taxInformation: request.taxInformation,
         };
-
-        if (assetInfo.assetType) {
-            giftAny.assetType = assetInfo.assetType;
-            giftAny.parentAssetType = this.bfchainCore.transactionHelper.getParentAssetType(assetInfo.assetType);
-        }
-
-        if (assetInfo.parentAssetType) {
-            giftAny.parentAssetType = assetInfo.parentAssetType;
-        }
 
         const tr = await myGiftAny.generateGiftAny(
             this.getTransactionBody(request),

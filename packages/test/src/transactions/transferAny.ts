@@ -1,3 +1,4 @@
+import { PARENT_ASSET_TYPE } from "@bfchain/core";
 import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
@@ -16,6 +17,7 @@ import { Sdk } from "@bfchain/pc-sdk";
                 equity: "8888888888888",
             },
             assetInfo: {
+                parentAssetType: PARENT_ASSET_TYPE.ENTITY,
                 assetType: "skyrim_dragonborn",
                 amount: "10000",
             },
