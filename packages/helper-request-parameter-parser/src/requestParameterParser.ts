@@ -12,7 +12,7 @@ export function parseGetRequestParameter(imcomingMessage: IncomingMessage) {
         try {
             const req = url.parse(imcomingMessage.url, true);
             return resolve(req.query);
-        } catch (e) {
+        } catch (e: any) {
             return reject(`parse parameter error`);
         }
     });
@@ -29,7 +29,7 @@ export function parsePostRequestParameter(imcomingMessage: IncomingMessage) {
             const requestString = Buffer.concat(buffers).toString();
             try {
                 return resolve(JSON.parse(requestString));
-            } catch (e) {
+            } catch (e: any) {
                 return reject(`parse parameter error`);
             }
         });

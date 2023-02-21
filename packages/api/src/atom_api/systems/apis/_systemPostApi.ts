@@ -14,7 +14,7 @@ export abstract class SystemPostApi<T extends BFMetaPcSdk.System.SystemApiReques
         try {
             const result = await this.networkHelper.sendPostRequest<BFMetaPcSdk.System.SystemApiReturn<T>>(apiPath, argv);
             return result;
-        } catch (e) {
+        } catch (e: any) {
             const errorInfo: BFMetaPcSdk.System.SystemApiFailureReturn = {
                 success: false,
                 error: {

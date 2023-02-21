@@ -1,5 +1,5 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
@@ -23,7 +23,7 @@ import { Sdk } from "@bfchain/pc-sdk";
         const result = await sdk.api.transaction.generateRegisterChain(argv);
 
         console.log(result);
-    } catch (e) {
+    } catch (e: any) {
         console.log(e);
     }
 })();

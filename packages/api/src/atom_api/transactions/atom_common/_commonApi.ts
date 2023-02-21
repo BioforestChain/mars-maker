@@ -8,7 +8,7 @@ export abstract class CommonApi<T> {
         try {
             const result = await this.networkHelper.createTransaction<BFMetaPcSdk.TransactionServer.CommonSuccessReturn<T>>(apiPath, argv);
             return result;
-        } catch (e) {
+        } catch (e: any) {
             const errorInfo: BFMetaPcSdk.TransactionServer.CommonFailureReturn = {
                 success: false,
                 error: {

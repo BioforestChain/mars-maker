@@ -44,7 +44,7 @@ import { Sdk } from "@bfchain/pc-sdk";
         }
 
         console.log(Buffer.from(result2.result, "hex").toString());
-    } catch (e) {
+    } catch (e: any) {
         console.log(e);
     }
 })();

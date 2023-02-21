@@ -20,7 +20,7 @@ import { Sdk } from "@bfchain/pc-sdk";
         const result = await sdk.api.transaction.sendVote(argv);
 
         console.log(result);
-    } catch (e) {
+    } catch (e: any) {
         console.log(e);
     }
 })();

@@ -84,7 +84,7 @@ async function generateMigrateCertificate(recipientId: string, toChainInfo: BFCh
         const result = await sdk.api.transaction.generateImmigrateAsset(argv);
 
         console.log(result);
-    } catch (e) {
+    } catch (e: any) {
         console.log(e);
     }
 })();

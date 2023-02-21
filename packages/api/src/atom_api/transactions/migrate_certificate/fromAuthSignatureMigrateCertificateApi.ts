@@ -9,7 +9,7 @@ export class FromAuthSignatureMigrateCertificateApi extends MigrateCertificateAp
         try {
             const result = await this.networkHelper.createTransaction<BFMetaPcSdk.TransactionServer.MigrateCertificateReturn>(apiPath, argv);
             return result;
-        } catch (e) {
+        } catch (e: any) {
             const errorInfo: BFMetaPcSdk.TransactionServer.MigrateCertificateFailureReturn = {
                 success: false,
                 error: {

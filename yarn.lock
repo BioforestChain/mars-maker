@@ -707,6 +707,105 @@
     yaml "^1.10.2"
     yargs "^17.0.1"
 
+"@bfchain/duplex-core@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-core/-/duplex-core-5.0.2.tgz#5689b2067e141207459c952bc3f75e5ccb9b60c8"
+  integrity sha512-sBB8rbxLq8bYK0spIEHzmiaCkVI5WS/rCliDO8chOugxwgrJ7zqhhUXdwI7lW2YRWSPUf6Npwu1x7ga/20YLZg==
+  dependencies:
+    "@bfchain/duplex-diht" "5.0.2"
+    "@bfchain/duplex-dpl" "5.0.2"
+    "@bfchain/duplex-exception" "5.0.2"
+    "@bfchain/duplex-helper" "5.0.2"
+    "@bfchain/duplex-model" "5.0.2"
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplex-diht@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-diht/-/duplex-diht-5.0.2.tgz#b556f98fe1ab30acb67185e3a54145a089ac5bd4"
+  integrity sha512-WkArp4YZ/VaWQinS90YpKZr96VjY+tYGT/Oly+wv3Uxk/ROa9InC5V8ehjy4rTCvxQDstJ6bb3V1sIRMa4Hmog==
+  dependencies:
+    "@bfchain/duplex-dpl" "5.0.2"
+    "@bfchain/duplex-helper" "5.0.2"
+    "@bfchain/duplex-model" "5.0.2"
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplex-dpl@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-dpl/-/duplex-dpl-5.0.2.tgz#c663204abd1647dd8fd457eedf7c93fc140f13dd"
+  integrity sha512-6uW7dksCdDVPTV1QHHxWWP7wN1YZMMWRdTeTf0EhijRxTriz1I+2WN0ahltdqMortRtJS3VcaZAx15ElecWltQ==
+  dependencies:
+    "@bfchain/duplex-exception" "5.0.2"
+    "@bfchain/duplex-helper" "5.0.2"
+    "@bfchain/duplex-model" "5.0.2"
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplex-exception@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-exception/-/duplex-exception-5.0.2.tgz#c6faa385d2581ef7b30dd9a5e3f6c43fff6dfb8f"
+  integrity sha512-sspPgR20e1PemiyFQwHN+xR80p2xxoW3MIB0QvvcbqdmCmd3zTWHbhH15nHD/QWXRxrD6XP4Eq9Ixgx1Bh3vhQ==
+  dependencies:
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplex-helper@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-helper/-/duplex-helper-5.0.2.tgz#5b6fca901c49ded03eea83d4f438c06cc295acec"
+  integrity sha512-4IXu56xyUOj8/qA7oivUKOpBs0aj4iImgpdF6IUb3QyYoW95HWUuQAjK/5qfRfcwuKY97mZESKKDgj9B/eNDfA==
+  dependencies:
+    "@bfchain/duplex-exception" "5.0.2"
+    "@bfchain/duplex-model" "5.0.2"
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplex-kv-storage-channel@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-kv-storage-channel/-/duplex-kv-storage-channel-5.0.2.tgz#7cbf0bfca55556a5a2e036a7d82e1f79d209fa87"
+  integrity sha512-SubI3w30+xcd3RhS7NDMxqTydv9gFROm2onUeAo8dzUHg2TV5itqnww27gKazifacLsACJnzn1v/2uAZh57RrA==
+  dependencies:
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplex-lns-channel@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-lns-channel/-/duplex-lns-channel-5.0.2.tgz#13e6a969141faf220d1d5452acafd8bc53fda042"
+  integrity sha512-X2QDqDt/hNRHbG3F3g1TiX9x5/6Fhj1plXG1j3IpUGlHPO7rPMyS7PdIDYqNHEnCbWMPTUfzIYUzACCLChgKCA==
+  dependencies:
+    "@bfchain/duplex-core" "5.0.2"
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplex-model@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-model/-/duplex-model-5.0.2.tgz#6a1d5454bfca87cf64b2094ea2d08a13381199dd"
+  integrity sha512-MbTcOZUZL9nvNACm759+WJ9JPt8Iuxxob4bHyXyRm8d0FjZdlePBwfLP7RODF/TKOkq01FUjMOzPPeM6y82rFg==
+  dependencies:
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplex-typings@5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex-typings/-/duplex-typings-5.0.2.tgz#d805cb6aba9faddc9bd9c9f3eb1f283d306ec24a"
+  integrity sha512-KoY1bf9yHOZIJuAicI+OmJHhOsNuRiOg0mWeS9nY1mMFZYgEukiiuLTrGsTetpAo5a+YDXv3b5NLccxTDfIEDQ==
+
+"@bfchain/duplex@~5.0.2":
+  version "5.0.2"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplex/-/duplex-5.0.2.tgz#33287cb08174fb7d33eed9e7068d7f3e4a4a2c5c"
+  integrity sha512-sfHpZyxA0rr6ohaqnq1IA5RxFXsytkYY3+/g6CWgrD0EsrLs/PcvkxuROF14JymnDiExvTDOap17fQ4ejG4SjQ==
+  dependencies:
+    "@bfchain/duplex-core" "5.0.2"
+    "@bfchain/duplex-diht" "5.0.2"
+    "@bfchain/duplex-dpl" "5.0.2"
+    "@bfchain/duplex-exception" "5.0.2"
+    "@bfchain/duplex-helper" "5.0.2"
+    "@bfchain/duplex-kv-storage-channel" "5.0.2"
+    "@bfchain/duplex-lns-channel" "5.0.2"
+    "@bfchain/duplex-model" "5.0.2"
+    "@bfchain/duplex-typings" "5.0.2"
+
+"@bfchain/duplexnodejshelper@~4.0.4":
+  version "4.0.4"
+  resolved "http://192.168.250.245:4873/@bfchain%2fduplexnodejshelper/-/duplexnodejshelper-4.0.4.tgz#56dbb4e4c5fbe5ff4b8f497c9bcae5c23c10836c"
+  integrity sha512-JVZbm7Bmgf+UTGvhGF0f9S3x/QLJHYT4/Nb12bucXzG25torxVNMaHzQDwTNd/E4+2tymUP2CA8tqcHOHsy0jg==
+  dependencies:
+    "@bfchain/coretools" "~3.0.12"
+    "@bfchain/duplex" "~5.0.2"
+    ws "^7.2.3"
+
 "@bfchain/license-typings@4.0.4":
   version "4.0.4"
   resolved "http://192.168.250.245:4873/@bfchain%2flicense-typings/-/license-typings-4.0.4.tgz#22ef1d1350e61d722281c4684ddfb7390c601d3f"
@@ -2342,10 +2441,10 @@
   resolved "http://192.168.250.245:4873/@types%2fnode/-/node-17.0.10.tgz#616f16e9d3a2a3d618136b1be244315d95bd7cab"
   integrity sha512-S/3xB4KzyFxYGCppyDt68yzBU9ysL88lSdIah4D6cptdcltc4NCPCAMc0+PCpg/lLIyC7IPvj2Z52OJWeIUkog==
 
-"@types/node@~12.12.70":
-  version "12.12.70"
-  resolved "http://192.168.250.245:4873/@types%2fnode/-/node-12.12.70.tgz#adf70b179c3ee17620215ee4cb5c68c95f7c37ec"
-  integrity sha1-rfcLF5w+4XYgIV7ky1xoyV98N+w=
+"@types/node@^14.18.5":
+  version "14.18.36"
+  resolved "http://192.168.250.245:4873/@types%2fnode/-/node-14.18.36.tgz#c414052cb9d43fab67d679d5f3c641be911f5835"
+  integrity sha512-FXKWbsJ6a1hIrRxv+FoukuHnGTgEzKYGi7kilfMae96AL9UNkPFNWJEEYWzdRI9ooIkbr4AKldyuSTLql06vLQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -7656,6 +7755,11 @@ write-pkg@^3.1.0:
   dependencies:
     sort-keys "^2.0.0"
     write-json-file "^2.2.0"
+
+ws@^7.2.3:
+  version "7.5.9"
+  resolved "http://192.168.250.245:4873/ws/-/ws-7.5.9.tgz#54fa7db29f4c7cec68b1ddd3a89de099942bb591"
+  integrity sha512-F+P9Jil7UiSKSkppIiD94dN07AwvFixvLIj1Og1Rl9GGMuNipJnV9JzjD6XuqmAeiswGvUmNLjr5cFuXwNS77Q==
 
 ws@~1.1.5:
   version "1.1.5"

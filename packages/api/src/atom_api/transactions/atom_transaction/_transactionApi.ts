@@ -11,7 +11,7 @@ export abstract class TransactionApi<T extends BFChainCore.TransactionJSON> {
         try {
             const result = await this.networkHelper.createTransaction<BFMetaPcSdk.TransactionServer.GenerateTransactionReturn<T>>(apiPath, argv);
             return result;
-        } catch (e) {
+        } catch (e: any) {
             const errorInfo: BFMetaPcSdk.TransactionServer.GenerateTransactionFailureReturn = {
                 success: false,
                 error: {
@@ -32,7 +32,7 @@ export abstract class TransactionApi<T extends BFChainCore.TransactionJSON> {
         try {
             const result = await this.networkHelper.sendPostRequest<BFMetaPcSdk.Transaction.TransactionApiReturn<T>>(apiPath, transaction);
             return result;
-        } catch (e) {
+        } catch (e: any) {
             const errorInfo: BFMetaPcSdk.Transaction.TransactionApiFailureReturn = {
                 success: false,
                 error: {

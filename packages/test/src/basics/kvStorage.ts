@@ -1,7 +1,7 @@
 import type {} from "@bfchain/coretools";
 import { Sdk } from "@bfchain/pc-sdk";
-import * as path from "path";
-import * as fs from "fs";
+import * as path from "node:path";
+import * as fs from "node:fs";
 
 class ApiTest {
     private __sdk = new Sdk();
@@ -23,7 +23,7 @@ class ApiTest {
                 const value = await promise;
                 let data = `idx: ${idx} name: ${funcNames[idx]} --- ${JSON.stringify(value, null, 2)}`;
                 console.debug(data);
-            } catch (e) {
+            } catch (e: any) {
                 console.error(e);
             }
         }

@@ -8,7 +8,7 @@ import { Sdk } from "@bfchain/pc-sdk";
         const result = await sdk.api.basic.getBlock({ height: 1 });
 
         console.log(result);
-    } catch (e) {
+    } catch (e: any) {
         console.log(e);
     }
 })();

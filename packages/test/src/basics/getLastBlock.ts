@@ -10,7 +10,7 @@ import { Sdk } from "@bfchain/pc-sdk";
         if (result.success) {
             console.log(result.result);
         }
-    } catch (e) {
+    } catch (e: any) {
         console.log(e);
     }
 })();

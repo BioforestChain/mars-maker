@@ -39,7 +39,7 @@ import { Sdk } from "@bfchain/pc-sdk";
         }
 
         // console.log(result);
-    } catch (e) {
+    } catch (e: any) {
         console.log(e);
     }
 })();

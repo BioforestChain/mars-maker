@@ -1,7 +1,9 @@
-import { BFChainSecret } from "@bfchain/coretools-secret";
-import { MyGenesisBlockHelper } from "./myGenesisBlockHelper";
-import { BLOCK_CHAIN_NET_WORK_TYPE } from "@bfchain/pc-sdk-helper-transaction-config";
+import type { Aborter } from "@bfchain/util-aborter";
 import { ConfigHelper, BFChainCore } from "@bfchain/core";
+import { BFChainSecret } from "@bfchain/coretools";
+import { BLOCK_CHAIN_NET_WORK_TYPE } from "@bfchain/pc-sdk-helper-transaction-config";
+import { ChannelClient } from "@bfchain/duplexnodejshelper";
+import { MyGenesisBlockHelper } from "./myGenesisBlockHelper";
 export declare class MyBaseHelper {
     private __bfchainSecret;
     private __myGenesisBlockHelper;
@@ -14,11 +16,11 @@ export declare class MyBaseHelper {
     setTransactionConfig(transactionConfigOptions: BFMetaPcSdk.TransactionConfigOptions): void;
     get bfchainSecret(): BFChainSecret;
     get genesisBlockHelper(): MyGenesisBlockHelper;
-    getGenesisBlock(): BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON>;
+    getGenesisBlock(): BFChainCore.GenesisBlockJSON;
     get bfchainCore(): BFChainCore;
-    getConfigHelper(genesisBlock?: BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON>, networkType?: BLOCK_CHAIN_NET_WORK_TYPE): ConfigHelper;
+    getConfigHelper(genesisBlock?: BFChainCore.GenesisBlockJSON, networkType?: BLOCK_CHAIN_NET_WORK_TYPE): ConfigHelper;
     cacheMap: Map<string, BFChainCore>;
-    getBfchainCore(genesisBlock?: BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON>): BFChainCore;
+    getBfchainCore(genesisBlock?: BFChainCore.GenesisBlockJSON): BFChainCore;
     getBfchainHelper(): {
         configHelper: ConfigHelper;
         accountBaseHelper: import("@bfchain/core").AccountBaseHelper;
@@ -31,4 +33,19 @@ export declare class MyBaseHelper {
     getAccountPublicKeyFromSecret(secret: string, bfchainCore?: BFChainCore): Promise<string>;
     getAccountKeypair(secret: string, bfchainCore?: BFChainCore): Promise<BFChainCore.Keypair>;
     getAccountSecondKeypair(secret: string, secondSecret: string, bfchainCore?: BFChainCore): Promise<BFChainCore.Keypair>;
+    getUrl(ip: string, port?: number, bfchainCore?: BFChainCore): string;
+    private __duplexHandlerMap;
+    private _duplexAddress;
+    private _duplexPort;
+    getDuplexAddress(bfchainCore: BFChainCore): Promise<string>;
+    setDuplexAddress(duplexAddress: string): void;
+    getDuplexPort(): number;
+    setDuplexPort(duplexPort: number): void;
+    getDuplexHandler(url: string, aborter: Aborter, timeout?: number, bfchainCore?: BFChainCore): Promise<ChannelClient>;
+    deleteDuplexHandler(url: string): void;
+    getChainChannelHeightAndTime(channelClient: ChannelClient, aborter: Aborter, bfchainCore?: BFChainCore): Promise<{
+        height: number;
+        timestamp: number;
+    }>;
+    timeCorrecting(bfchainCore: BFChainCore | undefined, peerTimestamp: number): void;
 }

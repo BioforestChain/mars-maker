@@ -1,6 +1,6 @@
 import type { BFChainCore } from "@bfchain/core";
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import * as url from "url";
 import * as http from "http";
 import { Router, route } from "./router";
@@ -170,7 +170,7 @@ export class TransactionServer {
             });
             server.listen(this.__port);
             console.debug(`transaction server running with port ${this.__port}`);
-        } catch (e) {
+        } catch (e: any) {
             console.error(e);
         }
     }

@@ -1,5 +1,5 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { Injectable } from "@bfchain/util-dep-inject";
 import { REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
 

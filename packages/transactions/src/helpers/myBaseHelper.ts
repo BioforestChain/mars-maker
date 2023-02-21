@@ -1,10 +1,11 @@
-import * as fs from "fs";
-import * as path from "path";
-import { BFChainSecret } from "@bfchain/coretools-secret";
-import { MyGenesisBlockHelper } from "./myGenesisBlockHelper";
-import { BLOCK_CHAIN_NET_WORK_TYPE, TransactionConfigHelper } from "@bfchain/pc-sdk-helper-transaction-config";
+import type { Aborter } from "@bfchain/util-aborter";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { BFChainCoreFactory, ConfigHelper, BFChainCore, BNID_TYPE } from "@bfchain/core";
-import { NodeJsCryptoHelper, NodeJsKeypairHelper, Ed2curveHelper } from "@bfchain/coretools-helper-core";
+import { BFChainSecret, NodeJsCryptoHelper, NodeJsKeypairHelper, Ed2curveHelper } from "@bfchain/coretools";
+import { BLOCK_CHAIN_NET_WORK_TYPE, TransactionConfigHelper } from "@bfchain/pc-sdk-helper-transaction-config";
+import { PeerHelper, ChannelClient } from "@bfchain/duplexnodejshelper";
+import { MyGenesisBlockHelper } from "./myGenesisBlockHelper";
 
 export class MyBaseHelper {
     private __bfchainSecret: BFChainSecret;
@@ -208,5 +209,77 @@ export class MyBaseHelper {
      */
     getAccountSecondKeypair(secret: string, secondSecret: string, bfchainCore = this.bfchainCore) {
         return bfchainCore.accountBaseHelper.createSecondSecretKeypair(secret, secondSecret);
+    }
+
+    getUrl(ip: string, port?: number, bfchainCore = this.bfchainCore) {
+        return `bnqkl:${ip}:${port || bfchainCore.config.ports.port}`;
+    }
+
+    private __duplexHandlerMap = new Map<string, ChannelClient>();
+
+    private _duplexAddress!: string;
+    private _duplexPort!: number;
+
+    async getDuplexAddress(bfchainCore: BFChainCore) {
+        if (!this._duplexAddress) {
+            const address = await bfchainCore.accountBaseHelper.getAddressFromSecret(
+                `${Math.random().toString(32).slice(2)} ${Math.random().toString(32).slice(2)}`
+            );
+            this._duplexAddress = address;
+        }
+        return this._duplexAddress;
+    }
+
+    setDuplexAddress(duplexAddress: string) {
+        this._duplexAddress = duplexAddress;
+    }
+
+    getDuplexPort() {
+        if (this._duplexPort === undefined) {
+            this._duplexPort = 8888;
+        }
+        return this._duplexPort;
+    }
+
+    setDuplexPort(duplexPort: number) {
+        this._duplexPort = duplexPort;
+    }
+
+    async getDuplexHandler(url: string, aborter: Aborter, timeout = 30000, bfchainCore = this.bfchainCore) {
+        let duplexHandler = this.__duplexHandlerMap.get(url);
+        if (!duplexHandler) {
+            const peerHelper = new PeerHelper(bfchainCore);
+            const duplexAddress = await aborter.wrapAsync(this.getDuplexAddress(bfchainCore));
+            const peerSearcher = peerHelper.install(duplexAddress, this.getDuplexPort());
+            duplexHandler = await aborter.wrapAsync(peerSearcher.outbing(url, timeout));
+            this.__duplexHandlerMap.set(url, duplexHandler);
+            duplexHandler.onClose(() => {
+                this.deleteDuplexHandler(url);
+            });
+        }
+        return duplexHandler;
+    }
+
+    deleteDuplexHandler(url: string) {
+        this.__duplexHandlerMap.delete(url);
+    }
+
+    async getChainChannelHeightAndTime(channelClient: ChannelClient, aborter: Aborter, bfchainCore = this.bfchainCore) {
+        const peerInfo = await aborter.wrapAsync(channelClient.forceDuplexca().requestPeerScan());
+        if (!peerInfo) {
+            throw new Error("Failed to get peerInfo");
+        }
+        const chainChannel = peerInfo.localInfo.extendsInfoPackage.chainChannel;
+        return {
+            height: chainChannel ? chainChannel.height : 0,
+            timestamp: chainChannel ? chainChannel.timestamp : bfchainCore.time.getTimestamp(),
+        };
+    }
+
+    timeCorrecting(bfchainCore = this.bfchainCore, peerTimestamp: number) {
+        const peerTime = bfchainCore.time.getTimeByTimestamp(peerTimestamp);
+        const curTime = bfchainCore.time.now();
+        const diff = peerTime - curTime;
+        bfchainCore.time.time_offset_ms += diff;
     }
 }

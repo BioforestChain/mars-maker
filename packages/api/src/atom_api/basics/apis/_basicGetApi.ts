@@ -14,7 +14,7 @@ export abstract class BasicGetApi<T extends BFMetaPcSdk.Basic.BasicApiRequestRes
         try {
             const result = await this.networkHelper.sendGetRequest<BFMetaPcSdk.Basic.BasicApiReturn<T>>(apiPath, argv);
             return result;
-        } catch (e) {
+        } catch (e: any) {
             const errorInfo: BFMetaPcSdk.Basic.BasicApiFailureReturn = {
                 success: false,
                 error: {
