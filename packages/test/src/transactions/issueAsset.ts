@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.IssueAssetTransactionParams = {
+        const argv: BFMetaPcSdk.Transaction.IssueAssetTransactionParams = {
             secret: "very found ice guilt what inform arm relief reopen talent traffic drill flash inner donate salad vote scout ghost desk alter later cycle suffer",
             fee: "1000",
             applyBlockHeight: 10,

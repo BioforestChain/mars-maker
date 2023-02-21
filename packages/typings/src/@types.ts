@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     type AllPartial<T> = {
         [P in keyof T]?: AllPartial<T[P]>;
     };
@@ -37,6 +37,8 @@ declare namespace BFChainPcSdk {
         required?: string[];
         minimum?: number;
         maximum?: number;
+        minItems?: number;
+        maxItems?: number;
         items?: SchemaType;
         format?: string;
     }

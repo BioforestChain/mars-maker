@@ -4,7 +4,7 @@ import { API } from "./apiConst";
 export namespace SYSTEM_API {
     /**节点管理接口基类 */
     abstract class SystemApi extends ApiBase {
-        constructor(apiInfo: BFChainPcSdk.ApiInfo) {
+        constructor(apiInfo: BFMetaPcSdk.ApiInfo) {
             super(apiInfo);
         }
 

@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class RegisterChainFactory extends TransactionFactory<RegisterChainTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_REGISTER_CHAIN;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.RegisterChainTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.RegisterChainTransactionParams) {
         this.verify(request);
         const tr = await myRegisterChain.generateRegisterChain(
             this.getTransactionBody(request),

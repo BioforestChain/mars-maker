@@ -40,7 +40,7 @@ async function generateMigrateCertificate(recipientId: string, toChainInfo: BFCh
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.EmigrateAssetTransactionParams = {
+        const argv: BFMetaPcSdk.Transaction.EmigrateAssetTransactionParams = {
             secret: "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",
             fee: "1000",
             applyBlockHeight: 50,

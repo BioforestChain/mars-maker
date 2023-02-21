@@ -1,9 +1,9 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     interface GenesisInfoConfig {
         /**创世块是否由外部提供, 默认在 genesisInfos 目录, 默认值 false */
         isGenesisBlockProvidedExternally: boolean;
         /**网络类型: testnet || mainnet, 默认值 mainnet */
-        networkType: BFChainPcSdk.BLOCK_CHAIN_NET_WORK_TYPE;
+        networkType: BFMetaPcSdk.BLOCK_CHAIN_NET_WORK_TYPE;
         /**区块链链权益名, 默认值 BFT */
         chainAssetType: string;
         /**每轮的区块数量, 默认值 57 */
@@ -22,7 +22,7 @@ declare namespace BFChainPcSdk {
         /**创世块配置信息 */
         genesisInfoConfig: GenesisInfoConfig;
         /**密码类型: cn 汉语 || jp 日语 || sp 西班牙语 || it 意大利语 || fr 法语 || en 英语, 默认值 en */
-        lang: BFChainPcSdk.SECRET_LANGUAGE_TYPE;
+        lang: BFMetaPcSdk.SECRET_LANGUAGE_TYPE;
     }
 
     type TransactionConfigOptions = AllPartial<TransactionConfig>;

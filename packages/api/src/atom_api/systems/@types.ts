@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     namespace System {
         // #region request
         interface SystemApiRequestParams {
@@ -381,7 +381,7 @@ declare namespace BFChainPcSdk {
             /**搜索的字符串 */
             searchString?: string;
             /**读取文件的方式 */
-            readFileType?: BFChainPcSdk.READ_FILE_TYPE;
+            readFileType?: BFMetaPcSdk.READ_FILE_TYPE;
         }
 
         /**删除矿机运行日志 */
@@ -967,7 +967,7 @@ declare namespace BFChainPcSdk {
         }
         interface SystemApiFailureReturn extends ApiFailureReturn {}
 
-        type SystemApiReturn<T extends SystemApiRequestResult> = BFChainPcSdk.Basic.BasicApiSuccessReturn<T> | SystemApiFailureReturn;
+        type SystemApiReturn<T extends SystemApiRequestResult> = BFMetaPcSdk.Basic.BasicApiSuccessReturn<T> | SystemApiFailureReturn;
 
         type SystemApi = import("./apis/_systemGetApi").SystemGetApi<any> | import("./apis/_systemPostApi").SystemPostApi<any>;
         type SafetyCloseApi = import("./apis").SafetyCloseApi;

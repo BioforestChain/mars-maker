@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class BeExchangeSpecialAssetFactory extends TransactionFactory<BeExchangeSpecialAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_SPECIAL_ASSET;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.BeExchangeSpecialAssetTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.BeExchangeSpecialAssetTransactionParams) {
         this.verify(request);
         const tr = await myBeExchangeSpecialAsset.generateBeExchangeSpecialAsset(
             this.getTransactionBody(request),

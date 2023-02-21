@@ -9,10 +9,10 @@ export class Api {
     private __systemApi!: SystemApi;
     private __transactionApi!: TransactionApi;
 
-    constructor(transactionServerPort: number, configOptions?: BFChainPcSdk.ApiConfigOptions) {
+    constructor(transactionServerPort: number, configOptions?: BFMetaPcSdk.ApiConfigOptions) {
         this.__configHelper = new ApiConfigHelper(configOptions);
         const apiConfig = this.__configHelper.apiConfig;
-        let networkHelper: BFChainPcSdk.NetworkHelper;
+        let networkHelper: BFMetaPcSdk.NetworkHelper;
         if (apiConfig.requestProtocol == REQUEST_PROTOCOL.HTTP) {
             networkHelper = new HttpHelper(transactionServerPort, this.__configHelper);
         } else {
@@ -40,7 +40,7 @@ export class Api {
         return this.__transactionApi;
     }
 
-    setApiconfig(configOptions: BFChainPcSdk.ApiConfigOptions) {
+    setApiconfig(configOptions: BFMetaPcSdk.ApiConfigOptions) {
         return this.__configHelper.setApiConfig(configOptions);
     }
 }

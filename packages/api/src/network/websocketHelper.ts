@@ -8,7 +8,7 @@ export class WebsocketHelper {
     private __socketMap = new Map<string, SocketIOClient.Socket>();
     private __transactionServerPort: number;
     private __configHelper: ApiConfigHelper;
-    private __config: BFChainPcSdk.ApiConfig;
+    private __config: BFMetaPcSdk.ApiConfig;
 
     // FIXME: 兼容老燕辉设计的神奇的 api
     public readonly REQUEST_PROTOCOL = REQUEST_PROTOCOL.WEBSOCKET;
@@ -114,7 +114,7 @@ export class WebsocketHelper {
                     reject(new Error(`request timeout ${url}`));
                 }, this.__config.requestTimeOut);
                 const socket = await this.getSocket();
-                socket.emit(url, argv, (result: BFChainPcSdk.ApiReturn) => {
+                socket.emit(url, argv, (result: BFMetaPcSdk.ApiReturn) => {
                     clearTimeout(timeoutId);
                     return resolve(result as any);
                 });
@@ -134,7 +134,7 @@ export class WebsocketHelper {
                     reject(new Error(`request timeout ${url}`));
                 }, this.__config.requestTimeOut);
                 const socket = await this.getSocket();
-                socket.emit(url, argv, (result: BFChainPcSdk.ApiReturn) => {
+                socket.emit(url, argv, (result: BFMetaPcSdk.ApiReturn) => {
                     clearTimeout(timeoutId);
                     return resolve(result as any);
                 });

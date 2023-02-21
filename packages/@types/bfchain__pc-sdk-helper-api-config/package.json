@@ -1,9 +1,9 @@
 {
     "name": "@types/bfchain__pc-sdk-helper-api-config",
     "types": "index.d.ts",
-    "version": "1.2.35",
+    "version": "2.0.1",
     "dependencies": {
-        "@types/bfchain__pc-sdk-api-constants": "1.2.35",
-        "@types/bfchain__pc-sdk-typings": "1.2.35"
+        "@types/bfchain__pc-sdk-api-constants": "2.0.1",
+        "@types/bfchain__pc-sdk-typings": "2.0.1"
     }
 }

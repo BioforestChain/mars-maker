@@ -3,7 +3,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.GrabAssetTransactionParams = {
+        const argv: BFMetaPcSdk.Transaction.GrabAssetTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "440000",
             applyBlockHeight: 35,

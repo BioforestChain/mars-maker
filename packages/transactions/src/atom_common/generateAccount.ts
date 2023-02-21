@@ -3,16 +3,16 @@ import { COMMON_API_PATH } from "@bfchain/pc-sdk-api-constants";
 import { CommonFactory } from "./_commonFactory";
 
 @Injectable()
-export class GenerateAccountFactory extends CommonFactory<BFChainPcSdk.Common.AccountInfo> {
+export class GenerateAccountFactory extends CommonFactory<BFMetaPcSdk.Common.AccountInfo> {
     readonly EXEC_API_PATH = COMMON_API_PATH.GENERATE_ACCOUNT;
 
-    async exec(request: BFChainPcSdk.Common.GenerateAccountParams) {
+    async exec(request: BFMetaPcSdk.Common.GenerateAccountParams) {
         const { secret, secondSecret } = request;
         const accountBaseHelper = this.bfchainCore.accountBaseHelper;
         const keypair = await accountBaseHelper.createSecretKeypair(secret);
         const publicKey = getHexFromArrayBuffer(keypair.publicKey);
         const address = await accountBaseHelper.getAddressFromPublicKey(keypair.publicKey);
-        const accountInfo: BFChainPcSdk.Common.AccountInfo = {
+        const accountInfo: BFMetaPcSdk.Common.AccountInfo = {
             address,
             publicKey,
         };

@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.SignatureTransactionParams = {
+        const argv: BFMetaPcSdk.Transaction.SignatureTransactionParams = {
             secret: "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon",
             fee: "1000",
             applyBlockHeight: 40,

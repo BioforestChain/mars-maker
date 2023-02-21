@@ -6,7 +6,7 @@ import { CommonFactory } from "./_commonFactory";
 export class GenerateAddressByPublicKeyFactory extends CommonFactory<string> {
     readonly EXEC_API_PATH = COMMON_API_PATH.GENERATE_ADDRESS_BY_PUBLICKEY;
 
-    async exec(request: BFChainPcSdk.Common.GenerateAddressByPublicKeyParams) {
+    async exec(request: BFMetaPcSdk.Common.GenerateAddressByPublicKeyParams) {
         const address = await this.bfchainCore.accountBaseHelper.getAddressFromPublicKeyString(request.publicKey);
         return address;
     }

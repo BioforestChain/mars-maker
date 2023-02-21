@@ -2,7 +2,7 @@ import { BASE_ARGS_TYPE } from "./constants";
 import { TR_COMMON_PARAM } from "./commonSchema";
 
 /**发送设置用户名事件 */
-export const TR_USERNAME: BFChainPcSdk.SchemaType[] = [
+export const TR_USERNAME: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -15,7 +15,7 @@ export const TR_USERNAME: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送设置安全密码事件 */
-export const TR_SIGNATURE: BFChainPcSdk.SchemaType[] = [
+export const TR_SIGNATURE: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -37,13 +37,13 @@ export const TR_SIGNATURE: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送注册受托人事件 */
-export const TR_DELEGATE: BFChainPcSdk.SchemaType = TR_COMMON_PARAM;
+export const TR_DELEGATE: BFMetaPcSdk.SchemaType = TR_COMMON_PARAM;
 /**发送接收投票事件 */
-export const TR_ACCEPT_VOTE: BFChainPcSdk.SchemaType = TR_COMMON_PARAM;
+export const TR_ACCEPT_VOTE: BFMetaPcSdk.SchemaType = TR_COMMON_PARAM;
 /**发送拒绝投票事件  */
-export const TR_REJECT_VOTE: BFChainPcSdk.SchemaType = TR_COMMON_PARAM;
+export const TR_REJECT_VOTE: BFMetaPcSdk.SchemaType = TR_COMMON_PARAM;
 /**发送投票事件 */
-export const TR_VOTE: BFChainPcSdk.SchemaType[] = [
+export const TR_VOTE: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -57,7 +57,7 @@ export const TR_VOTE: BFChainPcSdk.SchemaType[] = [
 ];
 
 /**发送权益发行事件 */
-export const TR_ISSUE_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_ISSUE_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -79,7 +79,7 @@ export const TR_ISSUE_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送转账事件 */
-export const TR_TRANSFER_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_TRANSFER_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -107,7 +107,7 @@ export const TR_TRANSFER_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送权益销毁事件 */
-export const TR_DESTORY_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_DESTORY_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -129,7 +129,7 @@ export const TR_DESTORY_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送权益赠与事件（红包事件） */
-export const TR_GIFT_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_GIFT_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -172,7 +172,7 @@ export const TR_GIFT_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送接受权益赠与事件（抢红包事件） */
-export const TR_GRAB_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_GRAB_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -218,7 +218,7 @@ export const TR_GRAB_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送权益委托事件 */
-export const TR_TRUST_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_TRUST_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -255,7 +255,7 @@ export const TR_TRUST_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送签收权益委托事件 */
-export const TR_SIGN_FOR_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_SIGN_FOR_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -268,7 +268,7 @@ export const TR_SIGN_FOR_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送权益交换事件 */
-export const TR_TO_EXCHANGE_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_TO_EXCHANGE_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -329,7 +329,7 @@ export const TR_TO_EXCHANGE_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送接受权益交换事件 */
-export const TR_BE_EXCHANGE_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_BE_EXCHANGE_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -404,7 +404,7 @@ export const TR_BE_EXCHANGE_ASSET: BFChainPcSdk.SchemaType[] = [
 ];
 
 /**发送发行dapp事件 */
-export const TR_DAPP: BFChainPcSdk.SchemaType[] = [
+export const TR_DAPP: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -429,7 +429,7 @@ export const TR_DAPP: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送dapp购买事件 */
-export const TR_DAPP_PURCHASING: BFChainPcSdk.SchemaType[] = [
+export const TR_DAPP_PURCHASING: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -454,7 +454,7 @@ export const TR_DAPP_PURCHASING: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送存证事件 */
-export const TR_MARK: BFChainPcSdk.SchemaType[] = [
+export const TR_MARK: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -485,7 +485,7 @@ export const TR_MARK: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送注册、注销位名事件 */
-export const TR_LOCATION_NAME: BFChainPcSdk.SchemaType[] = [
+export const TR_LOCATION_NAME: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -501,7 +501,7 @@ export const TR_LOCATION_NAME: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送设置位名管理员事件 */
-export const TR_SET_LNS_MANAGER: BFChainPcSdk.SchemaType[] = [
+export const TR_SET_LNS_MANAGER: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -514,7 +514,7 @@ export const TR_SET_LNS_MANAGER: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送设置位名解析值事件 */
-export const TR_SET_LNS_RECORD_VALUE: BFChainPcSdk.SchemaType[] = [
+export const TR_SET_LNS_RECORD_VALUE: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -553,7 +553,7 @@ export const TR_SET_LNS_RECORD_VALUE: BFChainPcSdk.SchemaType[] = [
 ];
 
 /**发送注册链事件 */
-export const TR_REGISTER_CHAIN: BFChainPcSdk.SchemaType[] = [
+export const TR_REGISTER_CHAIN: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -566,7 +566,7 @@ export const TR_REGISTER_CHAIN: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送资产交换事件 */
-export const TR_TO_EXCHANGE_SPECIAL_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_TO_EXCHANGE_SPECIAL_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -621,7 +621,7 @@ export const TR_TO_EXCHANGE_SPECIAL_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送接受资产交换事件 */
-export const TR_BE_EXCHANGE_SPECIAL_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_BE_EXCHANGE_SPECIAL_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -687,7 +687,7 @@ export const TR_BE_EXCHANGE_SPECIAL_ASSET: BFChainPcSdk.SchemaType[] = [
     },
 ];
 /**发送权益迁出交易 */
-export const TR_EMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_EMIGRATE_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -741,7 +741,7 @@ export const TR_EMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
 ];
 
 /**发送权益迁入交易 */
-export const TR_IMMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
+export const TR_IMMIGRATE_ASSET: BFMetaPcSdk.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -794,5 +794,688 @@ export const TR_IMMIGRATE_ASSET: BFChainPcSdk.SchemaType[] = [
             },
         },
         required: ["migrateCertificate"],
+    },
+];
+
+/**发送发行资产权益模板事件 */
+export const TR_ISSUE_ENTITY_FACTORY: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            factoryId: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            entityPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            entityFrozenAssetPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            purchaseAssetPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+        },
+        required: ["factoryId", "entityPrealnum", "recipientId"],
+    },
+];
+
+/**发送发行资产权益事件 */
+export const TR_ISSUE_ENTITY: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            factoryId: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            entityId: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            taxAssetPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+        },
+        required: ["factoryId", "entityId"],
+    },
+];
+
+/**发送销毁资产权益事件 */
+export const TR_DESTORY_ENTITY: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            entityId: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+        },
+        required: ["entityId"],
+    },
+];
+
+/**发送资产交换事件 */
+export const TR_TO_EXCHANGE_ANY: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            toExchangeSource: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            beExchangeSource: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            toExchangeChainName: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            beExchangeChainName: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            toExchangeParentAssetType: {
+                type: BASE_ARGS_TYPE.NUMBER,
+            },
+            beExchangeParentAssetType: {
+                type: BASE_ARGS_TYPE.NUMBER,
+            },
+            toExchangeAssetType: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            beExchangeAssetType: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            toExchangeAssetPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            beExchangeAssetPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            assetExchangeWeightRatio: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    toExchangeAssetWeight: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAssetWeight: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["toExchangeAssetWeight", "beExchangeAssetWeight"],
+            },
+            taxInformation: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    taxCollector: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    taxAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["taxCollector", "taxAssetPrealnum"],
+            },
+            cipherPublicKeys: {
+                type: "array",
+                items: {
+                    type: BASE_ARGS_TYPE.STRING,
+                },
+            },
+        },
+        required: [
+            "toExchangeSource",
+            "beExchangeSource",
+            "toExchangeChainName",
+            "beExchangeChainName",
+            "toExchangeParentAssetType",
+            "beExchangeParentAssetType",
+            "toExchangeAssetType",
+            "beExchangeAssetType",
+            "toExchangeAssetPrealnum",
+        ],
+    },
+];
+
+/**发送接受资产交换事件 */
+export const TR_BE_EXCHANGE_ANY: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            transactionSignature: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            toExchangeAssetPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            beExchangeAssetPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            ciphertextSignature: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    publicKey: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    signature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    secondPublicKey: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    signSignature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["publicKey", "signature"],
+            },
+            exchangeAny: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    toExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeParentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    beExchangeParentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    toExchangeAssetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAssetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetExchangeWeightRatio: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            toExchangeAssetWeight: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            beExchangeAssetWeight: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["toExchangeAssetWeight", "beExchangeAssetWeight"],
+                    },
+                    taxInformation: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            taxCollector: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            taxAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["taxCollector", "taxAssetPrealnum"],
+                    },
+                    cipherPublicKeys: {
+                        type: "array",
+                        items: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                    },
+                },
+                required: [
+                    "cipherPublicKeys",
+                    "toExchangeSource",
+                    "beExchangeSource",
+                    "toExchangeChainName",
+                    "beExchangeChainName",
+                    "toExchangeParentAssetType",
+                    "beExchangeParentAssetType",
+                    "toExchangeAssetType",
+                    "beExchangeAssetType",
+                    "toExchangeAssetPrealnum",
+                ],
+            },
+            taxInformation: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    taxCollector: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    taxAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["taxCollector", "taxAssetPrealnum"],
+            },
+        },
+        required: ["transactionSignature", "toExchangeAssetPrealnum", "exchangeAny", "recipientId"],
+    },
+];
+
+/**发送任意资产转移事件 */
+export const TR_TRANSFER_ANY: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            taxInformation: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    taxCollector: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    taxAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["taxCollector", "taxAssetPrealnum"],
+            },
+            amount: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            assetType: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            parentAssetType: {
+                type: BASE_ARGS_TYPE.NUMBER,
+            },
+            sourceChainName: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            sourceChainMagic: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+        },
+        required: ["recipientId", "parentAssetType", "assetType", "amount"],
+    },
+];
+
+/**发送任意资产赠与事件 */
+export const TR_GIFT_ANY: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            sourceChainMagic: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            sourceChainName: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            parentAssetType: {
+                type: BASE_ARGS_TYPE.NUMBER,
+            },
+            assetType: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            amount: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            totalGrabableTimes: {
+                type: BASE_ARGS_TYPE.NUMBER,
+            },
+            numberOfBeginUnfrozenBlocks: {
+                type: BASE_ARGS_TYPE.NUMBER,
+            },
+            giftDistributionRule: {
+                type: BASE_ARGS_TYPE.NUMBER,
+            },
+            taxInformation: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    taxCollector: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    taxAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["taxCollector", "taxAssetPrealnum"],
+            },
+            cipherPublicKeys: {
+                type: "array",
+                items: {
+                    type: BASE_ARGS_TYPE.STRING,
+                },
+            },
+        },
+        required: ["parentAssetType", "assetType", "amount"],
+    },
+];
+
+/**发送接受任意资产赠与事件 */
+export const TR_GRAB_ANY: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            amount: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            blockSignature: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            transactionSignature: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            ciphertextSignature: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    publicKey: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    signature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    secondPublicKey: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    signSignature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["publicKey", "signature"],
+            },
+            giftAny: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    parentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    amount: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    totalGrabableTimes: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    beginUnfrozenBlockHeight: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    giftDistributionRule: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    taxInformation: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            taxCollector: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            taxAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["taxCollector", "taxAssetPrealnum"],
+                    },
+                    cipherPublicKeys: {
+                        type: "array",
+                        items: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                    },
+                },
+                required: ["sourceChainMagic", "sourceChainName", "parentAssetType", "assetType", "amount", "totalGrabableTimes", "cipherPublicKeys"],
+            },
+        },
+        required: ["blockSignature", "transactionSignature", "giftAny", "recipientId"],
+    },
+];
+
+/**发送发行资产权益事件 */
+export const TR_ISSUE_ENTITY_MULTI_V1: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            factoryId: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            entityStructList: {
+                type: BASE_ARGS_TYPE.ARRAY,
+                items: {
+                    type: BASE_ARGS_TYPE.OBJECT,
+                    properties: {
+                        entityId: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        taxAssetPrealnum: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                    },
+                    required: ["entityId"],
+                },
+                minItems: 1,
+            },
+        },
+        required: ["factoryId", "entityStructList"],
+    },
+];
+
+/**发送批量任意资产交换事件 */
+export const TR_TO_EXCHANGE_ANY_MULTI: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            toExchangeAssets: {
+                type: "array",
+                items: {
+                    type: BASE_ARGS_TYPE.OBJECT,
+                    properties: {
+                        toExchangeSource: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeChainName: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeParentAssetType: {
+                            type: BASE_ARGS_TYPE.NUMBER,
+                        },
+                        toExchangeAssetType: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeAssetPrealnum: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        assetExchangeWeightRatio: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                toExchangeAssetWeight: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                beExchangeAssetWeight: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["toExchangeAssetWeight", "beExchangeAssetWeight"],
+                        },
+                        taxInformation: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                taxCollector: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                taxAssetPrealnum: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["taxCollector", "taxAssetPrealnum"],
+                        },
+                    },
+                    required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
+                },
+            },
+            beExchangeAsset: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    beExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeParentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    beExchangeAssetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    taxInformation: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            taxCollector: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            taxAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["taxCollector", "taxAssetPrealnum"],
+                    },
+                },
+                required: ["beExchangeParentAssetType", "beExchangeAssetType"],
+            },
+            cipherPublicKeys: {
+                type: "array",
+                items: {
+                    type: BASE_ARGS_TYPE.STRING,
+                },
+            },
+        },
+        required: ["toExchangeAssets", "beExchangeAsset"],
+    },
+];
+
+/**发送接受批量任意资产交换事件 */
+export const TR_BE_EXCHANGE_ANY_MULTI: BFMetaPcSdk.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            transactionSignature: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            toExchangeAssets: {
+                type: "array",
+                items: {
+                    type: BASE_ARGS_TYPE.OBJECT,
+                    properties: {
+                        toExchangeSource: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeChainName: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeParentAssetType: {
+                            type: BASE_ARGS_TYPE.NUMBER,
+                        },
+                        toExchangeAssetType: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeAssetPrealnum: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        assetExchangeWeightRatio: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                toExchangeAssetWeight: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                beExchangeAssetWeight: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["toExchangeAssetWeight", "beExchangeAssetWeight"],
+                        },
+                        taxInformation: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                taxCollector: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                taxAssetPrealnum: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["taxCollector", "taxAssetPrealnum"],
+                        },
+                    },
+                    required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
+                },
+            },
+            beExchangeAsset: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    beExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeParentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    beExchangeAssetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    taxInformation: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            taxCollector: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            taxAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["taxCollector", "taxAssetPrealnum"],
+                    },
+                },
+                required: ["beExchangeParentAssetType", "beExchangeAssetType"],
+            },
+            ciphertextSignature: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    publicKey: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    signature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    secondPublicKey: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    signSignature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["publicKey", "signature"],
+            },
+        },
+        required: ["transactionSignature", "toExchangeAssets", "beExchangeAsset", "recipientId"],
     },
 ];

@@ -6,11 +6,11 @@ import { SdkExceptionGenerator, PROP_IS_INVALID, PROP_IS_REQUIRE } from "@bfchai
 const { ArgumentIllegalException } = SdkExceptionGenerator("Sdk", "Transactions");
 
 export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
-    abstract readonly GENERATE_API_PATH: BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH;
+    abstract readonly GENERATE_API_PATH: BFMetaPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH;
 
     constructor(public bfchainCore: BFChainCore, private __transactionVerifyHelper: TransactionVerifyHelper) {}
 
-    getTransactionBody(request: BFChainPcSdk.Transaction.TransactionCommonParams) {
+    getTransactionBody(request: BFMetaPcSdk.Transaction.TransactionCommonParams) {
         const exception = {
             target: "request",
             function: "getTransactionBody",
@@ -68,7 +68,7 @@ export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
         return txBody;
     }
 
-    getAccountPowInfo(request: BFChainPcSdk.Transaction.TransactionCommonParams) {
+    getAccountPowInfo(request: BFMetaPcSdk.Transaction.TransactionCommonParams) {
         const { accountLastRoundInfo, applyBlockHeight } = request;
         const accountPowInfo: BFChainCoreTools.AccountPowInfoModel = { round: 1, txCount: 0, equity: "0" };
         if (accountLastRoundInfo) {
@@ -79,7 +79,7 @@ export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
         return accountPowInfo;
     }
 
-    verify(request: BFChainPcSdk.Transaction.TransactionCommonParams) {
+    verify(request: BFMetaPcSdk.Transaction.TransactionCommonParams) {
         this.__transactionVerifyHelper.verify(request, TRANSACTION_SCHEMA_MAP.get(this.GENERATE_API_PATH));
     }
 
@@ -89,7 +89,7 @@ export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
      * @param request
      * @param accountPowInfo
      */
-    abstract generateTransaction(request: BFChainPcSdk.Transaction.TransactionCommonParams): Promise<BFChainCore.TransactionJSON>;
+    abstract generateTransaction(request: BFMetaPcSdk.Transaction.TransactionCommonParams): Promise<BFChainCore.TransactionJSON>;
 
     /**针对节点存储设置交易对象的remark字段 */
     setTransactionRemark(remark: { [key: string]: string }, keys: string[], fileInfos: { name: string; size: number }[]): { [key: string]: string } {

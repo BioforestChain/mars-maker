@@ -6,7 +6,7 @@ import { CommonFactory } from "./_commonFactory";
 export class VerifyPublicKeyFactory extends CommonFactory<boolean> {
     readonly EXEC_API_PATH = COMMON_API_PATH.VERIFY_PUBLICKEY;
 
-    async exec(request: BFChainPcSdk.Common.VerifyPublicKeyParams) {
+    async exec(request: BFMetaPcSdk.Common.VerifyPublicKeyParams) {
         const isPublicKey = this.bfchainCore.baseHelper.isValidPublicKey(request.publicKey);
         return isPublicKey;
     }

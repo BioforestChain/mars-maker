@@ -4,9 +4,9 @@ const { Exception } = SdkExceptionGenerator("Sdk", "Transactions-Schema-Validati
 
 @Injectable()
 export class Validator {
-    private __validatorMap = new Map<string, BFChainPcSdk.FormaterCallback<never>>();
+    private __validatorMap = new Map<string, BFMetaPcSdk.FormaterCallback<never>>();
 
-    registerFormater<T extends BFChainPcSdk.FormaterCallbackArgv>(formatName: string, validatorFunction: BFChainPcSdk.FormaterCallback<T>) {
+    registerFormater<T extends BFMetaPcSdk.FormaterCallbackArgv>(formatName: string, validatorFunction: BFMetaPcSdk.FormaterCallback<T>) {
         if (this.__validatorMap.has(formatName)) {
             throw new Exception(MODULE_DUPLICATE, {
                 module: "formatName",
@@ -18,8 +18,8 @@ export class Validator {
         this.__validatorMap.set(formatName, validatorFunction);
     }
 
-    runFormater<T extends BFChainPcSdk.FormaterCallbackArgv>(formatName: string, value: T) {
-        const validatorFunction = this.__validatorMap.get(formatName) as BFChainPcSdk.FormaterCallback<T>;
+    runFormater<T extends BFMetaPcSdk.FormaterCallbackArgv>(formatName: string, value: T) {
+        const validatorFunction = this.__validatorMap.get(formatName) as BFMetaPcSdk.FormaterCallback<T>;
         if (!validatorFunction) {
             throw new Exception(MODULE_NOT_EXISTS, {
                 module: "formatName",

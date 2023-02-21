@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class DelegateFactory extends TransactionFactory<DelegateTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_DELEGATE;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.DelegateTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.DelegateTransactionParams) {
         this.verify(request);
         const tr = await myDelegate.generateDelegate(this.getTransactionBody(request), this.getAccountPowInfo(request), this.bfchainCore);
         return tr.toJSON();

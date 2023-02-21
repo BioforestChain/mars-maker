@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     namespace Transaction {
         type TransactionFactory<T extends BFChainCore.Transaction> = import("./atom_transaction/_transactionFactory").TransactionFactory<T>;
 

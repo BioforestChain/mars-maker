@@ -33,9 +33,9 @@ import {
 import { SYSTEM_API_PATH } from "@bfchain/pc-sdk-api-constants";
 
 export class SystemApi {
-    private __SYSTEM_API_MAP = new Map<BFChainPcSdk.System.SYSTEM_API_PATH, BFChainPcSdk.System.SystemApi>();
+    private __SYSTEM_API_MAP = new Map<BFMetaPcSdk.System.SYSTEM_API_PATH, BFMetaPcSdk.System.SystemApi>();
 
-    constructor(private __networkHelper: BFChainPcSdk.NetworkHelper) {
+    constructor(private __networkHelper: BFMetaPcSdk.NetworkHelper) {
         this.__init();
     }
 
@@ -107,217 +107,217 @@ export class SystemApi {
         Object.freeze(SYSTEM_API_MAP);
     }
 
-    private __getSystemApi<T extends BFChainPcSdk.System.SystemApi>(apiPath: BFChainPcSdk.System.SYSTEM_API_PATH) {
+    private __getSystemApi<T extends BFMetaPcSdk.System.SystemApi>(apiPath: BFMetaPcSdk.System.SYSTEM_API_PATH) {
         return this.__SYSTEM_API_MAP.get(apiPath) as T;
     }
 
     // #region systemApi
     /**安全关闭节点 */
-    async safetyClose(argv: BFChainPcSdk.System.SafetyCloseParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.SafetyCloseApi>(SYSTEM_API_PATH.SYSTEM_SAFETY_CLOSE);
+    async safetyClose(argv: BFMetaPcSdk.System.SafetyCloseParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.SafetyCloseApi>(SYSTEM_API_PATH.SYSTEM_SAFETY_CLOSE);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**设置节点密码 */
-    async setSystemKey(argv: BFChainPcSdk.System.SetSystemKeyParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.SetSystemKeyApi>(SYSTEM_API_PATH.SYSTEM_SET_SYSTEM_KEY);
+    async setSystemKey(argv: BFMetaPcSdk.System.SetSystemKeyParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.SetSystemKeyApi>(SYSTEM_API_PATH.SYSTEM_SET_SYSTEM_KEY);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**验证节点密码 */
-    async verifySystemKey(argv: BFChainPcSdk.System.VerifySystemKeyParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.VerifySystemKeyApi>(SYSTEM_API_PATH.SYSTEM_VERIFY_SYSTEM_KEY);
+    async verifySystemKey(argv: BFMetaPcSdk.System.VerifySystemKeyParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.VerifySystemKeyApi>(SYSTEM_API_PATH.SYSTEM_VERIFY_SYSTEM_KEY);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**增加节点管理员 */
-    async addSystemAdmin(argv: BFChainPcSdk.System.AddSystemAdminParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.AddSystemAdminApi>(SYSTEM_API_PATH.SYSTEM_ADD_SYSTEM_ADMIN);
+    async addSystemAdmin(argv: BFMetaPcSdk.System.AddSystemAdminParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.AddSystemAdminApi>(SYSTEM_API_PATH.SYSTEM_ADD_SYSTEM_ADMIN);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获取节点管理员 */
-    async getSystemAdmin(argv: BFChainPcSdk.System.GetSystemAdminParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetSystemAdminApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_ADMIN);
+    async getSystemAdmin(argv: BFMetaPcSdk.System.GetSystemAdminParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetSystemAdminApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_ADMIN);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**验证节点管理员 */
-    async verifySystemAdmin(argv: BFChainPcSdk.System.VerifySystemAdminParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.VerifySystemAdminApi>(SYSTEM_API_PATH.SYSTEM_VERIFY_SYSTEM_ADMIN);
+    async verifySystemAdmin(argv: BFMetaPcSdk.System.VerifySystemAdminParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.VerifySystemAdminApi>(SYSTEM_API_PATH.SYSTEM_VERIFY_SYSTEM_ADMIN);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**删除节点管理员 */
-    async deleteSystemAdmin(argv: BFChainPcSdk.System.DeleteSystemAdminParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.DeleteSystemAdminApi>(SYSTEM_API_PATH.SYSTEM_DELETE_SYSTEM_ADMIN);
+    async deleteSystemAdmin(argv: BFMetaPcSdk.System.DeleteSystemAdminParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.DeleteSystemAdminApi>(SYSTEM_API_PATH.SYSTEM_DELETE_SYSTEM_ADMIN);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**重置节点管理员 */
-    async resetSystemAdmin(argv: BFChainPcSdk.System.ResetSystemAdminParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.ResetSystemAdminApi>(SYSTEM_API_PATH.SYSTEM_RESET_SYSTEM_ADMIN);
+    async resetSystemAdmin(argv: BFMetaPcSdk.System.ResetSystemAdminParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.ResetSystemAdminApi>(SYSTEM_API_PATH.SYSTEM_RESET_SYSTEM_ADMIN);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**绑定节点账户 */
-    async bindingAccount(argv: BFChainPcSdk.System.BindingAccountParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.BindingAccountApi>(SYSTEM_API_PATH.SYSTEM_BINDING_ACCOUNT);
+    async bindingAccount(argv: BFMetaPcSdk.System.BindingAccountParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.BindingAccountApi>(SYSTEM_API_PATH.SYSTEM_BINDING_ACCOUNT);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点受托人 */
-    async getSystemDelegate(argv: BFChainPcSdk.System.GetSystemDelegateParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetSystemDelegateApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_DELEGATE);
+    async getSystemDelegate(argv: BFMetaPcSdk.System.GetSystemDelegateParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetSystemDelegateApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_DELEGATE);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**设置节点配置信息 */
-    async setSystemConfig(argv: BFChainPcSdk.System.SetSystemConfigParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.SetSystemConfigApi>(SYSTEM_API_PATH.SYSTEM_SET_SYSTEM_CONFIG);
+    async setSystemConfig(argv: BFMetaPcSdk.System.SetSystemConfigParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.SetSystemConfigApi>(SYSTEM_API_PATH.SYSTEM_SET_SYSTEM_CONFIG);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点配置信息 */
-    async getSystemConfigInfoDetail(argv: BFChainPcSdk.System.GetSystemConfigInfoDetailParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetSystemConfigInfoDetailApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_CONFIG_INFO_DETAIL);
+    async getSystemConfigInfoDetail(argv: BFMetaPcSdk.System.GetSystemConfigInfoDetailParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetSystemConfigInfoDetailApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_CONFIG_INFO_DETAIL);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点状态（实时信息） */
-    async getRuntimeState(argv: BFChainPcSdk.System.GetRuntimeStateParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetRuntimeStateApi>(SYSTEM_API_PATH.SYSTEM_GET_RUNTIME_STATE);
+    async getRuntimeState(argv: BFMetaPcSdk.System.GetRuntimeStateParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetRuntimeStateApi>(SYSTEM_API_PATH.SYSTEM_GET_RUNTIME_STATE);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**节点信息查询 */
-    async miningMachineInfo(argv: BFChainPcSdk.System.MiningMachineInfoParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.MiningMachineInfoApi>(SYSTEM_API_PATH.SYSTEM_MINING_MACHINE_INFO);
+    async miningMachineInfo(argv: BFMetaPcSdk.System.MiningMachineInfoParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.MiningMachineInfoApi>(SYSTEM_API_PATH.SYSTEM_MINING_MACHINE_INFO);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点访问统计信息 */
-    async getSystemMonitor(argv: BFChainPcSdk.System.GetSystemMonitorParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetSystemMonitorApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_MONITOR);
+    async getSystemMonitor(argv: BFMetaPcSdk.System.GetSystemMonitorParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetSystemMonitorApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_MONITOR);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点运行日志类型 */
-    async getSystemLoggerType(argv: BFChainPcSdk.System.GetSystemLoggerTypeParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetSystemLoggerTypeApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_LOGGER_TYPE);
+    async getSystemLoggerType(argv: BFMetaPcSdk.System.GetSystemLoggerTypeParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetSystemLoggerTypeApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_LOGGER_TYPE);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点运行日志列表 */
-    async getSystemLoggerList(argv: BFChainPcSdk.System.GetSystemLoggerListParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetSystemLoggerListApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_LOGGER_LIST);
+    async getSystemLoggerList(argv: BFMetaPcSdk.System.GetSystemLoggerListParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetSystemLoggerListApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_LOGGER_LIST);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点运行日志内容 */
-    async getSystemLoggerDetail(argv: BFChainPcSdk.System.GetSystemLoggerDetailParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetSystemLoggerDetailApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_LOGGER_DETAIL);
+    async getSystemLoggerDetail(argv: BFMetaPcSdk.System.GetSystemLoggerDetailParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetSystemLoggerDetailApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_LOGGER_DETAIL);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**删除矿机运行日志 */
-    async deleteSystemLogger(argv: BFChainPcSdk.System.DeleteSystemLoggerParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.DeleteSystemLoggerApi>(SYSTEM_API_PATH.SYSTEM_DELETE_SYSTEM_LOGGER);
+    async deleteSystemLogger(argv: BFMetaPcSdk.System.DeleteSystemLoggerParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.DeleteSystemLoggerApi>(SYSTEM_API_PATH.SYSTEM_DELETE_SYSTEM_LOGGER);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获取节点邮箱地址 */
-    async getEmailAddress(argv: BFChainPcSdk.System.GetEmailAddressParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetEmailAddressApi>(SYSTEM_API_PATH.SYSTEM_GET_EMAIL_ADDRESS);
+    async getEmailAddress(argv: BFMetaPcSdk.System.GetEmailAddressParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetEmailAddressApi>(SYSTEM_API_PATH.SYSTEM_GET_EMAIL_ADDRESS);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**设置节点邮箱地址 */
-    async setEmailAddress(argv: BFChainPcSdk.System.SetEmailAddressParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.SetEmailAddressApi>(SYSTEM_API_PATH.SYSTEM_SET_EMAIL_ADDRESS);
+    async setEmailAddress(argv: BFMetaPcSdk.System.SetEmailAddressParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.SetEmailAddressApi>(SYSTEM_API_PATH.SYSTEM_SET_EMAIL_ADDRESS);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**通过节点私钥验证节点受托人 */
-    async verifySystemSecret(argv: BFChainPcSdk.System.VerifySystemSecretParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.VerifySystemSecretApi>(SYSTEM_API_PATH.SYSTEM_VERIFY_SYSTEM_SECRET);
+    async verifySystemSecret(argv: BFMetaPcSdk.System.VerifySystemSecretParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.VerifySystemSecretApi>(SYSTEM_API_PATH.SYSTEM_VERIFY_SYSTEM_SECRET);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**设置节点访问白名单 */
-    async setSystemWhiteList(argv: BFChainPcSdk.System.SetSystemWhiteListParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.SetSystemWhiteListApi>(SYSTEM_API_PATH.SYSTEM_SET_SYSTEM_WHITELIST);
+    async setSystemWhiteList(argv: BFMetaPcSdk.System.SetSystemWhiteListParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.SetSystemWhiteListApi>(SYSTEM_API_PATH.SYSTEM_SET_SYSTEM_WHITELIST);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**设置节点访问白名单 */
-    async getSystemWhiteList(argv: BFChainPcSdk.System.GetSystemWhiteListParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetSystemWhiteListApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_WHITELIST);
+    async getSystemWhiteList(argv: BFMetaPcSdk.System.GetSystemWhiteListParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetSystemWhiteListApi>(SYSTEM_API_PATH.SYSTEM_GET_SYSTEM_WHITELIST);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**删除节点访问白名单 */
-    async deleteSystemWhiteList(argv: BFChainPcSdk.System.DeleteSystemWhiteListParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.DeleteSystemWhiteListApi>(SYSTEM_API_PATH.SYSTEM_DELETE_SYSTEM_WHITELIST);
+    async deleteSystemWhiteList(argv: BFMetaPcSdk.System.DeleteSystemWhiteListParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.DeleteSystemWhiteListApi>(SYSTEM_API_PATH.SYSTEM_DELETE_SYSTEM_WHITELIST);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点进程CPU信息 */
-    async getProcessCPU(argv: BFChainPcSdk.System.GetProcessCPUParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetProcessCPUApi>(SYSTEM_API_PATH.SYSTEM_GET_PROCESS_CPU);
+    async getProcessCPU(argv: BFMetaPcSdk.System.GetProcessCPUParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetProcessCPUApi>(SYSTEM_API_PATH.SYSTEM_GET_PROCESS_CPU);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点进程内存信息 */
-    async getProcessMemory(argv: BFChainPcSdk.System.GetProcessMemoryParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetProcessMemoryApi>(SYSTEM_API_PATH.SYSTEM_GET_PROCESS_MEMORY);
+    async getProcessMemory(argv: BFMetaPcSdk.System.GetProcessMemoryParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetProcessMemoryApi>(SYSTEM_API_PATH.SYSTEM_GET_PROCESS_MEMORY);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**获得节点进程的网络相关信息 */
-    async getProcessNetwork(argv: BFChainPcSdk.System.GetProcessNetworkParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.GetProcessNetworkApi>(SYSTEM_API_PATH.SYSTEM_GET_PROCESS_NETWORK);
+    async getProcessNetwork(argv: BFMetaPcSdk.System.GetProcessNetworkParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.GetProcessNetworkApi>(SYSTEM_API_PATH.SYSTEM_GET_PROCESS_NETWORK);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**节点状态 */
-    async systemStatus(argv: BFChainPcSdk.System.SystemStatusParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.SystemStatusApi>(SYSTEM_API_PATH.SYSTEM_STATUS);
+    async systemStatus(argv: BFMetaPcSdk.System.SystemStatusParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.SystemStatusApi>(SYSTEM_API_PATH.SYSTEM_STATUS);
         const result = await api.sendPostRequest(argv);
         return result;
     }
 
     /**节点CPU，内存，网络信息 */
-    async systemProcess(argv: BFChainPcSdk.System.SystemProcessParams) {
-        const api = this.__getSystemApi<BFChainPcSdk.System.SystemProcessApi>(SYSTEM_API_PATH.SYSTEM_PROCESS);
+    async systemProcess(argv: BFMetaPcSdk.System.SystemProcessParams) {
+        const api = this.__getSystemApi<BFMetaPcSdk.System.SystemProcessApi>(SYSTEM_API_PATH.SYSTEM_PROCESS);
         const result = await api.sendPostRequest(argv);
         return result;
     }

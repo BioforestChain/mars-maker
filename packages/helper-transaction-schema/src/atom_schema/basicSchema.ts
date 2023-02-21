@@ -1,7 +1,7 @@
 import { BASE_ARGS_TYPE } from "./constants";
 
 /**创建新的创世块 */
-export const BASIC_GENERATE_GENESIS_BLOCK: BFChainPcSdk.SchemaType = {
+export const BASIC_GENERATE_GENESIS_BLOCK: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         genesisSecret: {
@@ -186,7 +186,7 @@ export const BASIC_GENERATE_GENESIS_BLOCK: BFChainPcSdk.SchemaType = {
 };
 
 /**获取事件类型 */
-export const BASIC_GET_TRANSACTION_TYPE: BFChainPcSdk.SchemaType = {
+export const BASIC_GET_TRANSACTION_TYPE: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         baseType: {
@@ -197,7 +197,7 @@ export const BASIC_GET_TRANSACTION_TYPE: BFChainPcSdk.SchemaType = {
 };
 
 /**输入命令行密码 */
-export const BASIC_SET_PASSWORD: BFChainPcSdk.SchemaType = {
+export const BASIC_SET_PASSWORD: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         password: {
@@ -208,7 +208,7 @@ export const BASIC_SET_PASSWORD: BFChainPcSdk.SchemaType = {
 };
 
 /**获取指定区块 */
-export const BASIC_GET_BLOCK: BFChainPcSdk.SchemaType = {
+export const BASIC_GET_BLOCK: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         signature: {
@@ -225,7 +225,7 @@ export const BASIC_GET_BLOCK: BFChainPcSdk.SchemaType = {
 };
 
 /**获取指定事件 */
-export const BASIC_GET_TRANSACTIONS: BFChainPcSdk.SchemaType = {
+export const BASIC_GET_TRANSACTIONS: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         signature: {
@@ -257,7 +257,7 @@ export const BASIC_GET_TRANSACTIONS: BFChainPcSdk.SchemaType = {
 };
 
 /**生成私钥 */
-export const BASIC_GENERATE_SECRET: BFChainPcSdk.SchemaType = {
+export const BASIC_GENERATE_SECRET: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         lang: {
@@ -268,7 +268,7 @@ export const BASIC_GENERATE_SECRET: BFChainPcSdk.SchemaType = {
 };
 
 /**获取账户公钥 */
-export const BASIC_GET_ACCOUNT_PUBLICKEY: BFChainPcSdk.SchemaType = {
+export const BASIC_GET_ACCOUNT_PUBLICKEY: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         address: {
@@ -279,7 +279,7 @@ export const BASIC_GET_ACCOUNT_PUBLICKEY: BFChainPcSdk.SchemaType = {
 };
 
 /**获取账户的最后一笔交易 */
-export const BASIC_GET_ACCOUNT_LAST_TRANSACTION: BFChainPcSdk.SchemaType = {
+export const BASIC_GET_ACCOUNT_LAST_TRANSACTION: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         address: {
@@ -293,7 +293,7 @@ export const BASIC_GET_ACCOUNT_LAST_TRANSACTION: BFChainPcSdk.SchemaType = {
 };
 
 /**获取账户指定类型的最后一笔交易 */
-export const BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION: BFChainPcSdk.SchemaType = {
+export const BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         address: {
@@ -307,7 +307,7 @@ export const BASIC_GET_ACCOUNT_LAST_TYPE_TRANSACTION: BFChainPcSdk.SchemaType = 
 };
 
 /**创建账户 */
-export const BASIC_CREATE_ACCOUNT: BFChainPcSdk.SchemaType = {
+export const BASIC_CREATE_ACCOUNT: BFMetaPcSdk.SchemaType = {
     type: BASE_ARGS_TYPE.OBJECT,
     properties: {
         secret: {

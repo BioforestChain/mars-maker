@@ -5,9 +5,9 @@ import { REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
 
 @Injectable()
 export class ApiConfigHelper {
-    private __apiConfig!: BFChainPcSdk.ApiConfig;
+    private __apiConfig!: BFMetaPcSdk.ApiConfig;
 
-    constructor(configOptions?: BFChainPcSdk.ApiConfigOptions) {
+    constructor(configOptions?: BFMetaPcSdk.ApiConfigOptions) {
         this.__initConfig(configOptions && configOptions.configRootPath);
         configOptions && this.setApiConfig(configOptions);
     }
@@ -23,7 +23,7 @@ export class ApiConfigHelper {
         const configPath = path.join(configRootPath || path.join(process.cwd(), "config"), "config.json");
         if (fs.existsSync(configPath)) {
             const configData: {
-                apiConfig: BFChainPcSdk.ApiConfigOptions;
+                apiConfig: BFMetaPcSdk.ApiConfigOptions;
                 transactionServerPort: number;
             } = JSON.parse(fs.readFileSync(configPath).toString());
             if (configData.apiConfig) {
@@ -32,7 +32,7 @@ export class ApiConfigHelper {
         }
     }
 
-    setApiConfig(apiConfigOptions: BFChainPcSdk.ApiConfigOptions) {
+    setApiConfig(apiConfigOptions: BFMetaPcSdk.ApiConfigOptions) {
         if (!this.__apiConfig) {
             this.__initConfig();
         }

@@ -5,8 +5,8 @@ export class Sdk {
     private __transactionServer = new TransactionServer();
     private __transactionServerPort = this.__transactionServer.getTransactionServerPort();
     private __api: Api;
-    private __configOptions: BFChainPcSdk.ConfigOptions = {};
-    constructor(configOptions?: BFChainPcSdk.ConfigOptions) {
+    private __configOptions: BFMetaPcSdk.ConfigOptions = {};
+    constructor(configOptions?: BFMetaPcSdk.ConfigOptions) {
         if (configOptions) {
             if (configOptions.transactionServerPort !== undefined) {
                 this.__transactionServerPort = configOptions.transactionServerPort;
@@ -34,7 +34,7 @@ export class Sdk {
         return this.__api;
     }
 
-    setApiConfig(configOptions: BFChainPcSdk.ApiConfigOptions) {
+    setApiConfig(configOptions: BFMetaPcSdk.ApiConfigOptions) {
         this.api.setApiconfig(configOptions);
     }
 
@@ -52,7 +52,7 @@ export class Sdk {
      *
      * @param configOptions
      */
-    async runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
+    async runTransactionServer(configOptions?: BFMetaPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         configOptions = configOptions || this.__configOptions.transactionConfig || {};
         if (this.__configOptions.configRootPath) {
             configOptions.configRootPath = this.__configOptions.configRootPath;

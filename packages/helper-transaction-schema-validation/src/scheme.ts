@@ -17,7 +17,7 @@ export class Scheme {
         this.__registerAutoVoteOptionsFormater();
     }
 
-    verify(formatName: string, value: BFChainPcSdk.FormaterCallbackArgv) {
+    verify(formatName: string, value: BFMetaPcSdk.FormaterCallbackArgv) {
         this.__validator.runFormater(formatName, value);
     }
 
@@ -109,7 +109,7 @@ export class Scheme {
     }
 
     private __registerAutoVoteOptionsFormater() {
-        this.__validator.registerFormater("autoVoteOptions", (obj: BFChainPcSdk.AutoVote) => {
+        this.__validator.registerFormater("autoVoteOptions", (obj: BFMetaPcSdk.AutoVote) => {
             const exception = {
                 target: "request.autoVote",
                 function: "autoVoteOptionsFormater",

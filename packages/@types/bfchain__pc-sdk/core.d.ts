@@ -4,9 +4,9 @@ export declare class Sdk {
     private __transactionServerPort;
     private __api;
     private __configOptions;
-    constructor(configOptions?: BFChainPcSdk.ConfigOptions);
+    constructor(configOptions?: BFMetaPcSdk.ConfigOptions);
     get api(): Api;
-    setApiConfig(configOptions: BFChainPcSdk.ApiConfigOptions): void;
+    setApiConfig(configOptions: BFMetaPcSdk.ApiConfigOptions): void;
     correctTransactionServerTime(timeOffset: number): void;
-    runTransactionServer(configOptions?: BFChainPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON): Promise<void>;
+    runTransactionServer(configOptions?: BFMetaPcSdk.TransactionConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON): Promise<void>;
 }

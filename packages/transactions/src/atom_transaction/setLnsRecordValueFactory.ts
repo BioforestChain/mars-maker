@@ -9,7 +9,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class SetLnsRecordValueFactory extends TransactionFactory<SetLnsRecordValueTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_SET_LNS_RECORD_VALUE;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.SetLnsRecordValueTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.SetLnsRecordValueTransactionParams) {
         this.verify(request);
         const operationType = request.operationType;
         const tr = await mySetLnsRecordValue.generateSetLnsRecordValue(

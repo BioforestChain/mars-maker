@@ -7,7 +7,7 @@ import { MigrateCertificateFactory } from "./_migrateCertificateFactory";
 export class MigrateCertificateGenerateFactory extends MigrateCertificateFactory {
     readonly GENERATE_API_PATH = MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_GENERATE;
 
-    async generate(request: BFChainPcSdk.CrossChain.GenerateMigrateCertificateParams) {
+    async generate(request: BFMetaPcSdk.CrossChain.GenerateMigrateCertificateParams) {
         const assetInfo = request.assetInfo;
         let parentAssetType = PARENT_ASSET_TYPE.ASSETS;
         let assetType = this.bfchainCore.config.assetType;

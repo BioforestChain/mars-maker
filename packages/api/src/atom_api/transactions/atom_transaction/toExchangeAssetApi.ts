@@ -4,7 +4,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class ToExchangeAssetApi extends TransactionApi<BFChainCore.ToExchangeAssetTransactionJSON> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ASSET;
 
-    async generateTransaction(argv: BFChainPcSdk.Transaction.ToExchangeAssetTransactionParams) {
+    async generateTransaction(argv: BFMetaPcSdk.Transaction.ToExchangeAssetTransactionParams) {
         return await super.generateTransaction(argv);
     }
 

@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Common.GenerateAddressByPublicKeyParams = {
+        const argv: BFMetaPcSdk.Common.GenerateAddressByPublicKeyParams = {
             publicKey: "3dce30d2dfa426e3b749e2fc1915322cac7c95398e81e0e0dbfdc9ffd3bd7d0e",
         };
 

@@ -1,6 +1,6 @@
 import { SystemPostApi } from "./_systemPostApi";
 import { SYSTEM_API_PATH } from "@bfchain/pc-sdk-api-constants";
-export declare class SystemStatusApi extends SystemPostApi<BFChainPcSdk.System.SystemStatusResult> {
+export declare class SystemStatusApi extends SystemPostApi<BFMetaPcSdk.System.SystemStatusResult> {
     readonly REQUEST_API_PATH = SYSTEM_API_PATH.SYSTEM_STATUS;
-    sendPostRequest(argv: BFChainPcSdk.System.SystemStatusParams): Promise<BFChainPcSdk.System.SystemApiReturn<BFChainPcSdk.System.SystemStatusResult>>;
+    sendPostRequest(argv: BFMetaPcSdk.System.SystemStatusParams): Promise<BFMetaPcSdk.System.SystemApiReturn<BFMetaPcSdk.System.SystemStatusResult>>;
 }

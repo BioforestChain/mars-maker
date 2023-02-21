@@ -6,7 +6,7 @@ import { parsePostRequestParameter } from "@bfchain/pc-sdk-helper-request-parame
 export class HttpHelper {
     private __transactionServerPort: number;
     private __configHelper: ApiConfigHelper;
-    private __config: BFChainPcSdk.ApiConfig;
+    private __config: BFMetaPcSdk.ApiConfig;
 
     // FIXME: 兼容老燕辉设计的神奇的 api
     public readonly REQUEST_PROTOCOL = REQUEST_PROTOCOL.HTTP;

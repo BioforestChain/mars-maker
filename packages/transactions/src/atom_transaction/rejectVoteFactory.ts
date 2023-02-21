@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class RejectVoteFactory extends TransactionFactory<RejectVoteTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_REJECT_VOTE;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.RejectVoteTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.RejectVoteTransactionParams) {
         this.verify(request);
         const tr = await myRejectVote.generateRejectVote(this.getTransactionBody(request), this.getAccountPowInfo(request), this.bfchainCore);
         return tr.toJSON();

@@ -1,10 +1,10 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     interface ApiConfig {
         configRootPath?: string;
         ips: string[];
         port: number;
         requestTimeOut: number;
-        requestProtocol: BFChainPcSdk.REQUEST_PROTOCOL;
+        requestProtocol: BFMetaPcSdk.REQUEST_PROTOCOL;
     }
     type ApiConfigOptions = Partial<ApiConfig>;
 }

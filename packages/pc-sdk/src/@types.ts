@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     interface Config {
         /**配置文件的根路径，如果提供的路径不存在会使用默认路径 */
         configRootPath?: string;

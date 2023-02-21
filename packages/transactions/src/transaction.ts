@@ -43,7 +43,7 @@ import {
 import { EasyWeakMap } from "@bfchain/util";
 export const TRANSACTION_FACTORY_MAP_WM = EasyWeakMap.from<
     BFChainCore,
-    Map<BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH, BFChainPcSdk.Transaction.TransactionFactory<any>>
+    Map<BFMetaPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH, BFMetaPcSdk.Transaction.TransactionFactory<any>>
 >({
     creater() {
         return new Map();

@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.SetLnsManagerTransactionParams = {
+        const argv: BFMetaPcSdk.Transaction.SetLnsManagerTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "1000",
             applyBlockHeight: 50,

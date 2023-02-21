@@ -48,12 +48,12 @@ class ApiTest {
         return await this.trTransferAsset(binaryInfos);
     }
 
-    async trTransferAsset(binaryInfos?: BFChainPcSdk.Transaction.KVStorageInfo[]) {
+    async trTransferAsset(binaryInfos?: BFMetaPcSdk.Transaction.KVStorageInfo[]) {
         const glbResult = await this.__sdk.api.basic.getLastBlock();
         if (!glbResult.success) {
             throw Error(glbResult.error.message);
         }
-        let argv: BFChainPcSdk.Transaction.TransferAssetTransactionParams = {
+        let argv: BFMetaPcSdk.Transaction.TransferAssetTransactionParams = {
             secret: "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon",
             fee: "500",
             applyBlockHeight: glbResult.result.height,

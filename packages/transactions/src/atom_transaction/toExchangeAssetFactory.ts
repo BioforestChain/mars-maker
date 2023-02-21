@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class ToExchangeAssetFactory extends TransactionFactory<ToExchangeAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ASSET;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.ToExchangeAssetTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.ToExchangeAssetTransactionParams) {
         this.verify(request);
         const { toExchangeInfo, beExchangeInfo, exchangeRate, ciphertexts } = request;
         const { magic, chainName } = this.bfchainCore.config;

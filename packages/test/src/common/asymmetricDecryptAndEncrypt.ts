@@ -15,7 +15,7 @@ import { Sdk } from "@bfchain/pc-sdk";
             throw new Error("QAQ");
         }
 
-        const argv1: BFChainPcSdk.Common.AsymmetricEncryptParams = {
+        const argv1: BFMetaPcSdk.Common.AsymmetricEncryptParams = {
             msg: Buffer.from("QwreT").toString("hex"),
             encryptSK: k1.result.keypair.secretKey,
             decryptPK: k2.result.keypair.publicKey,
@@ -27,7 +27,7 @@ import { Sdk } from "@bfchain/pc-sdk";
             throw new Error("QAQ");
         }
 
-        const argv2: BFChainPcSdk.Common.AsymmetricDecryptParams = {
+        const argv2: BFMetaPcSdk.Common.AsymmetricDecryptParams = {
             encryptedMessage: result1.result.encryptedMessage,
             encryptPK: k1.result.keypair.publicKey,
             decryptSK: k2.result.keypair.secretKey,

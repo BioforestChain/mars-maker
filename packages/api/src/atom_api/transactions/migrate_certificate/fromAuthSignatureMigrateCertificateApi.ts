@@ -7,10 +7,10 @@ export class FromAuthSignatureMigrateCertificateApi extends MigrateCertificateAp
     async sendPostRequest(argv: BFChainCore.CrossChain.AuthSignMigrateCertificateArgs) {
         const apiPath = `${this.networkHelper.TRANSACTION_SERVER_URL_PREFIX}${this.GENERATE_API_PATH}`;
         try {
-            const result = await this.networkHelper.createTransaction<BFChainPcSdk.TransactionServer.MigrateCertificateReturn>(apiPath, argv);
+            const result = await this.networkHelper.createTransaction<BFMetaPcSdk.TransactionServer.MigrateCertificateReturn>(apiPath, argv);
             return result;
         } catch (e) {
-            const errorInfo: BFChainPcSdk.TransactionServer.MigrateCertificateFailureReturn = {
+            const errorInfo: BFMetaPcSdk.TransactionServer.MigrateCertificateFailureReturn = {
                 success: false,
                 error: {
                     code: "7001",

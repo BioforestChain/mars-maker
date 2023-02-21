@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class GiftAssetFactory extends TransactionFactory<GiftAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_GIFT_ASSET;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.GiftAssetTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.GiftAssetTransactionParams) {
         this.verify(request);
         const assetInfo = request.assetInfo;
         const { magic, chainName, assetType } = this.bfchainCore.config;

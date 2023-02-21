@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { Sdk } from "@bfchain/pc-sdk";
 
-// const config: BFChainPcSdk.ConfigOptions = {
+// const config: BFMetaPcSdk.ConfigOptions = {
 //     apiConfig: {
 //         ip: "127.0.0.1",
 //         port: 19003,
@@ -23,7 +23,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 //     },
 // };
 
-const config: BFChainPcSdk.ConfigOptions = {
+const config: BFMetaPcSdk.ConfigOptions = {
     // configRootPath: path.join(process.cwd(), "qq"),
     genesisBlock: JSON.parse(fs.readFileSync(process.cwd() + "/genesisInfos/ccc-genesisBlock-testnet.json", "utf8")),
 };

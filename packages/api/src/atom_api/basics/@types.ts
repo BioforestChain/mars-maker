@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     namespace Basic {
         type TRANSACTION_TYPES_BASE = import("@bfchain/core").TRANSACTION_TYPES_BASE;
 

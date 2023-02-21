@@ -12,7 +12,7 @@ export class MyBaseHelper {
     private __myConfigHelper: TransactionConfigHelper;
     private __genesisBlock?: BFChainCore.GenesisBlockJSON;
 
-    constructor(configOptions: BFChainPcSdk.TransactionConfigOptions = {}, genesisBlock?: BFChainCore.GenesisBlockJSON) {
+    constructor(configOptions: BFMetaPcSdk.TransactionConfigOptions = {}, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         if (genesisBlock) {
             const genesisAsset = genesisBlock.asset.genesisAsset;
             configOptions.genesisInfoConfig = {
@@ -37,7 +37,7 @@ export class MyBaseHelper {
         return this.__myConfigHelper.transactionConfig.genesisInfoConfig;
     }
 
-    setGenesisInfoConfig(genesisInfoConfigOptions: BFChainPcSdk.GenesisInfoConfigOptions) {
+    setGenesisInfoConfig(genesisInfoConfigOptions: BFMetaPcSdk.GenesisInfoConfigOptions) {
         this.__myConfigHelper.setGenesisInfoConfig(genesisInfoConfigOptions);
     }
 
@@ -45,7 +45,7 @@ export class MyBaseHelper {
         return this.__myConfigHelper.transactionConfig;
     }
 
-    setTransactionConfig(transactionConfigOptions: BFChainPcSdk.TransactionConfigOptions) {
+    setTransactionConfig(transactionConfigOptions: BFMetaPcSdk.TransactionConfigOptions) {
         this.__myConfigHelper.setTransactionConfig(transactionConfigOptions);
     }
 

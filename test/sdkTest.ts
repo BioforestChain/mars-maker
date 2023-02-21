@@ -212,7 +212,7 @@ export class SDKTest {
 
     async getTransactionType() {
         return this.__sdk.getTransactionType({
-            baseType: BFChainPcSdk.TRANSACTION_TYPES_BASE.ISSUE_ASSET,
+            baseType: BFMetaPcSdk.TRANSACTION_TYPES_BASE.ISSUE_ASSET,
         });
     }
 
@@ -261,7 +261,7 @@ export class SDKTest {
         return this.__sdk.getBlockChainStatus();
     }
 
-    async trTransferAsset(request?: BFChainPcSdk.ApiRequest.TRANSACTION.TrTransferAsset) {
+    async trTransferAsset(request?: BFMetaPcSdk.ApiRequest.TRANSACTION.TrTransferAsset) {
         return this.__sdk.trTransferAsset(
             request ?? {
                 secret: secret2,

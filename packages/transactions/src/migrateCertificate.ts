@@ -3,7 +3,7 @@ import { MigrateCertificateGenerateFactory, MigrateCertificateFromAuthSignatureF
 import { EasyWeakMap } from "@bfchain/util";
 export const MIGRATE_CERTIFICATE_FACTORY_MAP_WM = EasyWeakMap.from<
     BFChainCore,
-    Map<BFChainPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH, BFChainPcSdk.CrossChain.MigrateCertificateFactory>
+    Map<BFMetaPcSdk.CrossChain.MIGRATE_CERTIFICATE_API_PATH, BFMetaPcSdk.CrossChain.MigrateCertificateFactory>
 >({
     creater() {
         return new Map();

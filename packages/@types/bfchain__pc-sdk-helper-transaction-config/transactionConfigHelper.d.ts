@@ -1,8 +1,8 @@
 export declare class TransactionConfigHelper {
     private __transactionConfig;
-    constructor(configOptions?: BFChainPcSdk.TransactionConfigOptions);
+    constructor(configOptions?: BFMetaPcSdk.TransactionConfigOptions);
     private __initConfig;
-    setGenesisInfoConfig(genesisInfoConfigOptions: BFChainPcSdk.GenesisInfoConfigOptions): void;
-    setTransactionConfig(transactionConfigOptions: BFChainPcSdk.TransactionConfigOptions): void;
-    get transactionConfig(): BFChainPcSdk.TransactionConfig;
+    setGenesisInfoConfig(genesisInfoConfigOptions: BFMetaPcSdk.GenesisInfoConfigOptions): void;
+    setTransactionConfig(transactionConfigOptions: BFMetaPcSdk.TransactionConfigOptions): void;
+    get transactionConfig(): BFMetaPcSdk.TransactionConfig;
 }

@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class MarkFactory extends TransactionFactory<MarkTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_MARK;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.MarkTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.MarkTransactionParams) {
         this.verify(request);
         const { dappInfo } = request;
         const tr = await myMark.generateMark(

@@ -4,10 +4,10 @@ export declare class Api {
     private __basicApi;
     private __systemApi;
     private __transactionApi;
-    constructor(transactionServerPort: number, configOptions?: BFChainPcSdk.ApiConfigOptions);
-    get config(): BFChainPcSdk.ApiConfig;
+    constructor(transactionServerPort: number, configOptions?: BFMetaPcSdk.ApiConfigOptions);
+    get config(): BFMetaPcSdk.ApiConfig;
     get basic(): BasicApi;
     get system(): SystemApi;
     get transaction(): TransactionApi;
-    setApiconfig(configOptions: BFChainPcSdk.ApiConfigOptions): void;
+    setApiconfig(configOptions: BFMetaPcSdk.ApiConfigOptions): void;
 }

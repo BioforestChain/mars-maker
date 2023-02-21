@@ -6,7 +6,7 @@ import { CommonFactory } from "./_commonFactory";
 export class GenerateCiphertextSignatureFactory extends CommonFactory<string> {
     readonly EXEC_API_PATH = COMMON_API_PATH.GENERATE_CIPHERTEXT_SIGNATURE;
 
-    async exec(request: BFChainPcSdk.Common.GenerateCiphertextSignatureParams) {
+    async exec(request: BFMetaPcSdk.Common.GenerateCiphertextSignatureParams) {
         return getHexFromArrayBuffer(
             await this.bfchainCore.transactionHelper.getCiphertextSignature({
                 secret: request.secret,

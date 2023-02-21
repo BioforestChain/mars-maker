@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     //节点Api的通用请求类型
     type PcApiRequest = { [key: string]: any };
 

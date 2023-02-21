@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Transaction.IssueEntityFactoryTransactionV1Params = {
+        const argv: BFMetaPcSdk.Transaction.IssueEntityFactoryTransactionV1Params = {
             secret: "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",
             fee: "1000",
             applyBlockHeight: 10,

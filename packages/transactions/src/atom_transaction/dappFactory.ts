@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class DAppFactory extends TransactionFactory<DAppTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_DAPP;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.DAppTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.DAppTransactionParams) {
         this.verify(request);
         const dappInfo = request.dappInfo;
         const { magic, chainName } = this.bfchainCore.config;

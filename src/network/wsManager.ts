@@ -78,17 +78,17 @@ export class WsManager {
      * @param hostname 目标hostname
      * @return ReturnParamsType
      */
-    async socketEmit(path: string, data?: BFChainPcSdk.PcApiRequest): Promise<BFChainPcSdk.SDKReturn> {
+    async socketEmit(path: string, data?: BFMetaPcSdk.PcApiRequest): Promise<BFMetaPcSdk.SDKReturn> {
         const socket = await this.getSocket();
         return new Promise((resolve, reject) => {
             const url = `http://${this.__ip}:${this.__port}`;
             const timeout = setTimeout(() => {
                 reject(new Error(`${url} timeout`));
             }, this.__timeout);
-            socket.emit(path, data, (result: BFChainPcSdk.PcApiReturn) => {
+            socket.emit(path, data, (result: BFMetaPcSdk.PcApiReturn) => {
                 if (!result.success) {
                     clearTimeout(timeout);
-                    const resp: BFChainPcSdk.SDKReturn = { success: false };
+                    const resp: BFMetaPcSdk.SDKReturn = { success: false };
                     if (result.error?.message) {
                         resp.message = result.error?.message;
                     }
@@ -102,7 +102,7 @@ export class WsManager {
                 }
                 delete result.success;
                 clearTimeout(timeout);
-                const resp: BFChainPcSdk.SDKReturn = { success: true };
+                const resp: BFMetaPcSdk.SDKReturn = { success: true };
                 if (Object.keys(result).length > 0) {
                     resp.result = result;
                 }

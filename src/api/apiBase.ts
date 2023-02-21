@@ -3,7 +3,7 @@ import { RequestMethod } from "./apiConst";
 
 /**接口基类 */
 export abstract class ApiBase {
-    constructor(protected __apiInfo: BFChainPcSdk.ApiInfo) {}
+    constructor(protected __apiInfo: BFMetaPcSdk.ApiInfo) {}
 
     getApiInfo() {
         return this.__apiInfo;
@@ -46,7 +46,7 @@ export abstract class ApiBase {
      * 执行接口
      * @param request
      */
-    async execute(request?: BFChainPcSdk.PcApiRequest): Promise<BFChainPcSdk.SDKReturn> {
+    async execute(request?: BFMetaPcSdk.PcApiRequest): Promise<BFMetaPcSdk.SDKReturn> {
         return await this.sendRequest(request);
     }
 
@@ -54,7 +54,7 @@ export abstract class ApiBase {
      * 向节点发送api请求
      * @param request
      */
-    async sendRequest(request?: BFChainPcSdk.PcApiRequest): Promise<BFChainPcSdk.SDKReturn> {
+    async sendRequest(request?: BFMetaPcSdk.PcApiRequest): Promise<BFMetaPcSdk.SDKReturn> {
         return await networkHelper.sendRequest(this, request);
     }
 }

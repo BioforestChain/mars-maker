@@ -8,7 +8,7 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfchain/pc-sdk-api-constants";
 export class LocationNameFactory extends TransactionFactory<LocationNameTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_LOCATION_NAME;
 
-    async generateTransaction(request: BFChainPcSdk.Transaction.LocationNameTransactionParams) {
+    async generateTransaction(request: BFMetaPcSdk.Transaction.LocationNameTransactionParams) {
         this.verify(request);
         const config = this.bfchainCore.config;
         const { name } = request;

@@ -1,4 +1,4 @@
-declare namespace BFChainPcSdk {
+declare namespace BFMetaPcSdk {
     /**Sdk网络选项 */
     type SdkNetOptions = {
         ip: string;

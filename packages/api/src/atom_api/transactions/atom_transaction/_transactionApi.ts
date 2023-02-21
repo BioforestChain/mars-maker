@@ -2,17 +2,17 @@ import { API_NAMESPACE, REQUEST_PROTOCOL, REQUEST_TYPE } from "@bfchain/pc-sdk-a
 
 export abstract class TransactionApi<T extends BFChainCore.TransactionJSON> {
     private readonly __API_NAMESPACE = API_NAMESPACE.TRANSACTION;
-    abstract readonly GENERATE_API_PATH: BFChainPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH;
+    abstract readonly GENERATE_API_PATH: BFMetaPcSdk.Transaction.GENERATE_TRANSACTION_API_PATH;
 
-    constructor(protected networkHelper: BFChainPcSdk.NetworkHelper) {}
+    constructor(protected networkHelper: BFMetaPcSdk.NetworkHelper) {}
 
-    async generateTransaction(argv: BFChainPcSdk.Transaction.TransactionCommonParams) {
+    async generateTransaction(argv: BFMetaPcSdk.Transaction.TransactionCommonParams) {
         const apiPath = `${this.networkHelper.TRANSACTION_SERVER_URL_PREFIX}${this.GENERATE_API_PATH}`;
         try {
-            const result = await this.networkHelper.createTransaction<BFChainPcSdk.TransactionServer.GenerateTransactionReturn<T>>(apiPath, argv);
+            const result = await this.networkHelper.createTransaction<BFMetaPcSdk.TransactionServer.GenerateTransactionReturn<T>>(apiPath, argv);
             return result;
         } catch (e) {
-            const errorInfo: BFChainPcSdk.TransactionServer.GenerateTransactionFailureReturn = {
+            const errorInfo: BFMetaPcSdk.TransactionServer.GenerateTransactionFailureReturn = {
                 success: false,
                 error: {
                     code: "7001",
@@ -30,10 +30,10 @@ export abstract class TransactionApi<T extends BFChainCore.TransactionJSON> {
             this.__API_NAMESPACE
         }`;
         try {
-            const result = await this.networkHelper.sendPostRequest<BFChainPcSdk.Transaction.TransactionApiReturn<T>>(apiPath, transaction);
+            const result = await this.networkHelper.sendPostRequest<BFMetaPcSdk.Transaction.TransactionApiReturn<T>>(apiPath, transaction);
             return result;
         } catch (e) {
-            const errorInfo: BFChainPcSdk.Transaction.TransactionApiFailureReturn = {
+            const errorInfo: BFMetaPcSdk.Transaction.TransactionApiFailureReturn = {
                 success: false,
                 error: {
                     code: "7001",
@@ -46,7 +46,7 @@ export abstract class TransactionApi<T extends BFChainCore.TransactionJSON> {
         }
     }
 
-    async sendTransaction(argv: BFChainPcSdk.Transaction.TransactionCommonParams) {
+    async sendTransaction(argv: BFMetaPcSdk.Transaction.TransactionCommonParams) {
         const generateResult = await this.generateTransaction(argv);
         if (!generateResult.success) {
             // FIXME: 更好的写法

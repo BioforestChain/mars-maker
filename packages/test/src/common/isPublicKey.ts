@@ -2,7 +2,7 @@ import { Sdk } from "@bfchain/pc-sdk";
 
 (async () => {
     try {
-        const argv: BFChainPcSdk.Common.VerifyPublicKeyParams = {
+        const argv: BFMetaPcSdk.Common.VerifyPublicKeyParams = {
             publicKey: "66147aafdeeb0f6f1fa6019fc8e9218b834a658712fbee756db9330b7ddc0d40",
         };
 
