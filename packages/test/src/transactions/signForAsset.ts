@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.SignForAssetTransactionParams = {
+        const argv: TransactionMaker.Transaction.SignForAssetTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "440000",
             applyBlockHeight: 50,
@@ -25,9 +25,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             recipientId: "cKySkYVB4MhWhKczSUmY7WhF638hPx6U8N",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendSignForAsset(argv);
+        const result = await api.transaction.generateSignForAsset(argv);
 
         console.log(result);
     } catch (e: any) {

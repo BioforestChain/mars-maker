@@ -1,7 +1,11 @@
-import "@bfchain/pc-sdk-typings";
+import "@bfmeta/transaction-maker-typings";
 
-export * from "./basics/";
+import type {} from "@bfmeta/transaction-maker-core";
 
-export * from "./systems";
+import "./@types";
 
-export * from "./transactions";
+export * from "./transactionApi";
+
+export * from "./commonApi";
+
+export * from "./migrateCertificateApi";

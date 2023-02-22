@@ -1,17 +1,17 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Common.GenerateCiphertextSignatureParams = {
+        const argv: TransactionMaker.Common.GenerateCiphertextSignatureParams = {
             secret: "qqq",
             transactionSignature:
                 "40e59688d147b95d4e4ed378d7019b3709fb79ebaaabfe0bc2c1450c8d21474f5d9dcf527f7ea03b698ce4b955f4049580d38eb218d7a357573b1c03964dfd0c",
             senderId: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.generateCiphertextSignature(argv);
+        const result = await api.common.generateCiphertextSignature(argv);
 
         console.log(result);
     } catch (e: any) {

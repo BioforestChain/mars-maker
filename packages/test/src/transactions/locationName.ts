@@ -1,9 +1,9 @@
-import { LOCATION_NAME_OPERATION_TYPE } from "@bfchain/core";
-import { Sdk } from "@bfchain/pc-sdk";
+import { LOCATION_NAME_OPERATION_TYPE } from "@bfmeta/transaction-maker-core";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.LocationNameTransactionParams = {
+        const argv: TransactionMaker.Transaction.LocationNameTransactionParams = {
             secret: "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",
             fee: "1000",
             applyBlockHeight: 50,
@@ -17,9 +17,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             operationType: LOCATION_NAME_OPERATION_TYPE.REGISTRATION,
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendLocationName(argv);
+        const result = await api.transaction.generateLocationName(argv);
 
         console.log(result);
     } catch (e: any) {

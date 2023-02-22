@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.UsernameTransactionParams = {
+        const argv: TransactionMaker.Transaction.UsernameTransactionParams = {
             secret: "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon",
             fee: "1000",
             applyBlockHeight: 1,
@@ -14,9 +14,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             alias: "a_long_lose_father",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendUsername(argv);
+        const result = await api.transaction.generateUsername(argv);
 
         console.log(result);
     } catch (e: any) {

@@ -1,9 +1,9 @@
-import { PARENT_ASSET_TYPE } from "@bfchain/core";
-import { Sdk } from "@bfchain/pc-sdk";
+import { PARENT_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.BeExchangeAnyTransactionParams = {
+        const argv: TransactionMaker.Transaction.BeExchangeAnyTransactionParams = {
             secret: "boost scorpion peanut output undo useful trash burden custom party click offer leisure magnet obscure drop gather blind predict walk since strike thumb minimum",
             fee: "200",
             applyBlockHeight: 50,
@@ -36,9 +36,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             recipientId: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendBeExchangeAny(argv);
+        const result = await api.transaction.generateBeExchangeAny(argv);
 
         console.log(result);
     } catch (e: any) {

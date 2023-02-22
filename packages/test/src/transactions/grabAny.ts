@@ -1,9 +1,9 @@
-import { PARENT_ASSET_TYPE } from "@bfchain/core";
-import { Sdk } from "@bfchain/pc-sdk";
+import { PARENT_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.GrabAnyTransactionParams = {
+        const argv: TransactionMaker.Transaction.GrabAnyTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "440000",
             applyBlockHeight: 35,
@@ -31,9 +31,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             recipientId: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendGrabAny(argv);
+        const result = await api.transaction.generateGrabAny(argv);
 
         console.log(result);
     } catch (e: any) {

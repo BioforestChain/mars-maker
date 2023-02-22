@@ -1,15 +1,15 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Common.GenerateAccountParams = {
+        const argv: TransactionMaker.Common.GenerateAccountParams = {
             secret: "qqq",
             secondSecret: "www",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.generateAccount(argv);
+        const result = await api.common.generateAccount(argv);
 
         console.log(result);
     } catch (e: any) {

@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.IssueAssetTransactionParams = {
+        const argv: TransactionMaker.Transaction.IssueAssetTransactionParams = {
             secret: "very found ice guilt what inform arm relief reopen talent traffic drill flash inner donate salad vote scout ghost desk alter later cycle suffer",
             fee: "1000",
             applyBlockHeight: 10,
@@ -18,9 +18,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             },
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendIssueAsset(argv);
+        const result = await api.transaction.generateIssueAsset(argv);
 
         console.log(result);
     } catch (e: any) {

@@ -1,40 +1,25 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
-import { Sdk } from "@bfchain/pc-sdk";
+import { Server } from "@bfmeta/transaction-maker-server";
+import { BLOCK_CHAIN_NET_WORK_TYPE } from "@bfmeta/transaction-maker-core";
 
-// const config: BFMetaPcSdk.ConfigOptions = {
-//     apiConfig: {
-//         ip: "127.0.0.1",
-//         port: 19003,
-//         requestTimeOut: 10000,
-//         requestProtocol: "websocket" as any,
-//     },
-//     transactionServerPort: 9999,
-//     transactionConfig: {
-//         genesisInfoConfig: {
-//             isGenesisBlockProvidedExternally: true,
-//             networkType: "testnet" as any,
-//             chainAssetType: "BFT",
-//             blockPerRound: 57,
-//             forgeInterval: 10,
-//             genesisBlockRootPath: path.join(process.cwd(), "genesisInfos"),
-//         },
-//         lang: "en" as any,
-//     },
-// };
+(async () => {
+    try {
+        const config: TransactionMaker.Server.ConfigOptions = {
+            // port: 8888,
+            // chainNodeIps: ["127.0.0.1"],
+            // genesisInfoConfig: {
+            //     isGenesisBlockProvidedExternally: false,
+            //     networkType: BLOCK_CHAIN_NET_WORK_TYPE.TESTNET,
+            //     chainName: "bfmetatest",
+            //     chainAssetType: "BFMTEST",
+            //     blockPerRound: 57,
+            //     forgeInterval: 10,
+            // },
+        };
 
-const config: BFMetaPcSdk.ConfigOptions = {
-    // configRootPath: path.join(process.cwd(), "qq"),
-    genesisBlock: JSON.parse(fs.readFileSync(process.cwd() + "/genesisInfos/ccc-genesisBlock-testnet.json", "utf8")),
-};
+        const server = new Server(config);
 
-const sdk = new Sdk(config);
-
-sdk.runTransactionServer();
-
-const sdk2 = new Sdk({
-    genesisBlock: JSON.parse(fs.readFileSync(process.cwd() + "/genesisInfos/bft-genesisBlock-testnet.json", "utf8")),
-    transactionServerPort: 8888,
-});
-
-sdk2.runTransactionServer();
+        server.runServer();
+    } catch (error) {
+        console.log(error);
+    }
+})();

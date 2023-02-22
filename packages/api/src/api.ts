@@ -1,46 +1,38 @@
-import { HttpHelper, WebsocketHelper } from "./network";
-import { REQUEST_PROTOCOL } from "@bfchain/pc-sdk-api-constants";
-import { BasicApi, SystemApi, TransactionApi } from "./atom_api";
-import { ApiConfigHelper } from "@bfchain/pc-sdk-helper-api-config";
+import { HttpHelper } from "./httpHelper";
+import { CommonApi, TransactionApi, MigrateCertificateApi } from "./atom_api";
+import { Config } from "./config";
 
 export class Api {
-    private __configHelper: ApiConfigHelper;
-    private __basicApi!: BasicApi;
-    private __systemApi!: SystemApi;
+    private __config: Config;
+    private __commonApi!: CommonApi;
     private __transactionApi!: TransactionApi;
+    private __migrateCertificateApi!: MigrateCertificateApi;
 
-    constructor(transactionServerPort: number, configOptions?: BFMetaPcSdk.ApiConfigOptions) {
-        this.__configHelper = new ApiConfigHelper(configOptions);
-        const apiConfig = this.__configHelper.apiConfig;
-        let networkHelper: BFMetaPcSdk.NetworkHelper;
-        if (apiConfig.requestProtocol == REQUEST_PROTOCOL.HTTP) {
-            networkHelper = new HttpHelper(transactionServerPort, this.__configHelper);
-        } else {
-            networkHelper = new WebsocketHelper(transactionServerPort, this.__configHelper);
-        }
-
-        this.__basicApi = new BasicApi(networkHelper);
-        this.__systemApi = new SystemApi(networkHelper);
+    constructor(configOptions?: TransactionMaker.Api.ConfigOptions) {
+        this.__config = new Config(configOptions);
+        const networkHelper = new HttpHelper(this.__config);
+        this.__commonApi = new CommonApi(networkHelper);
         this.__transactionApi = new TransactionApi(networkHelper);
+        this.__migrateCertificateApi = new MigrateCertificateApi(networkHelper);
     }
 
     get config() {
-        return this.__configHelper.apiConfig;
+        return this.__config.config;
     }
 
-    get basic() {
-        return this.__basicApi;
-    }
-
-    get system() {
-        return this.__systemApi;
+    get common() {
+        return this.__commonApi;
     }
 
     get transaction() {
         return this.__transactionApi;
     }
 
-    setApiconfig(configOptions: BFMetaPcSdk.ApiConfigOptions) {
-        return this.__configHelper.setApiConfig(configOptions);
+    get migrateCertificateApi() {
+        return this.__migrateCertificateApi;
+    }
+
+    setConfig(configOptions: TransactionMaker.Api.ConfigOptions) {
+        return this.__config.setConfig(configOptions);
     }
 }

@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.MarkTransactionParams = {
+        const argv: TransactionMaker.Transaction.MarkTransactionParams = {
             secret: "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",
             fee: "1000",
             applyBlockHeight: 20,
@@ -21,9 +21,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             content: "qwq",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendMark(argv);
+        const result = await api.transaction.generateMark(argv);
 
         console.log(result);
     } catch (e: any) {

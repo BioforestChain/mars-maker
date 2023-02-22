@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.BeExchangeAssetTransactionParams = {
+        const argv: TransactionMaker.Transaction.BeExchangeAssetTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "440000",
             applyBlockHeight: 50,
@@ -31,9 +31,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             recipientId: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendBeExchangeAsset(argv);
+        const result = await api.transaction.generateBeExchangeAsset(argv);
 
         console.log(result);
     } catch (e: any) {

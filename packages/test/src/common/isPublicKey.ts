@@ -1,14 +1,14 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Common.VerifyPublicKeyParams = {
+        const argv: TransactionMaker.Common.VerifyPublicKeyParams = {
             publicKey: "66147aafdeeb0f6f1fa6019fc8e9218b834a658712fbee756db9330b7ddc0d40",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.verifyPublicKey(argv);
+        const result = await api.common.verifyPublicKey(argv);
 
         console.log(result);
     } catch (e: any) {

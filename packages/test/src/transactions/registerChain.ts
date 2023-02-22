@@ -1,12 +1,12 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
         const genesisBlock = fs.readFileSync(path.join(process.cwd(), "genesisInfos/ccc-genesisBlock-testnet-hex.txt")).toString();
 
-        const argv: BFMetaPcSdk.Transaction.RegisterChainTransactionParams = {
+        const argv: TransactionMaker.Transaction.RegisterChainTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "1000",
             applyBlockHeight: 15,
@@ -18,9 +18,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             genesisBlock,
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.generateRegisterChain(argv);
+        const result = await api.transaction.generateRegisterChain(argv);
 
         console.log(result);
     } catch (e: any) {

@@ -1,9 +1,0 @@
-{
-    "name": "@types/bfchain__pc-sdk-helper-transaction-config",
-    "types": "index.d.ts",
-    "version": "2.0.1",
-    "dependencies": {
-        "@types/bfchain__pc-sdk-api-constants": "2.0.1",
-        "@types/bfchain__pc-sdk-typings": "2.0.1"
-    }
-}

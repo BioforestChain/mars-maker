@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.BeExchangeSpecialAssetTransactionParams = {
+        const argv: TransactionMaker.Transaction.BeExchangeSpecialAssetTransactionParams = {
             // secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             secret: "boost scorpion peanut output undo useful trash burden custom party click offer leisure magnet obscure drop gather blind predict walk since strike thumb minimum",
             fee: "1000",
@@ -29,9 +29,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             recipientId: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendBeExchangeSpecialAsset(argv);
+        const result = await api.transaction.generateBeExchangeSpecialAsset(argv);
 
         console.log(result);
     } catch (e: any) {

@@ -26,8 +26,8 @@ const config: BFChainPcSdk.Config = {
     ip: "127.0.0.1",
     "//port": "节点端口号, 默认值 9003",
     port: 19003,
-    "//requestTimeOut": "请求超时时间, 单位 ms, 默认 10000",
-    requestTimeOut: 10000,
+    "//requestTimeout": "请求超时时间, 单位 ms, 默认 10000",
+    requestTimeout: 10000,
     "//requestProtocol": "请求协议, http || websocket, 默认值 websocket",
     requestProtocol: "websocket",
 

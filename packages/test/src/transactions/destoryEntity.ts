@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.DestoryEntityTransactionParams = {
+        const argv: TransactionMaker.Transaction.DestoryEntityTransactionParams = {
             secret: "boost scorpion peanut output undo useful trash burden custom party click offer leisure magnet obscure drop gather blind predict walk since strike thumb minimum",
             fee: "1000",
             applyBlockHeight: 10,
@@ -27,9 +27,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             },
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendDestoryEntity(argv);
+        const result = await api.transaction.generateDestoryEntity(argv);
 
         console.log(result);
     } catch (e: any) {
