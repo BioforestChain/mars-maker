@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.AcceptVoteTransactionParams = {
+        const argv: TransactionMaker.Transaction.AcceptVoteTransactionParams = {
             secret: "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",
             fee: "1000",
             applyBlockHeight: 50,
@@ -13,12 +13,12 @@ import { Sdk } from "@bfchain/pc-sdk";
             },
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.generateAcceptVote(argv);
+        const result = await api.transaction.generateAcceptVote(argv);
 
         if (result.success) {
-            const xx = await sdk.api.transaction.calcTransactionMinFee({
+            const xx = await api.common.calcTransactionMinFee({
                 transaction: result.result,
                 customMinFeePerByte: {
                     numerator: 1000,

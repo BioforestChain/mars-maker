@@ -5,9 +5,6 @@
         "rootDir": "./src"
     },
     "files": [
-        "src/basics/getBlock.ts",
-        "src/basics/getLastBlock.ts",
-        "src/basics/kvStorage.ts",
         "src/common/asymmetricDecryptAndEncrypt.ts",
         "src/common/generateAccount.ts",
         "src/common/generateAddressByPublicKey.ts",
@@ -53,11 +50,15 @@
         "src/transactions/transferAsset.ts",
         "src/transactions/trustAsset.ts",
         "src/transactions/username.ts",
-        "src/transactions/vote.ts"
+        "src/transactions/vote.ts",
+        "src/utils.ts"
     ],
     "references": [
         {
-            "path": "../pc-sdk/tsconfig.json"
+            "path": "../api/tsconfig.json"
+        },
+        {
+            "path": "../server/tsconfig.json"
         },
         {
             "path": "../typings/tsconfig.json"

@@ -1,11 +1,11 @@
 {
-    "name": "@bfchain/pc-sdk",
+    "name": "@bfmeta/transaction-maker",
     "private": true,
     "workspaces": [
         "packages/*"
     ],
     "version": "0.0.0",
-    "description": "pc-sdk for the third party",
+    "description": "transaction-maker for the third party",
     "bdkMono": {
         "generateConfigFiles": [
             {
@@ -13,12 +13,6 @@
                 "type": "mergejson",
                 "from": "$ROOT_PROJECT/tsconfig.cjs.json",
                 "to": "$PACKAGE/tsconfig.json"
-            },
-            {
-                "packages": "*,-test",
-                "type": "jsonfromjs",
-                "src": "$ROOT_PROJECT/scripts/tsconfig.@types.js",
-                "to": "$PACKAGE/tsconfig.@types.json"
             }
         ]
     },
@@ -34,7 +28,6 @@
         "build": "bdk-tsc --build ./tsconfig.all.json",
         "rebuild": "yarn clear & yarn build",
         "publ": "lerna publish",
-        "publ:type": "yarn mono & node ./scripts/publish-types.js",
         "publ:force": "lerna publish --force-publish"
     },
     "repository": {

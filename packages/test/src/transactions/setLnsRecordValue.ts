@@ -1,9 +1,9 @@
-import { RECORD_OPERATION_TYPE, RECORD_TYPE } from "@bfchain/core";
-import { Sdk } from "@bfchain/pc-sdk";
+import { RECORD_OPERATION_TYPE, RECORD_TYPE } from "@bfmeta/transaction-maker-core";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.SetLnsRecordValueTransactionParams = {
+        const argv: TransactionMaker.Transaction.SetLnsRecordValueTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "1000",
             applyBlockHeight: 50,
@@ -20,9 +20,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             operationType: RECORD_OPERATION_TYPE.ADD,
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendSetLnsRecordValue(argv);
+        const result = await api.transaction.generateSetLnsRecordValue(argv);
 
         console.log(result);
     } catch (e: any) {

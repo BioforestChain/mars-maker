@@ -1,8 +1,0 @@
-{
-    "name": "@types/bfchain__pc-sdk-api-constants",
-    "types": "index.d.ts",
-    "version": "2.0.1",
-    "dependencies": {
-        "@types/bfchain__pc-sdk-typings": "2.0.1"
-    }
-}

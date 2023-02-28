@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.TransferAssetTransactionParams = {
+        const argv: TransactionMaker.Transaction.TransferAssetTransactionParams = {
             secret: "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon",
             // secondSecretInfo: {
             //     useOld: false,
@@ -22,22 +22,13 @@ import { Sdk } from "@bfchain/pc-sdk";
             recipientId: "cCET2Sxt2LPDhx44wxJ9uhkpviKNrSacvE",
         };
 
-        const sdk = new Sdk({ transactionServerPort: 8888 });
+        const api = new Api();
 
-        const result = await sdk.api.transaction.generateTransferAsset(argv);
+        const result = await api.transaction.generateTransferAsset(argv);
 
         if (result.success) {
             console.log(result.result.asset.transferAsset);
         }
-
-        const sdk2 = new Sdk({ transactionServerPort: 9999 });
-
-        const result2 = await sdk2.api.transaction.generateTransferAsset(argv);
-
-        if (result2.success) {
-            console.log(result2.result.asset.transferAsset);
-        }
-
         // console.log(result);
     } catch (e: any) {
         console.log(e);

@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.EmigrateAssetTransactionParams = {
+        const argv: TransactionMaker.Transaction.EmigrateAssetTransactionParams = {
             secret: "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",
             fee: "1000",
             applyBlockHeight: 50,
@@ -18,11 +18,11 @@ import { Sdk } from "@bfchain/pc-sdk";
         const genesisSecret =
             "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon";
 
-        const sdk = new Sdk();
+        const api = new Api();
 
         const toMagic = "PSSS5";
 
-        let result1 = await sdk.api.transaction.generateMigrateCertificate({
+        let result1 = await api.migrateCertificateApi.generateMigrateCertificate({
             senderSecret: argv.secret,
             recipientId: argv.recipientId,
             toChainInfo: {
@@ -38,7 +38,7 @@ import { Sdk } from "@bfchain/pc-sdk";
             throw result1;
         }
 
-        const result2 = await sdk.api.transaction.fromAuthSignatureMigrateCertificate({
+        const result2 = await api.migrateCertificateApi.fromAuthSignatureMigrateCertificate({
             authSecret: genesisSecret,
             migrateCertificate: result1.result,
         });
@@ -50,7 +50,7 @@ import { Sdk } from "@bfchain/pc-sdk";
         argv.migrateCertificate = result2.result;
         argv.toMagic = toMagic;
 
-        const result = await sdk.api.transaction.generateEmigrateAsset(argv);
+        const result = await api.transaction.generateEmigrateAsset(argv);
 
         console.log(result);
     } catch (e: any) {

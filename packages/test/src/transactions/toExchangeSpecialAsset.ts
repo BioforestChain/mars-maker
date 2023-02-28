@@ -1,9 +1,9 @@
-import { EXCHANGE_DIRECTION, SPECIAL_ASSET_TYPE } from "@bfchain/core";
-import { Sdk } from "@bfchain/pc-sdk";
+import { EXCHANGE_DIRECTION, SPECIAL_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.ToExchangeSpecialAssetTransactionParams = {
+        const argv: TransactionMaker.Transaction.ToExchangeSpecialAssetTransactionParams = {
             // secret: "boost scorpion peanut output undo useful trash burden custom party click offer leisure magnet obscure drop gather blind predict walk since strike thumb minimum",
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "1000",
@@ -24,9 +24,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             exchangeDirection: EXCHANGE_DIRECTION.ASSET_FROM_SENDER,
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendToExchangeSpecialAsset(argv);
+        const result = await api.transaction.generateToExchangeSpecialAsset(argv);
 
         console.log(result);
     } catch (e: any) {

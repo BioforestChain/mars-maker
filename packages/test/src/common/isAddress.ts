@@ -1,14 +1,14 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Common.VerifyAddressParams = {
+        const argv: TransactionMaker.Common.VerifyAddressParams = {
             address: "cEAXDkaEJgWKMM61KYz2dYU1RfuxbB8Ma",
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.verifyAddress(argv);
+        const result = await api.common.verifyAddress(argv);
 
         console.log(result);
     } catch (e: any) {

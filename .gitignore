@@ -8,3 +8,5 @@ genesisInfos
 build
 .cache
 bcf*
+assets
+blobs*

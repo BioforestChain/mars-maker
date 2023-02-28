@@ -1,20 +1,29 @@
-declare namespace BFMetaPcSdk {
-    type HttpHelper = import("./network").HttpHelper;
-    type WebsocketHelper = import("./network").WebsocketHelper;
-    type NetworkHelper = HttpHelper | WebsocketHelper;
+declare namespace TransactionMaker {
+    type NetworkHelper = import("./httpHelper").HttpHelper;
 
-    interface ApiSuccessReturn {
-        success: true;
-        result: any;
-    }
-    interface ApiFailureReturn {
-        success: false;
-        error: {
-            code?: string;
-            message: string;
-            description?: string;
-        };
-    }
+    namespace Api {
+        interface ApiSuccessReturn {
+            success: true;
+            result: any;
+        }
+        interface ApiFailureReturn {
+            success: false;
+            error: {
+                code?: string;
+                message: string;
+                description?: string;
+            };
+        }
 
-    type ApiReturn = ApiSuccessReturn | ApiFailureReturn;
+        type ApiReturn = ApiSuccessReturn | ApiFailureReturn;
+
+        interface Config {
+            /**服务节点 ip, 默认值 [127.0.0.1:8888] */
+            ips: string[];
+            /**请求超时时间，单位 ms，默认 10000 */
+            requestTimeout: number;
+        }
+
+        type ConfigOptions = Partial<Config>;
+    }
 }

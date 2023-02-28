@@ -1,8 +1,8 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const argv: BFMetaPcSdk.Transaction.IssueEntityTransactionParams = {
+        const argv: TransactionMaker.Transaction.IssueEntityTransactionParams = {
             secret: "upgrade jump sugar congress glare expect other firm morning donate motor pride minute frame amount chimney wood gallery twelve barely dose blame convince enhance",
             fee: "1000",
             applyBlockHeight: 10,
@@ -24,9 +24,9 @@ import { Sdk } from "@bfchain/pc-sdk";
             },
         };
 
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const result = await sdk.api.transaction.sendIssueEntity(argv);
+        const result = await api.transaction.generateIssueEntity(argv);
 
         console.log(result);
     } catch (e: any) {

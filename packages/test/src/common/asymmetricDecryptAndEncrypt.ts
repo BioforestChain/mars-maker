@@ -1,11 +1,11 @@
-import { Sdk } from "@bfchain/pc-sdk";
+import { Api } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const sdk = new Sdk();
+        const api = new Api();
 
-        const k1 = await sdk.api.transaction.generateKeypair({ secret: "qqq" });
-        const k2 = await sdk.api.transaction.generateKeypair({ secret: "www" });
+        const k1 = await api.common.generateKeypair({ secret: "qqq" });
+        const k2 = await api.common.generateKeypair({ secret: "www" });
 
         if (!k1.success) {
             throw new Error("QAQ");
@@ -15,26 +15,26 @@ import { Sdk } from "@bfchain/pc-sdk";
             throw new Error("QAQ");
         }
 
-        const argv1: BFMetaPcSdk.Common.AsymmetricEncryptParams = {
+        const argv1: TransactionMaker.Common.AsymmetricEncryptParams = {
             msg: Buffer.from("QwreT").toString("hex"),
             encryptSK: k1.result.keypair.secretKey,
             decryptPK: k2.result.keypair.publicKey,
         };
 
-        const result1 = await sdk.api.transaction.asymmetricEncrypt(argv1);
+        const result1 = await api.common.asymmetricEncrypt(argv1);
 
         if (!result1.success) {
             throw new Error("QAQ");
         }
 
-        const argv2: BFMetaPcSdk.Common.AsymmetricDecryptParams = {
+        const argv2: TransactionMaker.Common.AsymmetricDecryptParams = {
             encryptedMessage: result1.result.encryptedMessage,
             encryptPK: k1.result.keypair.publicKey,
             decryptSK: k2.result.keypair.secretKey,
             nonce: result1.result.nonce,
         };
 
-        const result2 = await sdk.api.transaction.asymmetricDecrypt(argv2);
+        const result2 = await api.common.asymmetricDecrypt(argv2);
 
         if (!result2.success) {
             throw new Error("QAQ");
