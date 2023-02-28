@@ -558,11 +558,115 @@ export const TR_REGISTER_CHAIN: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            genesisBlock: {
+            registerCertificate: {
                 type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    body: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            version: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            timestamp: {
+                                type: BASE_ARGS_TYPE.NUMBER,
+                            },
+                            genesisBlockInfo: {
+                                type: BASE_ARGS_TYPE.OBJECT,
+                                properties: {
+                                    genesisAccount: {
+                                        type: BASE_ARGS_TYPE.OBJECT,
+                                        properties: {
+                                            address: {
+                                                type: BASE_ARGS_TYPE.STRING,
+                                            },
+                                            publicKey: {
+                                                type: BASE_ARGS_TYPE.STRING,
+                                            },
+                                        },
+                                        required: ["address", "publicKey"],
+                                    },
+                                    genesisBlockSignature: {
+                                        type: BASE_ARGS_TYPE.STRING,
+                                    },
+                                    chainName: {
+                                        type: BASE_ARGS_TYPE.STRING,
+                                    },
+                                    assetType: {
+                                        type: BASE_ARGS_TYPE.STRING,
+                                    },
+                                    magic: {
+                                        type: BASE_ARGS_TYPE.STRING,
+                                    },
+                                    bnid: {
+                                        type: BASE_ARGS_TYPE.STRING,
+                                    },
+                                    beginEpochTime: {
+                                        type: BASE_ARGS_TYPE.NUMBER,
+                                    },
+                                    genesisLocationName: {
+                                        type: BASE_ARGS_TYPE.STRING,
+                                    },
+                                    blockPerRound: {
+                                        type: BASE_ARGS_TYPE.NUMBER,
+                                    },
+                                    delegates: {
+                                        type: BASE_ARGS_TYPE.NUMBER,
+                                    },
+                                    forgeInterval: {
+                                        type: BASE_ARGS_TYPE.NUMBER,
+                                    },
+                                    genesisDelegates: {
+                                        type: BASE_ARGS_TYPE.ARRAY,
+                                        items: {
+                                            type: BASE_ARGS_TYPE.OBJECT,
+                                            properties: {
+                                                address: {
+                                                    type: BASE_ARGS_TYPE.STRING,
+                                                },
+                                                publicKey: {
+                                                    type: BASE_ARGS_TYPE.STRING,
+                                                },
+                                            },
+                                            required: ["address", "publicKey"],
+                                        },
+                                        minItems: 1,
+                                    },
+                                },
+                                required: [
+                                    "genesisAccount",
+                                    "genesisBlockSignature",
+                                    "chainName",
+                                    "assetType",
+                                    "magic",
+                                    "bnid",
+                                    "beginEpochTime",
+                                    "genesisLocationName",
+                                    "blockPerRound",
+                                    "delegates",
+                                    "forgeInterval",
+                                    "genesisDelegates",
+                                ],
+                            },
+                        },
+                        required: ["version", "timestamp", "genesisBlockInfo"],
+                    },
+                    publicKey: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    secondPublicKey: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    signature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    signSignature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["body", "publicKey", "signature"],
             },
         },
-        required: ["genesisBlock"],
+        required: ["registerCertificate"],
     },
 ];
 /**发送资产交换事件 */

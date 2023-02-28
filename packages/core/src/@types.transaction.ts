@@ -692,8 +692,8 @@ declare namespace TransactionMaker {
         }
 
         interface RegisterChainTransactionParams extends TransactionCommonParamsWithoutRecipientId {
-            /**创世块 */
-            genesisBlock: string;
+            /**注册链凭证 */
+            registerCertificate: TransactionMaker.RegisterChainCertificateJSON;
         }
 
         interface EmigrateAssetTransactionParams extends TransactionCommonParamsWithRecipientId {

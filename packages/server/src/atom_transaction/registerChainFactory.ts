@@ -13,7 +13,7 @@ export class RegisterChainFactory extends TransactionFactory<RegisterChainTransa
         const tr = await myRegisterChain.generateRegisterChain(
             this.getTransactionBody(request),
             this.getAccountPowInfo(request),
-            request.genesisBlock,
+            this.bfchainCore.registerChainCertificateHelper.encode(request.registerCertificate as any),
             this.bfchainCore
         );
         return tr.toJSON();

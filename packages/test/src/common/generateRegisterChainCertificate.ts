@@ -14,8 +14,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
         const { signature, asset } = genesisBlock;
         const { genesisAsset } = asset;
         const argv: TransactionMaker.Common.GenerateRegisterChainCertificateParams = {
-            generatorSecret: "qqq",
-            generatorSecondSecret: "www",
+            generatorSecret:
+                "scan pass carpet coral pumpkin spell present decrease veteran text flower pioneer top speak jaguar wreck ask always hazard good know gift uncle frost",
+            // generatorSecondSecret: "www",
             genesisBlockInfo: {
                 genesisBlockSignature: signature,
                 chainName: genesisAsset.chainName,
