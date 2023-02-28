@@ -249,22 +249,6 @@ export const enum COMMON_API_PATH {
     TIME_CORRECTING_API_PATH = "/common/correcting",
 }
 
-export const enum RESPONSE_STATUS {
-    error = 0,
-    busy = 1,
-    success = 2,
-    idempotentError = 3,
-}
-
-export const enum NEW_TRANSACTION_STATUS {
-    /**拒绝接收，可能是队列已经满 */
-    REFUSE = 0,
-    /**已经在区块中 */
-    INBLOCK = 1,
-    /**已经在未处理交易中 */
-    IN_UNCONFIRM_QUENE = 2,
-}
-
 export const enum NEW_TRANSACTION_REFUSE_REASON {
     /**手续费低于网络手续费 */
     FEE_LESS_THAN_WEB_FEE = 0,

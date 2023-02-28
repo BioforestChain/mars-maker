@@ -12,7 +12,6 @@ declare namespace TransactionMaker {
     type RECORD_TYPE = import("./constants").RECORD_TYPE;
     type LOCATION_NAME_OPERATION_TYPE = import("./constants").LOCATION_NAME_OPERATION_TYPE;
     type DAPP_TYPE = import("./constants").DAPP_TYPE;
-    type NEW_TRANSACTION_STATUS = import("./constants").NEW_TRANSACTION_STATUS;
     type NEW_TRANSACTION_REFUSE_REASON = import("./constants").NEW_TRANSACTION_REFUSE_REASON;
 
     interface TransactionStorageJSON {
