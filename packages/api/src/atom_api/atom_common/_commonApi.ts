@@ -3,9 +3,9 @@ export abstract class CommonApi<T> {
 
     constructor(protected networkHelper: TransactionMaker.NetworkHelper) {}
 
-    async sendPostRequest(argv: TransactionMaker.Common.CommonParams) {
+    async sendPostRequest(argv: TransactionMaker.Common.CommonParams, ip?: string) {
         try {
-            const result = await this.networkHelper.sendPostRequest<TransactionMaker.Server.CommonReturn<T>>(this.EXEC_API_PATH, argv);
+            const result = await this.networkHelper.sendPostRequest<TransactionMaker.Server.CommonReturn<T>>(this.EXEC_API_PATH, argv, ip);
             return result;
         } catch (e: any) {
             const errorInfo: TransactionMaker.Server.CommonFailureReturn = {

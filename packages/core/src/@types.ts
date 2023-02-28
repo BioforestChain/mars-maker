@@ -105,4 +105,9 @@ declare namespace TransactionMaker {
         /**迁入链的授权签名 version/publicKey-signature/secondPublicKey-signSignature */
         toAuthSignature: string;
     }
+
+    type IpInfo = {
+        ip?: string;
+        nodeIp?: string;
+    };
 }

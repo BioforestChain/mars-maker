@@ -4,9 +4,9 @@ import { MIGRATE_CERTIFICATE_API_PATH } from "@bfmeta/transaction-maker-core";
 export class ToAuthSignatureMigrateCertificateApi extends MigrateCertificateApi {
     readonly GENERATE_API_PATH = MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_TO_AUTH_SIGNATURE;
 
-    async sendPostRequest(argv: TransactionMaker.CrossChain.AuthSignMigrateCertificateArgs) {
+    async sendPostRequest(argv: TransactionMaker.CrossChain.AuthSignMigrateCertificateArgs, ip?: string) {
         try {
-            const result = await this.networkHelper.createTransaction<TransactionMaker.Server.MigrateCertificateReturn>(this.GENERATE_API_PATH, argv);
+            const result = await this.networkHelper.createTransaction<TransactionMaker.Server.MigrateCertificateReturn>(this.GENERATE_API_PATH, argv, ip);
             return result;
         } catch (e: any) {
             const errorInfo: TransactionMaker.Server.MigrateCertificateReturn = {

@@ -60,86 +60,86 @@ export class CommonApi {
     }
 
     /**是否是一个地址 */
-    async verifyAddress(argv: TransactionMaker.Common.VerifyAddressParams) {
+    async verifyAddress(argv: TransactionMaker.Common.VerifyAddressParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.VerifyAddressApi>(COMMON_API_PATH.VERIFY_ADDRESS);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**是否是一个公钥 */
-    async verifyPublicKey(argv: TransactionMaker.Common.VerifyPublicKeyParams) {
+    async verifyPublicKey(argv: TransactionMaker.Common.VerifyPublicKeyParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.VerifyPublicKeyApi>(COMMON_API_PATH.VERIFY_PUBLICKEY);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**创建账户 */
-    async generateAccount(argv: TransactionMaker.Common.GenerateAccountParams) {
+    async generateAccount(argv: TransactionMaker.Common.GenerateAccountParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.GenerateAccountApi>(COMMON_API_PATH.GENERATE_ACCOUNT);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**根据密钥获取账户 */
-    async generateAddressBySecret(argv: TransactionMaker.Common.GenerateAddressBySecretParams) {
+    async generateAddressBySecret(argv: TransactionMaker.Common.GenerateAddressBySecretParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.GenerateAddressBySecretApi>(COMMON_API_PATH.GENERATE_ADDRESS_BY_SECRET);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**根据公钥获取账户 */
-    async generateAddressByPublicKey(argv: TransactionMaker.Common.GenerateAddressByPublicKeyParams) {
+    async generateAddressByPublicKey(argv: TransactionMaker.Common.GenerateAddressByPublicKeyParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.GenerateAddressByPublicKeyApi>(COMMON_API_PATH.GENERATE_ADDRESS_BY_PUBLICKEY);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**创建公私钥对 */
-    async generateKeypair(argv: TransactionMaker.Common.GenerateKeypairParams) {
+    async generateKeypair(argv: TransactionMaker.Common.GenerateKeypairParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.GenerateKeypairApi>(COMMON_API_PATH.GENERATE_KEYPAIR);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**非对称加密 */
-    async asymmetricEncrypt(argv: TransactionMaker.Common.AsymmetricEncryptParams) {
+    async asymmetricEncrypt(argv: TransactionMaker.Common.AsymmetricEncryptParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.AsymmetricEncryptApi>(COMMON_API_PATH.ASYMMETRIC_ENCRYPT);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**非对称解密 */
-    async asymmetricDecrypt(argv: TransactionMaker.Common.AsymmetricDecryptParams) {
+    async asymmetricDecrypt(argv: TransactionMaker.Common.AsymmetricDecryptParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.AsymmetricDecryptApi>(COMMON_API_PATH.ASYMMETRIC_DECRYPT);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**计算最低手续费 */
-    async calcTransactionMinFee(argv: TransactionMaker.Common.CalcTransactionMinFeeParams) {
+    async calcTransactionMinFee(argv: TransactionMaker.Common.CalcTransactionMinFeeParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.CalcTransactionMinFeeApi>(COMMON_API_PATH.CALC_TRANSACTION_MIN_FEE);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**创建加密签名 */
-    async generateCiphertextSignature(argv: TransactionMaker.Common.GenerateCiphertextSignatureParams) {
+    async generateCiphertextSignature(argv: TransactionMaker.Common.GenerateCiphertextSignatureParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.GenerateCiphertextSignatureApi>(COMMON_API_PATH.GENERATE_CIPHERTEXT_SIGNATURE);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**创建 blob seed */
-    async generateBlobSeed(argv: TransactionMaker.Common.GenerateBlobSeedParams) {
+    async generateBlobSeed(argv: TransactionMaker.Common.GenerateBlobSeedParams, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.GenerateBlobSeedApi>(COMMON_API_PATH.GENERATE_BLOB_SEED);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
 
     /**时间校正 */
-    async timeCorrecting(argv: TransactionMaker.Common.TimeCorrectingParams = {}) {
+    async timeCorrecting(argv: TransactionMaker.Common.TimeCorrectingParams = {}, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.TimeCorrectingApi>(COMMON_API_PATH.TIME_CORRECTING_API_PATH);
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
     // #endregion

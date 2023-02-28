@@ -7,9 +7,9 @@ export abstract class TransactionApi<T extends TransactionMaker.TransactionJSON>
 
     constructor(protected networkHelper: TransactionMaker.NetworkHelper) {}
 
-    async generateTransaction(argv: TransactionMaker.Transaction.TransactionCommonParams) {
+    async generateTransaction(argv: TransactionMaker.Transaction.TransactionCommonParams, ip?: string) {
         try {
-            const result = await this.networkHelper.createTransaction<TransactionMaker.Server.GenerateTransactionReturn<T>>(this.GENERATE_API_PATH, argv);
+            const result = await this.networkHelper.createTransaction<TransactionMaker.Server.GenerateTransactionReturn<T>>(this.GENERATE_API_PATH, argv, ip);
             return result;
         } catch (e: any) {
             const errorInfo: TransactionMaker.Server.GenerateTransactionFailureReturn = {
@@ -41,15 +41,15 @@ export abstract class TransactionApi<T extends TransactionMaker.TransactionJSON>
         }
     }
 
-    async sendTransaction(argv: TransactionMaker.Transaction.TransactionCommonParams, ip?: string) {
-        const generateResult = await this.generateTransaction(argv);
+    async sendTransaction(argv: TransactionMaker.Transaction.TransactionCommonParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const generateResult = await this.generateTransaction(argv, ipInfo.ip);
         if (!generateResult.success) {
             // FIXME: 更好的写法
             return { ...generateResult, minFee: argv.fee };
         }
         const broadcastResult = await this.broadcastTransaction({
             transaction: generateResult.result,
-            ip,
+            ip: ipInfo.nodeIp,
         });
         return broadcastResult;
     }

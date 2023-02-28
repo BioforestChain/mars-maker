@@ -145,268 +145,504 @@ export class TransactionApi {
     }
 
     /**创建设置用户名事件 */
-    async generateUsername(argv: TransactionMaker.Transaction.UsernameTransactionParams) {
+    async generateUsername(argv: TransactionMaker.Transaction.UsernameTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.UsernameApi>(GENERATE_TRANSACTION_API_PATH.TR_USERNAME);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送设置用户名事件 */
+    async sendUsername(argv: TransactionMaker.Transaction.UsernameTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.UsernameApi>(GENERATE_TRANSACTION_API_PATH.TR_USERNAME);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建设置安全密码事件 */
-    async generateSignature(argv: TransactionMaker.Transaction.SignatureTransactionParams) {
+    async generateSignature(argv: TransactionMaker.Transaction.SignatureTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.SignatureApi>(GENERATE_TRANSACTION_API_PATH.TR_SIGNATURE);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送设置安全密码事件 */
+    async sendSignature(argv: TransactionMaker.Transaction.SignatureTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.SignatureApi>(GENERATE_TRANSACTION_API_PATH.TR_USERNAME);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建注册受托人事件 */
-    async generateDelegate(argv: TransactionMaker.Transaction.DelegateTransactionParams) {
+    async generateDelegate(argv: TransactionMaker.Transaction.DelegateTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.DelegateApi>(GENERATE_TRANSACTION_API_PATH.TR_DELEGATE);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送注册受托人事件 */
+    async sendDelegate(argv: TransactionMaker.Transaction.DelegateTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.DelegateApi>(GENERATE_TRANSACTION_API_PATH.TR_DELEGATE);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建开启收票事件 */
-    async generateAcceptVote(argv: TransactionMaker.Transaction.AcceptVoteTransactionParams) {
+    async generateAcceptVote(argv: TransactionMaker.Transaction.AcceptVoteTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.AcceptVoteApi>(GENERATE_TRANSACTION_API_PATH.TR_ACCEPT_VOTE);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送开启收票事件 */
+    async sendAcceptVote(argv: TransactionMaker.Transaction.AcceptVoteTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.AcceptVoteApi>(GENERATE_TRANSACTION_API_PATH.TR_ACCEPT_VOTE);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建关闭收票事件 */
-    async generateRejectVote(argv: TransactionMaker.Transaction.RejectVoteTransactionParams) {
+    async generateRejectVote(argv: TransactionMaker.Transaction.RejectVoteTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.RejectVoteApi>(GENERATE_TRANSACTION_API_PATH.TR_REJECT_VOTE);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送关闭收票事件 */
+    async sendRejectVote(argv: TransactionMaker.Transaction.RejectVoteTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.RejectVoteApi>(GENERATE_TRANSACTION_API_PATH.TR_REJECT_VOTE);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建治理投票事件 */
-    async generateVote(argv: TransactionMaker.Transaction.VoteTransactionParams) {
+    async generateVote(argv: TransactionMaker.Transaction.VoteTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.VoteApi>(GENERATE_TRANSACTION_API_PATH.TR_VOTE);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送治理投票事件 */
+    async sendVote(argv: TransactionMaker.Transaction.VoteTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.VoteApi>(GENERATE_TRANSACTION_API_PATH.TR_VOTE);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建权益发行事件 */
-    async generateIssueAsset(argv: TransactionMaker.Transaction.IssueAssetTransactionParams) {
+    async generateIssueAsset(argv: TransactionMaker.Transaction.IssueAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送权益发行事件 */
+    async sendIssueAsset(argv: TransactionMaker.Transaction.IssueAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建权益转移事件 */
-    async generateTransferAsset(argv: TransactionMaker.Transaction.TransferAssetTransactionParams) {
+    async generateTransferAsset(argv: TransactionMaker.Transaction.TransferAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.TransferAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_TRANSFER_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送权益转移事件 */
+    async sendTransferAsset(argv: TransactionMaker.Transaction.TransferAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.TransferAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_TRANSFER_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建权益销毁事件 */
-    async generateDestoryAsset(argv: TransactionMaker.Transaction.DestoryAssetTransactionParams) {
+    async generateDestoryAsset(argv: TransactionMaker.Transaction.DestoryAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.DestoryAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_DESTORY_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送权益销毁事件 */
+    async sendDestoryAsset(argv: TransactionMaker.Transaction.DestoryAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.DestoryAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_DESTORY_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建权益赠送事件 */
-    async generateGiftAsset(argv: TransactionMaker.Transaction.GiftAssetTransactionParams) {
+    async generateGiftAsset(argv: TransactionMaker.Transaction.GiftAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.GiftAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_GIFT_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送权益赠送事件 */
+    async sendGiftAsset(argv: TransactionMaker.Transaction.GiftAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.GiftAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_GIFT_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建接受权益赠送事件 */
-    async generateGrabAsset(argv: TransactionMaker.Transaction.GrabAssetTransactionParams) {
+    async generateGrabAsset(argv: TransactionMaker.Transaction.GrabAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.GrabAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_GRAB_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送接受权益赠送事件 */
+    async sendGrabAsset(argv: TransactionMaker.Transaction.GrabAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.GrabAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_GRAB_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建权益委托事件 */
-    async generateTrustAsset(argv: TransactionMaker.Transaction.TrustAssetTransactionParams) {
+    async generateTrustAsset(argv: TransactionMaker.Transaction.TrustAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.TrustAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_TRUST_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送权益委托事件 */
+    async sendTrustAsset(argv: TransactionMaker.Transaction.TrustAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.TrustAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_TRUST_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建签收权益委托事件 */
-    async generateSignForAsset(argv: TransactionMaker.Transaction.SignForAssetTransactionParams) {
+    async generateSignForAsset(argv: TransactionMaker.Transaction.SignForAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.SignForAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_SIGN_FOR_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送签收权益委托事件 */
+    async sendSignForAsset(argv: TransactionMaker.Transaction.SignForAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.SignForAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_SIGN_FOR_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建权益交换事件 */
-    async generateToExchangeAsset(argv: TransactionMaker.Transaction.ToExchangeAssetTransactionParams) {
+    async generateToExchangeAsset(argv: TransactionMaker.Transaction.ToExchangeAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送权益交换事件 */
+    async sendToExchangeAsset(argv: TransactionMaker.Transaction.ToExchangeAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建接受权益交换事件 */
-    async generateBeExchangeAsset(argv: TransactionMaker.Transaction.BeExchangeAssetTransactionParams) {
+    async generateBeExchangeAsset(argv: TransactionMaker.Transaction.BeExchangeAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送接受权益交换事件 */
+    async sendBeExchangeAsset(argv: TransactionMaker.Transaction.BeExchangeAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建 dapp 发行事件 */
-    async generateDApp(argv: TransactionMaker.Transaction.DAppTransactionParams) {
+    async generateDApp(argv: TransactionMaker.Transaction.DAppTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.DAppApi>(GENERATE_TRANSACTION_API_PATH.TR_DAPP);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送 dapp 发行事件 */
+    async sendDApp(argv: TransactionMaker.Transaction.DAppTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.DAppApi>(GENERATE_TRANSACTION_API_PATH.TR_DAPP);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建 dapp 购买事件 */
-    async generateDAppPurchasing(argv: TransactionMaker.Transaction.DAppPurchasingTransactionParams) {
+    async generateDAppPurchasing(argv: TransactionMaker.Transaction.DAppPurchasingTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.DAppPurchasingApi>(GENERATE_TRANSACTION_API_PATH.TR_DAPP_PURCHASING);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送 dapp 购买事件 */
+    async sendDAppPurchasing(argv: TransactionMaker.Transaction.DAppPurchasingTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.DAppPurchasingApi>(GENERATE_TRANSACTION_API_PATH.TR_DAPP_PURCHASING);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建存证事件 */
-    async generateMark(argv: TransactionMaker.Transaction.MarkTransactionParams) {
+    async generateMark(argv: TransactionMaker.Transaction.MarkTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.MarkApi>(GENERATE_TRANSACTION_API_PATH.TR_MARK);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送存证事件 */
+    async sendMark(argv: TransactionMaker.Transaction.MarkTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.MarkApi>(GENERATE_TRANSACTION_API_PATH.TR_MARK);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建注册/注销链域名事件 */
-    async generateLocationName(argv: TransactionMaker.Transaction.LocationNameTransactionParams) {
+    async generateLocationName(argv: TransactionMaker.Transaction.LocationNameTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.LocationNameApi>(GENERATE_TRANSACTION_API_PATH.TR_LOCATION_NAME);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送注册/注销链域名事件 */
+    async sendLocationName(argv: TransactionMaker.Transaction.LocationNameTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.LocationNameApi>(GENERATE_TRANSACTION_API_PATH.TR_LOCATION_NAME);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建设置链域名管理员事件 */
-    async generateSetLnsManager(argv: TransactionMaker.Transaction.SetLnsManagerTransactionParams) {
+    async generateSetLnsManager(argv: TransactionMaker.Transaction.SetLnsManagerTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.SetLnsManagerApi>(GENERATE_TRANSACTION_API_PATH.TR_SET_LNS_MANAGER);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送设置链域名管理员事件 */
+    async sendSetLnsManager(argv: TransactionMaker.Transaction.SetLnsManagerTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.SetLnsManagerApi>(GENERATE_TRANSACTION_API_PATH.TR_SET_LNS_MANAGER);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建设置链域名解析值事件 */
-    async generateSetLnsRecordValue(argv: TransactionMaker.Transaction.SetLnsRecordValueTransactionParams) {
+    async generateSetLnsRecordValue(argv: TransactionMaker.Transaction.SetLnsRecordValueTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.SetLnsRecordValueApi>(GENERATE_TRANSACTION_API_PATH.TR_SET_LNS_RECORD_VALUE);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送设置链域名解析值事件 */
+    async sendSetLnsRecordValue(argv: TransactionMaker.Transaction.SetLnsRecordValueTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.SetLnsRecordValueApi>(GENERATE_TRANSACTION_API_PATH.TR_SET_LNS_RECORD_VALUE);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建资产交换事件 */
-    async generateToExchangeSpecialAsset(argv: TransactionMaker.Transaction.ToExchangeSpecialAssetTransactionParams) {
-        const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeSpecialAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_SPECIAL_ASSET);
-        const result = await api.generateTransaction(argv);
+    async generateToExchangeSpecialAsset(argv: TransactionMaker.Transaction.ToExchangeSpecialAssetTransactionParams, ip?: string) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeSpecialAssetApi>(
+            GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_SPECIAL_ASSET
+        );
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /*发送建资产交换事件 */
+    async sendToExchangeSpecialAsset(argv: TransactionMaker.Transaction.ToExchangeSpecialAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeSpecialAssetApi>(
+            GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_SPECIAL_ASSET
+        );
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建接受资产交换事件 */
-    async generateBeExchangeSpecialAsset(argv: TransactionMaker.Transaction.BeExchangeSpecialAssetTransactionParams) {
-        const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeSpecialAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_SPECIAL_ASSET);
-        const result = await api.generateTransaction(argv);
+    async generateBeExchangeSpecialAsset(argv: TransactionMaker.Transaction.BeExchangeSpecialAssetTransactionParams, ip?: string) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeSpecialAssetApi>(
+            GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_SPECIAL_ASSET
+        );
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /*发送建接受资产交换事件 */
+    async sendBeExchangeSpecialAsset(argv: TransactionMaker.Transaction.BeExchangeSpecialAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeSpecialAssetApi>(
+            GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_SPECIAL_ASSET
+        );
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建发行非同质权益模板事件 */
-    async generateIssueEntityFactory(argv: TransactionMaker.Transaction.IssueEntityFactoryTransactionParams) {
+    async generateIssueEntityFactory(argv: TransactionMaker.Transaction.IssueEntityFactoryTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueEntityFactoryApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送发行非同质权益模板事件 */
+    async sendIssueEntityFactory(argv: TransactionMaker.Transaction.IssueEntityFactoryTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueEntityFactoryApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建发行非同质权益模板事件 */
-    async generateIssueEntityFactoryV1(argv: TransactionMaker.Transaction.IssueEntityFactoryTransactionV1Params) {
+    async generateIssueEntityFactoryV1(argv: TransactionMaker.Transaction.IssueEntityFactoryTransactionV1Params, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueEntityFactoryV1Api>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY_V1);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送发行非同质权益模板事件 */
+    async sendIssueEntityFactoryV1(argv: TransactionMaker.Transaction.IssueEntityFactoryTransactionV1Params, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueEntityFactoryV1Api>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY_V1);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建发行非同质权益事件 */
-    async generateIssueEntity(argv: TransactionMaker.Transaction.IssueEntityTransactionParams) {
+    async generateIssueEntity(argv: TransactionMaker.Transaction.IssueEntityTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueEntityApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送发行非同质权益事件 */
+    async sendIssueEntity(argv: TransactionMaker.Transaction.IssueEntityTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueEntityApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建销毁非同质权益事件 */
-    async generateDestoryEntity(argv: TransactionMaker.Transaction.DestoryEntityTransactionParams) {
+    async generateDestoryEntity(argv: TransactionMaker.Transaction.DestoryEntityTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.DestoryEntityApi>(GENERATE_TRANSACTION_API_PATH.TR_DESTORY_ENTITY);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送销毁非同质权益事件 */
+    async sendDestoryEntity(argv: TransactionMaker.Transaction.DestoryEntityTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.DestoryEntityApi>(GENERATE_TRANSACTION_API_PATH.TR_DESTORY_ENTITY);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建任意资产交换事件 */
-    async generateToExchangeAny(argv: TransactionMaker.Transaction.ToExchangeAnyTransactionParams) {
+    async generateToExchangeAny(argv: TransactionMaker.Transaction.ToExchangeAnyTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送任意资产交换事件 */
+    async sendToExchangeAny(argv: TransactionMaker.Transaction.ToExchangeAnyTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建接受任意资产交换事件 */
-    async generateBeExchangeAny(argv: TransactionMaker.Transaction.BeExchangeAnyTransactionParams) {
+    async generateBeExchangeAny(argv: TransactionMaker.Transaction.BeExchangeAnyTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送接受任意资产交换事件 */
+    async sendBeExchangeAny(argv: TransactionMaker.Transaction.BeExchangeAnyTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建任意资产转移事件 */
-    async generateTransferAny(argv: TransactionMaker.Transaction.TransferAnyTransactionParams) {
+    async generateTransferAny(argv: TransactionMaker.Transaction.TransferAnyTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.TransferAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_TRANSFER_ANY);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送任意资产转移事件 */
+    async sendTransferAny(argv: TransactionMaker.Transaction.TransferAnyTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.TransferAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_TRANSFER_ANY);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建任意资产赠送事件 */
-    async generateGiftAny(argv: TransactionMaker.Transaction.GiftAnyTransactionParams) {
+    async generateGiftAny(argv: TransactionMaker.Transaction.GiftAnyTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.GiftAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GIFT_ANY);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送任意资产赠送事件 */
+    async sendGiftAny(argv: TransactionMaker.Transaction.GiftAnyTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.GiftAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GIFT_ANY);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建接受任意资产赠送事件 */
-    async generateGrabAny(argv: TransactionMaker.Transaction.GrabAnyTransactionParams) {
+    async generateGrabAny(argv: TransactionMaker.Transaction.GrabAnyTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.GrabAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GRAB_ANY);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送接受任意资产赠送事件 */
+    async sendGrabAny(argv: TransactionMaker.Transaction.GrabAnyTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.GrabAnyApi>(GENERATE_TRANSACTION_API_PATH.TR_GRAB_ANY);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建批量发行非同质权益模板事件 */
-    async generateIssueEntityMulti(argv: TransactionMaker.Transaction.IssueEntityMultiTransactionParams) {
+    async generateIssueEntityMulti(argv: TransactionMaker.Transaction.IssueEntityMultiTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueEntityMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_MULTI);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送批量发行非同质权益模板事件 */
+    async sendIssueEntityMulti(argv: TransactionMaker.Transaction.IssueEntityMultiTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.IssueEntityMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_MULTI);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建批量任意资产交换事件 */
-    async generateToExchangeAnyMulti(argv: TransactionMaker.Transaction.ToExchangeAnyMultiTransactionParams) {
+    async generateToExchangeAnyMulti(argv: TransactionMaker.Transaction.ToExchangeAnyMultiTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY_MULTI);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送批量任意资产交换事件 */
+    async sendToExchangeAnyMulti(argv: TransactionMaker.Transaction.ToExchangeAnyMultiTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.ToExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY_MULTI);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建接受批量任意资产交换事件 */
-    async generateBeExchangeAnyMulti(argv: TransactionMaker.Transaction.BeExchangeAnyMultiTransactionParams) {
+    async generateBeExchangeAnyMulti(argv: TransactionMaker.Transaction.BeExchangeAnyMultiTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY_MULTI);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送接受批量任意资产交换事件 */
+    async sendBeExchangeAnyMulti(argv: TransactionMaker.Transaction.BeExchangeAnyMultiTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.BeExchangeAnyMultiApi>(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY_MULTI);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建注册链事件 */
-    async generateRegisterChain(argv: TransactionMaker.Transaction.RegisterChainTransactionParams) {
+    async generateRegisterChain(argv: TransactionMaker.Transaction.RegisterChainTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.RegisterChainApi>(GENERATE_TRANSACTION_API_PATH.TR_REGISTER_CHAIN);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送注册链事件 */
+    async sendRegisterChain(argv: TransactionMaker.Transaction.RegisterChainTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.RegisterChainApi>(GENERATE_TRANSACTION_API_PATH.TR_REGISTER_CHAIN);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建权益迁出事件 */
-    async generateEmigrateAsset(argv: TransactionMaker.Transaction.EmigrateAssetTransactionParams) {
+    async generateEmigrateAsset(argv: TransactionMaker.Transaction.EmigrateAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.EmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_EMIGRATE_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送权益迁出事件 */
+    async sendEmigrateAsset(argv: TransactionMaker.Transaction.EmigrateAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.EmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_EMIGRATE_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
 
     /**创建权益迁入事件 */
-    async generateImmigrateAsset(argv: TransactionMaker.Transaction.ImmigrateAssetTransactionParams) {
+    async generateImmigrateAsset(argv: TransactionMaker.Transaction.ImmigrateAssetTransactionParams, ip?: string) {
         const api = this.__getTransactionApi<TransactionMaker.Transaction.ImmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_IMMIGRATE_ASSET);
-        const result = await api.generateTransaction(argv);
+        const result = await api.generateTransaction(argv, ip);
+        return result;
+    }
+    /**发送权益迁入事件 */
+    async sendImmigrateAsset(argv: TransactionMaker.Transaction.ImmigrateAssetTransactionParams, ipInfo: TransactionMaker.IpInfo = {}) {
+        const api = this.__getTransactionApi<TransactionMaker.Transaction.ImmigrateAssetApi>(GENERATE_TRANSACTION_API_PATH.TR_IMMIGRATE_ASSET);
+        const result = await api.sendTransaction(argv, ipInfo);
         return result;
     }
     // #endregion

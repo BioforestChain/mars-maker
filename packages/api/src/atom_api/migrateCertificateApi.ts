@@ -3,7 +3,10 @@ import { GenerateMigrateCertificateApi, FromAuthSignatureMigrateCertificateApi, 
 import { MIGRATE_CERTIFICATE_API_PATH } from "@bfmeta/transaction-maker-core";
 
 export class MigrateCertificateApi {
-    private __MIGRATE_CERTIFICATE_API_MAP = new Map<TransactionMaker.CrossChain.MIGRATE_CERTIFICATE_API_PATH, TransactionMaker.CrossChain.MigrateCertificateApi>();
+    private __MIGRATE_CERTIFICATE_API_MAP = new Map<
+        TransactionMaker.CrossChain.MIGRATE_CERTIFICATE_API_PATH,
+        TransactionMaker.CrossChain.MigrateCertificateApi
+    >();
 
     constructor(private __networkHelper: TransactionMaker.NetworkHelper) {
         this.__init();
@@ -24,32 +27,34 @@ export class MigrateCertificateApi {
     }
 
     // #region migrateCertificate
-    private __getMigrateCertificateApi<T extends TransactionMaker.CrossChain.MigrateCertificateApi>(apiPath: TransactionMaker.CrossChain.MIGRATE_CERTIFICATE_API_PATH) {
+    private __getMigrateCertificateApi<T extends TransactionMaker.CrossChain.MigrateCertificateApi>(
+        apiPath: TransactionMaker.CrossChain.MIGRATE_CERTIFICATE_API_PATH
+    ) {
         return this.__MIGRATE_CERTIFICATE_API_MAP.get(apiPath) as T;
     }
 
     /**创建权益迁移凭证 */
-    async generateMigrateCertificate(argv: TransactionMaker.CrossChain.GenerateMigrateCertificateParams) {
+    async generateMigrateCertificate(argv: TransactionMaker.CrossChain.GenerateMigrateCertificateParams, ip?: string) {
         const api = this.__getMigrateCertificateApi<TransactionMaker.CrossChain.GenerateMigrateCertificateApi>(
             MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_GENERATE
         );
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
     /**创建权益迁移凭证的迁出授权签名 */
-    async fromAuthSignatureMigrateCertificate(argv: TransactionMaker.CrossChain.AuthSignMigrateCertificateArgs) {
+    async fromAuthSignatureMigrateCertificate(argv: TransactionMaker.CrossChain.AuthSignMigrateCertificateArgs, ip?: string) {
         const api = this.__getMigrateCertificateApi<TransactionMaker.CrossChain.FromAuthSignatureMigrateCertificateApi>(
             MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_FROM_AUTH_SIGNATURE
         );
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
     /**创建权益迁移凭证的迁入授权签名 */
-    async toAuthSignatureMigrateCertificate(argv: TransactionMaker.CrossChain.AuthSignMigrateCertificateArgs) {
+    async toAuthSignatureMigrateCertificate(argv: TransactionMaker.CrossChain.AuthSignMigrateCertificateArgs, ip?: string) {
         const api = this.__getMigrateCertificateApi<TransactionMaker.CrossChain.ToAuthSignatureMigrateCertificateApi>(
             MIGRATE_CERTIFICATE_API_PATH.MIGRATE_CERTIFICATE_TO_AUTH_SIGNATURE
         );
-        const result = await api.sendPostRequest(argv);
+        const result = await api.sendPostRequest(argv, ip);
         return result;
     }
     // #endregion
