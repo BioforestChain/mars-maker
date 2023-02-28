@@ -1,6 +1,12 @@
 {
     "name": "@bfmeta/transaction-maker",
     "private": true,
+    "bin": "packages/test/build/cjs/server/server.js",
+    "pkg": {
+        "scripts": [
+            "packages/server/**/*.js"
+        ]
+    },
     "workspaces": [
         "packages/*"
     ],
