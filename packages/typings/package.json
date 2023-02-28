@@ -9,9 +9,6 @@
     ],
     "author": "BFChain Team",
     "license": "MIT",
-    "dependencies": {
-        "@bfchain/util": "~4.12.44"
-    },
     "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
     "files": [
         "build"
