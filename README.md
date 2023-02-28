@@ -2,13 +2,13 @@
 
 ## Installation - 安装
 
-`$ npm install @bfchain/pc-sdk`
+ `$ npm install @bfmeta/transaction-maker-api`
 
 ### Requrements - 必要条件
 
--   npm
+*   npm
 
--   typescript
+*   typescript
 
 ## Docs & Community - 文档 & 社区
 
@@ -16,53 +16,81 @@
 
 ## Usage - 用法
 
+### Server
+
 ```ts
-import { Sdk } from "@bfchain/pc-sdk";
+
+// 运行目录下建 config/config.json 填入以下内容
+{
+    "//port": "交易服务器监听的端口号",
+    port: 8888,
+    "//chainNodeIps": "可用的链节点 ip",
+    chainNodeIps: ["127.0.0.1"],
+    "//broadcastTimeout": "广播超时时间，默认 30000",
+    broadcastTimeout: 30000,
+    "//genesisInfoConfig": "创世块信息",
+    genesisInfoConfig: {
+        "//isGenesisBlockProvidedExternally": "创世块是否从外部引入",
+        isGenesisBlockProvidedExternally: false,
+        "//networkType": "链节点的网络类型 testnet 测试网络 mainnet 正式网络",
+        networkType: "testnet",
+        "//chainName": "链名",
+        chainName: "bfmetatest",
+        "//chainAssetType": "链主权益名",
+        chainAssetType: "BFMTEST",
+        "//blockPerRound": "每轮锻造的区块数量",
+        blockPerRound: 57,
+        "//forgeInterval": "每个区块的时间间隔",
+        forgeInterval: 10,
+    },
+    "//lang": "密钥类型 cn 汉语、jp 日语、sp 西班牙语、it 意大利语、fr 法语、en 英语",
+    lang: "en",
+}
+
+运行 transaction-marker 服务
+
+```
+
+### Client
+
+```ts
+import { Api } from "@bfmeta/transaction-maker-api";
+import { PARENT_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
 
 // 也可以再运行目录下建 config/config.json 填入以下内容，new 的时候就不用传参
 
-const config: BFChainPcSdk.Config = {
-    "//ip": "节点 ip, 默认值 127.0.0.1",
-    ip: "127.0.0.1",
-    "//port": "节点端口号, 默认值 9003",
-    port: 19003,
-    "//requestTimeout": "请求超时时间, 单位 ms, 默认 10000",
+const config: TransactionMaker.Api.ConfigOptions = {
+    "//ips": "交易服务器的 ip，端口",
+    ips: ["127.0.0.1:8888"],
+    "//requestTimeout": "请求超时时间，默认 10000",
     requestTimeout: 10000,
-    "//requestProtocol": "请求协议, http || websocket, 默认值 websocket",
-    requestProtocol: "websocket",
-
-    "//transactionServerPort": "交易服务端口号, 默认值 8888",
-    transactionServerPort: 8888,
-    "//isGenesisBlockProvidedExternally": "创世块是否由外部提供, 默认在 genesisInfos 目录, 默认值 false",
-    isGenesisBlockProvidedExternally: false,
-    "//networkType": "网络类型: testnet || mainnet, 默认值 mainnet",
-    networkType: "testnet",
-    "//chainAssetType": "区块链链权益名, 默认值 BFT",
-    chainAssetType: "BFT",
-    "//blockPerRound": "每轮的区块数量, 默认值 57",
-    blockPerRound: 57,
-    "//forgeInterval": "锻造区块的时间间隔, 默认值 128",
-    forgeInterval: 10,
-    "//lang": "密码类型: cn 汉语 || jp 日语 || sp 西班牙语 || it 意大利语 || fr 法语 || en 英语, 默认值 en",
-    lang: "en",
 };
 
 const sdk = new Sdk(config);
 
-// 运行生成交易的 http 服务器
-await sdk.runTransactionServer();
+// 生成交易然后广播
+const result = await api.transaction.generateTransferAny(argv, ipInfo.ip);
 
-// 调用创建交易的接口
-const acceptVoteTransaction = await sdk.api.transaction.generateAcceptVote(argv);
+if (result.success) {
+    const resp = await api.transaction.broadcastTransaction({
+        transaction: result.result,
+        ip: ipInfo.nodeIp,
+    });
+    if (resp.success) {
+        console.log(resp.result);
+    } else {
+        console.log(resp);
+    }
+} else {
+    console.log(result);
+}
 
-// 调用广播交易的接口
-const result = await sdk.api.transaction.broadcastAcceptVote(acceptVoteTransaction);
+或者
 
-// 调用创建并广播交易的接口
-const result = await sdk.api.transaction.sendAcceptVote(argv);
+// 生成交易并且广播
 
-// 调用查询区块的接口
-const result = await sdk.api.basic.getLastBlock();
+const result = await api.transaction.sendTransferAny(argv, ipInfo);
+console.log(result);
 ```
 
 ## Changelog - 更新日志

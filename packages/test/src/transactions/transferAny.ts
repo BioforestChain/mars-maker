@@ -4,11 +4,21 @@ import { utils } from "../utils";
 
 (async () => {
     try {
-        const ip = "192.168.110.110:8888";
+        const config: TransactionMaker.Api.ConfigOptions = {
+            ips: ["127.0.0.1:8888"],
+            requestTimeout: 10000,
+        };
+
+        const ipInfo: TransactionMaker.IpInfo = {
+            ip: "127.0.0.1:8888",
+            nodeIp: "127.0.0.1",
+        };
 
         const api = new Api();
 
-        await api.common.timeCorrecting();
+        await api.common.timeCorrecting({
+            ip: ipInfo.nodeIp,
+        });
 
         const blobInfo = utils.getSha256BlobInfo("/assets/sodium.node");
         const seedResult = await api.common.generateBlobSeed(blobInfo);
@@ -42,11 +52,12 @@ import { utils } from "../utils";
             recipientId: "cCET2Sxt2LPDhx44wxJ9uhkpviKNrSacvE",
         };
 
-        // const result = await api.transaction.generateTransferAny(argv, ip);
+        // const result = await api.transaction.generateTransferAny(argv, ipInfo.ip);
 
         // if (result.success) {
         //     const resp = await api.transaction.broadcastTransaction({
         //         transaction: result.result,
+        //         ip: ipInfo.nodeIp,
         //     });
         //     if (resp.success) {
         //         console.log(resp.result);
@@ -57,10 +68,7 @@ import { utils } from "../utils";
         //     console.log(result);
         // }
 
-        const result = await api.transaction.sendTransferAny(argv, {
-            ip: "127.0.0.1:8888",
-            nodeIp: "127.0.0.1",
-        });
+        const result = await api.transaction.sendTransferAny(argv, ipInfo);
         console.log(result);
     } catch (e: any) {
         console.log(e);
