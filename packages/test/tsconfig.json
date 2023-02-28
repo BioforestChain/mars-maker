@@ -10,6 +10,7 @@
         "src/common/generateAddressByPublicKey.ts",
         "src/common/generateAddressBySecret.ts",
         "src/common/generateCiphertextSignature.ts",
+        "src/common/generateRegisterChainCertificate.ts",
         "src/common/isAddress.ts",
         "src/common/isPublicKey.ts",
         "src/index.ts",

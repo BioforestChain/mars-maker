@@ -121,6 +121,13 @@ export const enum DAPP_TYPE {
     FREE_APP = 1,
 }
 
+export const enum BNID_TYPE {
+    /**测试网络 */
+    TESTNET = "c",
+    /**正式网络 */
+    MAINNET = "b",
+}
+
 /**广播交易 */
 export const BROADCAST_TRANSACTION_API_PATH = "/broadcast";
 
@@ -247,6 +254,9 @@ export const enum COMMON_API_PATH {
     GENERATE_BLOB_SEED = "/common/generateBlobSeed",
     /**服务器时间校正 */
     TIME_CORRECTING_API_PATH = "/common/correcting",
+
+    /**生成注册链凭证 */
+    GENERATE_REGISTER_CHAIN_CERTIFICATE_API_PATH = "/common/generateRegisterChainCertificate",
 }
 
 export const enum NEW_TRANSACTION_REFUSE_REASON {

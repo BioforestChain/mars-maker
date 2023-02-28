@@ -66,17 +66,18 @@ declare namespace TransactionMaker {
 
     namespace Common {
         type CommonApi = import("./atom_common/_commonApi").CommonApi<any>;
-        type VerifyAddressApi = import("./atom_common/verifyAddressApi").VerifyAddressApi;
-        type VerifyPublicKeyApi = import("./atom_common/verifyPublicKeyApi").VerifyPublicKeyApi;
-        type GenerateKeypairApi = import("./atom_common/generateKeypairApi").GenerateKeypairApi;
-        type GenerateAccountApi = import("./atom_common/generateAccountApi").GenerateAccountApi;
-        type GenerateAddressBySecretApi = import("./atom_common/generateAddressBySecretApi").GenerateAddressBySecretApi;
-        type GenerateAddressByPublicKeyApi = import("./atom_common/generateAddressByPublicKeyApi").GenerateAddressByPublicKeyApi;
-        type AsymmetricEncryptApi = import("./atom_common/asymmetricEncryptApi").AsymmetricEncryptApi;
-        type AsymmetricDecryptApi = import("./atom_common/asymmetricDecryptApi").AsymmetricDecryptApi;
-        type CalcTransactionMinFeeApi = import("./atom_common/calcTransactionMinFee").CalcTransactionMinFeeApi;
-        type GenerateCiphertextSignatureApi = import("./atom_common/generateCiphertextSignatureApi").GenerateCiphertextSignatureApi;
-        type GenerateBlobSeedApi = import("./atom_common/generateBlobSeedApi").GenerateBlobSeedApi;
-        type TimeCorrectingApi = import("./atom_common/timeCorrectingApi").TimeCorrectingApi;
+        type VerifyAddressApi = import("./atom_common").VerifyAddressApi;
+        type VerifyPublicKeyApi = import("./atom_common").VerifyPublicKeyApi;
+        type GenerateKeypairApi = import("./atom_common").GenerateKeypairApi;
+        type GenerateAccountApi = import("./atom_common").GenerateAccountApi;
+        type GenerateAddressBySecretApi = import("./atom_common").GenerateAddressBySecretApi;
+        type GenerateAddressByPublicKeyApi = import("./atom_common").GenerateAddressByPublicKeyApi;
+        type AsymmetricEncryptApi = import("./atom_common").AsymmetricEncryptApi;
+        type AsymmetricDecryptApi = import("./atom_common").AsymmetricDecryptApi;
+        type CalcTransactionMinFeeApi = import("./atom_common").CalcTransactionMinFeeApi;
+        type GenerateCiphertextSignatureApi = import("./atom_common").GenerateCiphertextSignatureApi;
+        type GenerateBlobSeedApi = import("./atom_common").GenerateBlobSeedApi;
+        type TimeCorrectingApi = import("./atom_common").TimeCorrectingApi;
+        type GenerateRegisterChainCertificateApi = import("./atom_common").GenerateRegisterChainCertificateApi;
     }
 }

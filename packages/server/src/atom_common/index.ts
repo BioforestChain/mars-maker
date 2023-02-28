@@ -11,14 +11,17 @@ import { AsymmetricDecryptFactory } from "./asymmetricDecrypt";
 import { CalcTransactionMinFee } from "./calcTransactionMinFee";
 import { GenerateCiphertextSignatureFactory } from "./generateCiphertextSignature";
 import { GenerateBlobSeedFactory } from "./generateBlobSeed";
+import { GenerateRegisterChainCertificateFactory } from "./generateRegisterChainCertificate";
 
 import { EasyWeakMap } from "@bfchain/util";
 
-export const COMMON_FACTORY_MAP_WM = EasyWeakMap.from<BFChainCore, Map<TransactionMaker.Common.COMMON_API_PATH, import("./_commonFactory").CommonFactory<any>>>({
-    creater() {
-        return new Map();
-    },
-});
+export const COMMON_FACTORY_MAP_WM = EasyWeakMap.from<BFChainCore, Map<TransactionMaker.Common.COMMON_API_PATH, import("./_commonFactory").CommonFactory<any>>>(
+    {
+        creater() {
+            return new Map();
+        },
+    }
+);
 
 export function CommonFactory(bfchainCore: BFChainCore) {
     const COMMON_FACTORY_MAP = COMMON_FACTORY_MAP_WM.forceGet(bfchainCore);
@@ -34,6 +37,7 @@ export function CommonFactory(bfchainCore: BFChainCore) {
     const calcTransactionMinFee = new CalcTransactionMinFee(bfchainCore);
     const generateCiphertextSignatureFactory = new GenerateCiphertextSignatureFactory(bfchainCore);
     const generateBlobSeedFactory = new GenerateBlobSeedFactory(bfchainCore);
+    const generateRegisterChainCertificateFactory = new GenerateRegisterChainCertificateFactory(bfchainCore);
 
     COMMON_FACTORY_MAP.set(verifyAddressFactory.EXEC_API_PATH, verifyAddressFactory);
     COMMON_FACTORY_MAP.set(verifyPublicKeyFactory.EXEC_API_PATH, verifyPublicKeyFactory);
@@ -46,6 +50,7 @@ export function CommonFactory(bfchainCore: BFChainCore) {
     COMMON_FACTORY_MAP.set(calcTransactionMinFee.EXEC_API_PATH, calcTransactionMinFee);
     COMMON_FACTORY_MAP.set(generateCiphertextSignatureFactory.EXEC_API_PATH, generateCiphertextSignatureFactory);
     COMMON_FACTORY_MAP.set(generateBlobSeedFactory.EXEC_API_PATH, generateBlobSeedFactory);
+    COMMON_FACTORY_MAP.set(generateRegisterChainCertificateFactory.EXEC_API_PATH, generateRegisterChainCertificateFactory);
 
     Object.freeze(COMMON_FACTORY_MAP);
 }

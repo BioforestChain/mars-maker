@@ -11,6 +11,7 @@ import {
     GenerateCiphertextSignatureApi,
     GenerateBlobSeedApi,
     TimeCorrectingApi,
+    GenerateRegisterChainCertificateApi,
 } from "./atom_common";
 
 import { COMMON_API_PATH } from "@bfmeta/transaction-maker-core";
@@ -37,6 +38,7 @@ export class CommonApi {
         const generateCiphertextSignatureApi = new GenerateCiphertextSignatureApi(networkHelper);
         const generateBlobSeedApi = new GenerateBlobSeedApi(networkHelper);
         const timeCorrectingApi = new TimeCorrectingApi(networkHelper);
+        const generateRegisterChainCertificateApi = new GenerateRegisterChainCertificateApi(networkHelper);
 
         COMMON_API_MAP.set(verifyAddressApi.EXEC_API_PATH, verifyAddressApi);
         COMMON_API_MAP.set(verifyPublicKeyApi.EXEC_API_PATH, verifyPublicKeyApi);
@@ -50,6 +52,7 @@ export class CommonApi {
         COMMON_API_MAP.set(generateCiphertextSignatureApi.EXEC_API_PATH, generateCiphertextSignatureApi);
         COMMON_API_MAP.set(generateBlobSeedApi.EXEC_API_PATH, generateBlobSeedApi);
         COMMON_API_MAP.set(timeCorrectingApi.EXEC_API_PATH, timeCorrectingApi);
+        COMMON_API_MAP.set(generateRegisterChainCertificateApi.EXEC_API_PATH, generateRegisterChainCertificateApi);
 
         Object.freeze(COMMON_API_MAP);
     }
@@ -139,6 +142,15 @@ export class CommonApi {
     /**时间校正 */
     async timeCorrecting(argv: TransactionMaker.Common.TimeCorrectingParams = {}, ip?: string) {
         const api = this.__getCommonApi<TransactionMaker.Common.TimeCorrectingApi>(COMMON_API_PATH.TIME_CORRECTING_API_PATH);
+        const result = await api.sendPostRequest(argv, ip);
+        return result;
+    }
+
+    /**生成注册链凭证 */
+    async generateRegisterChainCertificate(argv: TransactionMaker.Common.GenerateRegisterChainCertificateParams, ip?: string) {
+        const api = this.__getCommonApi<TransactionMaker.Common.GenerateRegisterChainCertificateApi>(
+            COMMON_API_PATH.GENERATE_REGISTER_CHAIN_CERTIFICATE_API_PATH
+        );
         const result = await api.sendPostRequest(argv, ip);
         return result;
     }

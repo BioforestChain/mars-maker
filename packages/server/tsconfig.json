@@ -15,6 +15,7 @@
         "src/atom_common/generateBlobSeed.ts",
         "src/atom_common/generateCiphertextSignature.ts",
         "src/atom_common/generateKeypair.ts",
+        "src/atom_common/generateRegisterChainCertificate.ts",
         "src/atom_common/index.ts",
         "src/atom_common/verifyAddress.ts",
         "src/atom_common/verifyPublicKey.ts",
