@@ -1,27 +1,24 @@
 {
-    "name": "@bfmeta/transaction-maker",
+    "name": "@bfmeta/transaction-maker-server",
     "private": true,
-    "bin": "packages/test/build/cjs/server/server.js",
+    "bin": "build/test/server/server.js",
     "pkg": {
         "scripts": [
-            "packages/server/**/*.js"
+            "build/src/*.js"
         ]
     },
     "workspaces": [
         "packages/*"
     ],
     "version": "0.0.0",
-    "description": "transaction-maker for the third party",
+    "description": "transaction-maker-server for the third party",
     "scripts": {
-        "package": "node ./scripts/package.js",
         "lsts": "node ./scripts/listAllFile.js",
         "clear": "node ./scripts/rmBuild.js",
         "dev": "tsc --build -w",
         "dev:all": "tsc --build ./tsconfig.all.json -w",
         "build": "tsc --build ./tsconfig.all.json",
-        "rebuild": "yarn clear & yarn build",
-        "publ": "lerna publish",
-        "publ:force": "lerna publish --force-publish"
+        "rebuild": "yarn clear & yarn build"
     },
     "repository": {
         "type": "git",
@@ -29,7 +26,11 @@
     },
     "author": "BFChain Team",
     "license": "ISC",
-    "dependencies": {},
+    "dependencies": {
+        "@bfchain/coretools": "^3.0.12",
+        "@bfchain/duplexnodejshelper": "^4.0.4",
+        "@bfmeta/transaction-maker-api": "^1.0.6"
+    },
     "devDependencies": {
         "@types/node": "^14.18.5",
         "lerna": "^3.20.2"

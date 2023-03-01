@@ -1,5 +1,5 @@
-import { Server } from "@bfmeta/transaction-maker-server";
 import { BLOCK_CHAIN_NET_WORK_TYPE } from "@bfmeta/transaction-maker-core";
+import { Server } from "../../src";
 
 (async () => {
     try {

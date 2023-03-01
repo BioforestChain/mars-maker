@@ -3,6 +3,8 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
+const rootPath = path.join(process.cwd(), "/packages");
+
 const js = process.env.js === "true" ? true : false;
 
 function getAllFile(targetPath, allFileName) {
@@ -10,35 +12,33 @@ function getAllFile(targetPath, allFileName) {
         return;
     }
     let files = fs.readdirSync(targetPath);
-
-    files.forEach(function (file, index) {
-        let curPath = targetPath + "/" + file;
+    for (const file of files) {
+        if (file.includes("build")) {
+            continue;
+        }
+        const curPath = path.join(targetPath, file);
         if (fs.statSync(curPath).isDirectory()) {
             // 递归获取文件夹
-            return getAllFile(curPath, allFileName);
+            getAllFile(curPath, allFileName);
         }
-
         const condition = js ? file.endsWith(".ts") || file.endsWith(".js") : file.endsWith(".ts");
-
         if (condition) {
             allFileName[allFileName.length] = curPath;
         }
-    });
+    }
 }
 
 function listAllFile(dirPaths) {
     for (const dirPath of dirPaths) {
-        const rootPath = path.resolve(__dirname, `../${dirPath}`);
+        const targetPath = path.join(rootPath, dirPath);
 
         const allFileName = [];
 
-        getAllFile(rootPath, allFileName);
+        getAllFile(targetPath, allFileName);
 
-        const index = allFileName[0].indexOf("/") + 1;
+        const result = allFileName.map((fileName) => fileName.substr(targetPath.length + 1).replaceAll("\\", "/"));
 
-        const result = allFileName.map((fileName) => fileName.substr(index));
-
-        const tsconfigPath = `${rootPath}/tsconfig.json`;
+        const tsconfigPath = `${targetPath}/tsconfig.json`;
 
         const tsconfig = JSON.parse(fs.readFileSync(tsconfigPath).toString());
 
@@ -48,4 +48,4 @@ function listAllFile(dirPaths) {
     }
 }
 
-listAllFile(["src", "test"]);
+listAllFile(fs.readdirSync(rootPath));
