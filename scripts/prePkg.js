@@ -1,4 +1,4 @@
-const { readFileSync, writeFileSync } = require("fs");
+const { readFileSync, writeFileSync } = require("node:fs");
 const originPackage = readFileSync(process.cwd() + "/package.json");
 const package = JSON.parse(originPackage.toString());
 delete package.devDependencies;

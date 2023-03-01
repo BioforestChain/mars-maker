@@ -8,7 +8,9 @@ import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 export class IssueEntityFactoryV1Factory extends TransactionFactory<IssueEntityFactoryTransactionV1> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_FACTORY_V1;
 
-    async generateTransaction(request: TransactionMaker.Transaction.IssueEntityFactoryTransactionV1Params): Promise<BFChainCore.IssueEntityFactoryTransactionV1JSON> {
+    async generateTransaction(
+        request: TransactionMaker.Transaction.IssueEntityFactoryTransactionV1Params
+    ): Promise<BFChainCore.IssueEntityFactoryTransactionV1JSON> {
         this.verify(request);
         const factoryInfo = request.factoryInfo;
         const { magic, chainName } = this.bfchainCore.config;

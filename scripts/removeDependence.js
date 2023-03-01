@@ -5,7 +5,7 @@
  *
  */
 
-const fs = require("fs");
+const fs = require("node:fs");
 const rootPath = process.cwd() + "/node_modules/@bfchain";
 
 function removeFiles(targetPath) {

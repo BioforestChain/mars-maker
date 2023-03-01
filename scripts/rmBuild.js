@@ -1,13 +1,13 @@
 // @ts-check
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
 const rootPath = path.resolve(__dirname, "../packages");
 
-const { matchRemover } = require("@bfchain/devkit");
+const packages = fs.readdirSync(rootPath);
 
-matchRemover(
-  rootPath,
-  (file, fullpath, deep) =>
-    deep === 2 && fs.statSync(fullpath).isDirectory() && file.includes("build"),
-  2,
-);
+for (const package of packages) {
+    const targetPath = path.join(rootPath, package, "build");
+    if (fs.existsSync(targetPath)) {
+        fs.rmSync(targetPath, { recursive: true });
+    }
+}

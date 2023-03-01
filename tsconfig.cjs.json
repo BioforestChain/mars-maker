@@ -1,7 +1,7 @@
 {
-  "extends": "../../tsconfig.base.cjs",
-  "@assign#compilerOptions": {
-    "outDir": "./build/cjs",
-    "rootDir": "./src"
-  }
+    "extends": "../../tsconfig.base.cjs",
+    "@assign#compilerOptions": {
+        "outDir": "./build/cjs",
+        "rootDir": "./src"
+    }
 }

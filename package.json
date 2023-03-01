@@ -12,26 +12,13 @@
     ],
     "version": "0.0.0",
     "description": "transaction-maker for the third party",
-    "bdkMono": {
-        "generateConfigFiles": [
-            {
-                "packages": "*",
-                "type": "mergejson",
-                "from": "$ROOT_PROJECT/tsconfig.cjs.json",
-                "to": "$PACKAGE/tsconfig.json"
-            }
-        ]
-    },
     "scripts": {
         "package": "node ./scripts/package.js",
-        "format": "bdk-format -m all",
-        "//prepare": "yarn mono",
-        "mono": "bdk-mono",
-        "lsts": "bdk-lsts -p=./tsconfig.json",
+        "lsts": "node ./scripts/listAllFile.js",
         "clear": "node ./scripts/rmBuild.js",
-        "dev": "bdk-tsc --build -w",
-        "dev:all": "bdk-tsc --build ./tsconfig.all.json -w",
-        "build": "bdk-tsc --build ./tsconfig.all.json",
+        "dev": "tsc --build -w",
+        "dev:all": "tsc --build ./tsconfig.all.json -w",
+        "build": "tsc --build ./tsconfig.all.json",
         "rebuild": "yarn clear & yarn build",
         "publ": "lerna publish",
         "publ:force": "lerna publish --force-publish"
@@ -44,7 +31,6 @@
     "license": "ISC",
     "dependencies": {},
     "devDependencies": {
-        "@bfchain/devkit": "^0.9.35",
         "@types/node": "^14.18.5",
         "lerna": "^3.20.2"
     }

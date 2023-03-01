@@ -11,11 +11,7 @@
     "license": "MIT",
     "dependencies": {
         "@bfmeta/transaction-maker-core": "2.0.1",
-        "@bfmeta/transaction-maker-typings": "2.0.1",
-        "socket.io-client": "^1.7.4"
-    },
-    "devDependencies": {
-        "@types/socket.io-client": "^1.4.36"
+        "@bfmeta/transaction-maker-typings": "2.0.1"
     },
     "gitHead": "c37a08f35298a83ad65d6d1a07b577e5f2fbf436",
     "files": [
