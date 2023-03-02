@@ -1,5 +1,5 @@
 import { PARENT_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 import { utils } from "../utils";
 
 (async () => {
@@ -14,14 +14,14 @@ import { utils } from "../utils";
             nodeIp: "127.0.0.1",
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        await api.common.timeCorrecting({
+        await bfmetaTrMaker.common.timeCorrecting({
             ip: ipInfo.nodeIp,
         });
 
         const blobInfo = utils.getSha256BlobInfo("/assets/sodium.node");
-        const seedResult = await api.common.generateBlobSeed(blobInfo);
+        const seedResult = await bfmetaTrMaker.common.generateBlobSeed(blobInfo);
 
         if (!seedResult.success) {
             console.log(seedResult);
@@ -52,10 +52,10 @@ import { utils } from "../utils";
             recipientId: "cCET2Sxt2LPDhx44wxJ9uhkpviKNrSacvE",
         };
 
-        // const result = await api.transaction.generateTransferAny(argv, ipInfo.ip);
+        // const result = await bfmetaTrMaker.transaction.generateTransferAny(argv, ipInfo.ip);
 
         // if (result.success) {
-        //     const resp = await api.transaction.broadcastTransaction({
+        //     const resp = await bfmetaTrMaker.transaction.broadcastTransaction({
         //         transaction: result.result,
         //         ip: ipInfo.nodeIp,
         //     });
@@ -68,7 +68,7 @@ import { utils } from "../utils";
         //     console.log(result);
         // }
 
-        const result = await api.transaction.sendTransferAny(argv, ipInfo);
+        const result = await bfmetaTrMaker.transaction.sendTransferAny(argv, ipInfo);
         console.log(result);
     } catch (e: any) {
         console.log(e);

@@ -391,7 +391,7 @@ function pkg(platform) {
 
         // 拷贝资源文件
         // 拷贝创世信息
-        copyGenesisInfosDir();
+        // copyGenesisInfosDir();
 
         try {
             // 改写 index.js

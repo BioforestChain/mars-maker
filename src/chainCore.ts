@@ -5,8 +5,6 @@ import * as path from "node:path";
 import { BFChainCoreFactory, ConfigHelper, BFChainCore, BNID_TYPE, NETWORK_TYPE } from "@bfchain/core";
 import { BFChainSecret, NodeJsCryptoHelper, NodeJsKeypairHelper, Ed2curveHelper } from "@bfchain/coretools";
 import { PeerHelper, ChannelClient } from "@bfchain/duplexnodejshelper";
-import { BLOCK_CHAIN_NET_WORK_TYPE } from "@bfmeta/transaction-maker-core";
-import { GenesisBlockHelper } from "./genesisBlockHelper";
 import { Sha256BlobReader, Sha256BlobWriter } from "./blobHelper";
 import { OsLocaleHelper } from "./osLocaleHelper";
 import { ERROR_LIST, translatedErrorCodeListMap } from "./exception";
@@ -16,34 +14,15 @@ export class ChainCore {
     private __bfchainSecret: BFChainSecret;
     private __osLocaleHelper: OsLocaleHelper;
     private __genesisBlock?: BFChainCore.GenesisBlockJSON;
-    private __genesisBlockHelper: GenesisBlockHelper;
 
     constructor(config: Config, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         this.__config = config;
         if (genesisBlock) {
-            const genesisAsset = genesisBlock.asset.genesisAsset;
-            this.__config.setGenesisInfoConfig({
-                isGenesisBlockProvidedExternally: false,
-                networkType: (genesisAsset.bnid === BNID_TYPE.MAINNET ? NETWORK_TYPE.MAINNET : NETWORK_TYPE.TESTNET) as any,
-                chainName: genesisAsset.chainName,
-                chainAssetType: genesisAsset.assetType,
-                blockPerRound: genesisAsset.blockPerRound,
-                forgeInterval: genesisAsset.forgeInterval,
-            });
             this.__genesisBlock = genesisBlock;
         }
 
         this.__osLocaleHelper = new OsLocaleHelper();
         this.__bfchainSecret = new BFChainSecret(NodeJsCryptoHelper);
-
-        const genesisInfoConfig = this.genesisInfoConfig;
-        this.__genesisBlockHelper = new GenesisBlockHelper({
-            bnidType: genesisInfoConfig.networkType === BLOCK_CHAIN_NET_WORK_TYPE.MAINNET ? BNID_TYPE.MAINNET : BNID_TYPE.TESTNET,
-            chainName: genesisInfoConfig.chainName,
-            chainAssetType: genesisInfoConfig.chainAssetType,
-            blockPerRound: genesisInfoConfig.blockPerRound,
-            forgeInterval: genesisInfoConfig.forgeInterval,
-        });
     }
 
     get SYSTEM_LANGUAGE() {
@@ -74,23 +53,13 @@ export class ChainCore {
         if (this.__genesisBlock) {
             return this.__genesisBlock;
         }
-        const { isGenesisBlockProvidedExternally, chainAssetType, networkType, blockPerRound, forgeInterval, genesisBlockRootPath } = this.genesisInfoConfig;
-        if (isGenesisBlockProvidedExternally) {
-            const rootPath = genesisBlockRootPath || path.join(process.cwd(), "genesisInfos");
-            if (!fs.existsSync(rootPath)) {
-                throw new Error(`Genesis block not exist ${rootPath}`);
-            }
-            const filePath = path.join(
-                rootPath,
-                `${chainAssetType.toLowerCase()}-genesisBlock-${networkType.toLowerCase()}-${blockPerRound}b-${forgeInterval}s.json`
-            );
-            if (!fs.existsSync(filePath)) {
-                throw new Error(`Genesis block not exist ${filePath}`);
-            }
-            const genesisBlockJson: BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON> = require(filePath);
-            return genesisBlockJson;
+        const { genesisBlockPath, genesisBlockLicensePath } = this.genesisInfoConfig;
+        const filePath = path.join(process.cwd(), genesisBlockPath);
+        if (!fs.existsSync(filePath)) {
+            throw new Error(`Genesis block not exist ${filePath}`);
         }
-        return this.__genesisBlockHelper.genesisBlockJson;
+        const genesisBlockJson: BFChainCore.BlockJSON<BFChainCore.GenesisBlockAssetJSON> = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+        return genesisBlockJson;
     }
 
     get bfchainCore() {
@@ -103,10 +72,11 @@ export class ChainCore {
      * @param genesisBlock
      * @param networkType
      */
-    getConfigHelper(genesisBlock = this.getGenesisBlock(), networkType = this.genesisInfoConfig.networkType) {
+    getConfigHelper(genesisBlock = this.getGenesisBlock()) {
         if (!genesisBlock) {
             throw new Error(`Failed to get genesis block`);
         }
+        const networkType = genesisBlock.asset.genesisAsset.bnid === BNID_TYPE.MAINNET ? NETWORK_TYPE.MAINNET : NETWORK_TYPE.TESTNET;
         return new ConfigHelper(genesisBlock, networkType);
     }
 
@@ -131,7 +101,7 @@ export class ChainCore {
                 blobSha256Writer: new Sha256BlobWriter(),
             });
             _core.i18N.setLanguage(this.SYSTEM_LANGUAGE);
-            _core.i18N.addErrorCodeList("BFCHAIN-PC", ERROR_LIST, translatedErrorCodeListMap);
+            _core.i18N.addErrorCodeList("TransactionMaker", ERROR_LIST, translatedErrorCodeListMap);
             this.cacheMap.set(signature, _core);
             return _core;
         }

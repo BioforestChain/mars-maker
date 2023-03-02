@@ -1,4 +1,4 @@
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -7,9 +7,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             secondSecret: "www",
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.common.generateAccount(argv);
+        const result = await bfmetaTrMaker.common.generateAccount(argv);
 
         console.log(result);
     } catch (e: any) {

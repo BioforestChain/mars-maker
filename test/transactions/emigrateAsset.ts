@@ -1,4 +1,4 @@
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -18,11 +18,11 @@ import { Api } from "@bfmeta/transaction-maker-api";
         const genesisSecret =
             "nose install correct solar side latin focus churn mask nominee differ mosquito claw awake glass rare pond clump draw rent fiction muscle razor bacon";
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
         const toMagic = "PSSS5";
 
-        let result1 = await api.migrateCertificateApi.generateMigrateCertificate({
+        let result1 = await bfmetaTrMaker.migrateCertificateApi.generateMigrateCertificate({
             senderSecret: argv.secret,
             recipientId: argv.recipientId,
             toChainInfo: {
@@ -38,7 +38,7 @@ import { Api } from "@bfmeta/transaction-maker-api";
             throw result1;
         }
 
-        const result2 = await api.migrateCertificateApi.fromAuthSignatureMigrateCertificate({
+        const result2 = await bfmetaTrMaker.migrateCertificateApi.fromAuthSignatureMigrateCertificate({
             authSecret: genesisSecret,
             migrateCertificate: result1.result,
         });
@@ -50,7 +50,7 @@ import { Api } from "@bfmeta/transaction-maker-api";
         argv.migrateCertificate = result2.result;
         argv.toMagic = toMagic;
 
-        const result = await api.transaction.generateEmigrateAsset(argv);
+        const result = await bfmetaTrMaker.transaction.generateEmigrateAsset(argv);
 
         console.log(result);
     } catch (e: any) {

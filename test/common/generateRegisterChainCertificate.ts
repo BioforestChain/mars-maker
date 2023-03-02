@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { TRANSACTION_TYPES_BASE } from "@bfchain/core";
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -39,9 +39,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             },
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.common.generateRegisterChainCertificate(argv);
+        const result = await bfmetaTrMaker.common.generateRegisterChainCertificate(argv);
 
         console.log(result);
     } catch (e: any) {

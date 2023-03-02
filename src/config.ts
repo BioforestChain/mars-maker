@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { Injectable } from "@bfchain/util-dep-inject";
-import { BLOCK_CHAIN_NET_WORK_TYPE, SECRET_LANGUAGE_TYPE } from "@bfmeta/transaction-maker-core";
+import { SECRET_LANGUAGE_TYPE } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
 export class Config {
@@ -10,12 +10,8 @@ export class Config {
         chainNodeIps: ["127.0.0.1"],
         broadcastTimeout: 30000,
         genesisInfoConfig: {
-            isGenesisBlockProvidedExternally: false,
-            networkType: BLOCK_CHAIN_NET_WORK_TYPE.MAINNET,
-            chainName: "bfchain",
-            chainAssetType: "bft",
-            blockPerRound: 57,
-            forgeInterval: 128,
+            genesisBlockPath: "genesisInfos/bfmtest-genesisBlock-testnet.json",
+            genesisBlockLicensePath: "genesisInfos/bfmtest-lincense-testnet.json",
         },
         lang: SECRET_LANGUAGE_TYPE.ENGLISH,
     };
@@ -29,15 +25,9 @@ export class Config {
     }
 
     setGenesisInfoConfig(genesisInfoConfigOptions: TransactionMaker.Server.GenesisInfoConfigOptions) {
-        const { isGenesisBlockProvidedExternally, networkType, chainName, chainAssetType, blockPerRound, forgeInterval, genesisBlockRootPath } =
-            genesisInfoConfigOptions;
-        isGenesisBlockProvidedExternally !== undefined && (this.__config.genesisInfoConfig.isGenesisBlockProvidedExternally = isGenesisBlockProvidedExternally);
-        networkType !== undefined && (this.__config.genesisInfoConfig.networkType = networkType);
-        chainName !== undefined && (this.__config.genesisInfoConfig.chainName = chainName);
-        chainAssetType !== undefined && (this.__config.genesisInfoConfig.chainAssetType = chainAssetType);
-        blockPerRound !== undefined && (this.__config.genesisInfoConfig.blockPerRound = blockPerRound);
-        forgeInterval !== undefined && (this.__config.genesisInfoConfig.forgeInterval = forgeInterval);
-        genesisBlockRootPath !== undefined && (this.__config.genesisInfoConfig.genesisBlockRootPath = genesisBlockRootPath);
+        const { genesisBlockPath, genesisBlockLicensePath } = genesisInfoConfigOptions;
+        genesisBlockPath !== undefined && (this.__config.genesisInfoConfig.genesisBlockPath = genesisBlockPath);
+        genesisBlockLicensePath !== undefined && (this.__config.genesisInfoConfig.genesisBlockLicensePath = genesisBlockLicensePath);
     }
 
     setConfig(configOptions: TransactionMaker.Server.ConfigOptions) {

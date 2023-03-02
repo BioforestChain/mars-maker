@@ -1,4 +1,4 @@
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -6,9 +6,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             address: "cEAXDkaEJgWKMM61KYz2dYU1RfuxbB8Ma",
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.common.verifyAddress(argv);
+        const result = await bfmetaTrMaker.common.verifyAddress(argv);
 
         console.log(result);
     } catch (e: any) {

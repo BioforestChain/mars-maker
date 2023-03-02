@@ -1,4 +1,4 @@
-// import { Api } from "@bfmeta/transaction-maker-api";
+// import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 // async function generateMigrateCertificate(recipientId: string, toChainInfo: BFChainCore.CrossChain.ChainBaseInfo) {
 //     const sdk2 = new Sdk({
@@ -65,9 +65,9 @@
 //                 "1d0fa1a66fafbf02b29662d95deb0bd7ec5a801e92c6bbdb50d5bbfac14e7bfec761ce5d9293789f08649e064e1ec687a0712c84b9e298ba4ef032513a3a2f08",
 //         });
 
-//         const api = new Api();
+//         const bfmetaTrMaker = new BFMetaTrMaker();
 
-//         const result2 = await api.transaction.toAuthSignatureMigrateCertificate({
+//         const result2 = await bfmetaTrMaker.transaction.toAuthSignatureMigrateCertificate({
 //             authSecret: genesisSecret,
 //             migrateCertificate,
 //         });
@@ -81,7 +81,7 @@
 //         argv.migrateCertificate = result2.result;
 //         argv.fromMagic = "PSSS5";
 
-//         const result = await api.transaction.generateImmigrateAsset(argv);
+//         const result = await bfmetaTrMaker.transaction.generateImmigrateAsset(argv);
 
 //         console.log(result);
 //     } catch (e: any) {

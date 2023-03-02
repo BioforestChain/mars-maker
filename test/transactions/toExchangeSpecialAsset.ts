@@ -1,5 +1,5 @@
 import { EXCHANGE_DIRECTION, SPECIAL_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -24,9 +24,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             exchangeDirection: EXCHANGE_DIRECTION.ASSET_FROM_SENDER,
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.transaction.generateToExchangeSpecialAsset(argv);
+        const result = await bfmetaTrMaker.transaction.generateToExchangeSpecialAsset(argv);
 
         console.log(result);
     } catch (e: any) {

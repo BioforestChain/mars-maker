@@ -1,11 +1,11 @@
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const k1 = await api.common.generateKeypair({ secret: "qqq" });
-        const k2 = await api.common.generateKeypair({ secret: "www" });
+        const k1 = await bfmetaTrMaker.common.generateKeypair({ secret: "qqq" });
+        const k2 = await bfmetaTrMaker.common.generateKeypair({ secret: "www" });
 
         if (!k1.success) {
             throw new Error("QAQ");
@@ -21,7 +21,7 @@ import { Api } from "@bfmeta/transaction-maker-api";
             decryptPK: k2.result.keypair.publicKey,
         };
 
-        const result1 = await api.common.asymmetricEncrypt(argv1);
+        const result1 = await bfmetaTrMaker.common.asymmetricEncrypt(argv1);
 
         if (!result1.success) {
             throw new Error("QAQ");
@@ -34,7 +34,7 @@ import { Api } from "@bfmeta/transaction-maker-api";
             nonce: result1.result.nonce,
         };
 
-        const result2 = await api.common.asymmetricDecrypt(argv2);
+        const result2 = await bfmetaTrMaker.common.asymmetricDecrypt(argv2);
 
         if (!result2.success) {
             throw new Error("QAQ");

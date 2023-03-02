@@ -1,5 +1,5 @@
 import { LOCATION_NAME_OPERATION_TYPE } from "@bfmeta/transaction-maker-core";
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -17,9 +17,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             operationType: LOCATION_NAME_OPERATION_TYPE.REGISTRATION,
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.transaction.generateLocationName(argv);
+        const result = await bfmetaTrMaker.transaction.generateLocationName(argv);
 
         console.log(result);
     } catch (e: any) {

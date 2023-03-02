@@ -1,4 +1,4 @@
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -14,9 +14,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             alias: "a_long_lose_father",
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.transaction.generateUsername(argv);
+        const result = await bfmetaTrMaker.transaction.generateUsername(argv);
 
         console.log(result);
     } catch (e: any) {

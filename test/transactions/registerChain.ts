@@ -1,11 +1,11 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { TRANSACTION_TYPES_BASE } from "@bfchain/core";
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
         const genesisBlockPath = path.join(process.cwd(), "/genesisInfos/bfmtest-genesisBlock-testnet.json");
         if (!fs.existsSync(genesisBlockPath)) {
@@ -41,7 +41,7 @@ import { Api } from "@bfmeta/transaction-maker-api";
             },
         };
 
-        const result1 = await api.common.generateRegisterChainCertificate(argv1);
+        const result1 = await bfmetaTrMaker.common.generateRegisterChainCertificate(argv1);
 
         if (!result1.success) {
             console.log(result1);
@@ -60,7 +60,7 @@ import { Api } from "@bfmeta/transaction-maker-api";
             registerCertificate: result1.result,
         };
 
-        const result = await api.transaction.generateRegisterChain(argv);
+        const result = await bfmetaTrMaker.transaction.generateRegisterChain(argv);
 
         console.log(result);
     } catch (e: any) {

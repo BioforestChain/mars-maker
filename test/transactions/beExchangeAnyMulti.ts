@@ -1,5 +1,5 @@
 import { PARENT_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -43,9 +43,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             recipientId: "cLrUCNAWPyPH96bqqC3JQXZ3CtsvvXmNj1",
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.transaction.generateBeExchangeAnyMulti(argv);
+        const result = await bfmetaTrMaker.transaction.generateBeExchangeAnyMulti(argv);
 
         if (result.success) {
             console.log(result.result.asset.beExchangeAnyMulti);

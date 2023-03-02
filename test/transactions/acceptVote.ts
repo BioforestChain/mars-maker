@@ -1,4 +1,4 @@
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -13,12 +13,12 @@ import { Api } from "@bfmeta/transaction-maker-api";
             },
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.transaction.generateAcceptVote(argv);
+        const result = await bfmetaTrMaker.transaction.generateAcceptVote(argv);
 
         if (result.success) {
-            const xx = await api.common.calcTransactionMinFee({
+            const xx = await bfmetaTrMaker.common.calcTransactionMinFee({
                 transaction: result.result,
                 customMinFeePerByte: {
                     numerator: 1000,

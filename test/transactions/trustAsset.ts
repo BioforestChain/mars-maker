@@ -1,4 +1,4 @@
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -20,9 +20,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             recipientId: "cKySkYVB4MhWhKczSUmY7WhF638hPx6U8N",
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.transaction.generateTrustAsset(argv);
+        const result = await bfmetaTrMaker.transaction.generateTrustAsset(argv);
 
         console.log(result);
     } catch (e: any) {

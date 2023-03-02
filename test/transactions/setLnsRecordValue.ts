@@ -1,5 +1,5 @@
 import { RECORD_OPERATION_TYPE, RECORD_TYPE } from "@bfmeta/transaction-maker-core";
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -20,9 +20,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             operationType: RECORD_OPERATION_TYPE.ADD,
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.transaction.generateSetLnsRecordValue(argv);
+        const result = await bfmetaTrMaker.transaction.generateSetLnsRecordValue(argv);
 
         console.log(result);
     } catch (e: any) {

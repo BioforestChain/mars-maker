@@ -1,5 +1,5 @@
 import { PARENT_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
-import { Api } from "@bfmeta/transaction-maker-api";
+import { BFMetaTrMaker } from "@bfmeta/transaction-maker-api";
 
 (async () => {
     try {
@@ -39,9 +39,9 @@ import { Api } from "@bfmeta/transaction-maker-api";
             },
         };
 
-        const api = new Api();
+        const bfmetaTrMaker = new BFMetaTrMaker();
 
-        const result = await api.transaction.generateToExchangeAnyMulti(argv);
+        const result = await bfmetaTrMaker.transaction.generateToExchangeAnyMulti(argv);
 
         if (result.success) {
             console.log(result.result.asset.toExchangeAnyMulti);
