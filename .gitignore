@@ -10,4 +10,5 @@ build
 bcf*
 assets
 blobs*
-transaction-maker*
+transaction-maker-server*
+dist

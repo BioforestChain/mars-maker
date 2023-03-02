@@ -1,7 +1,7 @@
 {
     "name": "@bfmeta/transaction-maker-server",
     "private": true,
-    "bin": "build/test/server/server.js",
+    "bin": "index.js",
     "pkg": {
         "scripts": [
             "build/src/*.js"
@@ -18,7 +18,9 @@
         "dev": "tsc --build -w",
         "dev:all": "tsc --build ./tsconfig.all.json -w",
         "build": "tsc --build ./tsconfig.all.json",
-        "rebuild": "yarn clear & yarn build"
+        "rebuild": "yarn clear && yarn build",
+        "prod:dev": "node ./scripts/buildProd.js",
+        "prod": "yarn rebuild && yarn prod:dev"
     },
     "repository": {
         "type": "git",
@@ -33,6 +35,7 @@
     },
     "devDependencies": {
         "@types/node": "^14.18.5",
+        "esbuild": "^0.11.6",
         "lerna": "^3.20.2"
     }
 }

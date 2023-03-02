@@ -26,7 +26,7 @@ export class Server extends EventEmitter {
     private __config: Config;
     private __chainCore: ChainCore;
 
-    constructor(configOptions: TransactionMaker.Server.ConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
+    constructor(configOptions?: TransactionMaker.Server.ConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         super();
         this.__config = new Config(configOptions);
         this.__chainCore = new ChainCore(this.__config, genesisBlock);
