@@ -34,6 +34,10 @@ function listAllFile(dirPaths) {
 
         getAllFile(rootPath, allFileName);
 
+        if (allFileName.length === 0) {
+            continue;
+        }
+
         const index = allFileName[0].indexOf("/") + 1;
 
         const result = allFileName.map((fileName) => fileName.substr(index));
