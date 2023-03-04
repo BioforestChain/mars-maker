@@ -100,6 +100,19 @@ export class Server extends EventEmitter {
                         );
                         return;
                     }
+                    // 时间校正
+                    if ((pathname as any) === COMMON_API_PATH.MAYBE_HEIGHT_API_PATH) {
+                        console.log("1231313");
+                        const result = await this.getMaybeHeight(body as any);
+                        console.log(result);
+                        response.end(
+                            JSON.stringify({
+                                success: true,
+                                result,
+                            })
+                        );
+                        return;
+                    }
                     // 广播交易
                     if ((pathname as any) === BROADCAST_TRANSACTION_API_PATH) {
                         const result = await this.broadcastTransaction(body as any);
@@ -219,6 +232,7 @@ export class Server extends EventEmitter {
         const resp = await aborter.wrapAsync(duplexHandler.broadcastTransaction(transaction));
         resp.toJSON();
         const result: TransactionMaker.Server.BroadcastTransactionResponse = {
+            signature: transaction.signature,
             status: this.__getStatus(resp.status),
             newTrsStatus: this.__getNewTrsStatus(resp.newTrsStatus),
             minFee: resp.minFee,
@@ -228,12 +242,13 @@ export class Server extends EventEmitter {
         return result;
     }
 
-    async timeCorrecting(ip?: string) {
+    private async __getPeerInfo(ip?: string) {
         const { chainNodeIps, broadcastTimeout } = this.__config.config;
         const nodeIp = ip || chainNodeIps[Math.floor(Math.random() * chainNodeIps.length)];
         const bfchainCore = this.__chainCore.bfchainCore;
         const port = bfchainCore.config.ports.port;
         const url = this.__chainCore.getUrl(nodeIp, port, bfchainCore);
+        console.log(url);
         const aborter = new Aborter();
         setTimeout(() => {
             aborter.abort(`timeCorrecting timeout ${nodeIp}`);
@@ -245,8 +260,28 @@ export class Server extends EventEmitter {
         if (!peerInfo) {
             throw new Error(`Failed to get peerInfo ${ip}`);
         }
-        const timestamp = peerInfo.localInfo.extendsInfoPackage.chainChannel ? peerInfo.localInfo.extendsInfoPackage.chainChannel.timestamp : 0;
-        const peerTime = bfchainCore.time.getTimeByTimestamp(timestamp);
+        if (peerInfo.localInfo.extendsInfoPackage.chainChannel) {
+            return {
+                timestamp: peerInfo.localInfo.extendsInfoPackage.chainChannel.timestamp,
+                maybeHeight: peerInfo.localInfo.extendsInfoPackage.chainChannel.height,
+            };
+        }
+        return {
+            timestamp: 0,
+            maybeHeight: 1,
+        };
+    }
+
+    async getMaybeHeight(argv: TransactionMaker.Common.MaybeHeightParams) {
+        const peerInfo = await this.__getPeerInfo(argv.ip);
+        console.log(peerInfo);
+        return peerInfo.maybeHeight;
+    }
+
+    async timeCorrecting(argv: TransactionMaker.Common.TimeCorrectingParams) {
+        const peerInfo = await this.__getPeerInfo(argv.ip);
+        const bfchainCore = this.__chainCore.bfchainCore;
+        const peerTime = bfchainCore.time.getTimeByTimestamp(peerInfo.timestamp);
         const curTime = bfchainCore.time.now();
         const diff = peerTime - curTime;
         bfchainCore.time.time_offset_ms += diff;
@@ -282,7 +317,7 @@ export class Server extends EventEmitter {
             });
             server.listen(port);
             console.debug(`server running with port ${port}`);
-            this.timeCorrecting().catch((err) => {});
+            this.timeCorrecting({}).catch((err) => {});
         } catch (e: any) {
             console.error(e);
         }
