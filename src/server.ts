@@ -100,9 +100,8 @@ export class Server extends EventEmitter {
                         );
                         return;
                     }
-                    // 时间校正
+                    // 获取节点可能的最新区块高度
                     if ((pathname as any) === COMMON_API_PATH.MAYBE_HEIGHT_API_PATH) {
-                        console.log("1231313");
                         const result = await this.getMaybeHeight(body as any);
                         console.log(result);
                         response.end(
@@ -146,9 +145,6 @@ export class Server extends EventEmitter {
                     message: e.message,
                 },
             };
-            if (e.detail && e.detail.description) {
-                errorInfo.error.description = e.detail.description;
-            }
             response.end(JSON.stringify(errorInfo));
         }
     }

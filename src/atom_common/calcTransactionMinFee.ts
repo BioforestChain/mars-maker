@@ -10,7 +10,7 @@ export class CalcTransactionMinFee extends CommonFactory<TransactionMaker.Common
     async exec(request: TransactionMaker.Common.CalcTransactionMinFeeParams) {
         const transaction =
             request.transaction instanceof Transaction ? request.transaction : await this.bfchainCore.transaction.recombineTransaction(request.transaction);
-        const minFee = this.bfchainCore.transactionHelper.calcTransactionMinFee(transaction, undefined, request.customMinFeePerByte);
+        const minFee = this.bfchainCore.transactionHelper.calcTransactionMinFee(transaction, undefined, request.customMinFeePerByte).toString();
 
         return {
             minFee,

@@ -117,7 +117,6 @@ export class Scheme {
             if (!this.__typeChecker.isValidStringNumber(fee)) {
                 throw new ArgumentFormatException(ERROR_LIST.PROP_IS_INVALID, {
                     prop: `fee ${fee}`,
-                    description: "not a string number",
                     ...exception,
                 });
             }
