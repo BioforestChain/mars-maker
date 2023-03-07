@@ -190,7 +190,7 @@ export class Server extends EventEmitter {
                 return "已在未处理交易池";
             }
             if (newTrsStatus === NewTransactionStatus.Refuse) {
-                return "拒绝接收，可能是队列已经满";
+                return "拒绝接收";
             }
             return "未知状态";
         }
@@ -201,7 +201,7 @@ export class Server extends EventEmitter {
             return "in unconfirm quene";
         }
         if (newTrsStatus === NewTransactionStatus.Refuse) {
-            return "refuse, maybe unconfirm quene full";
+            return "refuse to accept";
         }
         return "unknown";
     }
