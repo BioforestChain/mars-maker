@@ -103,7 +103,6 @@ export class Server extends EventEmitter {
                     // 获取节点可能的最新区块高度
                     if ((pathname as any) === COMMON_API_PATH.MAYBE_HEIGHT_API_PATH) {
                         const result = await this.getMaybeHeight(body as any);
-                        console.log(result);
                         response.end(
                             JSON.stringify({
                                 success: true,
@@ -226,7 +225,6 @@ export class Server extends EventEmitter {
         const duplexHandler = await this.__chainCore.getDuplexHandler(url, aborter, broadcastTimeout, bfchainCore);
         await sleep(1000);
         const resp = await aborter.wrapAsync(duplexHandler.broadcastTransaction(transaction));
-        resp.toJSON();
         const result: TransactionMaker.Server.BroadcastTransactionResponse = {
             signature: transaction.signature,
             status: this.__getStatus(resp.status),
@@ -244,7 +242,6 @@ export class Server extends EventEmitter {
         const bfchainCore = this.__chainCore.bfchainCore;
         const port = bfchainCore.config.ports.port;
         const url = this.__chainCore.getUrl(nodeIp, port, bfchainCore);
-        console.log(url);
         const aborter = new Aborter();
         setTimeout(() => {
             aborter.abort(`timeCorrecting timeout ${nodeIp}`);
@@ -270,7 +267,6 @@ export class Server extends EventEmitter {
 
     async getMaybeHeight(argv: TransactionMaker.Common.MaybeHeightParams) {
         const peerInfo = await this.__getPeerInfo(argv.ip);
-        console.log(peerInfo);
         return peerInfo.maybeHeight;
     }
 
