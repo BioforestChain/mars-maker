@@ -1,5 +1,6 @@
 import * as url from "node:url";
 import * as http from "node:http";
+import { EventEmitter } from "node:stream";
 import { Aborter, sleep, I18N_LANGUAGE_TYPE } from "@bfchain/util";
 import { RESPONSE_STATUS, NewTransactionStatus } from "@bfchain/core";
 import {
@@ -13,7 +14,8 @@ import { Router, route } from "./router";
 import { ChainCore } from "./chainCore";
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "./exception";
 import { Config } from "./config";
-import { EventEmitter } from "node:stream";
+import { Logger } from "./logger";
+
 const { ArgumentIllegalException, ArgumentException } = TransactionMakerExceptionGenerator("TransactionMaker", "Server");
 
 const enum EVENT_CMD {
@@ -24,15 +26,17 @@ export class Server extends EventEmitter {
     private __isRunning = false;
 
     private __config: Config;
+    private __logger: Logger;
     private __chainCore: ChainCore;
 
     constructor(configOptions?: TransactionMaker.Server.ConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         super();
         this.__config = new Config(configOptions);
+        this.__logger = new Logger(this.__config);
         this.__chainCore = new ChainCore(this.__config, genesisBlock);
 
         this.on(EVENT_CMD.RESTART, async () => {
-            console.log(`try to restart server`);
+            this.__logger.info(`try to restart server`);
             await this.runServer();
         });
     }
@@ -50,7 +54,7 @@ export class Server extends EventEmitter {
         };
         response.setHeader("content-type", "application/json");
         response.on("error", (e) => {
-            console.error(e);
+            this.__logger.error(e);
         });
         try {
             const method = request.method;
@@ -137,6 +141,7 @@ export class Server extends EventEmitter {
                 requestType: method,
             });
         } catch (e: any) {
+            this.__logger.error(e);
             const errorInfo: TransactionMaker.Server.GenerateTransactionFailureReturn = {
                 success: false,
                 error: {
@@ -288,7 +293,7 @@ export class Server extends EventEmitter {
      */
     async runServer(port?: number) {
         if (this.__isRunning) {
-            console.debug(`server already running`);
+            this.__logger.info(`server already running`);
             return;
         }
         this.__isRunning = true;
@@ -301,17 +306,17 @@ export class Server extends EventEmitter {
             Router(this.__chainCore.bfchainCore);
             const server = http.createServer(this.__onRequest.bind(this));
             server.on("error", (e) => {
-                console.error(e);
+                this.__logger.error(e);
             });
             server.on("close", () => {
                 this.__isRunning = false;
                 this.emit(EVENT_CMD.RESTART);
             });
             server.listen(port);
-            console.debug(`server running with port ${port}`);
+            this.__logger.info(`server running with port ${port}`);
             this.timeCorrecting({}).catch((err) => {});
         } catch (e: any) {
-            console.error(e);
+            this.__logger.error(e);
         }
     }
 }

@@ -12,3 +12,4 @@ assets
 blobs*
 transaction-maker-server*
 dist
+logs

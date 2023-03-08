@@ -43,6 +43,25 @@ declare namespace TransactionMaker {
     }
 
     namespace Server {
+        type LogConfig = {
+            /**日志文件名 */
+            filename: string;
+            /**日志文件大小限制(b) */
+            fileLogLimit: number;
+            /**备份日志时分割的份数 */
+            fileLogBackup: number;
+            /**日志过期时间 */
+            fileLogDateExpire: boolean;
+            /**日志保存时间 */
+            fileLogDaysToKeep: number;
+            levels: {
+                debug: number;
+                info: number;
+                warn: number;
+                error: number;
+            };
+        };
+
         interface TransactionRouterArgs {
             pathname: TransactionMaker.Transaction.GENERATE_TRANSACTION_API_PATH;
             params: TransactionMaker.Transaction.TransactionCommonParams;
@@ -59,5 +78,15 @@ declare namespace TransactionMaker {
         }
 
         type RouterArgs = TransactionRouterArgs | MigrateCertificateRouterArgs | CommonRouterArgs;
+    }
+}
+
+declare module "streamroller" {
+    class RollingFileWriteStream {}
+    class RollingFileStream {
+        constructor(filePath: string, size: number, backups: number, options: any);
+    }
+    class DateRollingFileStream {
+        constructor(filename: string, pattern: string, options: any);
     }
 }

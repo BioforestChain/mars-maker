@@ -73,6 +73,7 @@
         "exception/locales/errorCode_list_zh.ts",
         "exception/locales/index.ts",
         "index.ts",
+        "logger.ts",
         "migrate_certificate/index.ts",
         "migrate_certificate/migrateCertificateFactory.ts",
         "migrate_certificate/migrateCertificateFromAuthSignatureFactory.ts",
