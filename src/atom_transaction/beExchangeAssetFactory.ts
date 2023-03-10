@@ -10,13 +10,25 @@ export class BeExchangeAssetFactory extends TransactionFactory<BeExchangeAssetTr
 
     async generateTransaction(request: TransactionMaker.Transaction.BeExchangeAssetTransactionParams) {
         this.verify(request);
+        const config = this.bfchainCore.config;
+        const exchangeAsset = request.exchangeAsset;
         const tr = await myBeExchangeAsset.generateBeExchangeAsset(
             this.getTransactionBody(request),
             {
                 transactionSignature: request.transactionSignature,
                 beExchangeNumber: "0",
                 toExchangeNumber: request.toExchangeNumber,
-                exchangeAsset: request.exchangeAsset,
+                exchangeAsset: {
+                    cipherPublicKeys: exchangeAsset.cipherPublicKeys,
+                    toExchangeSource: exchangeAsset.toExchangeSource || config.magic,
+                    beExchangeSource: exchangeAsset.beExchangeSource || config.magic,
+                    toExchangeChainName: exchangeAsset.toExchangeChainName || config.chainName,
+                    beExchangeChainName: exchangeAsset.beExchangeChainName || config.chainName,
+                    toExchangeAsset: exchangeAsset.toExchangeAsset,
+                    beExchangeAsset: exchangeAsset.beExchangeAsset,
+                    toExchangeNumber: exchangeAsset.toExchangeNumber,
+                    exchangeRate: exchangeAsset.exchangeRate,
+                },
             },
             this.getAccountPowInfo(request),
             this.bfchainCore,

@@ -10,13 +10,22 @@ export class SignForAssetFactory extends TransactionFactory<SignForAssetTransact
 
     async generateTransaction(request: TransactionMaker.Transaction.SignForAssetTransactionParams) {
         this.verify(request);
+        const config = this.bfchainCore.config;
+        const trustAsset = request.trustAsset;
         const tr = await mySignForAsset.generateSignForAsset(
             this.getTransactionBody(request),
             {
                 transactionSignature: request.transactionSignature,
                 trustSenderId: request.trustSenderId,
                 trustRecipientId: request.recipientId,
-                trustAsset: request.trustAsset,
+                trustAsset: {
+                    trustees: trustAsset.trustees,
+                    sourceChainMagic: trustAsset.sourceChainMagic || config.magic,
+                    sourceChainName: trustAsset.sourceChainName || config.chainName,
+                    assetType: trustAsset.assetType,
+                    amount: trustAsset.amount,
+                    numberOfSignFor: trustAsset.numberOfSignFor,
+                },
             },
             this.getAccountPowInfo(request),
             this.bfchainCore

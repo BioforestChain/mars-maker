@@ -211,7 +211,7 @@ export const TR_GRAB_ASSET: TransactionMaker.SchemaType[] = [
                         type: BASE_ARGS_TYPE.NATURALNUMBER,
                     },
                 },
-                required: ["cipherPublicKeys", "sourceChainMagic", "sourceChainName", "assetType", "amount", "totalGrabableTimes", "giftDistributionRule"],
+                required: ["cipherPublicKeys", "assetType", "amount", "totalGrabableTimes", "giftDistributionRule"],
             },
         },
         required: ["blockSignature", "transactionSignature", "giftAsset"],
@@ -770,18 +770,7 @@ export const TR_BE_EXCHANGE_SPECIAL_ASSET: TransactionMaker.SchemaType[] = [
                         type: BASE_ARGS_TYPE.NATURALNUMBER,
                     },
                 },
-                required: [
-                    "cipherPublicKeys",
-                    "toExchangeSource",
-                    "beExchangeSource",
-                    "toExchangeChainName",
-                    "beExchangeChainName",
-                    "toExchangeAsset",
-                    "beExchangeAsset",
-                    "exchangeNumber",
-                    "exchangeAssetType",
-                    "exchangeDirection",
-                ],
+                required: ["cipherPublicKeys", "toExchangeAsset", "beExchangeAsset", "exchangeNumber", "exchangeAssetType", "exchangeDirection"],
             },
             ciphertext: {
                 type: BASE_ARGS_TYPE.STRING,
@@ -930,17 +919,47 @@ export const TR_ISSUE_ENTITY: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            factoryId: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            entityId: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            taxAssetPrealnum: {
-                type: BASE_ARGS_TYPE.STRING,
+            entityInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    entityId: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    taxAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityFactoryPossessor: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityFactory: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            sourceChainName: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            sourceChainMagic: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            factoryId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            entityPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            entityFrozenAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            purchaseAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["factoryId", "entityPrealnum", "entityFrozenAssetPrealnum", "purchaseAssetPrealnum"],
+                    },
+                },
+                required: ["entityId", "entityFactoryPossessor", "entityFactory"],
             },
         },
-        required: ["factoryId", "entityId"],
+        required: ["entityInfo"],
     },
 ];
 
@@ -950,11 +969,50 @@ export const TR_DESTORY_ENTITY: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            entityId: {
-                type: BASE_ARGS_TYPE.STRING,
+            entityInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    transactionSignature: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityId: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityFactoryApplicant: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityFactoryPossessor: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityFactory: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            sourceChainName: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            sourceChainMagic: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            factoryId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            entityPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            entityFrozenAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            purchaseAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["factoryId", "entityPrealnum", "entityFrozenAssetPrealnum", "purchaseAssetPrealnum"],
+                    },
+                },
+                required: ["transactionSignature", "entityId", "entityFactoryApplicant", "entityFactoryPossessor", "entityFactory"],
             },
         },
-        required: ["entityId"],
+        required: ["entityInfo"],
     },
 ];
 
@@ -964,35 +1022,47 @@ export const TR_TO_EXCHANGE_ANY: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            toExchangeSource: {
-                type: BASE_ARGS_TYPE.STRING,
+            toExchangeInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    toExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeParentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    toExchangeAssetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    toExchangeAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
             },
-            beExchangeSource: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            toExchangeChainName: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            beExchangeChainName: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            toExchangeParentAssetType: {
-                type: BASE_ARGS_TYPE.NUMBER,
-            },
-            beExchangeParentAssetType: {
-                type: BASE_ARGS_TYPE.NUMBER,
-            },
-            toExchangeAssetType: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            beExchangeAssetType: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            toExchangeAssetPrealnum: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            beExchangeAssetPrealnum: {
-                type: BASE_ARGS_TYPE.STRING,
+            beExchangeInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    beExchangeSource: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeParentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    beExchangeAssetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    beExchangeAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["beExchangeParentAssetType", "beExchangeAssetType", "beExchangeAssetPrealnum"],
             },
             assetExchangeWeightRatio: {
                 type: BASE_ARGS_TYPE.OBJECT,
@@ -1018,24 +1088,14 @@ export const TR_TO_EXCHANGE_ANY: TransactionMaker.SchemaType[] = [
                 },
                 required: ["taxCollector", "taxAssetPrealnum"],
             },
-            cipherPublicKeys: {
-                type: "array",
+            ciphertexts: {
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
                     type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },
-        required: [
-            "toExchangeSource",
-            "beExchangeSource",
-            "toExchangeChainName",
-            "beExchangeChainName",
-            "toExchangeParentAssetType",
-            "beExchangeParentAssetType",
-            "toExchangeAssetType",
-            "beExchangeAssetType",
-            "toExchangeAssetPrealnum",
-        ],
+        required: ["toExchangeInfo", "beExchangeInfo"],
     },
 ];
 
@@ -1053,24 +1113,6 @@ export const TR_BE_EXCHANGE_ANY: TransactionMaker.SchemaType[] = [
             },
             beExchangeAssetPrealnum: {
                 type: BASE_ARGS_TYPE.STRING,
-            },
-            ciphertextSignature: {
-                type: BASE_ARGS_TYPE.OBJECT,
-                properties: {
-                    publicKey: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    signature: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    secondPublicKey: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    signSignature: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                },
-                required: ["publicKey", "signature"],
             },
             exchangeAny: {
                 type: BASE_ARGS_TYPE.OBJECT,
@@ -1138,10 +1180,6 @@ export const TR_BE_EXCHANGE_ANY: TransactionMaker.SchemaType[] = [
                 },
                 required: [
                     "cipherPublicKeys",
-                    "toExchangeSource",
-                    "beExchangeSource",
-                    "toExchangeChainName",
-                    "beExchangeChainName",
                     "toExchangeParentAssetType",
                     "beExchangeParentAssetType",
                     "toExchangeAssetType",
@@ -1161,8 +1199,11 @@ export const TR_BE_EXCHANGE_ANY: TransactionMaker.SchemaType[] = [
                 },
                 required: ["taxCollector", "taxAssetPrealnum"],
             },
+            ciphertext: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
         },
-        required: ["transactionSignature", "toExchangeAssetPrealnum", "exchangeAny", "recipientId"],
+        required: ["transactionSignature", "toExchangeAssetPrealnum", "beExchangeAssetPrealnum", "exchangeAny", "recipientId"],
     },
 ];
 
@@ -1172,6 +1213,27 @@ export const TR_TRANSFER_ANY: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    parentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    amount: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["parentAssetType", "assetType", "amount"],
+            },
             taxInformation: {
                 type: BASE_ARGS_TYPE.OBJECT,
                 properties: {
@@ -1184,27 +1246,6 @@ export const TR_TRANSFER_ANY: TransactionMaker.SchemaType[] = [
                 },
                 required: ["taxCollector", "taxAssetPrealnum"],
             },
-            assetInfo: {
-                type: BASE_ARGS_TYPE.OBJECT,
-                properties: {
-                    amount: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    assetType: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    parentAssetType: {
-                        type: BASE_ARGS_TYPE.NUMBER,
-                    },
-                    sourceChainName: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    sourceChainMagic: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                },
-                required: ["parentAssetType", "assetType", "amount"],
-            },
         },
         required: ["recipientId", "assetInfo"],
     },
@@ -1216,20 +1257,26 @@ export const TR_GIFT_ANY: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            sourceChainMagic: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            sourceChainName: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            parentAssetType: {
-                type: BASE_ARGS_TYPE.NUMBER,
-            },
-            assetType: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            amount: {
-                type: BASE_ARGS_TYPE.STRING,
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    parentAssetType: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    amount: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["parentAssetType", "assetType", "amount"],
             },
             totalGrabableTimes: {
                 type: BASE_ARGS_TYPE.NUMBER,
@@ -1252,14 +1299,14 @@ export const TR_GIFT_ANY: TransactionMaker.SchemaType[] = [
                 },
                 required: ["taxCollector", "taxAssetPrealnum"],
             },
-            cipherPublicKeys: {
-                type: "array",
+            ciphertexts: {
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
                     type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },
-        required: ["parentAssetType", "assetType", "amount"],
+        required: ["assetInfo"],
     },
 ];
 
@@ -1269,32 +1316,14 @@ export const TR_GRAB_ANY: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            amount: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
             blockSignature: {
                 type: BASE_ARGS_TYPE.STRING,
             },
             transactionSignature: {
                 type: BASE_ARGS_TYPE.STRING,
             },
-            ciphertextSignature: {
-                type: BASE_ARGS_TYPE.OBJECT,
-                properties: {
-                    publicKey: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    signature: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    secondPublicKey: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    signSignature: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                },
-                required: ["publicKey", "signature"],
+            amount: {
+                type: BASE_ARGS_TYPE.STRING,
             },
             giftAny: {
                 type: BASE_ARGS_TYPE.OBJECT,
@@ -1342,7 +1371,7 @@ export const TR_GRAB_ANY: TransactionMaker.SchemaType[] = [
                         },
                     },
                 },
-                required: ["sourceChainMagic", "sourceChainName", "parentAssetType", "assetType", "amount", "totalGrabableTimes", "cipherPublicKeys"],
+                required: ["parentAssetType", "assetType", "amount", "giftDistributionRule", "totalGrabableTimes", "cipherPublicKeys"],
             },
         },
         required: ["blockSignature", "transactionSignature", "giftAny", "recipientId"],
@@ -1355,27 +1384,57 @@ export const TR_ISSUE_ENTITY_MULTI_V1: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            factoryId: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            entityStructList: {
-                type: BASE_ARGS_TYPE.ARRAY,
-                items: {
-                    type: BASE_ARGS_TYPE.OBJECT,
-                    properties: {
-                        entityId: {
-                            type: BASE_ARGS_TYPE.STRING,
+            entityInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    entityStructList: {
+                        type: BASE_ARGS_TYPE.ARRAY,
+                        items: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                entityId: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                taxAssetPrealnum: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["entityId"],
                         },
-                        taxAssetPrealnum: {
-                            type: BASE_ARGS_TYPE.STRING,
-                        },
+                        minItems: 1,
                     },
-                    required: ["entityId"],
+                    entityFactoryPossessor: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityFactory: {
+                        type: BASE_ARGS_TYPE.OBJECT,
+                        properties: {
+                            sourceChainName: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            sourceChainMagic: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            factoryId: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            entityPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            entityFrozenAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                            purchaseAssetPrealnum: {
+                                type: BASE_ARGS_TYPE.STRING,
+                            },
+                        },
+                        required: ["factoryId", "entityPrealnum", "entityFrozenAssetPrealnum", "purchaseAssetPrealnum"],
+                    },
                 },
-                minItems: 1,
+                required: ["entityStructList", "entityFactoryPossessor", "entityFactory"],
             },
         },
-        required: ["factoryId", "entityStructList"],
+        required: ["entityInfo"],
     },
 ];
 
@@ -1385,8 +1444,8 @@ export const TR_TO_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            toExchangeAssets: {
-                type: "array",
+            toExchangeInfos: {
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
                     type: BASE_ARGS_TYPE.OBJECT,
                     properties: {
@@ -1433,7 +1492,7 @@ export const TR_TO_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
                     required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
                 },
             },
-            beExchangeAsset: {
+            beExchangeInfos: {
                 type: BASE_ARGS_TYPE.OBJECT,
                 properties: {
                     beExchangeSource: {
@@ -1466,14 +1525,14 @@ export const TR_TO_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
                 },
                 required: ["beExchangeParentAssetType", "beExchangeAssetType"],
             },
-            cipherPublicKeys: {
-                type: "array",
+            ciphertexts: {
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
                     type: BASE_ARGS_TYPE.STRING,
                 },
             },
         },
-        required: ["toExchangeAssets", "beExchangeAsset"],
+        required: ["toExchangeInfos", "beExchangeInfos"],
     },
 ];
 
@@ -1486,8 +1545,8 @@ export const TR_BE_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
             transactionSignature: {
                 type: BASE_ARGS_TYPE.STRING,
             },
-            toExchangeAssets: {
-                type: "array",
+            toExchangeInfos: {
+                type: BASE_ARGS_TYPE.ARRAY,
                 items: {
                     type: BASE_ARGS_TYPE.OBJECT,
                     properties: {
@@ -1534,7 +1593,7 @@ export const TR_BE_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
                     required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
                 },
             },
-            beExchangeAsset: {
+            beExchangeInfos: {
                 type: BASE_ARGS_TYPE.OBJECT,
                 properties: {
                     beExchangeSource: {
@@ -1567,25 +1626,10 @@ export const TR_BE_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
                 },
                 required: ["beExchangeParentAssetType", "beExchangeAssetType"],
             },
-            ciphertextSignature: {
-                type: BASE_ARGS_TYPE.OBJECT,
-                properties: {
-                    publicKey: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    signature: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    secondPublicKey: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    signSignature: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                },
-                required: ["publicKey", "signature"],
+            ciphertext: {
+                type: BASE_ARGS_TYPE.STRING,
             },
         },
-        required: ["transactionSignature", "toExchangeAssets", "beExchangeAsset", "recipientId"],
+        required: ["toExchangeInfos", "beExchangeInfos", "recipientId"],
     },
 ];

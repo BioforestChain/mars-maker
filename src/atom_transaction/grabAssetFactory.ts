@@ -10,13 +10,24 @@ export class GrabAssetFactory extends TransactionFactory<GrabAssetTransaction> {
 
     async generateTransaction(request: TransactionMaker.Transaction.GrabAssetTransactionParams) {
         this.verify(request);
+        const config = this.bfchainCore.config;
+        const giftAsset = request.giftAsset;
         const tr = await myGrabAsset.generateGrabAsset(
             this.getTransactionBody(request),
             {
                 blockSignature: request.blockSignature,
                 transactionSignature: request.transactionSignature,
                 amount: "0",
-                giftAsset: request.giftAsset,
+                giftAsset: {
+                    cipherPublicKeys: giftAsset.cipherPublicKeys,
+                    sourceChainMagic: giftAsset.sourceChainMagic || config.magic,
+                    sourceChainName: giftAsset.sourceChainName || config.chainName,
+                    assetType: giftAsset.assetType || config.assetType,
+                    amount: giftAsset.amount,
+                    totalGrabableTimes: giftAsset.totalGrabableTimes,
+                    beginUnfrozenBlockHeight: giftAsset.beginUnfrozenBlockHeight,
+                    giftDistributionRule: giftAsset.giftDistributionRule,
+                },
             },
             this.getAccountPowInfo(request),
             this.bfchainCore,
