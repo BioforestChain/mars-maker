@@ -912,10 +912,10 @@ export const TR_ISSUE_ENTITY_FACTORY: TransactionMaker.SchemaType[] = [
                         type: BASE_ARGS_TYPE.STRING,
                     },
                 },
-                required: ["factoryId", "entityPrealnum", "recipientId"],
+                required: ["factoryId", "entityPrealnum"],
             },
         },
-        required: ["factoryInfo"],
+        required: ["factoryInfo", "recipientId"],
     },
 ];
 
