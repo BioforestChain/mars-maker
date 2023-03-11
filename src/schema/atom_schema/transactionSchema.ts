@@ -1498,7 +1498,7 @@ export const TR_TO_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
                     required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
                 },
             },
-            beExchangeInfos: {
+            beExchangeInfo: {
                 type: BASE_ARGS_TYPE.OBJECT,
                 properties: {
                     beExchangeSource: {
@@ -1538,7 +1538,7 @@ export const TR_TO_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
                 },
             },
         },
-        required: ["toExchangeInfos", "beExchangeInfos"],
+        required: ["toExchangeInfos", "beExchangeInfo"],
     },
 ];
 
@@ -1599,7 +1599,7 @@ export const TR_BE_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
                     required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
                 },
             },
-            beExchangeInfos: {
+            beExchangeInfo: {
                 type: BASE_ARGS_TYPE.OBJECT,
                 properties: {
                     beExchangeSource: {
@@ -1636,6 +1636,6 @@ export const TR_BE_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
                 type: BASE_ARGS_TYPE.STRING,
             },
         },
-        required: ["toExchangeInfos", "beExchangeInfos", "recipientId"],
+        required: ["toExchangeInfos", "beExchangeInfo", "recipientId"],
     },
 ];
