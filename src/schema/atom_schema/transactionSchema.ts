@@ -896,20 +896,26 @@ export const TR_ISSUE_ENTITY_FACTORY: TransactionMaker.SchemaType[] = [
     {
         type: BASE_ARGS_TYPE.OBJECT,
         properties: {
-            factoryId: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            entityPrealnum: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            entityFrozenAssetPrealnum: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            purchaseAssetPrealnum: {
-                type: BASE_ARGS_TYPE.STRING,
+            factoryInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    factoryId: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    entityFrozenAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    purchaseAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["factoryId", "entityPrealnum", "recipientId"],
             },
         },
-        required: ["factoryId", "entityPrealnum", "recipientId"],
+        required: ["factoryInfo"],
     },
 ];
 
