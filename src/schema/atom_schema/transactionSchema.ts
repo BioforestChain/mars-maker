@@ -422,7 +422,7 @@ export const TR_DAPP: TransactionMaker.SchemaType[] = [
                         type: BASE_ARGS_TYPE.STRING,
                     },
                 },
-                required: ["newDappid", "type", "purchanseAsset"],
+                required: ["newDappid", "type"],
             },
         },
         required: ["dappInfo", "recipientId"],
