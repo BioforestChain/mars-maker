@@ -1377,7 +1377,7 @@ export const TR_GRAB_ANY: TransactionMaker.SchemaType[] = [
                         },
                     },
                 },
-                required: ["parentAssetType", "assetType", "amount", "giftDistributionRule", "totalGrabableTimes", "cipherPublicKeys"],
+                required: ["parentAssetType", "assetType", "amount", "totalGrabableTimes", "cipherPublicKeys"],
             },
         },
         required: ["blockSignature", "transactionSignature", "giftAny", "recipientId"],
