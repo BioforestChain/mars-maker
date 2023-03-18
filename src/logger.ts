@@ -50,16 +50,7 @@ const inspectFactory = (errorInspector: (err: Error) => string) => {
 const inspectMin = inspectFactory((err) => `${err.name}: ${err.message}`);
 const inspectFull = inspectFactory((err) => util.format(err));
 
-let processName = formatPrefix(process.env.name);
-process.env = new Proxy(process.env, {
-    set(t, p, v, r) {
-        if (p === "name" || p === "NAME") {
-            processName = formatPrefix(String(v));
-        }
-        return Reflect.set(t, p, v, r);
-    },
-});
-
+const processNameX = () => formatPrefix(process.env.name);
 export class Logger {
     private __logConfig: TransactionMaker.Server.LogConfig & Partial<{ log(message: any, data?: any): void }>;
 
@@ -115,7 +106,7 @@ export class Logger {
                 }
                 /// 打印到控制台
                 if (this.__curenntConsoleLevel && (<any>this.__logConfig.levels)[this.__curenntConsoleLevel] <= levelValue) {
-                    _console.log(processName + consoleLevelName, timestamp.grey, baseLogs);
+                    _console.log(processNameX() + consoleLevelName, timestamp.grey, baseLogs);
                 }
             };
             (<any>this.__logConfig)[levelName] = log;
