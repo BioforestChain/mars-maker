@@ -29,7 +29,7 @@
     "author": "BFChain Team",
     "license": "ISC",
     "dependencies": {
-        "@bfchain/coretools": "^3.0.12",
+        "@bfchain/coretools": "^3.0.13",
         "@bfchain/duplexnodejshelper": "^4.0.4",
         "@bfmeta/transaction-maker-api": "^1.0.16",
         "colors": "1.4.0",
