@@ -33,7 +33,7 @@ export class Server extends EventEmitter {
         super();
         this.__config = new Config(configOptions);
         this.__logger = new Logger(this.__config);
-        this.__chainCore = new ChainCore(this.__config, genesisBlock);
+        this.__chainCore = new ChainCore(this.__logger, this.__config, genesisBlock);
 
         this.on(EVENT_CMD.RESTART, async () => {
             this.__logger.info(`try to restart server`);

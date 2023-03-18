@@ -11,6 +11,7 @@ export const ERROR_LIST = {
     REQUEST_METHOD_IS_REQUIRED: new ErrorCode("000004", "request method is required"),
     REQUEST_PARAMETER_ONLY_CAN_BE_JSON: new ErrorCode("000005", "request parameter only can be json"),
     REQUEST_ERROR: new ErrorCode("000006", "request {apiPath} error"),
+    NOT_MATCH: new ErrorCode("000007", "{to_compare_prop} in {to_target} and {be_compare_prop} in {be_target} not match"),
     // #endregion
 
     // #region
@@ -29,5 +30,15 @@ export const ERROR_LIST = {
     PROP_IS_REQUIRE: new ErrorCode("003001", "{prop} in {target} is required"),
     /**prop target function */
     PROP_IS_INVALID: new ErrorCode("003002", "{prop} in {target} is invalid"),
+    // #endregion
+
+    // #region blob
+    DOWNLOAD_BLOB_FAIL: new ErrorCode("004001", "download blob fail hash {hash}"),
+    BLOB_NOT_EXIST: new ErrorCode("004002", "blob not exist hash {hash}"),
+    BLOB_ALREADY_EXIST: new ErrorCode("004003", "blob already exist hash {hash}"),
+    BLOB_NOT_OPEN: new ErrorCode("004004", "blob not open pointer {pointer}"),
+    BLOB_CHUNK_STORAGE_LOSS_WITH_POINTER: new ErrorCode("004005", "blob chunk storage loss, should not happen pointer {pointer}"),
+    BLOB_CHUNK_STORAGE_LOSS_WITH_HASH: new ErrorCode("0040026", "blob chunk storage loss, should not happen hash {hash}"),
+    BLOB_CHUNK_LOSS: new ErrorCode("004007", "blob chunk loss, should not happen hash {hash}"),
     // #endregion
 };

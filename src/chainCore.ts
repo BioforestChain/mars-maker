@@ -1,3 +1,4 @@
+import type { Logger } from "./logger";
 import type { Config } from "./config";
 import type { Aborter } from "@bfchain/util-aborter";
 import * as fs from "node:fs";
@@ -11,11 +12,13 @@ import { ERROR_LIST, translatedErrorCodeListMap } from "./exception";
 
 export class ChainCore {
     private __config: Config;
+    private __logger: Logger;
     private __bfchainSecret: BFChainSecret;
     private __osLocaleHelper: OsLocaleHelper;
     private __genesisBlock?: BFChainCore.GenesisBlockJSON;
 
-    constructor(config: Config, genesisBlock?: BFChainCore.GenesisBlockJSON) {
+    constructor(logger: Logger, config: Config, genesisBlock?: BFChainCore.GenesisBlockJSON) {
+        this.__logger = logger;
         this.__config = config;
         if (genesisBlock) {
             this.__genesisBlock = genesisBlock;
@@ -97,8 +100,8 @@ export class ChainCore {
                 cryptoHelper: NodeJsCryptoHelper,
                 keypairHelper: NodeJsKeypairHelper,
                 ed2curveHelper: Ed2curveHelper,
-                blobSha256Reader: new Sha256BlobReader(),
-                blobSha256Writer: new Sha256BlobWriter(),
+                blobSha256Reader: new Sha256BlobReader(this.__logger),
+                blobSha256Writer: new Sha256BlobWriter(this.__logger),
             });
             _core.i18N.setLanguage(this.SYSTEM_LANGUAGE);
             _core.i18N.addErrorCodeList("TransactionMaker", ERROR_LIST, translatedErrorCodeListMap);

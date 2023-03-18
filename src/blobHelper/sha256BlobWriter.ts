@@ -1,15 +1,19 @@
+import type { STORAGE_STRATEGY } from "@bfchain/core-helper-blob";
+import type { Logger } from "../logger";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as crypto from "node:crypto";
-import { STORAGE_STRATEGY } from "@bfchain/core-helper-blob";
 import { BLOBS_SAVE_DIR, BLOBS_TEMPS_SAVE_DIR, BLOBS_CHUNKS_SAVE_DIR, getUUID } from "./constants";
+import { TransactionMakerExceptionGenerator, ERROR_LIST } from "../exception";
+
+const { ArgumentIllegalException } = TransactionMakerExceptionGenerator("TransactionMaker", __filename);
 
 const blobsRootPath = path.join(process.cwd(), BLOBS_SAVE_DIR);
 const blobsTempsRootPath = path.join(process.cwd(), BLOBS_TEMPS_SAVE_DIR);
 const blobsChunksRootPath = path.join(process.cwd(), BLOBS_CHUNKS_SAVE_DIR);
 
 export class Sha256BlobWriter implements BFChainCore.BlobWriter {
-    constructor() {
+    constructor(private __logger: Logger) {
         if (!fs.existsSync(blobsRootPath)) {
             fs.mkdirSync(blobsRootPath, { recursive: true });
         }
@@ -56,11 +60,11 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
             /// blob 已经存在
             const blobTempSavePath = this.__getBlobTempSavePath(hash);
             if (fs.existsSync(blobTempSavePath)) {
-                return reject(new Error(`blob already exist ${hash}`));
+                return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_ALREADY_EXIST, { hash }));
             }
             const blobSavePath = this.__getBlobSavePath(hash);
             if (fs.existsSync(blobSavePath)) {
-                return reject(new Error(`blob already exist ${hash}`));
+                return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_ALREADY_EXIST, { hash }));
             }
             /// 申请分片存储空间
             const blobChunkSavePath = this.__getBlobChunkSavePath(hash);
@@ -79,11 +83,11 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
         return new Promise<void>((resolve, reject) => {
             const hash = this.__openBlobsVK.get(pointer);
             if (!hash) {
-                return reject(new Error(`blob chunk storage loss, should not happen ${pointer}`));
+                return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_CHUNK_STORAGE_LOSS_WITH_POINTER, { pointer }));
             }
             const blobChunkSavePath = this.__getBlobChunkSavePath(hash);
             if (!fs.existsSync(blobChunkSavePath)) {
-                return reject(new Error(`blob chunk storage loss, should not happen ${hash}`));
+                return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_CHUNK_STORAGE_LOSS_WITH_HASH, { hash }));
             }
             fs.writeFile(path.join(blobChunkSavePath, index.toString()), chunk, (err) => {
                 if (err) {
@@ -98,16 +102,17 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
         return new Promise<string>(async (resolve, reject) => {
             const hash = this.__openBlobsVK.get(pointer);
             if (!hash) {
-                return reject(new Error(`blob storage address loss, should not happen ${pointer}`));
+                return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_CHUNK_STORAGE_LOSS_WITH_POINTER, { pointer }));
             }
             /// 分片丢失
             const blobChunkSaveDirPath = this.__getBlobChunkSavePath(hash);
             if (!fs.existsSync(blobChunkSaveDirPath)) {
-                return reject(new Error(`blob chunk loss, should not happen ${hash}`));
+                return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_CHUNK_LOSS, { hash }));
             }
-            const chunks = fs.readdirSync(blobChunkSaveDirPath);
+            // 这里要按照 index 排序，不然 hash 会计算错误
+            const chunks = fs.readdirSync(blobChunkSaveDirPath).sort((a, b) => (Number(a) > Number(b) ? 1 : -1));
             if (chunks.length === 0) {
-                return reject(new Error(`blob chunk loss, should not happen ${hash}`));
+                return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_CHUNK_LOSS, { hash }));
             }
             /// 合并分片并且计算 hash
             let isSuccess = false;
@@ -157,10 +162,17 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
                     try {
                         fs.rmSync(blobChunkSaveDirPath, { recursive: true });
                     } catch (error) {}
-                    console.debug(`download blob ${hash} success`);
+                    this.__logger.debug(`download blob ${hash} success`);
                     return resolve(hashHex);
                 }
-                return reject(new Error(`not mathced, expected hash ${hash}, download blob hash ${hashHex}`));
+                return reject(
+                    new ArgumentIllegalException(ERROR_LIST.NOT_MATCH, {
+                        to_compare_prop: `hash ${hash}`,
+                        to_target: "transaction",
+                        be_compare_prop: `hash ${hashHex}`,
+                        be_target: "calculate",
+                    })
+                );
             } catch (err) {
                 return reject(err);
             } finally {
@@ -171,7 +183,8 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
                 if (!isSuccess) {
                     try {
                         if (fs.existsSync(blobTempSavePath)) {
-                            fs.unlinkSync(blobTempSavePath);
+                            fs.rmSync(blobTempSavePath, { recursive: true });
+                            this.__logger.debug(`saveAsBlob: remove useless blob ${blobTempSavePath}`);
                         }
                     } catch (error) {}
                 }
@@ -182,19 +195,24 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
     changeBlobStrategy(openArg: BFChainCore.OpenBlobArgJSON, strategy: STORAGE_STRATEGY): Promise<boolean> {
         return new Promise<boolean>(async (resolve, reject) => {
             const { hash } = openArg;
-            /// 正常处理交易把 blob 从临时存储区域移动到永久存储区域
-            let sourcePath = this.__getBlobTempSavePath(hash);
-            let targetPath = this.__getBlobSavePath(hash);
-            if (strategy === STORAGE_STRATEGY.TEMPORARY) {
-                /// 区块回滚时把 blob 从永久存储区域移动到临时存储区域
-                sourcePath = this.__getBlobSavePath(hash);
-                targetPath = this.__getBlobTempSavePath(hash);
-            }
+            // /// 正常处理交易把 blob 从临时存储区域移动到永久存储区域
+            // let sourcePath = this.__getBlobTempSavePath(hash);
+            // let targetPath = this.__getBlobSavePath(hash);
+            // if (strategy === STORAGE_STRATEGY.TEMPORARY) {
+            //     /// 区块回滚时把 blob 从永久存储区域移动到临时存储区域
+            //     sourcePath = this.__getBlobSavePath(hash);
+            //     targetPath = this.__getBlobTempSavePath(hash);
+            // }
+            /// blob 可以重复上链，所以这里只能从 临时区 移动到 永久区，无法知道之前是否有交易已经对他做了上链操作
+            /// 这就会导致 blob 里面可能存在大量无效的 blob
+            /// 直接从 永久区 移动到 临时区 存在极大的 blob 丢失风险，除非做上链次数统计，这个统计非常麻烦
+            const sourcePath = this.__getBlobTempSavePath(hash);
+            const targetPath = this.__getBlobSavePath(hash);
             if (!fs.existsSync(sourcePath)) {
                 if (fs.existsSync(targetPath)) {
                     return resolve(true);
                 }
-                return reject(new Error(`blob not exist ${hash}`));
+                return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_NOT_EXIST, { hash }));
             }
             if (fs.existsSync(targetPath)) {
                 return resolve(true);
@@ -202,16 +220,8 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
             // 节省性能，直接走 rename，不走 copy
             fs.rename(sourcePath, targetPath, (err) => {
                 if (err) {
-                    try {
-                        if (fs.existsSync(targetPath)) {
-                            fs.unlinkSync(targetPath);
-                        }
-                    } catch (error) {}
                     return reject(err);
                 }
-                try {
-                    fs.unlinkSync(sourcePath);
-                } catch (error) {}
                 return resolve(true);
             });
         });
