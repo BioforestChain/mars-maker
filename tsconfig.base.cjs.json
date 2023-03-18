@@ -10,7 +10,6 @@
         "sourceMap": true,
         "noEmitOnError": true,
         "removeComments": true,
-        "importsNotUsedAsValues": "error",
         "importHelpers": true,
         "strict": true,
         "strictBindCallApply": true,
@@ -21,7 +20,6 @@
         "newLine": "lf",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "downlevelIteration": true,
-        "ignoreDeprecations": "5.0"
+        "downlevelIteration": true
     }
 }
