@@ -1,4 +1,3 @@
-import type { STORAGE_STRATEGY } from "@bfchain/core-helper-blob";
 import type { Logger } from "../logger";
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -49,7 +48,7 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
         totalSize: number,
         chunkSize: number,
         contentType: string,
-        strategy: STORAGE_STRATEGY
+        strategy: BFChainCore.BLOB_STORAGE_STRATEGY
     ): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             const { hash } = openArg;
@@ -192,7 +191,7 @@ export class Sha256BlobWriter implements BFChainCore.BlobWriter {
         });
     }
 
-    changeBlobStrategy(openArg: BFChainCore.OpenBlobArgJSON, strategy: STORAGE_STRATEGY): Promise<boolean> {
+    changeBlobStrategy(openArg: BFChainCore.OpenBlobArgJSON, strategy: BFChainCore.BLOB_STORAGE_STRATEGY): Promise<boolean> {
         return new Promise<boolean>(async (resolve, reject) => {
             const { hash } = openArg;
             // /// 正常处理交易把 blob 从临时存储区域移动到永久存储区域

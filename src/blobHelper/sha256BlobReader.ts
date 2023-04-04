@@ -2,6 +2,7 @@ import type { Logger } from "../logger";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as crypto from "node:crypto";
+import { BLOB_CONTENT_TYPE } from "@bfchain/core";
 import { sleep } from "@bfchain/util-extends-promise";
 import { BLOBS_SAVE_DIR, BLOBS_TEMPS_SAVE_DIR, BLOB_MAX_OPEN_TIMES, getUUID, isEmptyObject } from "./constants";
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "../exception";
@@ -76,15 +77,15 @@ export class Sha256BlobReader implements BFChainCore.BlobReader {
         });
     }
 
-    open(hash: string): Promise<string> {
-        return new Promise<string>((resolve, reject) => {
+    open(hash: string): Promise<BFChainCore.OpenBlobReturnParams> {
+        return new Promise<BFChainCore.OpenBlobReturnParams>((resolve, reject) => {
             const nowTime = new Date();
             let pointer = this.__openBlobsKV.get(hash);
             if (pointer) {
                 this.__blobsOpenInfo[pointer].times++;
                 this.__blobsOpenInfo[pointer].openTime = nowTime.getTime();
                 this.__closeUselessBlob();
-                return resolve(pointer);
+                return resolve({ descriptor: pointer, contentType: BLOB_CONTENT_TYPE.BYTES });
             }
             let blobPath = this.__getBlobSavePath(hash);
             if (!fs.existsSync(blobPath)) {
@@ -109,7 +110,7 @@ export class Sha256BlobReader implements BFChainCore.BlobReader {
                 };
                 this.__closeUselessBlob();
                 this.__logger.debug(`open blob hash ${hash}, pointer ${pointer} success`);
-                return resolve(pointer);
+                return resolve({ descriptor: pointer, contentType: BLOB_CONTENT_TYPE.BYTES });
             });
         });
     }
@@ -204,7 +205,7 @@ export class Sha256BlobReader implements BFChainCore.BlobReader {
                         target: "transaction",
                     });
                 }
-                const pointer = await this.open(hash);
+                const { descriptor: pointer } = await this.open(hash);
                 const fd = this.__openBlobsMap.get(pointer);
                 if (!fd) {
                     return reject(new ArgumentIllegalException(ERROR_LIST.BLOB_NOT_EXIST, { hash }));
