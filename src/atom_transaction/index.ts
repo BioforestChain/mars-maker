@@ -43,6 +43,9 @@ import { IssueEntityMultiFactory } from "./issueEntityMultiFactory";
 import { ToExchangeAnyMultiFactory } from "./toExchangeAnyMultiFactory";
 import { BeExchangeAnyMultiFactory } from "./beExchangeAnyMultiFactory";
 
+import { ToExchangeAnyMultiAllFactory } from "./toExchangeAnyMultiAllFactory";
+import { BeExchangeAnyMultiAllFactory } from "./beExchangeAnyMultiAllFactory";
+
 import { RegisterChainFactory } from "./registerChainFactory";
 import { EmigrateAssetFactory } from "./emigrateAssetFactory";
 import { ImmigrateAssetFactory } from "./immigrateAssetFactory";
@@ -139,6 +142,11 @@ export function TransactionFactory(bfchainCore: BFChainCore) {
     const beExchangeAnyMultiFactory = new BeExchangeAnyMultiFactory(bfchainCore, verifier);
     TRANSACTION_FACTORY_MAP.set(toExchangeAnyMultiFactory.GENERATE_API_PATH, toExchangeAnyMultiFactory);
     TRANSACTION_FACTORY_MAP.set(beExchangeAnyMultiFactory.GENERATE_API_PATH, beExchangeAnyMultiFactory);
+
+    const toExchangeAnyMultiAllFactory = new ToExchangeAnyMultiAllFactory(bfchainCore, verifier);
+    const beExchangeAnyMultiAllFactory = new BeExchangeAnyMultiAllFactory(bfchainCore, verifier);
+    TRANSACTION_FACTORY_MAP.set(toExchangeAnyMultiAllFactory.GENERATE_API_PATH, toExchangeAnyMultiAllFactory);
+    TRANSACTION_FACTORY_MAP.set(beExchangeAnyMultiAllFactory.GENERATE_API_PATH, beExchangeAnyMultiAllFactory);
 
     const registerChainFactory = new RegisterChainFactory(bfchainCore, verifier);
     const emigrateAssetFactory = new EmigrateAssetFactory(bfchainCore, verifier);
