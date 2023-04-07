@@ -12,6 +12,7 @@ import { CalcTransactionMinFee } from "./calcTransactionMinFee";
 import { GenerateCiphertextSignatureFactory } from "./generateCiphertextSignature";
 import { GenerateBlobSeedFactory } from "./generateBlobSeed";
 import { GenerateRegisterChainCertificateFactory } from "./generateRegisterChainCertificate";
+import { TransactionMakerInfoFactory } from "./transactionMakerInfo";
 
 import { EasyWeakMap } from "@bfchain/util";
 
@@ -38,6 +39,7 @@ export function CommonFactory(bfchainCore: BFChainCore) {
     const generateCiphertextSignatureFactory = new GenerateCiphertextSignatureFactory(bfchainCore);
     const generateBlobSeedFactory = new GenerateBlobSeedFactory(bfchainCore);
     const generateRegisterChainCertificateFactory = new GenerateRegisterChainCertificateFactory(bfchainCore);
+    const transactionMakerInfoFactory = new TransactionMakerInfoFactory(bfchainCore);
 
     COMMON_FACTORY_MAP.set(verifyAddressFactory.EXEC_API_PATH, verifyAddressFactory);
     COMMON_FACTORY_MAP.set(verifyPublicKeyFactory.EXEC_API_PATH, verifyPublicKeyFactory);
@@ -51,6 +53,7 @@ export function CommonFactory(bfchainCore: BFChainCore) {
     COMMON_FACTORY_MAP.set(generateCiphertextSignatureFactory.EXEC_API_PATH, generateCiphertextSignatureFactory);
     COMMON_FACTORY_MAP.set(generateBlobSeedFactory.EXEC_API_PATH, generateBlobSeedFactory);
     COMMON_FACTORY_MAP.set(generateRegisterChainCertificateFactory.EXEC_API_PATH, generateRegisterChainCertificateFactory);
+    COMMON_FACTORY_MAP.set(transactionMakerInfoFactory.EXEC_API_PATH, transactionMakerInfoFactory);
 
     Object.freeze(COMMON_FACTORY_MAP);
 }

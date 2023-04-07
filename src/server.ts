@@ -94,7 +94,7 @@ export class Server extends EventEmitter {
                     }
                     const body = (await parsePostRequestParameter(request)) as unknown as TransactionMaker.Transaction.TransactionCommonParams;
                     // 时间校正
-                    if ((pathname as any) === COMMON_API_PATH.TIME_CORRECTING_API_PATH) {
+                    if ((pathname as any) === COMMON_API_PATH.TIME_CORRECTING) {
                         const result = await this.timeCorrecting(body as any);
                         response.end(
                             JSON.stringify({
@@ -105,7 +105,7 @@ export class Server extends EventEmitter {
                         return;
                     }
                     // 获取节点可能的最新区块高度
-                    if ((pathname as any) === COMMON_API_PATH.MAYBE_HEIGHT_API_PATH) {
+                    if ((pathname as any) === COMMON_API_PATH.MAYBE_HEIGHT) {
                         const result = await this.getMaybeHeight(body as any);
                         response.end(
                             JSON.stringify({

@@ -4,7 +4,7 @@ import { CommonFactory } from "./_commonFactory";
 
 @Injectable()
 export class GenerateRegisterChainCertificateFactory extends CommonFactory<TransactionMaker.RegisterChainCertificateJSON> {
-    readonly EXEC_API_PATH = COMMON_API_PATH.GENERATE_REGISTER_CHAIN_CERTIFICATE_API_PATH;
+    readonly EXEC_API_PATH = COMMON_API_PATH.GENERATE_REGISTER_CHAIN_CERTIFICATE;
 
     async exec(request: TransactionMaker.Common.GenerateRegisterChainCertificateParams) {
         const { generatorSecret, generatorSecondSecret, genesisBlockInfo } = request;

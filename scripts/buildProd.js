@@ -126,16 +126,6 @@ function copyDir(sourcePath, targetPath, prefix) {
     }
 }
 
-/**
- * 拷贝创世信息
- *
- */
-function copyGenesisInfosDir() {
-    log(`start to copy genesisInfos ...`);
-    copyDir(baseDir + "/node_modules/@bfchain/coretools-obtain-genesis-info/build/cjs/genesisInfos", staticDir + "/genesisInfos", ".json");
-    log(`finish to copy genesisInfos ...`);
-}
-
 // 备份原有的 package.json
 const packageJsonPath = path.resolve(baseDir, "package.json");
 const packageJsonBackupPath = path.resolve(baseDir, "package_backup.json");
@@ -195,6 +185,10 @@ function changeIndexJs() {
         if (defaultIndexJs.includes(`process.env["GITHASH"] = ""`)) {
             defaultIndexJs = defaultIndexJs.replace(`process.env["GITHASH"] = ""`, `process.env["GITHASH"] = "${commitHash}"`);
         }
+        const corePackageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), "/node_modules/@bfchain/core/package.json"), "utf-8"));
+        if (defaultIndexJs.includes(`process.env["CORE_VERSION"] = ""`)) {
+            defaultIndexJs = defaultIndexJs.replace(`process.env["CORE_VERSION"] = ""`, `process.env["CORE_VERSION"] = "${corePackageJson.version}"`);
+        }
         fs.writeFileSync(indexJsPath, defaultIndexJs);
     } catch (err) {
         console.warn(err);
@@ -245,69 +239,6 @@ function nccBuild(platform) {
     // @ts-ignore
     const inputFileArgv = (inputfile) => path.resolve(__dirname, "../", inputfile);
     const outputFileArgv = (outfile) => path.resolve(resultFullDir, outfile);
-    // const options = {
-    //     // minifyWhitespace: minify,
-    //     // minifyIdentifiers: minify,
-    //     logLevel: "error",
-    //     bundle: true,
-    //     platform: "node",
-    //     target: "node12",
-    //     external: ["mongoose"],
-    //     write: true,
-    //     charset: "utf8",
-    // };
-
-    /**
-     * 字节码编译器
-     */
-    const bytecodeCompiler =
-        platform === "node"
-            ? (input, output, unlinkInput = false) => {
-                  bytecode.bytecodeCompilerFromFile(input, output);
-                  if (unlinkInput) {
-                      fs.unlinkSync(input);
-                  }
-              }
-            : (() => {
-                  /**
-                   * @TODO 支持其它平台
-                   *
-                   */
-                  let bytecodeRunnerExt = "";
-                  let pkgTargetName = "node16-linux-x64";
-                  switch (platform) {
-                      case "win32":
-                          bytecodeRunnerExt = ".exe";
-                          pkgTargetName = "node16-win-x64";
-
-                          break;
-                      case "linux":
-                          bytecodeRunnerExt = "";
-                          pkgTargetName = "node16-linux-x64";
-                          break;
-                      case "darwin":
-                          bytecodeRunnerExt = ".pkg";
-                          pkgTargetName = "node16-mac-x64";
-
-                          break;
-                      default:
-                          break;
-                  }
-                  const bytecodeRunnerFilename = path.resolve(resultFullDir, `./binary/bytecode${bytecodeRunnerExt}`);
-                  if (fs.existsSync(bytecodeRunnerFilename) === false) {
-                      log(`building bytecode generator ...`);
-                      childProcess.execSync(`pkg -t ${pkgTargetName} -o ${bytecodeRunnerFilename} ./bytecode/bytecode.js`, {
-                          stdio: ["inherit", "inherit", "pipe"],
-                          cwd: __dirname,
-                      });
-                  }
-                  return (input, output, unlinkInput = false) => {
-                      childProcess.spawnSync(bytecodeRunnerFilename, ["--", input, output]);
-                      if (unlinkInput) {
-                          fs.unlinkSync(input);
-                      }
-                  };
-              })();
 
     log(`start to build source code ...`);
 
@@ -325,20 +256,8 @@ function nccBuild(platform) {
         }
     };
 
-    // esbuildBuild(toWindow(outputFileArgv("bytorkerExecutor.js")), toWindow(inputFileArgv("build/src/helpers/bytorkerExecutor.js")));
-    // // await esbuild.build({
-    // //     entryPoints: [inputFileArgv("build/src/helpers/bytorkerExecutor.js")],
-    // //     outfile: outputFileArgv("bytorkerExecutor.js"),
-    // //     ...options,
-    // // });
-    // log("successed build bytorkerExecutor.js");
-
     esbuildBuild(toWindow(outputFileArgv("index.js")), toWindow(inputFileArgv("index.js")));
-    // await esbuild.build({
-    //     entryPoints: [inputFileArgv("index.js")],
-    //     outfile: outputFileArgv("index.js"),
-    //     ...options,
-    // });
+
     log("successed build index.js");
 
     log(`finish to build source code ...`);
@@ -388,10 +307,6 @@ function pkg(platform) {
 
         // 初始化编译环境
         initEsbuild();
-
-        // 拷贝资源文件
-        // 拷贝创世信息
-        // copyGenesisInfosDir();
 
         try {
             // 改写 index.js

@@ -17,6 +17,7 @@
         "atom_common/generateKeypair.ts",
         "atom_common/generateRegisterChainCertificate.ts",
         "atom_common/index.ts",
+        "atom_common/transactionMakerInfo.ts",
         "atom_common/verifyAddress.ts",
         "atom_common/verifyPublicKey.ts",
         "atom_common/_commonFactory.ts",
