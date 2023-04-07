@@ -2,13 +2,13 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { Injectable } from "@bfchain/util-dep-inject";
 import { SECRET_LANGUAGE_TYPE, LOGGER_LEVEL } from "@bfmeta/transaction-maker-core";
-
+const GENESISBLOCK_PATH = `${process.env["GENESISBLOCK_PATH"] || "bfmtest-genesisBlock-testnet.json"}`;
 @Injectable()
 export class Config {
     private __config: TransactionMaker.Server.Config = {
-        port: 8888,
+        port: Number(process.env["PORT"]) || 8888,
         loggerConfig: {
-            level: LOGGER_LEVEL.ERROR,
+            level: LOGGER_LEVEL.DEBUG,
             limit: 100,
             backup: 100,
             dateExpire: false,
@@ -17,8 +17,8 @@ export class Config {
         chainNodeIps: ["127.0.0.1"],
         broadcastTimeout: 30000,
         genesisInfoConfig: {
-            genesisBlockPath: "genesisInfos/bfmtest-genesisBlock-testnet.json",
-            genesisBlockLicensePath: "genesisInfos/bfmtest-lincense-testnet.json",
+            genesisBlockPath: `genesisInfos/${GENESISBLOCK_PATH}`,
+            genesisBlockLicensePath: `genesisInfos/${GENESISBLOCK_PATH.replace(`genesisBlock`, `license`)}`,
         },
         lang: SECRET_LANGUAGE_TYPE.ENGLISH,
     };
