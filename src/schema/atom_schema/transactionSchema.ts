@@ -1068,7 +1068,7 @@ export const TR_TO_EXCHANGE_ANY: TransactionMaker.SchemaType[] = [
                         type: BASE_ARGS_TYPE.STRING,
                     },
                 },
-                required: ["beExchangeParentAssetType", "beExchangeAssetType", "beExchangeAssetPrealnum"],
+                required: ["beExchangeParentAssetType", "beExchangeAssetType"],
             },
             assetExchangeWeightRatio: {
                 type: BASE_ARGS_TYPE.OBJECT,
