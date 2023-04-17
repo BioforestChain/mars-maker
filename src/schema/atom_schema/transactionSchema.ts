@@ -1639,3 +1639,209 @@ export const TR_BE_EXCHANGE_ANY_MULTI: TransactionMaker.SchemaType[] = [
         required: ["toExchangeInfos", "beExchangeInfo", "recipientId"],
     },
 ];
+
+/**发送批量全量任意资产交换事件 */
+export const TR_TO_EXCHANGE_ANY_MULTI_ALL: TransactionMaker.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            toExchangeInfos: {
+                type: BASE_ARGS_TYPE.ARRAY,
+                items: {
+                    type: BASE_ARGS_TYPE.OBJECT,
+                    properties: {
+                        toExchangeSource: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeChainName: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeParentAssetType: {
+                            type: BASE_ARGS_TYPE.NUMBER,
+                        },
+                        toExchangeAssetType: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeAssetPrealnum: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        assetExchangeWeightRatio: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                toExchangeAssetWeight: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                beExchangeAssetWeight: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["toExchangeAssetWeight", "beExchangeAssetWeight"],
+                        },
+                        taxInformation: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                taxCollector: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                taxAssetPrealnum: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["taxCollector", "taxAssetPrealnum"],
+                        },
+                    },
+                    required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
+                },
+                minItems: 1,
+            },
+            beExchangeInfos: {
+                type: BASE_ARGS_TYPE.ARRAY,
+                items: {
+                    type: BASE_ARGS_TYPE.OBJECT,
+                    properties: {
+                        beExchangeSource: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        beExchangeChainName: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        beExchangeParentAssetType: {
+                            type: BASE_ARGS_TYPE.NUMBER,
+                        },
+                        beExchangeAssetType: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        beExchangeAssetPrealnum: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        taxInformation: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                taxCollector: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                taxAssetPrealnum: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["taxCollector", "taxAssetPrealnum"],
+                        },
+                    },
+                    required: ["beExchangeParentAssetType", "beExchangeAssetType"],
+                },
+                minItems: 1,
+            },
+            ciphertexts: {
+                type: BASE_ARGS_TYPE.ARRAY,
+                items: {
+                    type: BASE_ARGS_TYPE.STRING,
+                },
+            },
+        },
+        required: ["toExchangeInfos", "beExchangeInfos"],
+    },
+];
+
+/**发送接受批量全量任意资产交换事件 */
+export const TR_BE_EXCHANGE_ANY_MULTI_ALL: TransactionMaker.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            transactionSignature: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            toExchangeInfos: {
+                type: BASE_ARGS_TYPE.ARRAY,
+                items: {
+                    type: BASE_ARGS_TYPE.OBJECT,
+                    properties: {
+                        toExchangeSource: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeChainName: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeParentAssetType: {
+                            type: BASE_ARGS_TYPE.NUMBER,
+                        },
+                        toExchangeAssetType: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        toExchangeAssetPrealnum: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        assetExchangeWeightRatio: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                toExchangeAssetWeight: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                beExchangeAssetWeight: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["toExchangeAssetWeight", "beExchangeAssetWeight"],
+                        },
+                        taxInformation: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                taxCollector: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                taxAssetPrealnum: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["taxCollector", "taxAssetPrealnum"],
+                        },
+                    },
+                    required: ["toExchangeParentAssetType", "toExchangeAssetType", "toExchangeAssetPrealnum"],
+                },
+                minItems: 1,
+            },
+            beExchangeInfos: {
+                type: BASE_ARGS_TYPE.ARRAY,
+                items: {
+                    type: BASE_ARGS_TYPE.OBJECT,
+                    properties: {
+                        beExchangeSource: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        beExchangeChainName: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        beExchangeParentAssetType: {
+                            type: BASE_ARGS_TYPE.NUMBER,
+                        },
+                        beExchangeAssetType: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        beExchangeAssetPrealnum: {
+                            type: BASE_ARGS_TYPE.STRING,
+                        },
+                        taxInformation: {
+                            type: BASE_ARGS_TYPE.OBJECT,
+                            properties: {
+                                taxCollector: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                                taxAssetPrealnum: {
+                                    type: BASE_ARGS_TYPE.STRING,
+                                },
+                            },
+                            required: ["taxCollector", "taxAssetPrealnum"],
+                        },
+                    },
+                    required: ["beExchangeParentAssetType", "beExchangeAssetType"],
+                },
+                minItems: 1,
+            },
+            ciphertext: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+        },
+        required: ["toExchangeInfos", "beExchangeInfos", "recipientId"],
+    },
+];
