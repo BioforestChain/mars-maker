@@ -37,6 +37,7 @@ export class ToExchangeAnyMultiFactory extends TransactionFactory<ToExchangeAnyM
                     beExchangeParentAssetType: beExchangeInfo.beExchangeParentAssetType as number,
                     beExchangeAssetType: beExchangeInfo.beExchangeAssetType,
                     beExchangeAssetPrealnum: beExchangeInfo.beExchangeAssetPrealnum,
+                    taxInformation: beExchangeInfo.taxInformation,
                 },
             },
             ciphertexts,
