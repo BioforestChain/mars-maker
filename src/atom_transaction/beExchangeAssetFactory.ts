@@ -16,7 +16,7 @@ export class BeExchangeAssetFactory extends TransactionFactory<BeExchangeAssetTr
             this.getTransactionBody(request),
             {
                 transactionSignature: request.transactionSignature,
-                beExchangeNumber: "0",
+                beExchangeNumber: request.beExchangeNumber,
                 toExchangeNumber: request.toExchangeNumber,
                 exchangeAsset: {
                     cipherPublicKeys: exchangeAsset.cipherPublicKeys,

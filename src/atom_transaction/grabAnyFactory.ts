@@ -17,7 +17,7 @@ export class GrabAnyFactory extends TransactionFactory<GrabAnyTransaction> {
             {
                 blockSignature: request.blockSignature,
                 transactionSignature: request.transactionSignature,
-                amount: request.amount || "0",
+                amount: request.amount,
                 giftAny: {
                     cipherPublicKeys: giftAny.cipherPublicKeys,
                     sourceChainMagic: giftAny.sourceChainMagic || config.magic,
