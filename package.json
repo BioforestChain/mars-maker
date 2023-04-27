@@ -31,7 +31,7 @@
     "dependencies": {
         "@bfchain/coretools": "^3.0.19",
         "@bfchain/duplexnodejshelper": "^4.0.4",
-        "@bfmeta/transaction-maker-core": "^1.0.24",
+        "@bfmeta/transaction-maker-core": "^1.0.25",
         "colors": "1.4.0",
         "streamroller": "^3.1.5"
     },
