@@ -50,6 +50,12 @@ import { RegisterChainFactory } from "./registerChainFactory";
 import { EmigrateAssetFactory } from "./emigrateAssetFactory";
 import { ImmigrateAssetFactory } from "./immigrateAssetFactory";
 
+import { MultipleFactory } from "./multipleFactory";
+import { PromiseFactory } from "./promiseFactory";
+import { PromiseResolveFactory } from "./promiseResolveFactory";
+import { MacroFactory } from "./macroFactory";
+import { MacroCallFactory } from "./macroCallFactory";
+
 import { EasyWeakMap } from "@bfchain/util";
 import { Verifier } from "../schema";
 
@@ -154,6 +160,17 @@ export function TransactionFactory(bfchainCore: BFChainCore) {
     TRANSACTION_FACTORY_MAP.set(registerChainFactory.GENERATE_API_PATH, registerChainFactory);
     TRANSACTION_FACTORY_MAP.set(emigrateAssetFactory.GENERATE_API_PATH, emigrateAssetFactory);
     TRANSACTION_FACTORY_MAP.set(immigrateAssetFactory.GENERATE_API_PATH, immigrateAssetFactory);
+
+    const multipleFactory = new MultipleFactory(bfchainCore, verifier);
+    const promiseFactory = new PromiseFactory(bfchainCore, verifier);
+    const promiseResolveFactory = new PromiseResolveFactory(bfchainCore, verifier);
+    const macroFactory = new MacroFactory(bfchainCore, verifier);
+    const macroCallFactory = new MacroCallFactory(bfchainCore, verifier);
+    TRANSACTION_FACTORY_MAP.set(multipleFactory.GENERATE_API_PATH, multipleFactory);
+    TRANSACTION_FACTORY_MAP.set(promiseFactory.GENERATE_API_PATH, promiseFactory);
+    TRANSACTION_FACTORY_MAP.set(promiseResolveFactory.GENERATE_API_PATH, promiseResolveFactory);
+    TRANSACTION_FACTORY_MAP.set(macroFactory.GENERATE_API_PATH, macroFactory);
+    TRANSACTION_FACTORY_MAP.set(macroCallFactory.GENERATE_API_PATH, macroCallFactory);
 
     Object.freeze(TRANSACTION_FACTORY_MAP);
 }
