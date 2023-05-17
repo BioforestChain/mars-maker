@@ -1,4 +1,4 @@
-import { NewTransactionStatus, RESPONSE_STATUS } from "@bfchain/core";
+import { NewTransactionStatus, RESPONSE_STATUS, MacroCallTransactionFactory } from "@bfchain/core";
 import { Aborter, I18N_LANGUAGE_TYPE, Injectable, sleep } from "@bfchain/util";
 import { ChainCore } from "../chainCore";
 import { Config } from "../config";
@@ -8,6 +8,15 @@ const { ArgumentIllegalException, ArgumentException } = TransactionMakerExceptio
 @Injectable()
 export class UtilFactory {
     constructor(private __config: Config, private __chainCore: ChainCore) {}
+
+    async macroBuildTransaction(request: TransactionMaker.Transaction.MacroBuildTransactionParams) {
+        const { template, defineInputs, inputs } = request;
+        const { bfchainCore } = this.__chainCore;
+        const templateTransaction = await bfchainCore.transaction.recombineTransaction(template);
+        const factory = bfchainCore.transaction.getTransactionFactoryFromType(bfchainCore.transactionHelper.MACRO_CALL) as MacroCallTransactionFactory;
+        const macroCallTransaction = await factory.generateTransaction(templateTransaction, defineInputs as any, inputs);
+        return macroCallTransaction.toJSON();
+    }
 
     async recombineTransaction(request: TransactionMaker.Transaction.RecombineTransactionParams) {
         const { secret, secondSecretInfo, transaction } = request;

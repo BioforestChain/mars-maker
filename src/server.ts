@@ -134,6 +134,17 @@ export class Server extends EventEmitter {
                         );
                         return;
                     }
+                    // 宏编译
+                    if ((pathname as any) === UTIL_API_PATH.MACRO_BUILD) {
+                        const result = await this.__util.macroBuildTransaction(body as any);
+                        response.end(
+                            JSON.stringify({
+                                success: true,
+                                result,
+                            })
+                        );
+                        return;
+                    }
                     const result = await route({ pathname, params: body }, this.__chainCore.bfchainCore);
                     response.end(
                         JSON.stringify({
