@@ -1,11 +1,11 @@
 import type { UsernameTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myUsername } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class UsernameFactory extends TransactionFactory<UsernameTransaction> {
+export class UsernameFactory extends _TransactionFactory<UsernameTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_USERNAME;
 
     async generateTransaction(request: TransactionMaker.Transaction.UsernameTransactionParams) {

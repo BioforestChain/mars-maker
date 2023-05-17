@@ -1,12 +1,12 @@
 import type { TransferAnyTransaction } from "@bfchain/core";
 import { PARENT_ASSET_TYPE } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myTransferAny } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class TransferAnyFactory extends TransactionFactory<TransferAnyTransaction> {
+export class TransferAnyFactory extends _TransactionFactory<TransferAnyTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_TRANSFER_ANY;
 
     async generateTransaction(request: TransactionMaker.Transaction.TransferAnyTransactionParams) {

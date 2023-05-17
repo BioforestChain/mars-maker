@@ -1,11 +1,11 @@
 import type { IssueEntityMultiTransactionV1 } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myIssueEntityMultiV1 } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class IssueEntityMultiFactory extends TransactionFactory<IssueEntityMultiTransactionV1> {
+export class IssueEntityMultiFactory extends _TransactionFactory<IssueEntityMultiTransactionV1> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY_MULTI;
 
     async generateTransaction(request: TransactionMaker.Transaction.IssueEntityMultiTransactionParams) {

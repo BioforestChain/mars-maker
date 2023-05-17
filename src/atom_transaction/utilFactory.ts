@@ -1,0 +1,114 @@
+import { NewTransactionStatus, RESPONSE_STATUS } from "@bfchain/core";
+import { Aborter, I18N_LANGUAGE_TYPE, Injectable, sleep } from "@bfchain/util";
+import { ChainCore } from "../chainCore";
+import { Config } from "../config";
+import { ERROR_LIST, TransactionMakerExceptionGenerator } from "../exception";
+const { ArgumentIllegalException, ArgumentException } = TransactionMakerExceptionGenerator("TransactionMaker", "Server");
+
+@Injectable()
+export class UtilFactory {
+    constructor(private __config: Config, private __chainCore: ChainCore) {}
+
+    async recombineTransaction(request: TransactionMaker.Transaction.RecombineTransactionParams) {
+        const { secret, secondSecretInfo, transaction } = request;
+        const { bfchainCore } = this.__chainCore;
+        const trs = await bfchainCore.transaction.recombineTransaction(transaction);
+        if (secret) {
+            const keypair = await bfchainCore.accountBaseHelper.createSecretKeypair(secret);
+            trs.signatureBuffer = await bfchainCore.asymmetricHelper.detachedSign(trs.getBytes(true, true), keypair.secretKey);
+            if (secondSecretInfo) {
+                const secondKeypair = await bfchainCore.accountBaseHelper.createSecondSecretKeypairV2(secret, secondSecretInfo.secondSecret);
+                trs.signSignatureBuffer = await bfchainCore.asymmetricHelper.detachedSign(trs.getBytes(false, true), secondKeypair.secretKey);
+            }
+        }
+        return trs.toJSON();
+    }
+
+    private __getStatus(status: RESPONSE_STATUS) {
+        const SYSTEM_LANGUAGE = this.__chainCore.SYSTEM_LANGUAGE;
+        if (SYSTEM_LANGUAGE === I18N_LANGUAGE_TYPE.CHINESE) {
+            if (status === RESPONSE_STATUS.error) {
+                return "错误";
+            }
+            if (status === RESPONSE_STATUS.busy) {
+                return "节点繁忙";
+            }
+            if (status === RESPONSE_STATUS.idempotentError) {
+                return "幂等错误";
+            }
+            if (status === RESPONSE_STATUS.success) {
+                return "成功";
+            }
+            return "未知状态";
+        }
+        if (status === RESPONSE_STATUS.error) {
+            return "error";
+        }
+        if (status === RESPONSE_STATUS.busy) {
+            return "busy";
+        }
+        if (status === RESPONSE_STATUS.idempotentError) {
+            return "idempotent error ";
+        }
+        if (status === RESPONSE_STATUS.success) {
+            return "success";
+        }
+        return "unknown";
+    }
+
+    private __getNewTrsStatus(newTrsStatus: NewTransactionStatus) {
+        const SYSTEM_LANGUAGE = this.__chainCore.SYSTEM_LANGUAGE;
+        if (SYSTEM_LANGUAGE === I18N_LANGUAGE_TYPE.CHINESE) {
+            if (newTrsStatus === NewTransactionStatus.InBlock) {
+                return "已上链";
+            }
+            if (newTrsStatus === NewTransactionStatus.InUnconfirmQuene) {
+                return "已在未处理交易池";
+            }
+            if (newTrsStatus === NewTransactionStatus.Refuse) {
+                return "拒绝接收";
+            }
+            return "未知状态";
+        }
+        if (newTrsStatus === NewTransactionStatus.InBlock) {
+            return "in block";
+        }
+        if (newTrsStatus === NewTransactionStatus.InUnconfirmQuene) {
+            return "in unconfirm quene";
+        }
+        if (newTrsStatus === NewTransactionStatus.Refuse) {
+            return "refuse to accept";
+        }
+        return "unknown";
+    }
+
+    async broadcastTransaction(argv: TransactionMaker.Transaction.BroadcastTransactionParams) {
+        if (!argv.transaction) {
+            throw new ArgumentIllegalException(ERROR_LIST.PROP_IS_REQUIRE, {
+                prop: "transaction",
+                target: "request",
+            });
+        }
+        const { transaction, ip } = argv;
+        const { chainNodeIps, broadcastTimeout } = this.__config.config;
+        const bfchainCore = this.__chainCore.bfchainCore;
+        const port = bfchainCore.config.ports.port;
+        const url = this.__chainCore.getUrl(ip || chainNodeIps[Math.floor(Math.random() * chainNodeIps.length)], port, bfchainCore);
+        const aborter = new Aborter();
+        setTimeout(() => {
+            aborter.abort(`broadcastTransaction ${transaction.signature} timeout`);
+        }, broadcastTimeout);
+        const duplexHandler = await this.__chainCore.getDuplexHandler(url, aborter, broadcastTimeout, bfchainCore);
+        await sleep(1000);
+        const resp = await aborter.wrapAsync(duplexHandler.broadcastTransaction(transaction));
+        const result: TransactionMaker.Server.BroadcastTransactionResponse = {
+            signature: transaction.signature,
+            status: this.__getStatus(resp.status),
+            newTrsStatus: this.__getNewTrsStatus(resp.newTrsStatus),
+            minFee: resp.minFee,
+        };
+        resp.errorCode !== undefined && (result.errorCode = resp.errorCode);
+        resp.refuseReason !== undefined && (result.refuseReason = resp.refuseReason as any);
+        return result;
+    }
+}

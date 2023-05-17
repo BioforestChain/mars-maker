@@ -1,11 +1,11 @@
 import type { GrabAnyTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myGrabAny } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class GrabAnyFactory extends TransactionFactory<GrabAnyTransaction> {
+export class GrabAnyFactory extends _TransactionFactory<GrabAnyTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_GRAB_ANY;
 
     async generateTransaction(request: TransactionMaker.Transaction.GrabAnyTransactionParams) {

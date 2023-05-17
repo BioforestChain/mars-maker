@@ -1,11 +1,11 @@
 import type { GiftAssetTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myGiftAsset } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class GiftAssetFactory extends TransactionFactory<GiftAssetTransaction> {
+export class GiftAssetFactory extends _TransactionFactory<GiftAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_GIFT_ASSET;
 
     async generateTransaction(request: TransactionMaker.Transaction.GiftAssetTransactionParams) {

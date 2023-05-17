@@ -1,11 +1,11 @@
 import type { DAppPurchasingTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myDAppPurchasing } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class DAppPurchasingFactory extends TransactionFactory<DAppPurchasingTransaction> {
+export class DAppPurchasingFactory extends _TransactionFactory<DAppPurchasingTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_DAPP_PURCHASING;
 
     async generateTransaction(request: TransactionMaker.Transaction.DAppPurchasingTransactionParams) {

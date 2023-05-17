@@ -1157,17 +1157,17 @@
   resolved "http://192.168.250.245:4873/@bfmeta%2fsign-util/-/sign-util-1.0.5.tgz#3592c36322e83ec9bd844cdf3ccb454dc8dce37c"
   integrity sha512-dz0EuuEYNlYXYgAZeloXRVHqMfzehKzW3DzVf1Nxfvb4xQ4WOxtHKV/4yDLaIqwfDNvkl3HDvyK1UviKlSpB8A==
 
-"@bfmeta/transaction-maker-core@^1.0.26":
-  version "1.0.26"
-  resolved "http://192.168.250.245:4873/@bfmeta%2ftransaction-maker-core/-/transaction-maker-core-1.0.26.tgz#6d2106248c76e258918d39dac0b182b96c917a4f"
-  integrity sha512-+SvfZR3tdFN1f3b3o0VLkasIbazDKJDrpcr5Oyq0QPIlcKDhpxzolsr2K0Lvn/LteeNQWiQQMsVQEFcjb/zSoA==
+"@bfmeta/transaction-maker-core@^1.0.27":
+  version "1.0.27"
+  resolved "http://192.168.250.245:4873/@bfmeta%2ftransaction-maker-core/-/transaction-maker-core-1.0.27.tgz#cc99bd23d99e199de3488fde0024a70b58d18c49"
+  integrity sha512-WaRxtEbk3nfNFvEy7XdubhPO9vxIfgMca3bfo4eG7mPnnxN6ObRite3XYzeXCEJtBKhCVcugtQUythinnDPBpw==
   dependencies:
-    "@bfmeta/transaction-maker-typings" "1.0.26"
+    "@bfmeta/transaction-maker-typings" "1.0.27"
 
-"@bfmeta/transaction-maker-typings@1.0.26":
-  version "1.0.26"
-  resolved "http://192.168.250.245:4873/@bfmeta%2ftransaction-maker-typings/-/transaction-maker-typings-1.0.26.tgz#bee41d75fa63d445a075a4d148ca25bb30e955a7"
-  integrity sha512-2NN7iTrCmTKqJ6LsCOsvZhg20iyrYZr5Yb4d1IHc3+U0/+zrRhMh9758Mg522FnRB2oipTa4qa+6YBXFrr7m1Q==
+"@bfmeta/transaction-maker-typings@1.0.27":
+  version "1.0.27"
+  resolved "http://192.168.250.245:4873/@bfmeta%2ftransaction-maker-typings/-/transaction-maker-typings-1.0.27.tgz#f51a532491c96ed8a9b2c6a2b5758f819b4b93cf"
+  integrity sha512-ZCm1vJtDay5wo2ayqGHUtH7WzJqVm/baJqa28XLgnVCuDXOqfl00g4vQmWpoAge9NqsOJQTW+VjhEehzGNF60w==
 
 "@bnqkl/calc@^0.1.1":
   version "0.1.1"

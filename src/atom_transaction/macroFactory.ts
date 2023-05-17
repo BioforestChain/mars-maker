@@ -1,11 +1,11 @@
 import type { MacroTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myMacro } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class MacroFactory extends TransactionFactory<MacroTransaction> {
+export class MacroFactory extends _TransactionFactory<MacroTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_MACRO;
 
     async generateTransaction(request: TransactionMaker.Transaction.MacroTransactionParams) {

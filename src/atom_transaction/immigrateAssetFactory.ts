@@ -1,11 +1,11 @@
 import type { ImmigrateAssetTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myImmigrateAsset } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class ImmigrateAssetFactory extends TransactionFactory<ImmigrateAssetTransaction> {
+export class ImmigrateAssetFactory extends _TransactionFactory<ImmigrateAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_IMMIGRATE_ASSET;
 
     async generateTransaction(request: TransactionMaker.Transaction.ImmigrateAssetTransactionParams) {

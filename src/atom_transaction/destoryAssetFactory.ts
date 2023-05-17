@@ -1,11 +1,11 @@
 import type { DestoryAssetTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myDestoryAsset } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class DestoryAssetFactory extends TransactionFactory<DestoryAssetTransaction> {
+export class DestoryAssetFactory extends _TransactionFactory<DestoryAssetTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_DESTORY_ASSET;
 
     async generateTransaction(request: TransactionMaker.Transaction.DestoryAssetTransactionParams) {

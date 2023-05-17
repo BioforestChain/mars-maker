@@ -3,18 +3,13 @@ import * as http from "node:http";
 import { EventEmitter } from "node:stream";
 import { Aborter, sleep, I18N_LANGUAGE_TYPE } from "@bfchain/util";
 import { RESPONSE_STATUS, NewTransactionStatus } from "@bfchain/core";
-import {
-    REQUEST_TYPE,
-    parseGetRequestParameter,
-    parsePostRequestParameter,
-    BROADCAST_TRANSACTION_API_PATH,
-    COMMON_API_PATH,
-} from "@bfmeta/transaction-maker-core";
+import { REQUEST_TYPE, parseGetRequestParameter, parsePostRequestParameter, UTIL_API_PATH, COMMON_API_PATH } from "@bfmeta/transaction-maker-core";
 import { Router, route } from "./router";
 import { ChainCore } from "./chainCore";
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "./exception";
 import { Config } from "./config";
 import { Logger } from "./logger";
+import { UtilFactory } from "./atom_transaction/utilFactory";
 
 const { ArgumentIllegalException, ArgumentException } = TransactionMakerExceptionGenerator("TransactionMaker", "Server");
 
@@ -28,12 +23,14 @@ export class Server extends EventEmitter {
     private __config: Config;
     private __logger: Logger;
     private __chainCore: ChainCore;
+    private __util: UtilFactory;
 
     constructor(configOptions?: TransactionMaker.Server.ConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         super();
         this.__config = new Config(configOptions);
         this.__logger = new Logger(this.__config);
         this.__chainCore = new ChainCore(this.__logger, this.__config, genesisBlock);
+        this.__util = new UtilFactory(this.__config, this.__chainCore);
 
         this.on(EVENT_CMD.RESTART, async () => {
             this.__logger.info(`try to restart server`);
@@ -116,8 +113,19 @@ export class Server extends EventEmitter {
                         return;
                     }
                     // 广播交易
-                    if ((pathname as any) === BROADCAST_TRANSACTION_API_PATH) {
-                        const result = await this.broadcastTransaction(body as any);
+                    if ((pathname as any) === UTIL_API_PATH.BROADCAST) {
+                        const result = await this.__util.broadcastTransaction(body as any);
+                        response.end(
+                            JSON.stringify({
+                                success: true,
+                                result,
+                            })
+                        );
+                        return;
+                    }
+                    // 重组交易
+                    if ((pathname as any) === UTIL_API_PATH.RECOMBINE) {
+                        const result = await this.__util.recombineTransaction(body as any);
                         response.end(
                             JSON.stringify({
                                 success: true,
@@ -151,94 +159,6 @@ export class Server extends EventEmitter {
             };
             response.end(JSON.stringify(errorInfo));
         }
-    }
-
-    private __getStatus(status: RESPONSE_STATUS) {
-        const SYSTEM_LANGUAGE = this.__chainCore.SYSTEM_LANGUAGE;
-        if (SYSTEM_LANGUAGE === I18N_LANGUAGE_TYPE.CHINESE) {
-            if (status === RESPONSE_STATUS.error) {
-                return "错误";
-            }
-            if (status === RESPONSE_STATUS.busy) {
-                return "节点繁忙";
-            }
-            if (status === RESPONSE_STATUS.idempotentError) {
-                return "幂等错误";
-            }
-            if (status === RESPONSE_STATUS.success) {
-                return "成功";
-            }
-            return "未知状态";
-        }
-        if (status === RESPONSE_STATUS.error) {
-            return "error";
-        }
-        if (status === RESPONSE_STATUS.busy) {
-            return "busy";
-        }
-        if (status === RESPONSE_STATUS.idempotentError) {
-            return "idempotent error ";
-        }
-        if (status === RESPONSE_STATUS.success) {
-            return "success";
-        }
-        return "unknown";
-    }
-
-    private __getNewTrsStatus(newTrsStatus: NewTransactionStatus) {
-        const SYSTEM_LANGUAGE = this.__chainCore.SYSTEM_LANGUAGE;
-        if (SYSTEM_LANGUAGE === I18N_LANGUAGE_TYPE.CHINESE) {
-            if (newTrsStatus === NewTransactionStatus.InBlock) {
-                return "已上链";
-            }
-            if (newTrsStatus === NewTransactionStatus.InUnconfirmQuene) {
-                return "已在未处理交易池";
-            }
-            if (newTrsStatus === NewTransactionStatus.Refuse) {
-                return "拒绝接收";
-            }
-            return "未知状态";
-        }
-        if (newTrsStatus === NewTransactionStatus.InBlock) {
-            return "in block";
-        }
-        if (newTrsStatus === NewTransactionStatus.InUnconfirmQuene) {
-            return "in unconfirm quene";
-        }
-        if (newTrsStatus === NewTransactionStatus.Refuse) {
-            return "refuse to accept";
-        }
-        return "unknown";
-    }
-
-    async broadcastTransaction(argv: TransactionMaker.Transaction.BroadcastTransactionParams) {
-        if (!argv.transaction) {
-            throw new ArgumentIllegalException(ERROR_LIST.PROP_IS_REQUIRE, {
-                prop: "transaction",
-                target: "request",
-            });
-        }
-        const { transaction, ip } = argv;
-        const { chainNodeIps, broadcastTimeout } = this.__config.config;
-        const bfchainCore = this.__chainCore.bfchainCore;
-        const port = bfchainCore.config.ports.port;
-        const url = this.__chainCore.getUrl(ip || chainNodeIps[Math.floor(Math.random() * chainNodeIps.length)], port, bfchainCore);
-        const aborter = new Aborter();
-        setTimeout(() => {
-            aborter.abort(`broadcastTransaction ${transaction.signature} timeout`);
-        }, broadcastTimeout);
-        const duplexHandler = await this.__chainCore.getDuplexHandler(url, aborter, broadcastTimeout, bfchainCore);
-        await sleep(1000);
-        const resp = await aborter.wrapAsync(duplexHandler.broadcastTransaction(transaction));
-        const result: TransactionMaker.Server.BroadcastTransactionResponse = {
-            signature: transaction.signature,
-            status: this.__getStatus(resp.status),
-            newTrsStatus: this.__getNewTrsStatus(resp.newTrsStatus),
-            minFee: resp.minFee,
-        };
-        resp.errorCode !== undefined && (result.errorCode = resp.errorCode);
-        resp.refuseReason !== undefined && (result.refuseReason = resp.refuseReason as any);
-        return result;
     }
 
     private async __getPeerInfo(ip?: string) {

@@ -1,11 +1,11 @@
 import type { PromiseTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myPromise } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class PromiseFactory extends TransactionFactory<PromiseTransaction> {
+export class PromiseFactory extends _TransactionFactory<PromiseTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_PROMISE;
 
     async generateTransaction(request: TransactionMaker.Transaction.PromiseTransactionParams) {

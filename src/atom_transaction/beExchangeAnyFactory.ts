@@ -1,11 +1,11 @@
 import type { BeExchangeAnyTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myBeExchangeAny } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class BeExchangeAnyFactory extends TransactionFactory<BeExchangeAnyTransaction> {
+export class BeExchangeAnyFactory extends _TransactionFactory<BeExchangeAnyTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_ANY;
 
     async generateTransaction(request: TransactionMaker.Transaction.BeExchangeAnyTransactionParams) {

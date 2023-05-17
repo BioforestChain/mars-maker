@@ -66,6 +66,7 @@
         "atom_transaction/transferAssetFactory.ts",
         "atom_transaction/trustAssetFactory.ts",
         "atom_transaction/usernameFactory.ts",
+        "atom_transaction/utilFactory.ts",
         "atom_transaction/voteFactory.ts",
         "atom_transaction/_transactionFactory.ts",
         "blobHelper/constants.ts",

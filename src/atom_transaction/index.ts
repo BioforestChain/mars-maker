@@ -55,13 +55,14 @@ import { PromiseFactory } from "./promiseFactory";
 import { PromiseResolveFactory } from "./promiseResolveFactory";
 import { MacroFactory } from "./macroFactory";
 import { MacroCallFactory } from "./macroCallFactory";
+import { UtilFactory } from "./utilFactory";
 
 import { EasyWeakMap } from "@bfchain/util";
 import { Verifier } from "../schema";
 
 export const TRANSACTION_FACTORY_MAP_WM = EasyWeakMap.from<
     BFChainCore,
-    Map<TransactionMaker.Transaction.GENERATE_TRANSACTION_API_PATH, import("./_transactionFactory").TransactionFactory<any>>
+    Map<TransactionMaker.Transaction.GENERATE_TRANSACTION_API_PATH, import("./_transactionFactory")._TransactionFactory<any>>
 >({
     creater() {
         return new Map();

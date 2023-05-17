@@ -1,11 +1,11 @@
 import type { SignatureTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { mySignature } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class SignatureFactory extends TransactionFactory<SignatureTransaction> {
+export class SignatureFactory extends _TransactionFactory<SignatureTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_SIGNATURE;
 
     async generateTransaction(request: TransactionMaker.Transaction.SignatureTransactionParams) {

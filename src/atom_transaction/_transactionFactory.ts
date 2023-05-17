@@ -5,7 +5,7 @@ import { TRANSACTION_SCHEMA_MAP } from "../schema";
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "../exception";
 const { ArgumentIllegalException } = TransactionMakerExceptionGenerator("Sdk", "Transactions");
 
-export abstract class TransactionFactory<T extends BFChainCore.Transaction> {
+export abstract class _TransactionFactory<T extends BFChainCore.Transaction> {
     abstract readonly GENERATE_API_PATH: TransactionMaker.Transaction.GENERATE_TRANSACTION_API_PATH;
 
     constructor(public bfchainCore: BFChainCore, private __verifier: Verifier) {}

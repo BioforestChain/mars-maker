@@ -1,11 +1,11 @@
 import type { ToExchangeAnyMultiAllTransaction } from "@bfchain/core";
 import { Injectable } from "@bfchain/util";
-import { TransactionFactory } from "./_transactionFactory";
+import { _TransactionFactory } from "./_transactionFactory";
 import { myToExchangeAnyMultiAll } from "@bfchain/coretools-transaction";
 import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
 
 @Injectable()
-export class ToExchangeAnyMultiAllFactory extends TransactionFactory<ToExchangeAnyMultiAllTransaction> {
+export class ToExchangeAnyMultiAllFactory extends _TransactionFactory<ToExchangeAnyMultiAllTransaction> {
     readonly GENERATE_API_PATH = GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_ANY_MULTI_ALL;
 
     async generateTransaction(request: TransactionMaker.Transaction.ToExchangeAnyMultiAllTransactionParams) {
