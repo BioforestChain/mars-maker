@@ -15,7 +15,8 @@ export const ERROR_LIST = {
     // #endregion
 
     // #region
-    API_ENDPOINT_NOT_FOUND: new ErrorCode("001001", "api endpoint not found {apiPath}"),
+    SERVICE_NOT_FOUND: new ErrorCode("001001", "service not found {name}"),
+    API_ENDPOINT_NOT_FOUND: new ErrorCode("001002", "api endpoint not found {apiPath}"),
     // #endregion
 
     // #region

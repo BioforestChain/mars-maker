@@ -1,15 +1,15 @@
 import * as url from "node:url";
 import * as http from "node:http";
 import { EventEmitter } from "node:stream";
-import { Aborter, sleep, I18N_LANGUAGE_TYPE } from "@bfchain/util";
-import { RESPONSE_STATUS, NewTransactionStatus } from "@bfchain/core";
-import { REQUEST_TYPE, parseGetRequestParameter, parsePostRequestParameter, UTIL_API_PATH, COMMON_API_PATH } from "@bfmeta/transaction-maker-core";
-import { Router, route } from "./router";
+import { ModuleStroge, Resolve } from "@bfchain/util";
+import { REQUEST_TYPE, parseGetRequestParameter, parsePostRequestParameter, COMMON_API_PATH } from "@bfmeta/transaction-maker-core";
 import { ChainCore } from "./chainCore";
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "./exception";
 import { Config } from "./config";
 import { Logger } from "./logger";
-import { UtilFactory } from "./atom_transaction/utilFactory";
+import { INJECT_MODULE } from "./constants";
+import { CommonService, MigrateCertificateService, TransactionService, UtilService } from "./services";
+import { metadataMap } from "./decorators";
 
 const { ArgumentIllegalException, ArgumentException } = TransactionMakerExceptionGenerator("TransactionMaker", "Server");
 
@@ -17,25 +17,73 @@ const enum EVENT_CMD {
     RESTART = "restart",
 }
 
+type QueryArgs =
+    | TransactionMaker.Common.CommonParams
+    | TransactionMaker.CrossChain.MigrateCertificateArgs
+    | TransactionMaker.Transaction.TransactionCommonParams;
+
 export class Server extends EventEmitter {
     private __isRunning = false;
 
     private __config: Config;
     private __logger: Logger;
     private __chainCore: ChainCore;
-    private __util: UtilFactory;
+    private __moduleMap: ModuleStroge;
+    private __routeMap = new Map<TransactionMaker.Server.PATH_NAME_TYPE, (xx: any) => Promise<any>>();
 
     constructor(configOptions?: TransactionMaker.Server.ConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         super();
+        this.__moduleMap = new ModuleStroge();
         this.__config = new Config(configOptions);
         this.__logger = new Logger(this.__config);
         this.__chainCore = new ChainCore(this.__logger, this.__config, genesisBlock);
-        this.__util = new UtilFactory(this.__config, this.__chainCore);
+        this.__moduleMap.set(INJECT_MODULE.CONFIG, this.__config);
+        this.__moduleMap.set(INJECT_MODULE.CHAIN_CORE, this.__chainCore);
+        this.__moduleMap.set(INJECT_MODULE.CORE, this.__chainCore.bfchainCore);
+
+        this.__registerRoute();
 
         this.on(EVENT_CMD.RESTART, async () => {
             this.__logger.info(`try to restart server`);
             await this.runServer();
         });
+    }
+
+    private __registerRoute() {
+        const moduleMap = this.__moduleMap;
+        const utilService = Resolve(UtilService, moduleMap);
+        const commonService = Resolve(CommonService, moduleMap);
+        const transactionService = Resolve(TransactionService, moduleMap);
+        const migrateCertificateService = Resolve(MigrateCertificateService, moduleMap);
+
+        const serviceMap = new Map<any, any>([
+            [UtilService.prototype, utilService],
+            [CommonService.prototype, commonService],
+            [TransactionService.prototype, transactionService],
+            [MigrateCertificateService.prototype, migrateCertificateService],
+        ]);
+
+        const routeMap = this.__routeMap;
+        const storages = metadataMap.storages;
+        for (const [constructor, storage] of storages.entries()) {
+            const service = serviceMap.get(constructor);
+            if (service === undefined) {
+                throw new ArgumentIllegalException(ERROR_LIST.SERVICE_NOT_FOUND);
+            }
+            for (const [pathname, handlerName] of storage) {
+                routeMap.set(pathname as any, (service as any)[handlerName].bind(service));
+            }
+        }
+    }
+
+    private async __routeCall(pathname: TransactionMaker.Server.PATH_NAME_TYPE, argv: QueryArgs) {
+        const handler = this.__routeMap.get(pathname);
+        if (handler === undefined) {
+            throw new ArgumentIllegalException(ERROR_LIST.API_ENDPOINT_NOT_FOUND, {
+                apiPath: pathname,
+            });
+        }
+        return await handler(argv);
     }
 
     private __hasBody(request: http.IncomingMessage) {
@@ -73,7 +121,7 @@ export class Server extends EventEmitter {
             }
             if (method.toUpperCase() === REQUEST_TYPE.GET) {
                 const query = (await parseGetRequestParameter(request)) as unknown as TransactionMaker.Transaction.TransactionCommonParams;
-                const result = await route({ pathname, params: query }, this.__chainCore.bfchainCore);
+                const result = await this.__routeCall(pathname, query);
                 response.end(
                     JSON.stringify({
                         success: true,
@@ -90,62 +138,7 @@ export class Server extends EventEmitter {
                         });
                     }
                     const body = (await parsePostRequestParameter(request)) as unknown as TransactionMaker.Transaction.TransactionCommonParams;
-                    // 时间校正
-                    if ((pathname as any) === COMMON_API_PATH.TIME_CORRECTING) {
-                        const result = await this.timeCorrecting(body as any);
-                        response.end(
-                            JSON.stringify({
-                                success: true,
-                                result,
-                            })
-                        );
-                        return;
-                    }
-                    // 获取节点可能的最新区块高度
-                    if ((pathname as any) === COMMON_API_PATH.MAYBE_HEIGHT) {
-                        const result = await this.getMaybeHeight(body as any);
-                        response.end(
-                            JSON.stringify({
-                                success: true,
-                                result,
-                            })
-                        );
-                        return;
-                    }
-                    // 广播交易
-                    if ((pathname as any) === UTIL_API_PATH.BROADCAST) {
-                        const result = await this.__util.broadcastTransaction(body as any);
-                        response.end(
-                            JSON.stringify({
-                                success: true,
-                                result,
-                            })
-                        );
-                        return;
-                    }
-                    // 重组交易
-                    if ((pathname as any) === UTIL_API_PATH.RECOMBINE) {
-                        const result = await this.__util.recombineTransaction(body as any);
-                        response.end(
-                            JSON.stringify({
-                                success: true,
-                                result,
-                            })
-                        );
-                        return;
-                    }
-                    // 宏编译
-                    if ((pathname as any) === UTIL_API_PATH.MACRO_BUILD) {
-                        const result = await this.__util.macroBuildTransaction(body as any);
-                        response.end(
-                            JSON.stringify({
-                                success: true,
-                                result,
-                            })
-                        );
-                        return;
-                    }
-                    const result = await route({ pathname, params: body }, this.__chainCore.bfchainCore);
+                    const result = await this.__routeCall(pathname, body);
                     response.end(
                         JSON.stringify({
                             success: true,
@@ -172,50 +165,6 @@ export class Server extends EventEmitter {
         }
     }
 
-    private async __getPeerInfo(ip?: string) {
-        const { chainNodeIps, broadcastTimeout } = this.__config.config;
-        const nodeIp = ip || chainNodeIps[Math.floor(Math.random() * chainNodeIps.length)];
-        const bfchainCore = this.__chainCore.bfchainCore;
-        const port = bfchainCore.config.ports.port;
-        const url = this.__chainCore.getUrl(nodeIp, port, bfchainCore);
-        const aborter = new Aborter();
-        setTimeout(() => {
-            aborter.abort(`timeCorrecting timeout ${nodeIp}`);
-        }, broadcastTimeout);
-        const duplexHandler = await this.__chainCore.getDuplexHandler(url, aborter, broadcastTimeout, bfchainCore);
-        await sleep(1000);
-
-        const peerInfo = await duplexHandler.forceDuplexca().requestPeerScan();
-        if (!peerInfo) {
-            throw new Error(`Failed to get peerInfo ${ip}`);
-        }
-        if (peerInfo.localInfo.extendsInfoPackage.chainChannel) {
-            return {
-                timestamp: peerInfo.localInfo.extendsInfoPackage.chainChannel.timestamp,
-                maybeHeight: peerInfo.localInfo.extendsInfoPackage.chainChannel.height,
-            };
-        }
-        return {
-            timestamp: 0,
-            maybeHeight: 1,
-        };
-    }
-
-    async getMaybeHeight(argv: TransactionMaker.Common.MaybeHeightParams) {
-        const peerInfo = await this.__getPeerInfo(argv.ip);
-        return peerInfo.maybeHeight;
-    }
-
-    async timeCorrecting(argv: TransactionMaker.Common.TimeCorrectingParams) {
-        const peerInfo = await this.__getPeerInfo(argv.ip);
-        const bfchainCore = this.__chainCore.bfchainCore;
-        const peerTime = bfchainCore.time.getTimeByTimestamp(peerInfo.timestamp);
-        const curTime = bfchainCore.time.now();
-        const diff = peerTime - curTime;
-        bfchainCore.time.time_offset_ms += diff;
-        return bfchainCore.time.now();
-    }
-
     /**
      * 运行服务器
      *
@@ -234,7 +183,6 @@ export class Server extends EventEmitter {
             } else {
                 this.__config.setConfig({ port });
             }
-            Router(this.__chainCore.bfchainCore);
             const server = http.createServer(this.__onRequest.bind(this));
             server.on("error", (e) => {
                 this.__logger.error(e);
@@ -245,7 +193,7 @@ export class Server extends EventEmitter {
             });
             server.listen(port);
             this.__logger.info(`server running with port ${port}`);
-            this.timeCorrecting({}).catch((err) => {});
+            this.__routeCall(COMMON_API_PATH.TIME_CORRECTING, {}).catch((err) => {});
         } catch (e: any) {
             this.__logger.error(e);
         }

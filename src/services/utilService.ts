@@ -1,14 +1,21 @@
 import { NewTransactionStatus, RESPONSE_STATUS, MacroCallTransactionFactory } from "@bfchain/core";
-import { Aborter, I18N_LANGUAGE_TYPE, Injectable, sleep } from "@bfchain/util";
+import { Aborter, I18N_LANGUAGE_TYPE, Injectable, Inject, sleep } from "@bfchain/util";
+import { UTIL_API_PATH } from "@bfmeta/transaction-maker-core";
 import { ChainCore } from "../chainCore";
 import { Config } from "../config";
+import { INJECT_MODULE } from "../constants";
+import { Route } from "../decorators";
 import { ERROR_LIST, TransactionMakerExceptionGenerator } from "../exception";
-const { ArgumentIllegalException, ArgumentException } = TransactionMakerExceptionGenerator("TransactionMaker", "Server");
+const { ArgumentIllegalException, ArgumentException } = TransactionMakerExceptionGenerator("TransactionMaker", "UtilService");
 
 @Injectable()
-export class UtilFactory {
-    constructor(private __config: Config, private __chainCore: ChainCore) {}
+export class UtilService {
+    @Inject(INJECT_MODULE.CONFIG)
+    private __config!: Config;
+    @Inject(INJECT_MODULE.CHAIN_CORE)
+    private __chainCore!: ChainCore;
 
+    @Route(UTIL_API_PATH.MACRO_BUILD)
     async macroBuildTransaction(request: TransactionMaker.Transaction.MacroBuildTransactionParams) {
         const { template, defineInputs, inputs } = request;
         const { bfchainCore } = this.__chainCore;
@@ -18,6 +25,7 @@ export class UtilFactory {
         return macroCallTransaction.toJSON();
     }
 
+    @Route(UTIL_API_PATH.RECOMBINE)
     async recombineTransaction(request: TransactionMaker.Transaction.RecombineTransactionParams) {
         const { secret, secondSecretInfo, transaction } = request;
         const { bfchainCore } = this.__chainCore;
@@ -91,6 +99,7 @@ export class UtilFactory {
         return "unknown";
     }
 
+    @Route(UTIL_API_PATH.BROADCAST)
     async broadcastTransaction(argv: TransactionMaker.Transaction.BroadcastTransactionParams) {
         if (!argv.transaction) {
             throw new ArgumentIllegalException(ERROR_LIST.PROP_IS_REQUIRE, {
