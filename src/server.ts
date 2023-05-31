@@ -1,6 +1,7 @@
 import * as url from "node:url";
 import * as http from "node:http";
 import { EventEmitter } from "node:stream";
+import { Server as SocketIoServer } from "socket.io";
 import { ModuleStroge, Resolve } from "@bfchain/util";
 import { REQUEST_TYPE, parseGetRequestParameter, parsePostRequestParameter, COMMON_API_PATH } from "@bfmeta/transaction-maker-core";
 import { ChainCore } from "./chainCore";
@@ -183,16 +184,51 @@ export class Server extends EventEmitter {
             } else {
                 this.__config.setConfig({ port });
             }
-            const server = http.createServer(this.__onRequest.bind(this));
-            server.on("error", (e) => {
+            const httpServer = http.createServer(this.__onRequest.bind(this));
+            httpServer.on("error", (e) => {
                 this.__logger.error(e);
             });
-            server.on("close", () => {
+            httpServer.on("close", () => {
                 this.__isRunning = false;
                 this.emit(EVENT_CMD.RESTART);
             });
-            server.listen(port);
-            this.__logger.info(`server running with port ${port}`);
+            const io = new SocketIoServer(httpServer);
+            const socketNsp = io.of("/transactionMaker");
+            socketNsp.on("connection", (socket) => {
+                this.__logger.debug(`socket ${socket.id} connect`);
+                for (const [pathname, handler] of this.__routeMap.entries()) {
+                    socket.on(pathname, async (argv: any, cb) => {
+                        try {
+                            if (typeof argv == "function") {
+                                cb = argv;
+                                argv = null;
+                            }
+                            const result = await handler(argv);
+                            if (typeof cb == "function") {
+                                cb({
+                                    success: true,
+                                    result,
+                                });
+                            }
+                        } catch (e: any) {
+                            this.__logger.error(e);
+                            const errorInfo: TransactionMaker.Server.GenerateTransactionFailureReturn = {
+                                success: false,
+                                error: {
+                                    code: e.CODE === undefined ? 7001 : e.CODE,
+                                    message: e.message,
+                                },
+                            };
+                            if (typeof cb == "function") {
+                                cb(errorInfo);
+                            }
+                        }
+                    });
+                }
+            });
+
+            httpServer.listen(port);
+            this.__logger.info(`httpServer running with port ${port}`);
             this.__routeCall(COMMON_API_PATH.TIME_CORRECTING, {}).catch((err) => {});
         } catch (e: any) {
             this.__logger.error(e);
