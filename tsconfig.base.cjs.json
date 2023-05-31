@@ -2,7 +2,7 @@
     "compilerOptions": {
         "composite": true,
         "incremental": true,
-        "target": "esnext",
+        "target": "ES2021",
         "module": "commonjs",
         "lib": ["es6", "es2015.iterable", "esnext.asynciterable"],
         "declaration": true,

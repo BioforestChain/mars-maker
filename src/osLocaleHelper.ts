@@ -1,6 +1,6 @@
 import * as os from "node:os";
 import * as childProcess from "node:child_process";
-import { I18N_LANGUAGE_TYPE } from "@bfchain/util-i18n";
+import { Injectable, I18N_LANGUAGE_TYPE } from "@bfchain/util";
 
 /**windows locale identifiers */
 const LCID = {
@@ -208,6 +208,7 @@ const LCID = {
     "31748": "zh_CHT",
 } as const;
 
+@Injectable()
 export class OsLocaleHelper {
     private __getWin32Locale() {
         try {

@@ -5,7 +5,7 @@ import * as crypto from "node:crypto";
 import { BLOBS_SAVE_DIR, BLOBS_TEMPS_SAVE_DIR, BLOBS_CHUNKS_SAVE_DIR, getUUID } from "./constants";
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "../exception";
 
-const { ArgumentIllegalException } = TransactionMakerExceptionGenerator("TransactionMaker", __filename);
+const { ArgumentIllegalException } = TransactionMakerExceptionGenerator("TransactionMaker", "Sha256BlobWriter");
 
 const blobsRootPath = path.join(process.cwd(), BLOBS_SAVE_DIR);
 const blobsTempsRootPath = path.join(process.cwd(), BLOBS_TEMPS_SAVE_DIR);
