@@ -13,7 +13,7 @@ specialSymbol.warnSymbol = "〈‼〉";
 specialSymbol.errorSymbol = "〈×〉";
 
 export function formatPrefix(prefix?: string) {
-    return "[master]";
+    return `[${process.env["name"]}]` || "[master]";
 }
 const inspectFactory = (errorInspector: (err: Error) => string) => {
     const inspectFun = (err: unknown, level: number) => {
@@ -156,7 +156,7 @@ export class Logger {
         };
         this.__curenntFileLogLevel = loggerConfig.level;
         this.__curenntConsoleLevel = loggerConfig.level;
-        const filename = `master.log`;
+        const filename = `${process.env["name"] || "master"}.log`;
         return {
             filename: path.join(`${process.cwd()}/logs`, filename),
             ...logConfig,

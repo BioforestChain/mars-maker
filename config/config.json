@@ -1,9 +1,6 @@
 {
-    "//ips": "交易服务器的 ip，端口",
-    "ips": ["127.0.0.1:8888"],
-    "//requestTimeout": "请求超时时间，默认 10000",
-    "requestTimeout": 10000,
-
+    "//numberOfWorkers": "启动的进程数，默认值 3",
+    "numberOfWorkers": 4,
     "//port": "交易服务器监听的端口号",
     "port": 8888,
     "//loggerConfig": "日志配置",

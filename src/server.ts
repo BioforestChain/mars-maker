@@ -24,34 +24,34 @@ type QueryArgs =
     | TransactionMaker.Transaction.TransactionCommonParams;
 
 export class Server extends EventEmitter {
-    private __isRunning = false;
+    public moduleMap: ModuleStroge;
+    public config: Config;
+    public logger: Logger;
 
-    private __config: Config;
-    private __logger: Logger;
+    private __isRunning = false;
     private __chainCore: ChainCore;
-    private __moduleMap: ModuleStroge;
     private __routeMap = new Map<TransactionMaker.Server.PATH_NAME_TYPE, (xx: any) => Promise<any>>();
 
     constructor(configOptions?: TransactionMaker.Server.ConfigOptions, genesisBlock?: BFChainCore.GenesisBlockJSON) {
         super();
-        this.__moduleMap = new ModuleStroge();
-        this.__config = new Config(configOptions);
-        this.__logger = new Logger(this.__config);
-        this.__chainCore = new ChainCore(this.__logger, this.__config, genesisBlock);
-        this.__moduleMap.set(INJECT_MODULE.CONFIG, this.__config);
-        this.__moduleMap.set(INJECT_MODULE.CHAIN_CORE, this.__chainCore);
-        this.__moduleMap.set(INJECT_MODULE.CORE, this.__chainCore.bfchainCore);
+        this.moduleMap = new ModuleStroge();
+        this.config = new Config(configOptions);
+        this.logger = new Logger(this.config);
+        this.__chainCore = new ChainCore(this.logger, this.config, genesisBlock);
+        this.moduleMap.set(INJECT_MODULE.CONFIG, this.config);
+        this.moduleMap.set(INJECT_MODULE.CHAIN_CORE, this.__chainCore);
+        this.moduleMap.set(INJECT_MODULE.CORE, this.__chainCore.bfchainCore);
 
         this.__registerRoute();
 
         this.on(EVENT_CMD.RESTART, async () => {
-            this.__logger.info(`try to restart server`);
+            this.logger.info(`try to restart server`);
             await this.runServer();
         });
     }
 
     private __registerRoute() {
-        const moduleMap = this.__moduleMap;
+        const moduleMap = this.moduleMap;
         const utilService = Resolve(UtilService, moduleMap);
         const commonService = Resolve(CommonService, moduleMap);
         const transactionService = Resolve(TransactionService, moduleMap);
@@ -100,7 +100,7 @@ export class Server extends EventEmitter {
         };
         response.setHeader("content-type", "application/json");
         response.on("error", (e) => {
-            this.__logger.error(e);
+            this.logger.error(e);
         });
         try {
             const method = request.method;
@@ -154,7 +154,7 @@ export class Server extends EventEmitter {
                 requestType: method,
             });
         } catch (e: any) {
-            this.__logger.error(e);
+            this.logger.error(e);
             const errorInfo: TransactionMaker.Server.GenerateTransactionFailureReturn = {
                 success: false,
                 error: {
@@ -174,19 +174,19 @@ export class Server extends EventEmitter {
      */
     async runServer(port?: number) {
         if (this.__isRunning) {
-            this.__logger.info(`server already running`);
+            this.logger.info(`server already running`);
             return;
         }
         this.__isRunning = true;
         try {
             if (port === undefined) {
-                port = this.__config.config.port;
+                port = this.config.config.port;
             } else {
-                this.__config.setConfig({ port });
+                this.config.setConfig({ port });
             }
             const httpServer = http.createServer(this.__onRequest.bind(this));
             httpServer.on("error", (e) => {
-                this.__logger.error(e);
+                this.logger.error(e);
             });
             httpServer.on("close", () => {
                 this.__isRunning = false;
@@ -195,7 +195,7 @@ export class Server extends EventEmitter {
             const io = new SocketIoServer(httpServer);
             const socketNsp = io.of("/transactionMaker");
             socketNsp.on("connection", (socket) => {
-                this.__logger.debug(`socket ${socket.id} connect`);
+                this.logger.debug(`socket ${socket.id} connect`);
                 for (const [pathname, handler] of this.__routeMap.entries()) {
                     socket.on(pathname, async (argv: any, cb) => {
                         try {
@@ -211,7 +211,7 @@ export class Server extends EventEmitter {
                                 });
                             }
                         } catch (e: any) {
-                            this.__logger.error(e);
+                            this.logger.error(e);
                             const errorInfo: TransactionMaker.Server.GenerateTransactionFailureReturn = {
                                 success: false,
                                 error: {
@@ -228,10 +228,10 @@ export class Server extends EventEmitter {
             });
 
             httpServer.listen(port);
-            this.__logger.info(`httpServer running with port ${port}`);
+            this.logger.info(`httpServer running with port ${port}`);
             this.__routeCall(COMMON_API_PATH.TIME_CORRECTING, {}).catch((err) => {});
         } catch (e: any) {
-            this.__logger.error(e);
+            this.logger.error(e);
         }
     }
 }
