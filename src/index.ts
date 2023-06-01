@@ -24,11 +24,12 @@ export async function bootstrap() {
             workerName: string;
         };
     } = {};
+    const workerPath = path.resolve(__dirname, "./bootstrapWorker.js");
     for (let i = 0; i < config.config.numberOfWorkers; i++) {
         const workerName = `web_${i}`;
         cluster.setupPrimary({
-            exec: path.resolve(__dirname, "./bootstrap.js"),
-            execArgv: [`--title=${workerName}`],
+            silent: false,
+            exec: workerPath,
         });
         const worker = cluster.fork({
             name: workerName,

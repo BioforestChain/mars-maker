@@ -141,7 +141,7 @@ function changePackageJson() {
     const content = JSON.parse(fs.readFileSync(packageJsonPath).toString());
     content.main = `${resultDir}/index.js`;
     content.bin = `${resultDir}/index.js`;
-    content.pkg.scripts = [`${resultDir}/index.js`].sort();
+    content.pkg.scripts = [`${resultDir}/index.js`, `${resultDir}/bootstrapWorker.js`].sort();
     content.pkg.assets = ["!**/*.json", "**/*.jsb", `${resultDir}/bytorkerExecutor.js`, `${resultDir}/assets/genesisInfos/*.json`].sort();
 
     delete content.license;
@@ -257,8 +257,10 @@ function nccBuild(platform) {
     };
 
     esbuildBuild(toWindow(outputFileArgv("index.js")), toWindow(inputFileArgv("index.js")));
-
     log("successed build index.js");
+
+    esbuildBuild(toWindow(outputFileArgv("bootstrapWorker.js")), toWindow(inputFileArgv("build/src/bootstrapWorker.js")));
+    log("successed build bootstrapWorker.js");
 
     log(`finish to build source code ...`);
 }

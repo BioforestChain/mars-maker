@@ -10,7 +10,7 @@
         "blobHelper/index.ts",
         "blobHelper/sha256BlobReader.ts",
         "blobHelper/sha256BlobWriter.ts",
-        "bootstrap.ts",
+        "bootstrapWorker.ts",
         "chainCore.ts",
         "config.ts",
         "constants.ts",
