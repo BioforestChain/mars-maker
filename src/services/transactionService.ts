@@ -10,8 +10,8 @@ import {
     myDApp,
     myDAppPurchasing,
     myDelegate,
-    myDestoryAsset,
-    myDestoryEntity,
+    myDestroyAsset,
+    myDestroyEntity,
     myEmigrateAsset,
     myGiftAny,
     myGiftAsset,
@@ -57,7 +57,7 @@ import {
     TR_VOTE,
     TR_ISSUE_ASSET,
     TR_TRANSFER_ASSET,
-    TR_DESTORY_ASSET,
+    TR_DESTROY_ASSET,
     TR_GIFT_ASSET,
     TR_GRAB_ASSET,
     TR_TRUST_ASSET,
@@ -78,7 +78,7 @@ import {
     TR_ISSUE_ENTITY_FACTORY,
     TR_ISSUE_ENTITY,
     TR_ISSUE_ENTITY_MULTI_V1,
-    TR_DESTORY_ENTITY,
+    TR_DESTROY_ENTITY,
     TR_TRANSFER_ANY,
     TR_GIFT_ANY,
     TR_GRAB_ANY,
@@ -285,12 +285,12 @@ export class TransactionService {
         return tr.toJSON();
     }
 
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_DESTORY_ASSET)
-    async generateDestoryAsset(request: TransactionMaker.Transaction.DestoryAssetTransactionParams) {
-        this.__verifier.verify(request, TR_DESTORY_ASSET);
+    @Route(GENERATE_TRANSACTION_API_PATH.TR_DESTROY_ASSET)
+    async generateDestroyAsset(request: TransactionMaker.Transaction.DestroyAssetTransactionParams) {
+        this.__verifier.verify(request, TR_DESTROY_ASSET);
         const assetInfo = request.assetInfo;
         const { magic, chainName } = this.bfchainCore.config;
-        const tr = await myDestoryAsset.generateDestoryAsset(
+        const tr = await myDestroyAsset.generateDestroyAsset(
             this.__getTransactionBody(request),
             {
                 sourceChainMagic: magic,
@@ -735,12 +735,12 @@ export class TransactionService {
         return tr.toJSON();
     }
 
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_DESTORY_ENTITY)
-    async generateDestoryEntity(request: TransactionMaker.Transaction.DestoryEntityTransactionParams) {
-        this.__verifier.verify(request, TR_DESTORY_ENTITY);
+    @Route(GENERATE_TRANSACTION_API_PATH.TR_DESTROY_ENTITY)
+    async generateDestroyEntity(request: TransactionMaker.Transaction.DestroyEntityTransactionParams) {
+        this.__verifier.verify(request, TR_DESTROY_ENTITY);
         const { transactionSignature, entityId, entityFactoryApplicant, entityFactoryPossessor, entityFactory } = request.entityInfo;
         const { magic, chainName } = this.bfchainCore.config;
-        const tr = await myDestoryEntity.generateDestoryEntity(
+        const tr = await myDestroyEntity.generateDestroyEntity(
             this.__getTransactionBody(request),
             {
                 transactionSignature,

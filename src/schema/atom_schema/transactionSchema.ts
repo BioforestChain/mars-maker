@@ -107,7 +107,7 @@ export const TR_TRANSFER_ASSET: TransactionMaker.SchemaType[] = [
     },
 ];
 /**发送权益销毁事件 */
-export const TR_DESTORY_ASSET: TransactionMaker.SchemaType[] = [
+export const TR_DESTROY_ASSET: TransactionMaker.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
@@ -970,7 +970,7 @@ export const TR_ISSUE_ENTITY: TransactionMaker.SchemaType[] = [
 ];
 
 /**发送销毁资产权益事件 */
-export const TR_DESTORY_ENTITY: TransactionMaker.SchemaType[] = [
+export const TR_DESTROY_ENTITY: TransactionMaker.SchemaType[] = [
     TR_COMMON_PARAM,
     {
         type: BASE_ARGS_TYPE.OBJECT,
