@@ -360,17 +360,21 @@ export class TransactionService {
         this.__verifier.verify(request, TR_GIFT_ASSET);
         const assetInfo = request.assetInfo;
         const { magic, chainName, assetType } = this.bfchainCore.config;
+        const giftAsset: BFChainCore.GiftAssetJSON = {
+            cipherPublicKeys: [],
+            sourceChainMagic: assetInfo.sourceChainMagic || magic,
+            sourceChainName: assetInfo.sourceChainName || chainName,
+            assetType: assetInfo.assetType || assetType,
+            amount: assetInfo.amount,
+            totalGrabableTimes: request.totalGrabableTimes,
+            giftDistributionRule: request.giftDistributionRule as number,
+        };
+        if (request.numberOfBeginUnfrozenBlocks !== undefined) {
+            giftAsset.beginUnfrozenBlockHeight = request.applyBlockHeight + request.numberOfBeginUnfrozenBlocks;
+        }
         const tr = await myGiftAsset.generateGiftAsset(
             this.__getTransactionBody(request),
-            {
-                cipherPublicKeys: [],
-                sourceChainMagic: assetInfo.sourceChainMagic || magic,
-                sourceChainName: assetInfo.sourceChainName || chainName,
-                assetType: assetInfo.assetType || assetType,
-                amount: assetInfo.amount,
-                totalGrabableTimes: request.totalGrabableTimes,
-                giftDistributionRule: request.giftDistributionRule as number,
-            },
+            giftAsset,
             request.ciphertexts,
             this.__getAccountPowInfo(request),
             this.bfchainCore
@@ -874,6 +878,9 @@ export class TransactionService {
             totalGrabableTimes: request.totalGrabableTimes || 1,
             taxInformation: request.taxInformation,
         };
+        if (request.numberOfBeginUnfrozenBlocks !== undefined) {
+            giftAny.beginUnfrozenBlockHeight = request.applyBlockHeight + request.numberOfBeginUnfrozenBlocks;
+        }
         const tr = await myGiftAny.generateGiftAny(
             this.__getTransactionBody(request),
             giftAny,
