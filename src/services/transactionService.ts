@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@bfchain/util";
-import { BFChainCore, RANGE_TYPE, RECORD_OPERATION_TYPE } from "@bfchain/core";
+import { BFChainCore, RANGE_TYPE, RECORD_OPERATION_TYPE, CERTIFICATE_TYPE } from "@bfchain/core";
 import {
     myAcceptVote,
     myBeExchangeAny,
@@ -11,6 +11,7 @@ import {
     myDAppPurchasing,
     myDelegate,
     myDestroyAsset,
+    myDestroyCertificate,
     myDestroyEntity,
     myEmigrateAsset,
     myGiftAny,
@@ -19,6 +20,7 @@ import {
     myGrabAsset,
     myImmigrateAsset,
     myIssueAsset,
+    myIssueCertificate,
     myIssueEntityFactory,
     myIssueEntityFactoryV1,
     myIssueEntityMultiV1,
@@ -88,6 +90,8 @@ import {
     TR_BE_EXCHANGE_ANY_MULTI,
     TR_TO_EXCHANGE_ANY_MULTI_ALL,
     TR_BE_EXCHANGE_ANY_MULTI_ALL,
+    TR_DESTROY_CERTIFICATE,
+    TR_ISSUE_CERTIFICATE,
 } from "../schema";
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "../exception";
 import { INJECT_MODULE } from "../constants";
@@ -248,7 +252,7 @@ export class TransactionService {
     }
 
     @Route(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ASSET)
-    async generateAsset(request: TransactionMaker.Transaction.IssueAssetTransactionParams) {
+    async generateIssueAsset(request: TransactionMaker.Transaction.IssueAssetTransactionParams) {
         this.__verifier.verify(request, TR_ISSUE_ASSET);
         const assetInfo = request.assetInfo;
         const { magic, chainName } = this.bfchainCore.config;
@@ -1203,6 +1207,44 @@ export class TransactionService {
             this.__getTransactionBody(request),
             {
                 transactions: request.transactions,
+            },
+            this.__getAccountPowInfo(request),
+            this.bfchainCore
+        );
+        return tr.toJSON();
+    }
+
+    @Route(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_CERTIFICATE)
+    async generateCertificate(request: TransactionMaker.Transaction.IssueCertificateTransactionParams) {
+        this.__verifier.verify(request, TR_ISSUE_CERTIFICATE);
+        const { magic, chainName } = this.bfchainCore.config;
+        const { certificateInfo } = request;
+        const tr = await myIssueCertificate.generateCertificate(
+            this.__getTransactionBody(request),
+            {
+                sourceChainMagic: magic,
+                sourceChainName: chainName,
+                certificateId: certificateInfo.certificateId,
+                type: certificateInfo.type as unknown as CERTIFICATE_TYPE,
+            },
+            this.__getAccountPowInfo(request),
+            this.bfchainCore
+        );
+        return tr.toJSON();
+    }
+
+    @Route(GENERATE_TRANSACTION_API_PATH.TR_DESTROY_CERTIFICATE)
+    async generateDestroyCertificate(request: TransactionMaker.Transaction.DestroyCertificateTransactionParams) {
+        this.__verifier.verify(request, TR_DESTROY_CERTIFICATE);
+        const { magic, chainName } = this.bfchainCore.config;
+        const { certificateInfo } = request;
+        const tr = await myDestroyCertificate.generateDestroyCertificate(
+            this.__getTransactionBody(request),
+            {
+                sourceChainMagic: magic,
+                sourceChainName: chainName,
+                certificateId: certificateInfo.certificateId,
+                type: certificateInfo.type as unknown as CERTIFICATE_TYPE,
             },
             this.__getAccountPowInfo(request),
             this.bfchainCore

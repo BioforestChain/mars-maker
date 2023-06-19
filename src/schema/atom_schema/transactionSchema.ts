@@ -1845,3 +1845,49 @@ export const TR_BE_EXCHANGE_ANY_MULTI_ALL: TransactionMaker.SchemaType[] = [
         required: ["toExchangeInfos", "beExchangeInfos", "recipientId"],
     },
 ];
+
+/**发送发行凭证事件 */
+export const TR_ISSUE_CERTIFICATE: TransactionMaker.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            certificateInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    certificateId: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    type: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                },
+                required: ["certificateId", "type"],
+            },
+        },
+        required: ["certificateInfo"],
+    },
+];
+
+/**发送销毁凭证事件 */
+export const TR_DESTROY_CERTIFICATE: TransactionMaker.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            certificateInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    certificateId: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    type: {
+                        type: BASE_ARGS_TYPE.NUMBER,
+                    },
+                },
+                required: ["certificateId", "type"],
+            },
+        },
+        required: ["certificateInfo"],
+    },
+];
