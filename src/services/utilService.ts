@@ -1,5 +1,5 @@
 import { NewTransactionStatus, RESPONSE_STATUS, MacroCallTransactionFactory } from "@bfchain/core";
-import { Aborter, I18N_LANGUAGE_TYPE, Injectable, Inject, sleep } from "@bfchain/util";
+import { Aborter, I18N_LANGUAGE_TYPE, Injectable, Inject } from "@bfchain/util";
 import { UTIL_API_PATH } from "@bfmeta/transaction-maker-core";
 import { ChainCore } from "../chainCore";
 import { Config } from "../config";
@@ -117,7 +117,6 @@ export class UtilService {
             aborter.abort(`broadcastTransaction ${transaction.signature} timeout`);
         }, broadcastTimeout);
         const duplexHandler = await this.__chainCore.getDuplexHandler(url, aborter, broadcastTimeout, bfchainCore);
-        await sleep(1000);
         const resp = await aborter.wrapAsync(duplexHandler.broadcastTransaction(transaction));
         const result: TransactionMaker.Server.BroadcastTransactionResponse = {
             signature: transaction.signature,

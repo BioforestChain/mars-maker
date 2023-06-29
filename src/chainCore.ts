@@ -3,6 +3,7 @@ import type { Config } from "./config";
 import type { Aborter } from "@bfchain/util-aborter";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { sleep } from "@bfchain/util";
 import { BFChainCoreFactory, ConfigHelper, BFChainCore, BNID_TYPE, NETWORK_TYPE } from "@bfchain/core";
 import { BFChainSecret, NodeJsCryptoHelper, NodeJsKeypairHelper, Ed2curveHelper } from "@bfchain/coretools";
 import { PeerHelper, ChannelClient } from "@bfchain/duplexnodejshelper";
@@ -231,6 +232,7 @@ export class ChainCore {
             duplexHandler.onClose(() => {
                 this.deleteDuplexHandler(url);
             });
+            await sleep(1000);
         }
         return duplexHandler;
     }
