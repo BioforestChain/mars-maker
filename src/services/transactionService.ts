@@ -142,7 +142,6 @@ export class TransactionService {
         const txBody: BFChainCoreTools.MyTransactionArgv = {
             version: this.bfchainCore.config.version,
             secret: request.secret,
-            secondSecretInfo: request.secondSecretInfo,
             recipientId: request.recipientId,
             rangeType: request.rangeType,
             range: request.range,
@@ -159,6 +158,9 @@ export class TransactionService {
                 (request.numberOfEffectiveBlocks && request.numberOfEffectiveBlocks + request.applyBlockHeight) ||
                 request.applyBlockHeight + this.bfchainCore.config.maxApplyAndConfirmedBlockHeightDiff,
         };
+        if (request.secondSecretInfo) {
+            txBody.secondSecret = request.secondSecretInfo.secondSecret;
+        }
         return txBody;
     }
 
@@ -213,7 +215,7 @@ export class TransactionService {
             { publicKey: "" },
             this.__getAccountPowInfo(request),
             this.bfchainCore,
-            request.newSecondSecretInfo
+            request.newSecondSecretInfo.secondSecret
         );
         return tr.toJSON();
     }
@@ -392,7 +394,7 @@ export class TransactionService {
             {
                 blockSignature: request.blockSignature,
                 transactionSignature: request.transactionSignature,
-                amount: "0",
+                amount: request.amount,
                 giftAsset: {
                     cipherPublicKeys: giftAsset.cipherPublicKeys,
                     sourceChainMagic: giftAsset.sourceChainMagic || config.magic,
@@ -1169,6 +1171,7 @@ export class TransactionService {
             {
                 inputs: request.inputs,
                 macroId: request.macroId,
+                transaction: request.transaction,
             },
             this.__getAccountPowInfo(request),
             this.bfchainCore
@@ -1199,6 +1202,7 @@ export class TransactionService {
             this.__getTransactionBody(request),
             {
                 promiseId: request.promiseId,
+                transaction: request.transaction,
             },
             this.__getAccountPowInfo(request),
             this.bfchainCore

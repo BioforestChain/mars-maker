@@ -19,11 +19,15 @@ export class UtilService {
 
     @Route(UTIL_API_PATH.MACRO_BUILD)
     async macroBuildTransaction(request: TransactionMaker.Transaction.MacroBuildTransactionParams) {
-        const { template, defineInputs, inputs } = request;
+        const { template, defineInputs, inputs, parseInput } = request;
         const { bfchainCore } = this.__chainCore;
         const templateTransaction = await bfchainCore.transaction.recombineTransaction(template);
         const factory = bfchainCore.transaction.getTransactionFactoryFromType(bfchainCore.transactionHelper.MACRO_CALL) as MacroCallTransactionFactory;
-        const macroCallTransaction = await factory.generateTransaction(templateTransaction, defineInputs as any, inputs);
+        let parsedInput = inputs;
+        if (parseInput) {
+            parsedInput = factory.parseToMacroCallInputs(parsedInput);
+        }
+        const macroCallTransaction = await factory.generateTransaction(templateTransaction, defineInputs as any, parsedInput, parseInput);
         return macroCallTransaction.toJSON();
     }
 
@@ -36,7 +40,7 @@ export class UtilService {
             const keypair = await bfchainCore.accountBaseHelper.createSecretKeypair(secret);
             trs.signatureBuffer = await bfchainCore.asymmetricHelper.detachedSign(trs.getBytes(true, true), keypair.secretKey);
             if (secondSecretInfo) {
-                const secondKeypair = await bfchainCore.accountBaseHelper.createSecondSecretKeypairV2(secret, secondSecretInfo.secondSecret);
+                const secondKeypair = await bfchainCore.accountBaseHelper.createSecondSecretKeypair(secret, secondSecretInfo.secondSecret);
                 trs.signSignatureBuffer = await bfchainCore.asymmetricHelper.detachedSign(trs.getBytes(false, true), secondKeypair.secretKey);
             }
         }

@@ -1,4 +1,4 @@
-import { BFChainCore, Transaction, BLOB_IN_TRS_REMARK_PREFIX } from "@bfchain/core";
+import { BFChainCore, Transaction, BLOB_IN_TRS_REMARK_PREFIX, MacroCallTransactionFactory } from "@bfchain/core";
 import { Injectable, Inject, getHexFromArrayBuffer, parseHexToArrayBuffer, Aborter, sleep } from "@bfchain/util";
 import { COMMON_API_PATH } from "@bfmeta/transaction-maker-typings";
 import { ChainCore } from "../chainCore";
@@ -107,7 +107,7 @@ export class CommonService {
             publicKey,
         };
         if (secondSecret) {
-            const secondKeypair = await accountBaseHelper.createSecondSecretKeypairV2(secret, secondSecret);
+            const secondKeypair = await accountBaseHelper.createSecondSecretKeypair(secret, secondSecret);
             accountInfo.secondPublicKey = getHexFromArrayBuffer(secondKeypair.publicKey);
         }
         return accountInfo;
@@ -185,7 +185,7 @@ export class CommonService {
             },
         };
         if (secondSecret) {
-            const secondKeypair = await accountBaseHelper.createSecondSecretKeypairV2(secret, secondSecret);
+            const secondKeypair = await accountBaseHelper.createSecondSecretKeypair(secret, secondSecret);
             keypairs.secondKeypair = {
                 secretKey: getHexFromArrayBuffer(secondKeypair.secretKey),
                 publicKey: getHexFromArrayBuffer(secondKeypair.publicKey),
@@ -281,5 +281,28 @@ export class CommonService {
         const diff = peerTime - curTime;
         bfchainCore.time.time_offset_ms += diff;
         return bfchainCore.time.now();
+    }
+
+    @Route(COMMON_API_PATH.PARSE_TO_MACRO_CALL_INPUTS)
+    parsedMacroInput(argv: TransactionMaker.Common.ParseToMacroCallInputsParams) {
+        const factory = this.bfchainCore.transaction.getTransactionFactoryFromType(
+            this.bfchainCore.transactionHelper.MACRO_CALL
+        ) as MacroCallTransactionFactory;
+        return factory.parseToMacroCallInputs(argv.inputs);
+    }
+
+    @Route(COMMON_API_PATH.CALC_GRABBED_ASSET_NUMBER)
+    async calcGrabbedAssetNumber(argv: TransactionMaker.Common.CalcGrabbedAssetNumberParams) {
+        return (
+            await this.bfchainCore.transaction.transactionHelper.calcGrabbedAssetNumber(
+                argv.grabberId,
+                argv.blockSignature,
+                argv.giftId,
+                argv.giverId,
+                argv.amount,
+                argv.totalGrabableTimes,
+                argv.giftDistributionRule as any
+            )
+        ).toString();
     }
 }
