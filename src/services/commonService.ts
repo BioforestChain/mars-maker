@@ -270,7 +270,7 @@ export class CommonService {
     @Route(COMMON_API_PATH.MAYBE_PEER_INFO)
     async getMaybePeerInfo(argv: TransactionMaker.Common.MaybePeerInfoParams) {
         const peerInfo = await this.__getPeerInfo(argv.ip);
-        return peerInfo.maybeHeight;
+        return peerInfo;
     }
 
     @Route(COMMON_API_PATH.TIME_CORRECTING)
