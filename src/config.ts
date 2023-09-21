@@ -6,8 +6,8 @@ const GENESISBLOCK_PATH = `${process.env["GENESISBLOCK_PATH"] || "bfmtest-genesi
 @Injectable()
 export class Config {
     private __config: TransactionMaker.Server.Config = {
-        numberOfWorkers: Number(process.env["NUMBER_OF_WORKERS"]) || 3,
-        port: Number(process.env["PORT"]) || 8888,
+        numberOfWorkers: 3,
+        port: 8888,
         loggerConfig: {
             level: LOGGER_LEVEL.DEBUG,
             limit: 100,
@@ -30,6 +30,12 @@ export class Config {
             this.setConfig(JSON.parse(fs.readFileSync(configPath, "utf-8")));
         }
         configOptions && this.setConfig(configOptions);
+        if (process.env["NUMBER_OF_WORKERS"]) {
+            this.__config.numberOfWorkers = Number(process.env["NUMBER_OF_WORKERS"]);
+        }
+        if (process.env["PORT"]) {
+            this.__config.port = Number(process.env["PORT"]);
+        }
     }
 
     setGenesisInfoConfig(genesisInfoConfigOptions: TransactionMaker.Server.GenesisInfoConfigOptions) {
