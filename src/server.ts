@@ -229,7 +229,7 @@ export class Server extends EventEmitter {
 
             httpServer.listen(port);
             this.logger.info(`httpServer running with port ${port}`);
-            this.__routeCall(COMMON_API_PATH.TIME_CORRECTING, {}).catch((err) => {});
+            // this.__routeCall(COMMON_API_PATH.TIME_CORRECTING, {}).catch((err) => {});
         } catch (e: any) {
             this.logger.error(e);
         }
