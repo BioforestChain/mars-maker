@@ -24,6 +24,8 @@
         "exception/locales/errorCode_list_en.ts",
         "exception/locales/errorCode_list_zh.ts",
         "exception/locales/index.ts",
+        "helper/index.ts",
+        "helper/requestParameterParser.ts",
         "index.ts",
         "logger.ts",
         "osLocaleHelper.ts",
