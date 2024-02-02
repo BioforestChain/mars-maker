@@ -2,13 +2,13 @@
 
 ## Installation - 安装
 
- `$ npm install @bfmeta/transaction-maker-api`
+`$ npm install @bfmeta/transaction-maker-api`
 
 ### Requrements - 必要条件
 
-*   npm
+-   npm
 
-*   typescript
+-   typescript
 
 ## Docs & Community - 文档 & 社区
 
@@ -55,7 +55,7 @@
 
 ```ts
 import { Api } from "@bfmeta/transaction-maker-api";
-import { PARENT_ASSET_TYPE } from "@bfmeta/transaction-maker-core";
+import { PARENT_ASSET_TYPE } from "@bfmeta/transaction-maker-typings";
 
 // 也可以再运行目录下建 config/config.json 填入以下内容，new 的时候就不用传参
 
@@ -85,7 +85,7 @@ if (result.success) {
     console.log(result);
 }
 
-或者
+或者;
 
 // 生成交易并且广播
 

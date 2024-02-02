@@ -2,7 +2,7 @@ import { Injectable, Inject } from "@bfchain/util";
 import { PARENT_ASSET_TYPE, BFChainCore } from "@bfchain/core";
 import { INJECT_MODULE } from "../constants";
 import { Route } from "../decorators";
-import { MIGRATE_CERTIFICATE_API_PATH } from "@bfmeta/transaction-maker-core";
+import { MIGRATE_CERTIFICATE_API_PATH } from "@bfmeta/transaction-maker-typings";
 
 @Injectable()
 export class MigrateCertificateService {

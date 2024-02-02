@@ -1,9 +1,9 @@
 import "colors";
-import type { Config } from "./config";
+import { Config } from "./config";
 import * as path from "node:path";
 import * as util from "node:util";
 import { DateRollingFileStream, RollingFileStream } from "streamroller";
-import { LOGGER_LEVEL } from "@bfmeta/transaction-maker-core";
+import { LOGGER_LEVEL } from "@bfmeta/transaction-maker-typings";
 
 /*增加logger的flag的可读性*/
 const specialSymbol: { [flag: string]: string } = {};
@@ -167,3 +167,4 @@ export class Logger {
         return this.__loggerColor.get(level) || level.bgYellow.black;
     }
 }
+export const logger = new Logger(new Config());

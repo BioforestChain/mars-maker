@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { Injectable } from "@bfchain/util-dep-inject";
-import { SECRET_LANGUAGE_TYPE, LOGGER_LEVEL } from "@bfmeta/transaction-maker-core";
+import { SECRET_LANGUAGE_TYPE, LOGGER_LEVEL } from "@bfmeta/transaction-maker-typings";
 const GENESISBLOCK_PATH = `${process.env["GENESISBLOCK_PATH"] || "bfmtest-genesisBlock-testnet.json"}`;
 @Injectable()
 export class Config {

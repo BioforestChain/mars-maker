@@ -1,6 +1,6 @@
 import { BFChainCore, Transaction, BLOB_IN_TRS_REMARK_PREFIX } from "@bfchain/core";
 import { Injectable, Inject, getHexFromArrayBuffer, parseHexToArrayBuffer, Aborter, sleep } from "@bfchain/util";
-import { COMMON_API_PATH } from "@bfmeta/transaction-maker-core";
+import { COMMON_API_PATH } from "@bfmeta/transaction-maker-typings";
 import { ChainCore } from "../chainCore";
 import { Config } from "../config";
 import { INJECT_MODULE } from "../constants";

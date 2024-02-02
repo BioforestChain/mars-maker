@@ -79,10 +79,10 @@ declare namespace TransactionMaker {
 
         type RouterArgs = TransactionRouterArgs | MigrateCertificateRouterArgs | CommonRouterArgs;
 
-        type UTIL_API_PATH = import("@bfmeta/transaction-maker-core").UTIL_API_PATH;
-        type COMMON_API_PATH = import("@bfmeta/transaction-maker-core").COMMON_API_PATH;
-        type GENERATE_TRANSACTION_API_PATH = import("@bfmeta/transaction-maker-core").GENERATE_TRANSACTION_API_PATH;
-        type MIGRATE_CERTIFICATE_API_PATH = import("@bfmeta/transaction-maker-core").MIGRATE_CERTIFICATE_API_PATH;
+        type UTIL_API_PATH = import("@bfmeta/transaction-maker-typings").UTIL_API_PATH;
+        type COMMON_API_PATH = import("@bfmeta/transaction-maker-typings").COMMON_API_PATH;
+        type GENERATE_TRANSACTION_API_PATH = import("@bfmeta/transaction-maker-typings").GENERATE_TRANSACTION_API_PATH;
+        type MIGRATE_CERTIFICATE_API_PATH = import("@bfmeta/transaction-maker-typings").MIGRATE_CERTIFICATE_API_PATH;
 
         type PATH_NAME_TYPE = UTIL_API_PATH | COMMON_API_PATH | GENERATE_TRANSACTION_API_PATH | MIGRATE_CERTIFICATE_API_PATH;
     }

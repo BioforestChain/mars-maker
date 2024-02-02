@@ -6,6 +6,7 @@
     },
     "files": [
         "@types.ts",
+        "blobHelper/blobHelper.ts",
         "blobHelper/constants.ts",
         "blobHelper/index.ts",
         "blobHelper/sha256BlobReader.ts",

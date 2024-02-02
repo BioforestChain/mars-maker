@@ -96,7 +96,7 @@ import {
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "../exception";
 import { INJECT_MODULE } from "../constants";
 import { Route } from "../decorators";
-import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-core";
+import { GENERATE_TRANSACTION_API_PATH } from "@bfmeta/transaction-maker-typings";
 
 const { ArgumentIllegalException } = TransactionMakerExceptionGenerator("Transaction-Maker-Server", "TransactionService");
 

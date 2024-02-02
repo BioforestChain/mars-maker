@@ -1,6 +1,7 @@
 import { NewTransactionStatus, RESPONSE_STATUS, MacroCallTransactionFactory } from "@bfchain/core";
 import { Aborter, I18N_LANGUAGE_TYPE, Injectable, Inject } from "@bfchain/util";
-import { UTIL_API_PATH } from "@bfmeta/transaction-maker-core";
+import { UTIL_API_PATH } from "@bfmeta/transaction-maker-typings";
+import { BlobHelper } from "../blobHelper";
 import { ChainCore } from "../chainCore";
 import { Config } from "../config";
 import { INJECT_MODULE } from "../constants";
@@ -14,6 +15,7 @@ export class UtilService {
     private __config!: Config;
     @Inject(INJECT_MODULE.CHAIN_CORE)
     private __chainCore!: ChainCore;
+    constructor(private __blobHelper: BlobHelper) {}
 
     @Route(UTIL_API_PATH.MACRO_BUILD)
     async macroBuildTransaction(request: TransactionMaker.Transaction.MacroBuildTransactionParams) {
@@ -127,5 +129,15 @@ export class UtilService {
         resp.errorCode !== undefined && (result.errorCode = resp.errorCode);
         resp.refuseReason !== undefined && (result.refuseReason = resp.refuseReason as any);
         return result;
+    }
+
+    /**
+     * 更改blob存储区域
+     * @param param0
+     * @returns
+     */
+    @Route(UTIL_API_PATH.CHANGE_BLOBS_PATH)
+    async changeBlobsPath({ blobHashArray, height }: TransactionMaker.Transaction.ChangeBlobsPathParams) {
+        return await this.__blobHelper.changeBlobsPath(blobHashArray, height);
     }
 }
