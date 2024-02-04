@@ -36,6 +36,9 @@ export class Config {
         if (process.env["PORT"]) {
             this.__config.port = Number(process.env["PORT"]);
         }
+        if (process.env["CHAIN_NODE_IP"]) {
+            this.__config.chainNodeIps = [process.env["CHAIN_NODE_IP"]];
+        }
     }
 
     setGenesisInfoConfig(genesisInfoConfigOptions: TransactionMaker.Server.GenesisInfoConfigOptions) {
