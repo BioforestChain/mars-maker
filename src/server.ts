@@ -159,8 +159,8 @@ export class Server extends EventEmitter {
             const errorInfo: TransactionMaker.Server.GenerateTransactionFailureReturn = {
                 success: false,
                 error: {
-                    code: e.CODE === undefined ? 7001 : e.CODE,
-                    message: e.message,
+                    code: e.CODE ? e.CODE : e.errorCode ? e.errorCode : 7001,
+                    message: e.errorMessage ? e.errorMessage : e.message,
                 },
             };
             response.end(JSON.stringify(errorInfo));
@@ -216,8 +216,8 @@ export class Server extends EventEmitter {
                             const errorInfo: TransactionMaker.Server.GenerateTransactionFailureReturn = {
                                 success: false,
                                 error: {
-                                    code: e.CODE === undefined ? 7001 : e.CODE,
-                                    message: e.message,
+                                    code: e.CODE ? e.CODE : e.errorCode ? e.errorCode : 7001,
+                                    message: e.errorMessage ? e.errorMessage : e.message,
                                 },
                             };
                             if (typeof cb == "function") {

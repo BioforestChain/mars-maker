@@ -126,8 +126,12 @@ export class UtilService {
             newTrsStatus: this.__getNewTrsStatus(resp.newTrsStatus),
             minFee: resp.minFee,
         };
-        resp.errorCode !== undefined && (result.errorCode = resp.errorCode);
-        resp.refuseReason !== undefined && (result.refuseReason = resp.refuseReason as any);
+        if (resp.errorCode) {
+            resp.errorCode !== undefined && (result.errorCode = resp.errorCode);
+            resp.errorMessage !== undefined && (result.errorMessage = resp.errorMessage as any);
+            resp.refuseReason !== undefined && (result.refuseReason = resp.refuseReason as any);
+            throw result;
+        }
         return result;
     }
 
