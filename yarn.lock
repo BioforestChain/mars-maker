@@ -1188,10 +1188,10 @@
   dependencies:
     tslib "^2.4.1"
 
-"@bfmeta/transaction-maker-typings@^1.1.5":
-  version "1.1.5"
-  resolved "http://192.168.250.245:4873/@bfmeta/transaction-maker-typings/-/transaction-maker-typings-1.1.5.tgz#b08e3e625cefe2b7b38d72ad94c096a69caa2561"
-  integrity sha512-M9t18RRmQ0N9p3FUAyWBLbUQwrc0vQjcxH//75Lr2AzwfjiMi2OS7kIvB5t9uhUqKw/csSctUbwiTrSbBdzJiw==
+"@bfmeta/transaction-maker-typings@^1.1.6":
+  version "1.1.6"
+  resolved "http://192.168.250.245:4873/@bfmeta/transaction-maker-typings/-/transaction-maker-typings-1.1.6.tgz#d802e534084735183c302c8a4eb1d246d6a6f996"
+  integrity sha512-0YleSK1tgyoJLazQlPkV/PvRVIJ5SDHjoG7PZJc7/VaI9HRRM8Qu+hqeYeaLhtYwhAk1XKG6cEiXvPnynT9V0Q==
 
 "@bnqkl/calc@^0.1.1":
   version "0.1.1"
