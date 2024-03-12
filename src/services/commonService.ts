@@ -207,8 +207,16 @@ export class CommonService {
             generatorSecret,
             generatorSecondSecret,
             genesisBlockInfo: {
-                ...genesisBlockInfo,
                 bnid: genesisBlockInfo.bnid as any,
+                genesisBlockSignature: genesisBlockInfo.genesisBlockSignature,
+                chainName: genesisBlockInfo.chainName,
+                assetType: genesisBlockInfo.assetType,
+                magic: genesisBlockInfo.magic,
+                beginEpochTime: genesisBlockInfo.beginEpochTime,
+                genesisLocationName: genesisBlockInfo.genesisLocationName,
+                blockPerRound: genesisBlockInfo.blockPerRound,
+                forgeInterval: genesisBlockInfo.forgeInterval,
+                genesisGenerators: genesisBlockInfo.genesisDelegates,
             },
         });
         return certificate as unknown as TransactionMaker.RegisterChainCertificateJSON;

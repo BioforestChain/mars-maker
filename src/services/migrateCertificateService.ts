@@ -59,7 +59,7 @@ export class MigrateCertificateService {
                 magic,
                 generatorPublicKey,
                 genesisBlockSignature: signature,
-                genesisDelegates: bfchainCore.transactionHelper.genesisDelegates(config),
+                genesisGenerators: bfchainCore.transactionHelper.genesisGenerators(config),
             },
         });
         migrateCertificate = await bfchainCore.migrateCertificateHelper.fromAuthSignMigrateCertificate(request);
@@ -80,7 +80,7 @@ export class MigrateCertificateService {
                 magic,
                 generatorPublicKey,
                 genesisBlockSignature: signature,
-                genesisDelegates: bfchainCore.transactionHelper.genesisDelegates(config),
+                genesisGenerators: bfchainCore.transactionHelper.genesisGenerators(config),
             },
             forceCheckFromAuthSignature: true,
         });

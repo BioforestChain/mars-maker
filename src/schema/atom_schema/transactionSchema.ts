@@ -1,19 +1,6 @@
 import { BASE_ARGS_TYPE } from "./constants";
 import { TR_COMMON_PARAM } from "./commonSchema";
 
-/**发送设置用户名事件 */
-export const TR_USERNAME: TransactionMaker.SchemaType[] = [
-    TR_COMMON_PARAM,
-    {
-        type: BASE_ARGS_TYPE.OBJECT,
-        properties: {
-            alias: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-        },
-        required: ["alias"],
-    },
-];
 /**发送设置安全密码事件 */
 export const TR_SIGNATURE: TransactionMaker.SchemaType[] = [
     TR_COMMON_PARAM,
@@ -34,25 +21,6 @@ export const TR_SIGNATURE: TransactionMaker.SchemaType[] = [
             },
         },
         required: ["newSecondSecretInfo"],
-    },
-];
-/**发送注册受托人事件 */
-export const TR_DELEGATE: TransactionMaker.SchemaType = TR_COMMON_PARAM;
-/**发送接收投票事件 */
-export const TR_ACCEPT_VOTE: TransactionMaker.SchemaType = TR_COMMON_PARAM;
-/**发送拒绝投票事件  */
-export const TR_REJECT_VOTE: TransactionMaker.SchemaType = TR_COMMON_PARAM;
-/**发送投票事件 */
-export const TR_VOTE: TransactionMaker.SchemaType[] = [
-    TR_COMMON_PARAM,
-    {
-        type: BASE_ARGS_TYPE.OBJECT,
-        properties: {
-            equity: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-        },
-        required: ["equity", "recipientId"],
     },
 ];
 
@@ -669,116 +637,7 @@ export const TR_REGISTER_CHAIN: TransactionMaker.SchemaType[] = [
         required: ["registerCertificate"],
     },
 ];
-/**发送资产交换事件 */
-export const TR_TO_EXCHANGE_SPECIAL_ASSET: TransactionMaker.SchemaType[] = [
-    TR_COMMON_PARAM,
-    {
-        type: BASE_ARGS_TYPE.OBJECT,
-        properties: {
-            toExchangeInfo: {
-                type: BASE_ARGS_TYPE.OBJECT,
-                properties: {
-                    toExchangeSource: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    toExchangeChainName: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    toExchangeAsset: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                },
-                required: ["toExchangeAsset"],
-            },
-            beExchangeInfo: {
-                type: BASE_ARGS_TYPE.OBJECT,
-                properties: {
-                    beExchangeSource: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    beExchangeChainName: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    beExchangeAsset: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                },
-                required: ["beExchangeAsset"],
-            },
-            exchangeNumber: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            exchangeAssetType: {
-                type: BASE_ARGS_TYPE.NATURALNUMBER,
-            },
-            exchangeDirection: {
-                type: BASE_ARGS_TYPE.NATURALNUMBER,
-            },
-            ciphertexts: {
-                type: BASE_ARGS_TYPE.ARRAY,
-                items: {
-                    type: BASE_ARGS_TYPE.STRING,
-                },
-            },
-        },
-        required: ["toExchangeInfo", "beExchangeInfo", "exchangeNumber", "exchangeAssetType", "exchangeDirection"],
-    },
-];
-/**发送接受资产交换事件 */
-export const TR_BE_EXCHANGE_SPECIAL_ASSET: TransactionMaker.SchemaType[] = [
-    TR_COMMON_PARAM,
-    {
-        type: BASE_ARGS_TYPE.OBJECT,
-        properties: {
-            transactionSignature: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-            exchangeSpecialAsset: {
-                type: BASE_ARGS_TYPE.OBJECT,
-                properties: {
-                    cipherPublicKeys: {
-                        type: BASE_ARGS_TYPE.ARRAY,
-                        items: {
-                            type: BASE_ARGS_TYPE.STRING,
-                        },
-                    },
-                    toExchangeSource: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    beExchangeSource: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    toExchangeChainName: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    beExchangeChainName: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    toExchangeAsset: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    beExchangeAsset: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    exchangeNumber: {
-                        type: BASE_ARGS_TYPE.STRING,
-                    },
-                    exchangeAssetType: {
-                        type: BASE_ARGS_TYPE.NATURALNUMBER,
-                    },
-                    exchangeDirection: {
-                        type: BASE_ARGS_TYPE.NATURALNUMBER,
-                    },
-                },
-                required: ["cipherPublicKeys", "toExchangeAsset", "beExchangeAsset", "exchangeNumber", "exchangeAssetType", "exchangeDirection"],
-            },
-            ciphertext: {
-                type: BASE_ARGS_TYPE.STRING,
-            },
-        },
-        required: ["transactionSignature", "exchangeSpecialAsset", "recipientId"],
-    },
-];
+
 /**发送权益迁出交易 */
 export const TR_EMIGRATE_ASSET: TransactionMaker.SchemaType[] = [
     TR_COMMON_PARAM,
@@ -1889,5 +1748,104 @@ export const TR_DESTROY_CERTIFICATE: TransactionMaker.SchemaType[] = [
             },
         },
         required: ["certificateInfo"],
+    },
+];
+
+/**发送增发权益事件 */
+export const TR_INCREASE_ASSET: TransactionMaker.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    increasedAssetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["increasedAssetPrealnum", "assetType"],
+            },
+            frozenMainAssetPrealnum: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+        },
+        required: ["assetInfo", "frozenMainAssetPrealnum"],
+    },
+];
+
+/**发送质押权益事件 */
+export const TR_STAKE_ASSET: TransactionMaker.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    assetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["assetPrealnum"],
+            },
+            stakeId: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+            numberOfUnstakeHeight: {
+                type: BASE_ARGS_TYPE.NUMBER,
+            },
+        },
+        required: ["assetInfo", "stakeId", "numberOfUnstakeHeight"],
+    },
+];
+
+/**发送解除质押权益事件 */
+export const TR_UNSTAKE_ASSET: TransactionMaker.SchemaType[] = [
+    TR_COMMON_PARAM,
+    {
+        type: BASE_ARGS_TYPE.OBJECT,
+        properties: {
+            assetInfo: {
+                type: BASE_ARGS_TYPE.OBJECT,
+                properties: {
+                    assetPrealnum: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    assetType: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainName: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                    sourceChainMagic: {
+                        type: BASE_ARGS_TYPE.STRING,
+                    },
+                },
+                required: ["assetPrealnum"],
+            },
+            stakeId: {
+                type: BASE_ARGS_TYPE.STRING,
+            },
+        },
+        required: ["assetInfo", "stakeId"],
     },
 ];

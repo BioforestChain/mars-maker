@@ -23,9 +23,9 @@
     "//genesisInfoConfig": "创世块信息",
     "genesisInfoConfig": {
         "//genesisBlockPath": "创世块路径",
-        "genesisBlockPath": "genesisInfos/bfmtest-genesisBlock-testnet.json",
+        "genesisBlockPath": "genesisInfos/btgm-genesisBlock-testnet.json",
         "//genesisBlockLicensePath": "创世块授权文件路径",
-        "genesisBlockLicensePath": "genesisInfos/bfmtest-license-testnet.json"
+        "genesisBlockLicensePath": "genesisInfos/btgm-license-testnet.json"
     },
     "//lang": "密钥类型 cn 汉语、jp 日语、sp 西班牙语、it 意大利语、fr 法语、en 英语",
     "lang": "en"

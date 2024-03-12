@@ -1,15 +1,12 @@
 import { Injectable, Inject } from "@bfchain/util";
 import { BFChainCore, RANGE_TYPE, RECORD_OPERATION_TYPE, CERTIFICATE_TYPE } from "@bfchain/core";
 import {
-    myAcceptVote,
     myBeExchangeAny,
     myBeExchangeAnyMulti,
     myBeExchangeAnyMultiAll,
     myBeExchangeAsset,
-    myBeExchangeSpecialAsset,
     myDApp,
     myDAppPurchasing,
-    myDelegate,
     myDestroyAsset,
     myDestroyCertificate,
     myDestroyEntity,
@@ -19,12 +16,13 @@ import {
     myGrabAny,
     myGrabAsset,
     myImmigrateAsset,
+    myIncreaseAsset,
     myIssueAsset,
     myIssueCertificate,
+    myIssueEntity,
     myIssueEntityFactory,
     myIssueEntityFactoryV1,
-    myIssueEntityMultiV1,
-    myIssueEntityV1,
+    myIssueEntityMulti,
     myLocationName,
     myMacro,
     myMacroCall,
@@ -33,30 +31,23 @@ import {
     myPromise,
     myPromiseResolve,
     myRegisterChain,
-    myRejectVote,
     mySetLnsManager,
     mySetLnsRecordValue,
     mySignature,
     mySignForAsset,
+    myStakeAsset,
     myToExchangeAny,
     myToExchangeAnyMulti,
     myToExchangeAnyMultiAll,
     myToExchangeAsset,
-    myToExchangeSpecialAsset,
     myTransferAny,
     myTransferAsset,
     myTrustAsset,
-    myUsername,
-    myVote,
+    myUnstakeAsset,
 } from "@bfchain/coretools";
 import {
     Verifier,
     TR_SIGNATURE,
-    TR_USERNAME,
-    TR_DELEGATE,
-    TR_ACCEPT_VOTE,
-    TR_REJECT_VOTE,
-    TR_VOTE,
     TR_ISSUE_ASSET,
     TR_TRANSFER_ASSET,
     TR_DESTROY_ASSET,
@@ -72,8 +63,6 @@ import {
     TR_LOCATION_NAME,
     TR_SET_LNS_MANAGER,
     TR_SET_LNS_RECORD_VALUE,
-    TR_TO_EXCHANGE_SPECIAL_ASSET,
-    TR_BE_EXCHANGE_SPECIAL_ASSET,
     TR_REGISTER_CHAIN,
     TR_EMIGRATE_ASSET,
     TR_IMMIGRATE_ASSET,
@@ -92,6 +81,9 @@ import {
     TR_BE_EXCHANGE_ANY_MULTI_ALL,
     TR_DESTROY_CERTIFICATE,
     TR_ISSUE_CERTIFICATE,
+    TR_INCREASE_ASSET,
+    TR_STAKE_ASSET,
+    TR_UNSTAKE_ASSET,
 } from "../schema";
 import { TransactionMakerExceptionGenerator, ERROR_LIST } from "../exception";
 import { INJECT_MODULE } from "../constants";
@@ -164,17 +156,6 @@ export class TransactionService {
         return txBody;
     }
 
-    private __getAccountPowInfo(request: TransactionMaker.Transaction.TransactionCommonParams) {
-        const { accountLastRoundInfo, applyBlockHeight } = request;
-        const accountPowInfo: BFChainCoreTools.AccountPowInfoModel = { round: 1, txCount: 0, equity: "0" };
-        if (accountLastRoundInfo) {
-            accountPowInfo.round = this.bfchainCore.blockHelper.calcRoundByHeight(applyBlockHeight) - 1;
-            accountPowInfo.txCount = accountLastRoundInfo.txCount;
-            accountPowInfo.equity = accountLastRoundInfo.equity;
-        }
-        return accountPowInfo;
-    }
-
     /**针对节点存储设置交易对象的remark字段 */
     private __setTransactionRemark(remark: { [key: string]: string }, keys: string[], fileInfos: { name: string; size: number }[]): { [key: string]: string } {
         if (keys.length !== fileInfos.length) {
@@ -195,60 +176,14 @@ export class TransactionService {
         return remark;
     }
 
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_USERNAME)
-    async generateUsername(request: TransactionMaker.Transaction.UsernameTransactionParams) {
-        this.__verifier.verify(request, TR_USERNAME);
-        const tr = await myUsername.generateUsername(
-            this.__getTransactionBody(request),
-            { alias: request.alias },
-            this.__getAccountPowInfo(request),
-            this.bfchainCore
-        );
-        return tr.toJSON();
-    }
-
     @Route(GENERATE_TRANSACTION_API_PATH.TR_SIGNATURE)
     async generateSignature(request: TransactionMaker.Transaction.SignatureTransactionParams) {
         this.__verifier.verify(request, TR_SIGNATURE);
         const tr = await mySignature.generateSignature(
             this.__getTransactionBody(request),
             { publicKey: "" },
-            this.__getAccountPowInfo(request),
             this.bfchainCore,
             request.newSecondSecretInfo.secondSecret
-        );
-        return tr.toJSON();
-    }
-
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_DELEGATE)
-    async generateDelegate(request: TransactionMaker.Transaction.DelegateTransactionParams) {
-        this.__verifier.verify(request, TR_DELEGATE);
-        const tr = await myDelegate.generateDelegate(this.__getTransactionBody(request), this.__getAccountPowInfo(request), this.bfchainCore);
-        return tr.toJSON();
-    }
-
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_ACCEPT_VOTE)
-    async generateAcceptVote(request: TransactionMaker.Transaction.AcceptVoteTransactionParams) {
-        this.__verifier.verify(request, TR_ACCEPT_VOTE);
-        const tr = await myAcceptVote.generateAcceptVote(this.__getTransactionBody(request), this.__getAccountPowInfo(request), this.bfchainCore);
-        return tr.toJSON();
-    }
-
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_REJECT_VOTE)
-    async generateRejectVote(request: TransactionMaker.Transaction.RejectVoteTransactionParams) {
-        this.__verifier.verify(request, TR_REJECT_VOTE);
-        const tr = await myRejectVote.generateRejectVote(this.__getTransactionBody(request), this.__getAccountPowInfo(request), this.bfchainCore);
-        return tr.toJSON();
-    }
-
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_VOTE)
-    async generateVote(request: TransactionMaker.Transaction.VoteTransactionParams) {
-        this.__verifier.verify(request, TR_VOTE);
-        const tr = await myVote.generateVote(
-            this.__getTransactionBody(request),
-            { equity: request.equity },
-            this.__getAccountPowInfo(request),
-            this.bfchainCore
         );
         return tr.toJSON();
     }
@@ -266,7 +201,6 @@ export class TransactionService {
                 assetType: assetInfo.assetType,
                 expectedIssuedAssets: assetInfo.expectedIssuedAssets,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -285,7 +219,6 @@ export class TransactionService {
                 assetType: assetInfo.assetType || assetType,
                 amount: assetInfo.amount,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -304,7 +237,6 @@ export class TransactionService {
                 assetType: assetInfo.assetType,
                 amount: assetInfo.amount,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -325,7 +257,6 @@ export class TransactionService {
                 amount: assetInfo.amount,
                 numberOfSignFor: request.numberOfSignFor,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -351,7 +282,6 @@ export class TransactionService {
                     numberOfSignFor: trustAsset.numberOfSignFor,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -374,13 +304,7 @@ export class TransactionService {
         if (request.numberOfBeginUnfrozenBlocks !== undefined) {
             giftAsset.beginUnfrozenBlockHeight = request.applyBlockHeight + request.numberOfBeginUnfrozenBlocks;
         }
-        const tr = await myGiftAsset.generateGiftAsset(
-            this.__getTransactionBody(request),
-            giftAsset,
-            request.ciphertexts,
-            this.__getAccountPowInfo(request),
-            this.bfchainCore
-        );
+        const tr = await myGiftAsset.generateGiftAsset(this.__getTransactionBody(request), giftAsset, request.ciphertexts, this.bfchainCore);
         return tr.toJSON();
     }
 
@@ -406,7 +330,6 @@ export class TransactionService {
                     giftDistributionRule: giftAsset.giftDistributionRule,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore,
             request.ciphertext
         );
@@ -432,7 +355,6 @@ export class TransactionService {
                 exchangeRate,
             },
             ciphertexts,
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -461,62 +383,6 @@ export class TransactionService {
                     exchangeRate: exchangeAsset.exchangeRate,
                 },
             },
-            this.__getAccountPowInfo(request),
-            this.bfchainCore,
-            request.ciphertext
-        );
-        return tr.toJSON();
-    }
-
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_TO_EXCHANGE_SPECIAL_ASSET)
-    async generateToExchangeSpecialAsset(request: TransactionMaker.Transaction.ToExchangeSpecialAssetTransactionParams) {
-        this.__verifier.verify(request, TR_TO_EXCHANGE_SPECIAL_ASSET);
-        const { magic, chainName } = this.bfchainCore.config;
-        const { toExchangeInfo, beExchangeInfo } = request;
-        const tr = await myToExchangeSpecialAsset.generateToExchangeSpecialAsset(
-            this.__getTransactionBody(request),
-            {
-                cipherPublicKeys: [],
-                toExchangeSource: toExchangeInfo.toExchangeSource || magic,
-                beExchangeSource: beExchangeInfo.beExchangeSource || magic,
-                toExchangeChainName: toExchangeInfo.toExchangeChainName || chainName,
-                beExchangeChainName: beExchangeInfo.beExchangeChainName || chainName,
-                toExchangeAsset: toExchangeInfo.toExchangeAsset,
-                beExchangeAsset: beExchangeInfo.beExchangeAsset,
-                exchangeNumber: request.exchangeNumber,
-                exchangeAssetType: request.exchangeAssetType,
-                exchangeDirection: request.exchangeDirection,
-            },
-            request.ciphertexts,
-            this.__getAccountPowInfo(request),
-            this.bfchainCore
-        );
-        return tr.toJSON();
-    }
-
-    @Route(GENERATE_TRANSACTION_API_PATH.TR_BE_EXCHANGE_SPECIAL_ASSET)
-    async generateBeExchangeSpecialAsset(request: TransactionMaker.Transaction.BeExchangeSpecialAssetTransactionParams) {
-        this.__verifier.verify(request, TR_BE_EXCHANGE_SPECIAL_ASSET);
-        const config = this.bfchainCore.config;
-        const exchangeSpecialAsset = request.exchangeSpecialAsset;
-        const tr = await myBeExchangeSpecialAsset.generateBeExchangeSpecialAsset(
-            this.__getTransactionBody(request),
-            {
-                transactionSignature: request.transactionSignature,
-                exchangeSpecialAsset: {
-                    cipherPublicKeys: exchangeSpecialAsset.cipherPublicKeys,
-                    toExchangeSource: exchangeSpecialAsset.toExchangeSource || config.magic,
-                    beExchangeSource: exchangeSpecialAsset.beExchangeSource || config.magic,
-                    toExchangeChainName: exchangeSpecialAsset.toExchangeChainName || config.chainName,
-                    beExchangeChainName: exchangeSpecialAsset.beExchangeChainName || config.chainName,
-                    toExchangeAsset: exchangeSpecialAsset.toExchangeAsset,
-                    beExchangeAsset: exchangeSpecialAsset.beExchangeAsset,
-                    exchangeNumber: exchangeSpecialAsset.exchangeNumber,
-                    exchangeAssetType: exchangeSpecialAsset.exchangeAssetType,
-                    exchangeDirection: exchangeSpecialAsset.exchangeDirection,
-                },
-            },
-            this.__getAccountPowInfo(request),
             this.bfchainCore,
             request.ciphertext
         );
@@ -537,7 +403,6 @@ export class TransactionService {
                 type: dappInfo.type as number,
                 purchaseAsset: dappInfo.purchanseAsset,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore,
             dappInfo.newDappid
         );
@@ -559,7 +424,6 @@ export class TransactionService {
                     purchaseAsset: dappInfo.purchanseAsset,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -582,7 +446,6 @@ export class TransactionService {
                     purchaseAsset: dappInfo.purchanseAsset,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -601,7 +464,6 @@ export class TransactionService {
                 name: name.endsWith(config.chainName) ? name : `${name}.${config.chainName}`,
                 operationType: request.operationType as number,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -617,7 +479,6 @@ export class TransactionService {
                 sourceChainMagic: this.bfchainCore.config.magic,
                 name: request.name,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -641,7 +502,6 @@ export class TransactionService {
                         ? (request.deleteRecord as any)
                         : undefined,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -659,7 +519,6 @@ export class TransactionService {
                 sourceChainName: chainName,
                 ...factoryInfo,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -679,7 +538,6 @@ export class TransactionService {
                 sourceChainName: chainName,
                 ...factoryInfo,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -690,7 +548,7 @@ export class TransactionService {
         this.__verifier.verify(request, TR_ISSUE_ENTITY);
         const { entityId, entityFactoryPossessor, entityFactory, taxAssetPrealnum } = request.entityInfo;
         const { magic, chainName } = this.bfchainCore.config;
-        const tr = await myIssueEntityV1.generateEntity(
+        const tr = await myIssueEntity.generateEntity(
             this.__getTransactionBody(request),
             {
                 sourceChainMagic: magic,
@@ -707,7 +565,6 @@ export class TransactionService {
                     purchaseAssetPrealnum: entityFactory.purchaseAssetPrealnum,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -718,7 +575,7 @@ export class TransactionService {
         this.__verifier.verify(request, TR_ISSUE_ENTITY_MULTI_V1);
         const { entityStructList, entityFactoryPossessor, entityFactory } = request.entityInfo;
         const { magic, chainName } = this.bfchainCore.config;
-        const tr = await myIssueEntityMultiV1.generateEntityMulti(
+        const tr = await myIssueEntityMulti.generateEntityMulti(
             this.__getTransactionBody(request),
             {
                 sourceChainMagic: magic,
@@ -739,7 +596,6 @@ export class TransactionService {
                     purchaseAssetPrealnum: entityFactory.purchaseAssetPrealnum,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -768,7 +624,6 @@ export class TransactionService {
                     purchaseAssetPrealnum: entityFactory.purchaseAssetPrealnum,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -779,7 +634,6 @@ export class TransactionService {
         this.__verifier.verify(request, TR_REGISTER_CHAIN);
         const tr = await myRegisterChain.generateRegisterChain(
             this.__getTransactionBody(request),
-            this.__getAccountPowInfo(request),
             this.bfchainCore.registerChainCertificateHelper.encode(request.registerCertificate as any),
             this.bfchainCore
         );
@@ -801,13 +655,12 @@ export class TransactionService {
                 magic,
                 generatorPublicKey,
                 genesisBlockSignature: signature,
-                genesisDelegates: bfchainCore.transactionHelper.genesisDelegates(config),
+                genesisGenerators: bfchainCore.transactionHelper.genesisGenerators(config),
             },
         });
         const tr = await myEmigrateAsset.generateEmigrateAsset(
             this.__getTransactionBody(request),
             { migrateCertificate: JSON.stringify(request.migrateCertificate) },
-            this.__getAccountPowInfo(request),
             bfchainCore
         );
         return tr.toJSON();
@@ -829,13 +682,12 @@ export class TransactionService {
                 magic,
                 generatorPublicKey,
                 genesisBlockSignature: signature,
-                genesisDelegates: bfchainCore.transactionHelper.genesisDelegates(config),
+                genesisGenerators: bfchainCore.transactionHelper.genesisGenerators(config),
             },
         });
         const tr = await myImmigrateAsset.generateImmigrateAsset(
             this.__getTransactionBody(request),
             { migrateCertificate: JSON.stringify(migrateCertificate) },
-            this.__getAccountPowInfo(request),
             bfchainCore
         );
         return tr.toJSON();
@@ -854,12 +706,7 @@ export class TransactionService {
             amount: assetInfo.amount,
             taxInformation: request.taxInformation,
         };
-        const tr = await myTransferAny.generateTransferAny(
-            this.__getTransactionBody(request),
-            transferAny,
-            this.__getAccountPowInfo(request),
-            this.bfchainCore
-        );
+        const tr = await myTransferAny.generateTransferAny(this.__getTransactionBody(request), transferAny, this.bfchainCore);
         return tr.toJSON();
     }
 
@@ -883,13 +730,7 @@ export class TransactionService {
         if (request.numberOfBeginUnfrozenBlocks !== undefined) {
             giftAny.beginUnfrozenBlockHeight = request.applyBlockHeight + request.numberOfBeginUnfrozenBlocks;
         }
-        const tr = await myGiftAny.generateGiftAny(
-            this.__getTransactionBody(request),
-            giftAny,
-            request.ciphertexts,
-            this.__getAccountPowInfo(request),
-            this.bfchainCore
-        );
+        const tr = await myGiftAny.generateGiftAny(this.__getTransactionBody(request), giftAny, request.ciphertexts, this.bfchainCore);
         return tr.toJSON();
     }
 
@@ -917,7 +758,6 @@ export class TransactionService {
                     taxInformation: giftAny.taxInformation,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore,
             request.ciphertext
         );
@@ -947,7 +787,6 @@ export class TransactionService {
                 taxInformation,
             },
             ciphertexts,
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -981,7 +820,6 @@ export class TransactionService {
                     taxInformation: exchangeAny.taxInformation,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore,
             request.ciphertext
         );
@@ -1020,7 +858,6 @@ export class TransactionService {
                 },
             },
             ciphertexts,
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -1057,7 +894,6 @@ export class TransactionService {
                     taxInformation: beExchangeInfo.taxInformation,
                 },
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore,
             ciphertext
         );
@@ -1099,7 +935,6 @@ export class TransactionService {
                 beExchangeAssets,
             },
             ciphertexts,
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -1139,7 +974,6 @@ export class TransactionService {
                 toExchangeAssets,
                 beExchangeAssets,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore,
             ciphertext
         );
@@ -1156,7 +990,6 @@ export class TransactionService {
                 inputs: request.inputs as any,
                 template: request.template,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -1173,7 +1006,6 @@ export class TransactionService {
                 macroId: request.macroId,
                 transaction: request.transaction,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -1188,7 +1020,6 @@ export class TransactionService {
             {
                 transaction: request.transaction,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -1204,7 +1035,6 @@ export class TransactionService {
                 promiseId: request.promiseId,
                 transaction: request.transaction,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -1219,7 +1049,6 @@ export class TransactionService {
             {
                 transactions: request.transactions,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -1238,7 +1067,6 @@ export class TransactionService {
                 certificateId: certificateInfo.certificateId,
                 type: certificateInfo.type as unknown as CERTIFICATE_TYPE,
             },
-            this.__getAccountPowInfo(request),
             this.bfchainCore
         );
         return tr.toJSON();
@@ -1257,7 +1085,64 @@ export class TransactionService {
                 certificateId: certificateInfo.certificateId,
                 type: certificateInfo.type as unknown as CERTIFICATE_TYPE,
             },
-            this.__getAccountPowInfo(request),
+            this.bfchainCore
+        );
+        return tr.toJSON();
+    }
+
+    @Route(GENERATE_TRANSACTION_API_PATH.TR_INCREASE_ASSET)
+    async generateIncreaseAsset(request: TransactionMaker.Transaction.IncreaseAssetTransactionParams) {
+        this.__verifier.verify(request, TR_INCREASE_ASSET);
+        const { magic, chainName, assetType } = this.bfchainCore.config;
+        const { assetInfo } = request;
+        const tr = await myIncreaseAsset.generateIncreaseAsset(
+            this.__getTransactionBody(request),
+            {
+                sourceChainMagic: assetInfo.sourceChainMagic || magic,
+                sourceChainName: assetInfo.sourceChainName || chainName,
+                assetType: assetInfo.assetType || assetType,
+                increasedAssetPrealnum: assetInfo.increasedAssetPrealnum,
+                frozenMainAssetPrealnum: request.frozenMainAssetPrealnum,
+            },
+            this.bfchainCore
+        );
+        return tr.toJSON();
+    }
+
+    @Route(GENERATE_TRANSACTION_API_PATH.TR_STAKE_ASSET)
+    async generateStakeAsset(request: TransactionMaker.Transaction.StakeAssetTransactionParams) {
+        this.__verifier.verify(request, TR_STAKE_ASSET);
+        const { magic, chainName, assetType } = this.bfchainCore.config;
+        const { assetInfo } = request;
+        const tr = await myStakeAsset.generateStakeAsset(
+            this.__getTransactionBody(request),
+            {
+                sourceChainMagic: assetInfo.sourceChainMagic || magic,
+                sourceChainName: assetInfo.sourceChainName || chainName,
+                assetType: assetInfo.assetType || assetType,
+                assetPrealnum: assetInfo.assetPrealnum,
+                stakeId: request.stakeId,
+                beginUnstakeHeight: request.applyBlockHeight + request.numberOfUnstakeHeight,
+            },
+            this.bfchainCore
+        );
+        return tr.toJSON();
+    }
+
+    @Route(GENERATE_TRANSACTION_API_PATH.TR_UNSTAKE_ASSET)
+    async generateUnstakeAsset(request: TransactionMaker.Transaction.UnstakeAssetTransactionParams) {
+        this.__verifier.verify(request, TR_UNSTAKE_ASSET);
+        const { magic, chainName, assetType } = this.bfchainCore.config;
+        const { assetInfo } = request;
+        const tr = await myUnstakeAsset.generateUnstakeAsset(
+            this.__getTransactionBody(request),
+            {
+                sourceChainMagic: assetInfo.sourceChainMagic || magic,
+                sourceChainName: assetInfo.sourceChainName || chainName,
+                assetType: assetInfo.assetType || assetType,
+                assetPrealnum: assetInfo.assetPrealnum,
+                stakeId: request.stakeId,
+            },
             this.bfchainCore
         );
         return tr.toJSON();
