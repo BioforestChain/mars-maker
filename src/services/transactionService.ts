@@ -1098,6 +1098,7 @@ export class TransactionService {
         const tr = await myIncreaseAsset.generateIncreaseAsset(
             this.__getTransactionBody(request),
             {
+                applyAddress: assetInfo.applyAddress,
                 sourceChainMagic: assetInfo.sourceChainMagic || magic,
                 sourceChainName: assetInfo.sourceChainName || chainName,
                 assetType: assetInfo.assetType || assetType,
