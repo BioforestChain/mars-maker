@@ -546,7 +546,7 @@ export class TransactionService {
     @Route(GENERATE_TRANSACTION_API_PATH.TR_ISSUE_ENTITY)
     async generateEntity(request: TransactionMaker.Transaction.IssueEntityTransactionParams) {
         this.__verifier.verify(request, TR_ISSUE_ENTITY);
-        const { entityId, entityFactoryPossessor, entityFactory, taxAssetPrealnum } = request.entityInfo;
+        const { entityId, entityFactoryPossessor, entityFactory, taxAssetPrealnum, taxAssetRecipientId } = request.entityInfo;
         const { magic, chainName } = this.bfchainCore.config;
         const tr = await myIssueEntity.generateEntity(
             this.__getTransactionBody(request),
@@ -555,6 +555,7 @@ export class TransactionService {
                 sourceChainName: chainName,
                 entityId: `${entityFactory.factoryId}_${entityId}`,
                 taxAssetPrealnum: taxAssetPrealnum || "0",
+                taxAssetRecipientId,
                 entityFactoryPossessor,
                 entityFactory: {
                     sourceChainMagic: entityFactory.sourceChainMagic || magic,
@@ -584,6 +585,7 @@ export class TransactionService {
                     return {
                         entityId: `m_${entityFactory.factoryId}_${item.entityId}`,
                         taxAssetPrealnum: item.taxAssetPrealnum || "0",
+                        taxAssetRecipientId: item.taxAssetRecipientId,
                     };
                 }),
                 entityFactoryPossessor,
