@@ -610,7 +610,6 @@ export const TR_REGISTER_CHAIN: TransactionMaker.SchemaType[] = [
                                     "beginEpochTime",
                                     "genesisLocationName",
                                     "blockPerRound",
-                                    "delegates",
                                     "forgeInterval",
                                     "genesisDelegates",
                                 ],
