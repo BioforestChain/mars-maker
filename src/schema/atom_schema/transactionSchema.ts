@@ -583,7 +583,7 @@ export const TR_REGISTER_CHAIN: TransactionMaker.SchemaType[] = [
                                     forgeInterval: {
                                         type: BASE_ARGS_TYPE.NUMBER,
                                     },
-                                    genesisDelegates: {
+                                    genesisGenerators: {
                                         type: BASE_ARGS_TYPE.ARRAY,
                                         items: {
                                             type: BASE_ARGS_TYPE.OBJECT,
@@ -611,7 +611,7 @@ export const TR_REGISTER_CHAIN: TransactionMaker.SchemaType[] = [
                                     "genesisLocationName",
                                     "blockPerRound",
                                     "forgeInterval",
-                                    "genesisDelegates",
+                                    "genesisGenerators",
                                 ],
                             },
                         },
