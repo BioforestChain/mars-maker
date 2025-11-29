@@ -1,4 +1,5 @@
 # Mars Maker (English)
+For Chinese version please see [README-zh](README-zh.md).
 
 ## Overview
 Server-side monorepo for generating and broadcasting BFMeta transactions; listens to client requests, talks to chain nodes, and broadcasts transactions. TypeScript + Yarn workspaces with CLI packaging and production build scripts.

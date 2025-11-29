@@ -1,4 +1,5 @@
 # Mars Maker（中文）
+英文版请参见 [README](README.md)。
 
 ## 简介
 BFMeta 交易生成与广播的服务端 monorepo，负责监听客户端请求、与链节点交互并广播交易。基于 TypeScript + Yarn 工作区，支持 CLI 打包与生产构建脚本。
